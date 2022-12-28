@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}Document list{% endblock %}
+
+{% block page_content %}
+    <br><br>
+
+    {% for document in all_documents %}
+        <div>{{ document }}, download:
+
+        <a href="/media/{{ document.attachment }}">
+                    "/media/{{ document.attachment }}"</a>
+
+        </div>
+        <div class="actionBtn">
+                <a href="{% url 'edit document' pk=document.pk slug=document.slug %}">
+                    Edit document</a>
+        </div>
+        <div class="actionBtn">
+                <a href="{% url 'delete document' pk=document.pk slug=document.slug %}">
+                    Delete document</a>
+        </div>
+        <br><br>
+    {% endfor %}
+{% endblock %}

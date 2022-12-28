@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}Delete document{% endblock %}
+
+{% block page_content %}
+    <br><br>
+
+    <form action="{% url 'delete document' pk=document.pk slug=document.slug %}" method="post">
+        {{ form.as_div }}
+        {% csrf_token %}
+        <button>delete</button>
+    </form>
+
+    <div class="actionBtn">
+         <a href="{% url 'document list' %}">
+             go back</a>
+    </div>
+
+{% endblock %}

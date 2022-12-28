@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}Add document{% endblock %}
+
+{% block page_content %}
+    <br><br>
+
+    <form action="{% url 'add document' %}" method="post" enctype="multipart/form-data">
+        {{ form.as_div }}
+        {% csrf_token %}
+    <br><br>
+        <button>add this document</button>
+    </form>
+
+{% endblock %}
