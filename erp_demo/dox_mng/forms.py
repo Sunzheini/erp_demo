@@ -6,19 +6,19 @@ from erp_demo.dox_mng.models import Document
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = '__all__'
+        exclude = ['slug']
 
 
 class DocumentEditForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = '__all__'
+        exclude = ['slug']
 
 
 class DocumentDeleteForm(forms.ModelForm):
     class Meta:
         model = Document
-        exclude = ['attachment']
+        exclude = ['attachment', 'slug']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

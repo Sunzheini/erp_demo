@@ -2,6 +2,10 @@ from django.db import models
 
 
 class Document(models.Model):
+
+    class Meta:
+        ordering = ['id']
+
     name = models.CharField(
         max_length=30,
         blank=False, null=False,

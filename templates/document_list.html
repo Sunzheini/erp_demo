@@ -5,21 +5,46 @@
 {% block page_content %}
     <br><br>
 
+    <table border="1">
+        <tr>
+            <th>Document</th>
+            <th>Revision</th>
+            <th>Owner</th>
+            <th>Link</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
     {% for document in all_documents %}
-        <div>{{ document }}, download:
-
-        <a href="/media/{{ document.attachment }}">
-                    "/media/{{ document.attachment }}"</a>
-
-        </div>
-        <div class="actionBtn">
-                <a href="{% url 'edit document' pk=document.pk slug=document.slug %}">
-                    Edit document</a>
-        </div>
-        <div class="actionBtn">
-                <a href="{% url 'delete document' pk=document.pk slug=document.slug %}">
-                    Delete document</a>
-        </div>
-        <br><br>
+        <tr>
+            <td>{{ document.name }}</td>
+            <td>{{ document.revision }}</td>
+            <td>{{ document.owner }}</td>
+            <td><a href="/media/{{ document.attachment }}">
+                    "/media/{{ document.attachment }}"</a></td>
+            <td><a href="{% url 'edit document' pk=document.pk slug=document.slug %}">
+                    Edit</a></td>
+            <td><a href="{% url 'delete document' pk=document.pk slug=document.slug %}">
+                    Delete</a></td>
+        </tr>
     {% endfor %}
+    </table>
+
+{#    {% for document in all_documents %}#}
+{#        <div>{{ document }}, download:#}
+{##}
+{#        <a href="/media/{{ document.attachment }}">#}
+{#                    "/media/{{ document.attachment }}"</a>#}
+{##}
+{#        </div>#}
+{#        <div class="actionBtn">#}
+{#                <a href="{% url 'edit document' pk=document.pk slug=document.slug %}">#}
+{#                    Edit document</a>#}
+{#        </div>#}
+{#        <div class="actionBtn">#}
+{#                <a href="{% url 'delete document' pk=document.pk slug=document.slug %}">#}
+{#                    Delete document</a>#}
+{#        </div>#}
+{#        <br><br>#}
+{#    {% endfor %}#}
 {% endblock %}
