@@ -5,11 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block page_title %}Erp-test{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site2.css' %}">
 </head>
 <body>
-    Menu:
-    <br><br>
+    <h3 align="center">Menu</h3>
     {% include 'core/nav.html' %}
     <br><br>
 
@@ -17,6 +16,8 @@
 
 {% block page_content %}
 {% endblock %}
+    <br><br><br>
+<footer></footer>
 
 </body>
 </html>

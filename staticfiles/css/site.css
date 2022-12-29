@@ -17,6 +17,9 @@ body {
     /*background-image: url('/static/images/back.jpg');*/
     background-image: url('/static/images/back.webp');
     background-size: cover;
+
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
 }
 
 table{
