@@ -3,22 +3,24 @@ from django import forms
 from erp_demo.dox_mng.models import Document
 
 
-class DocumentForm(forms.ModelForm):
+class DocumentModelAndExcludeMixin:
     class Meta:
         model = Document
         exclude = ['slug']
 
 
-class DocumentEditForm(forms.ModelForm):
+class DocumentForm(forms.ModelForm, DocumentModelAndExcludeMixin):
+    pass
+
+
+class DocumentEditForm(forms.ModelForm, DocumentModelAndExcludeMixin):
+    pass
+
+
+class DocumentDeleteForm(forms.ModelForm, DocumentModelAndExcludeMixin):
     class Meta:
         model = Document
         exclude = ['slug']
-
-
-class DocumentDeleteForm(forms.ModelForm):
-    class Meta:
-        model = Document
-        exclude = ['attachment', 'slug']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -26,7 +28,6 @@ class DocumentDeleteForm(forms.ModelForm):
 
     def __disable_fields(self):
         for name, field in self.fields.items():
-            # field.widget.attrs['disabled'] = 'disabled'
             field.widget.attrs['readonly'] = 'readonly'
 
     def save(self, commit=True):
@@ -34,4 +35,3 @@ class DocumentDeleteForm(forms.ModelForm):
         self.instance.delete()
         os.remove(doc_path)
         return self.instance
-
