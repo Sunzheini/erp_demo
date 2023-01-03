@@ -70,16 +70,29 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# heroku
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'erp_demo_db',         # same name as the DB created
-        'USER': 'postgres-user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+        'NAME': 'd7pque6llenjil',
+        'USER': 'gfglkealwnywlh',
+        'PASSWORD': '61f32a79a35f8925e65e11fd6433249f668b21062ae2640c59a3f7c3dc2aafaa',
+        'HOST': 'ec2-54-77-40-202.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'erp_demo_db',         # same name as the DB created
+#         'USER': 'postgres-user',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+#         'PORT': '5432',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
