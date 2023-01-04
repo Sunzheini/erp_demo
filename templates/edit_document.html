@@ -5,7 +5,7 @@
 {% block page_content %}
     <br><br>
 
-    <form action="{% url 'edit document' pk=document.pk slug=document.slug %}" method="post">
+    <form action="{% url 'edit document' pk=document.pk slug=document.slug %}" method="post" enctype="multipart/form-data">
         {{ form.as_div }}
         {% csrf_token %}
         <button>submit</button>

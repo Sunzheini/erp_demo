@@ -41,7 +41,7 @@ def edit_document(request, pk, slug):
     if request.method == 'GET':
         form = DocumentEditForm(instance=current_document)
     else:
-        form = DocumentEditForm(request.POST, instance=current_document)
+        form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
         if form.is_valid():
             form.save()
             return redirect('document list')
