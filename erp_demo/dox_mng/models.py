@@ -1,3 +1,4 @@
+from cloudinary import models as cloudinary_models
 from django.db import models
 
 
@@ -18,9 +19,14 @@ class Document(models.Model):
         max_length=30,
         blank=False, null=False,
     )
-    attachment = models.FileField(
-        blank=False, null=False,
-    )
+
+    # cloudinary
+    attachment = cloudinary_models.CloudinaryField('image')
+
+    # attachment = models.FileField(
+    #     blank=False, null=False,
+    # )
+
     slug = models.SlugField(
         blank=True, null=True,
     )

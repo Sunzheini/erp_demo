@@ -142,14 +142,16 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media_files'
+
+
+# heroku
 cloudinary.config(
   cloud_name="hpnglbxlz",
   api_key="713429118316855",
-  api_secret="veB_dwVAE954b9yeyx3rCUNnV2o"
+  api_secret="veB_dwVAE954b9yeyx3rCUNnV2o",
 )
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media_files'
 
 
 # Default primary key field type
