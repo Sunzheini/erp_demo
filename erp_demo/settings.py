@@ -150,9 +150,10 @@ MEDIA_ROOT = BASE_DIR / 'media_files'
 
 # heroku
 cloudinary.config(
-  cloud_name="hpnglbxlz",
-  api_key="713429118316855",
-  api_secret="veB_dwVAE954b9yeyx3rCUNnV2o",
+    cloud_name="hpnglbxlz",
+    api_key="713429118316855",
+    api_secret="veB_dwVAE954b9yeyx3rCUNnV2o",
+    secure=True,
 )
 # syshto corrention in models and the links for the file in templates
 
