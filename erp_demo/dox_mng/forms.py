@@ -30,8 +30,15 @@ class DocumentDeleteForm(forms.ModelForm, DocumentModelAndExcludeMixin):
         for name, field in self.fields.items():
             field.widget.attrs['readonly'] = 'readonly'
 
+    # def save(self, commit=True):
+    #     doc_path = self.instance.attachment.path    # attachment is a field in the model
+    #     self.instance.delete()
+    #     os.remove(doc_path)
+    #     return self.instance
+
+    # heroku
     def save(self, commit=True):
-        doc_path = self.instance.attachment.path    # attachment is a field in the model
+        #doc_path = self.instance.attachment.path    # attachment is a field in the model
         self.instance.delete()
-        os.remove(doc_path)
+        #os.remove(doc_path)
         return self.instance
