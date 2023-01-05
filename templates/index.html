@@ -1,7 +1,39 @@
-{% extends 'core/base.html' %}
+{% load static %}
 
-{% block page_title %}Index{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}Main Index{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/site2.css' %}">
+</head>
+<body>
+    {% block page_name %}<h3 align="center">ERP Main</h3>{% endblock %}
+    <br><br>
+    <h3 align="center">Modules</h3>
+
+
+    <nav>
+        <li>
+            <a href="{% url 'dox mng index' %}">Module 1 Index</a>
+        </li>
+        <li>
+            <a href="{% url 'dox mng index' %}">Module 2 Index</a>
+        </li>
+        <li>
+            <a href="{% url 'dox mng index' %}">Module 3 Index</a>
+        </li>
+    </nav>
+
+
+    <br><br>
+
+
 
 {% block page_content %}
-    <br><br>
 {% endblock %}
+    <br><br><br>
+<footer></footer>
+
+</body>
+</html>

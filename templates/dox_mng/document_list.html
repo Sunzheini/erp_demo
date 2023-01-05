@@ -2,6 +2,9 @@
 {% load cloudinary %}
 
 {% block page_title %}Document list{% endblock %}
+{% block page_name %}<h3 align="center">
+    Module 2: Document List
+</h3>{% endblock %}
 
 {% block page_content %}
     <br><br>
@@ -22,14 +25,14 @@
             <td>{{ document.revision }}</td>
             <td>{{ document.owner }}</td>
 
-
-{#            <td><a href="/media/{{ document.attachment }}"> #}
+{#no cloudinary#}
+{#            <td><a href="/media/{{ document.attachment }}">#}
 {#                    "/media/{{ document.attachment }}"</a></td>#}
 
-{#            cloudinary#}
+{#cloudinary#}
 {#            <img src="{{ document.attachment.url }}" alt="image">#}
             <td><a href="{{ document.attachment.url }}">
-                        "{{ document.attachment.url }}"</a></td>
+                        {{ document.attachment.url }}</a></td>
 
 
             <td><a href="{% url 'edit document' pk=document.pk slug=document.slug %}">

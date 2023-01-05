@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'erp_demo.main_app',
     'erp_demo.dox_mng',
+
     'cloudinary',
 ]
 
@@ -88,6 +90,7 @@ DATABASES = {
     }
 }
 
+# without heroku
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -136,9 +139,7 @@ USE_TZ = True
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
@@ -148,14 +149,14 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
-# heroku
+# needed for cloudinary
 cloudinary.config(
     cloud_name="hpnglbxlz",
     api_key="713429118316855",
     api_secret="veB_dwVAE954b9yeyx3rCUNnV2o",
     secure=True,
 )
-# syshto corrention in models and the links for the file in templates
+# also corrention in models and the links for the file in templates
 
 
 # Default primary key field type

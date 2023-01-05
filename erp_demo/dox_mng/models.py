@@ -20,10 +20,16 @@ class Document(models.Model):
         blank=False, null=False,
     )
 
-    # cloudinary
-    attachment = cloudinary_models.CloudinaryField('image', resource_type="auto",
-                                                   blank=False, null=False)
+# with cloudinary
+    attachment = cloudinary_models.CloudinaryField(
+        'image',
+        resource_type="auto",
+        blank=False, null=False,
+        use_filename=True,
+        unique_filename=False,
+    )
 
+# without cloudinary
     # attachment = models.FileField(
     #     blank=False, null=False,
     # )
