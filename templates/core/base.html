@@ -11,7 +11,9 @@
     {% block page_name %}<h3 align="center">Sample_name</h3>{% endblock %}
     <br><br>
     <h3 align="center">Menu</h3>
+    {% block nav %}
     {% include 'core/nav.html' %}
+    {% endblock %}
     <br><br>
 
 {% block page_content %}

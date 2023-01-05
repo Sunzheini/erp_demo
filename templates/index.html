@@ -1,39 +1,30 @@
-{% load static %}
+{% extends 'core/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block page_title %}Main Index{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/site2.css' %}">
-</head>
-<body>
-    {% block page_name %}<h3 align="center">ERP Main</h3>{% endblock %}
-    <br><br>
-    <h3 align="center">Modules</h3>
+{% block page_title %}Main Index{% endblock %}
+{% block page_name %}<h3 align="center">
+    ERP Main Page
+</h3>{% endblock %}
 
-
+{% block nav %}
     <nav>
         <li>
-            <a href="{% url 'dox mng index' %}">Module 1 Index</a>
+            <a href="{% url 'process mng index' %}">
+                Module 1 Process Management
+            </a>
         </li>
         <li>
-            <a href="{% url 'dox mng index' %}">Module 2 Index</a>
+            <a href="{% url 'dox mng index' %}">
+                Module 2 Documented Information Management
+            </a>
         </li>
         <li>
-            <a href="{% url 'dox mng index' %}">Module 3 Index</a>
+            <a href="{% url 'hr mng index' %}">
+                Module 3 HR Management
+            </a>
         </li>
     </nav>
-
-
-    <br><br>
-
-
+{% endblock %}
 
 {% block page_content %}
+    <br><br>
 {% endblock %}
-    <br><br><br>
-<footer></footer>
-
-</body>
-</html>
