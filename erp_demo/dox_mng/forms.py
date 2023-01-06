@@ -3,14 +3,13 @@ from django import forms
 from erp_demo.dox_mng.models import Document
 
 
-# Document
-# ----------------------------------------------------------------------
-
 class DocumentModelAndExcludeMixin:
     class Meta:
         model = Document
         exclude = ['slug']
 
+
+# ----------------------------------------------------------------------
 
 class DocumentForm(forms.ModelForm, DocumentModelAndExcludeMixin):
     pass
@@ -46,6 +45,8 @@ class DocumentDeleteForm(forms.ModelForm, DocumentModelAndExcludeMixin):
         return self.instance
 
 
+# ----------------------------------------------------------------------
+
 class DocumentTypeForm(forms.Form):
     DOCUMENT_TYPES = (
                   ('All', 'All'),
@@ -59,9 +60,3 @@ class DocumentTypeForm(forms.Form):
         label='Select document type',
         choices=DOCUMENT_TYPES,
     )
-
-# ----------------------------------------------------------------------
-
-
-
-

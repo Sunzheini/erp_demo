@@ -15,8 +15,46 @@
 
 {% block page_content %}
     <br>
-    <h3 align="center">
-        No info
-    </h3>
+--CURRENTLY TESTING TABLE RELATIONSHIPS ON THIS PAGE!--
+    <br><br><br>
+
+    <form action="{% url 'process mng index' %}" method="post">
+        1) Process Creation Form
+        {{ process_form.as_div }}
+        {% csrf_token %}
+        <button name="button1">add this process</button>
+    </form>
+
+    <br><br>
+
+    <form action="{% url 'process mng index' %}" method="post">
+        2) Process Step Creation Form
+        {{ process_step_form.as_div }}
+        {% csrf_token %}
+        <button name="button2">add this process step</button>
+    </form>
+
+    <br><br>
+
+    {% if processes %}
+        {% for process in processes %}
+            {{ process }}
+            <br>
+        {% endfor %}
+    {% else %}
+        No processes added
+    {% endif %}
+
+    <br><br>
+
+    {% if process_steps %}
+        {% for process_step in process_steps %}
+            {{ process_step }}
+            <br>
+        {% endfor %}
+    {% else %}
+        No process steps added
+    {% endif %}
+
     <br>
 {% endblock %}

@@ -55,4 +55,4 @@ class Document(models.Model):
 
     def __str__(self):
         return f"{self.name}, rev.: {self.revision}, " \
-               f"owner: {self.owner}"
+               f"owner is: {self.owner}"
