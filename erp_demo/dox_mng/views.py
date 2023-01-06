@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 
 from erp_demo.dox_mng.custom_logicz import SupportFunctions
-from erp_demo.dox_mng.forms import DocumentForm, DocumentEditForm, DocumentDeleteForm
+from erp_demo.dox_mng.forms import DocumentForm, DocumentEditForm, \
+    DocumentDeleteForm, DocumentTypeForm
 from erp_demo.dox_mng.models import Document
 
 
@@ -10,10 +11,22 @@ def dox_mng_index(request):
     return render(request, 'dox_mng/dox_mng_index.html', context)
 
 
-def document_list(request):
+def document_list(request):     # ToDo: cache
     template = 'dox_mng/document_list.html'
-    SupportFunctions.recreation_of_slugs(Document)
-    context = {'all_documents': Document.objects.all(), }
+    SupportFunctions.recreation_of_slugs(Document)  # ToDo: optimize
+
+    selected_type = None
+    if request.method == 'GET':
+        form = DocumentTypeForm()
+    else:
+        form = DocumentTypeForm(request.POST)
+        if form.is_valid():
+            selected_type = form.cleaned_data['document_type_dropdown']
+
+    context = {
+        'all_documents': SupportFunctions.extract_documents_by_type(selected_type),
+        'type_form': form,
+    }
     return render(request, template, context)
 
 

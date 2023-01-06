@@ -9,9 +9,18 @@
 {% block page_content %}
     <br><br>
 
+    <form action="{% url 'document list' %}" method="post">
+        {{ type_form }}
+        {% csrf_token %}
+        <button>filter</button>
+    </form>
+
+    <br><br>
+
     <table border="1">
         <tr>
-            <th>Document</th>
+            <th>Type</th>
+            <th>Name</th>
             <th>Revision</th>
             <th>Owner</th>
             <th>Link</th>
@@ -21,6 +30,7 @@
 
     {% for document in all_documents %}
         <tr>
+            <td>{{ document.type }}</td>
             <td>{{ document.name }}</td>
             <td>{{ document.revision }}</td>
             <td>{{ document.owner }}</td>
@@ -30,9 +40,8 @@
 {#                    "/media/{{ document.attachment }}"</a></td>#}
 
 {#cloudinary#}
-{#            <img src="{{ document.attachment.url }}" alt="image">#}
             <td><a href="{{ document.attachment.url }}">
-                        {{ document.attachment.url }}</a></td>
+                        Link</a></td>
 
 
             <td><a href="{% url 'edit document' pk=document.pk slug=document.slug %}">

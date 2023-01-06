@@ -3,6 +3,9 @@ from django import forms
 from erp_demo.dox_mng.models import Document
 
 
+# Document
+# ----------------------------------------------------------------------
+
 class DocumentModelAndExcludeMixin:
     class Meta:
         model = Document
@@ -41,3 +44,24 @@ class DocumentDeleteForm(forms.ModelForm, DocumentModelAndExcludeMixin):
     def save(self, commit=True):
         self.instance.delete()
         return self.instance
+
+
+class DocumentTypeForm(forms.Form):
+    DOCUMENT_TYPES = (
+                  ('All', 'All'),
+                  ('Manual', 'Manual'),
+                  ('Procedure', 'Procedure'),
+                  ('Instruction', 'Instruction'),
+                  ('Form', 'Form'),
+    )
+
+    document_type_dropdown = forms.ChoiceField(
+        label='Select document type',
+        choices=DOCUMENT_TYPES,
+    )
+
+# ----------------------------------------------------------------------
+
+
+
+
