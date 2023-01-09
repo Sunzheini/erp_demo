@@ -13,7 +13,6 @@ def dox_mng_index(request):
 
 def document_list(request):     # ToDo: cache
     template = 'dox_mng/document_list.html'
-    SupportFunctions.recreation_of_slugs(Document)  # ToDo: optimize
 
     selected_type = None
     if request.method == 'GET':

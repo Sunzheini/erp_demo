@@ -60,15 +60,20 @@ class ProcessStep(models.Model):
     # many-to-many
     documents = models.ManyToManyField(
         Document,
-        through='ProcessStepToDocuments',     # doesn't auto create a table but uses the one specified
+        blank=True,
+        through='ProcessStepToDocuments',
+        # doesn't auto create a table but uses the one specified
     )
+
+    def get_related_documents(self):
+        return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
 
     def __str__(self):
         return f"Process Step {self.pk} / Type: {self.type} " \
                f"/ Name: {self.name} / " \
                f"Parent: {self.parent_process.pk} " \
                f"- {self.parent_process.name} / " \
-               f"Documents: {ProcessStepToDocuments.objects.filter(process_step_id=self.pk).get()}"
+               f"Documents: {self.get_related_documents()}"
 
 
 class ProcessStepToDocuments(models.Model):

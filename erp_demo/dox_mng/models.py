@@ -1,5 +1,6 @@
 from cloudinary import models as cloudinary_models
 from django.db import models
+from django.utils.text import slugify
 
 
 class Document(models.Model):
@@ -46,7 +47,7 @@ class Document(models.Model):
     # )
 
     slug = models.SlugField(
-        blank=True, null=True,
+        blank=True, null=True, editable=False,
     )
 
     def full_document_info(self):
@@ -56,3 +57,10 @@ class Document(models.Model):
     def __str__(self):
         return f"{self.name}, rev.: {self.revision}, " \
                f"owner is: {self.owner}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.name}")
+        return super().save(*args, **kwargs)
+
