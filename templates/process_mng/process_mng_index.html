@@ -49,7 +49,8 @@
 
     {% if process_steps %}
         {% for process_step in process_steps %}
-            {{ process_step }}
+            {{ process_step }} <br>
+            {{ process_step.get_related_documents }}
             <br>
         {% endfor %}
     {% else %}

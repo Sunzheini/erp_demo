@@ -12,7 +12,7 @@ class Process(models.Model):
         max_length=30,
         choices=(
             ('Managerial', 'Managerial'),
-            ('Operational', 'Procedure'),
+            ('Operational', 'Operational'),
             ('Support', 'Support'),
         ),
         blank=False, null=False,
@@ -65,6 +65,7 @@ class ProcessStep(models.Model):
         # doesn't auto create a table but uses the one specified
     )
 
+    @property
     def get_related_documents(self):
         return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
 
@@ -73,7 +74,7 @@ class ProcessStep(models.Model):
                f"/ Name: {self.name} / " \
                f"Parent: {self.parent_process.pk} " \
                f"- {self.parent_process.name} / " \
-               f"Documents: {self.get_related_documents()}"
+               f"Documents: {self.get_related_documents}"
 
 
 class ProcessStepToDocuments(models.Model):
