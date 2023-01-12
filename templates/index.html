@@ -1,32 +1,54 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}Main Index{% endblock %}
-{% block page_name %}<h3 align="center">
-    ERP Main Page
-</h3>{% endblock %}
-
-{% block nav %}
-    <nav>
-        <li>
-            <a href="{% url 'process mng index' %}">
-                Module 1 Process Management
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'dox mng index' %}">
-                Module 2 Documented Information Management
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'hr mng index' %}">
-                Module 3 HR Management
-            </a>
-        </li>
-    </nav>
+{% block page_title %}
+    Welcome
 {% endblock %}
 
-{% block page_content %}
-    <br>
+{#1. Nav----------------------------------------------------------------------#}
 
-    <br>
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Welcome to My ERP
+            </h1>
+        </header>
+    {% endblock %}
+
+{% block page_content %}
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'process mng index' %}';"
+        >
+            <h2>Process Management</h2>
+            <p>
+                Add, change or remove processes and process steps
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'dox mng index' %}';"
+        >
+            <h2>Documents and Records</h2>
+            <p>
+                Add, change or remove documented information
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'hr mng index' %}';"
+        >
+            <h2>Human Resources</h2>
+            <p>
+                Manage personnel, training, health and safety, etc.
+            </p>
+        </button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+
 {% endblock %}

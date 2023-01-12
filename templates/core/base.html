@@ -4,22 +4,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block page_title %}Erp-test{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/site3.css' %}">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block page_title %}My ERP{% endblock %}</title>
+
+{#Styles-------------------------------------------------------------------#}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{#JS Functions-------------------------------------------------------------#}
+{#    <script>#}
+{#      function myFunction1() {#}
+{#        document.getElementById("demo").style.color = "orange";#}
+{#      }#}
+{##}
+{#      function myFunction2() {#}
+{#        document.getElementById("demo").style.color = "black";#}
+{#      }#}
+{#    </script>#}
 </head>
+
 <body>
-    {% block page_name %}<h3 align="center">Sample_name</h3>{% endblock %}
-    <br><br>
-    <h3 align="center">Menu</h3>
+{#1. Nav----------------------------------------------------------------------#}
     {% block nav %}
-    {% include 'core/nav.html' %}
+        {% include 'core/nav.html' %}
     {% endblock %}
-    <br><br>
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Base Page
+            </h1>
+        </header>
+    {% endblock %}
 
 {% block page_content %}
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'process mng index' %}';"
+        >
+            <h2>Process Management</h2>
+            <p>
+                Add, change or remove processes and process steps
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'dox mng index' %}';"
+        >
+            <h2>Documents and Records</h2>
+            <p>
+                Add, change or remove documented information
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'hr mng index' %}';"
+        >
+            <h2>Human Resources</h2>
+            <p>
+                Manage personnel, training, health and safety, etc.
+            </p>
+        </button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Animi architecto aspernatur consequatur dolorem eos, eveniet
+                explicabo iste maiores, neque provident ratione repudiandae
+                saepe sunt tempore vel voluptate voluptatibus! Ipsam, laboriosam!
+            </p>
+        </div>
+    </div>
+
 {% endblock %}
-    <br><br><br>
-<footer></footer>
+
+{#5. Footer-------------------------------------------------------------------#}
+<footer>
+    <h4>
+        Made by DZ
+    </h4>
+</footer>
 
 </body>
 </html>

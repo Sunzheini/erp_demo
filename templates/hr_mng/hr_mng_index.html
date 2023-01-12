@@ -1,22 +1,45 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}M3 Index{% endblock %}
-{% block page_name %}<h3 align="center">
-    Module 3: Human Resources Management - Index Page
-</h3>{% endblock %}
-
-{% block nav %}
-        <nav>
-        <li>
-            <a href="{% url 'index' %}">Back to Main Index</a>
-        </li>
-    </nav>
+{% block page_title %}
+    HR Management
 {% endblock %}
 
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Human Resources Management
+            </h1>
+        </header>
+    {% endblock %}
+
 {% block page_content %}
-    <br>
-    <h3 align="center">
-        {{ value }}
-    </h3>
-    <br>
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'index' %}';"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the main menu
+            </p>
+        </button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
+
+            {{ value }}
+
+        </div>
+    </div>
+
 {% endblock %}

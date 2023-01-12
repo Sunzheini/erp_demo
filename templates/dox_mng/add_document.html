@@ -1,18 +1,50 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}Add document{% endblock %}
-{% block page_name %}<h3 align="center">
-    Module 2: Add Document
-</h3>{% endblock %}
+{% block page_title %}
+    Add Document
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Add Document
+            </h1>
+        </header>
+    {% endblock %}
 
 {% block page_content %}
-    <br><br>
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'dox mng index' %}';"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the document management menu
+            </p>
+        </button>
 
-    <form action="{% url 'add document' %}" method="post" enctype="multipart/form-data">
-        {{ form.as_div }}
-        {% csrf_token %}
-    <br><br>
-        <button>add this document</button>
-    </form>
+        <button class="card"></button>
+
+        <button class="card"></button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
+
+            <form action="{% url 'add document' %}" method="post" enctype="multipart/form-data">
+                {{ form.as_div }}
+                {% csrf_token %}
+            <br><br>
+                <button class="form_button">add this document</button>
+            </form>
+
+        </div>
+    </div>
 
 {% endblock %}

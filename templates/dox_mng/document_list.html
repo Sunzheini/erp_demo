@@ -1,13 +1,41 @@
 {% extends 'core/base.html' %}
-{% load cloudinary %}
 
-{% block page_title %}Document list{% endblock %}
-{% block page_name %}<h3 align="center">
-    Module 2: Document List
-</h3>{% endblock %}
+{% block page_title %}
+    Document List
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Document List
+            </h1>
+        </header>
+    {% endblock %}
 
 {% block page_content %}
-    <br><br>
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'dox mng index' %}';"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the document management menu
+            </p>
+        </button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
 
     <form action="{% url 'document list' %}" method="post">
         {{ type_form }}
@@ -51,5 +79,8 @@
         </tr>
     {% endfor %}
     </table>
+
+        </div>
+    </div>
 
 {% endblock %}

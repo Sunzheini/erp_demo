@@ -1,14 +1,54 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}M2 Index{% endblock %}
-{% block page_name %}<h3 align="center">
-    Module 2: Documented Information Management - Index Page
-</h3>{% endblock %}
+{% block page_title %}
+    Documents and Records
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Documents and Records
+            </h1>
+        </header>
+    {% endblock %}
 
 {% block page_content %}
-    <br>
-<h3 align="center">
-    No info
-</h3>
-    <br>
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'index' %}';"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the main menu
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'add document' %}';"
+        >
+            <h2>Add document</h2>
+            <p>
+                Add a new document and define its properties
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'document list' %}';"
+        >
+            <h2>List of documents</h2>
+            <p>
+                Display a list of all documents. Edit or delete documents
+            </p>
+        </button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+
 {% endblock %}
