@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Document List
+    Employee List
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Document List
+                Employee List
             </h1>
         </header>
     {% endblock %}
@@ -20,11 +20,11 @@
     <div class="container" id="con1">
         <button
                 class="card"
-                onclick="location.href='{% url 'dox mng index' %}';"
+                onclick="location.href='{% url 'hr mng index' %}';"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the document management menu
+                Go back to the hr management menu
             </p>
         </button>
 
@@ -37,46 +37,35 @@
     <div class="container" id="con2">
         <div class="card">
 
-    <form action="{% url 'document list' %}" method="post">
-        {{ type_form }}
+    <form action="{% url 'employee list' %}" method="post">
+        {{ position_form }}
         {% csrf_token %}
         <button>filter</button>
     </form>
 
-        {% if all_documents %}
+        {% if all_employees %}
 
     <br><br>
 
-    <table border="1">
+    <table>
         <tr>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Revision</th>
-            <th>Owner</th>
-            <th>Link</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Position</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
 
-    {% for document in all_documents %}
+    {% for employee in all_employees %}
         <tr>
-            <td>{{ document.type }}</td>
-            <td>{{ document.name }}</td>
-            <td>{{ document.revision }}</td>
-            <td>{{ document.owner }}</td>
-
-{#no cloudinary#}
-{#            <td><a href="/media/{{ document.attachment }}">#}
-{#                    "/media/{{ document.attachment }}"</a></td>#}
-
-{#cloudinary#}
-            <td><a href="{{ document.attachment.url }}">
-                        Link</a></td>
-
-
-            <td><a href="{% url 'edit document' pk=document.pk slug=document.slug %}">
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.identification }}</td>
+            <td>{{ employee.position }}</td>
+            <td><a href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}">
                     Edit</a></td>
-            <td><a href="{% url 'delete document' pk=document.pk slug=document.slug %}">
+            <td><a href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}">
                     Delete</a></td>
         </tr>
     {% endfor %}

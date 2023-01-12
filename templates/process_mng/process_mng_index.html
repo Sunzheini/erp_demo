@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Document List
+    Process Management
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Document List
+                Process Management
             </h1>
         </header>
     {% endblock %}
@@ -37,9 +37,6 @@
     <div class="container" id="con2">
         <div class="card">
 
---CURRENTLY TESTING TABLE RELATIONSHIPS ON THIS PAGE!--
-    <br><br><br>
-
     <form action="{% url 'process mng index' %}" method="post">
         1) Process Creation Form
         {{ process_form.as_div }}
@@ -58,25 +55,46 @@
 
     <br><br>
 
+{#    {% if processes %}#}
+{#        {% for process in processes %}#}
+{#            {{ process }}#}
+{#            <br>#}
+{#        {% endfor %}#}
+{#    {% else %}#}
+{#        No processes added#}
+{#    {% endif %}#}
+{##}
+{#    <br><br>#}
+{##}
+{#    {% if process_steps %}#}
+{#        {% for process_step in process_steps %}#}
+{#            {{ process_step }} <br>#}
+{#            {{ process_step.get_related_documents }}#}
+{#            <br>#}
+{#        {% endfor %}#}
+{#    {% else %}#}
+{#        No process steps added#}
+{#    {% endif %}#}
+
+
     {% if processes %}
         {% for process in processes %}
             {{ process }}
             <br>
+
+            {% if process_steps %}
+                {% for process_step in process_steps %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ process_step }}
+                    <br>
+                {% endfor %}
+            {% else %}
+                &nbsp;&nbsp;&nbsp;&nbsp;no process steps added
+                <br>
+            {% endif %}
+
         {% endfor %}
     {% else %}
         No processes added
-    {% endif %}
-
-    <br><br>
-
-    {% if process_steps %}
-        {% for process_step in process_steps %}
-            {{ process_step }} <br>
-            {{ process_step.get_related_documents }}
-            <br>
-        {% endfor %}
-    {% else %}
-        No process steps added
     {% endif %}
 
         </div>

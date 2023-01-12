@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from erp_demo.dox_mng.custom_logicz import SupportFunctions
+from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.dox_mng.forms import DocumentForm, DocumentEditForm, \
     DocumentDeleteForm, DocumentTypeForm
 from erp_demo.dox_mng.models import Document

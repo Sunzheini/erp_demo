@@ -8,8 +8,8 @@ urlpatterns = [
     path('', DoxMngViews().dox_mng_index, name='dox mng index'),
     path('document-list/', DoxMngViews().document_list, name='document list'),
     path('add-document/', DoxMngViews().add_document, name='add document'),
-    path('edit_document/<int:pk>/<slug:slug>/', DoxMngViews().edit_document, name='edit document'),
-    path('delete_document/<int:pk>/<slug:slug>/', DoxMngViews().delete_document, name='delete document'),
+    path('edit-document/<int:pk>/<slug:slug>/', DoxMngViews().edit_document, name='edit document'),
+    path('delete-document/<int:pk>/<slug:slug>/', DoxMngViews().delete_document, name='delete document'),
 ]
 
 if settings.DEBUG:

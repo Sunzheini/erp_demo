@@ -18,14 +18,20 @@ class Process(models.Model):
         blank=False, null=False,
     )
 
+    number = models.CharField(
+        max_length=3,
+        blank=False, null=False,
+        unique=True,
+    )
+
     name = models.CharField(
-        max_length=30,
+        max_length=40,
         blank=False, null=False,
         unique=True,
     )
 
     def __str__(self):
-        return f"Process {self.pk} / Type: {self.type} / Name: {self.name}"
+        return f"{self.number} {self.name}, Type: {self.type}, PK: {self.pk}"
 
 
 class ProcessStep(models.Model):
@@ -43,8 +49,12 @@ class ProcessStep(models.Model):
         blank=False, null=False,
     )
 
+    number = models.PositiveIntegerField(
+        blank=False, null=False,
+    )
+
     name = models.CharField(
-        max_length=31,
+        max_length=50,
         blank=False, null=False,
         unique=True,
     )
@@ -70,11 +80,7 @@ class ProcessStep(models.Model):
         return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
 
     def __str__(self):
-        return f"Process Step {self.pk} / Type: {self.type} " \
-               f"/ Name: {self.name} / " \
-               f"Parent: {self.parent_process.pk} " \
-               f"- {self.parent_process.name} / " \
-               f"Documents: {self.get_related_documents}"
+        return f"step {self.number} {self.name}, Type: {self.type}"
 
 
 class ProcessStepToDocuments(models.Model):

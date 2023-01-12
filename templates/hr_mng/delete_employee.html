@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    HR Management
+    Delete Employee
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Human Resources Management
+                Delete Employee
             </h1>
         </header>
     {% endblock %}
@@ -20,35 +20,30 @@
     <div class="container" id="con1">
         <button
                 class="card"
-                onclick="location.href='{% url 'index' %}';"
+                onclick="location.href='{% url 'employee list' %}';"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the main menu
+                Go back to the employee list
             </p>
         </button>
 
-        <button
-                class="card"
-                onclick="location.href='{% url 'add employee' %}';"
-        >
-            <h2>Add Employee</h2>
-            <p>
-                Add a new employee and define their properties
-            </p>
-        </button>
+        <button class="card"></button>
 
-        <button
-                class="card"
-                onclick="location.href='{% url 'employee list' %}';"
-        >
-            <h2>Employee List</h2>
-            <p>
-                Display a list of all employees. Edit or delete employees
-            </p>
-        </button>
+        <button class="card"></button>
     </div>
 
 {#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
+
+            <form action="{% url 'delete employee' pk=employee.pk slug=employee.slug %}" method="post">
+                {{ form.as_div }}
+                {% csrf_token %}
+                <button>delete</button>
+            </form>
+
+        </div>
+    </div>
 
 {% endblock %}

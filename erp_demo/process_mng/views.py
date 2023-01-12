@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm
 from erp_demo.process_mng.models import Process, ProcessStep
 
@@ -41,7 +42,8 @@ class ProcessMngViews:
 
         context = {
             'processes': Process.objects.all(),
-            'process_steps': ProcessStep.objects.all(),
+            # 'process_steps': ProcessStep.objects.all(),
+            'process_steps': SupportFunctions.sort_process_steps(Process, ProcessStep),
             'process_form': process_form,
             'process_step_form': process_step_form,
         }
