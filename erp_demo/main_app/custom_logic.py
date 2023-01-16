@@ -62,24 +62,13 @@ class SupportFunctions:
 
         return 'Successfully added'
 
-# -----------------------------------------------------------------------------------
-
     @staticmethod
-    def sort_process_steps(obj1, obj2):
-        result = obj2.objects.all()
+    def sort_process_steps(process_obj, process_step_obj):
+        p_list = []
+        for process in range(len(process_obj.objects.all())):
+            p_list.append([])
 
-# -----------------------------------------------------------------------------------
-        # ToDo
-        process_dict = {
-            i.number: [] for i in obj1.objects.all()
-        }
-        print(process_dict)
-
-        for j in obj2.objects.all():
-            process_dict[j.parent_process.number].append(j.name)
-
-        print(process_dict)
-
-# -----------------------------------------------------------------------------------
-
-        return result
+            for process_step in process_step_obj.objects.all():
+                if process_step.parent_process.id == process_obj.objects.all()[process].id:
+                    p_list[process].append(process_step)
+        return p_list

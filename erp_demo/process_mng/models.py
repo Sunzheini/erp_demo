@@ -80,7 +80,7 @@ class ProcessStep(models.Model):
         return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
 
     def __str__(self):
-        return f"step {self.number} {self.name}, Type: {self.type}"
+        return f"step {self.number} {self.name}, Type: {self.type}, Dox: {self.get_related_documents}"
 
 
 class ProcessStepToDocuments(models.Model):
