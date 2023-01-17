@@ -5,12 +5,12 @@ body {
 
   nav {
     background-color: #333;
-    width: 53%;
+    width: 59%;
     height: 50px;
     display: flex;
     align-items: center;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0 20px;
     border-radius: 10px; /* give a rounder look*/
   }
@@ -45,6 +45,12 @@ body {
   }
 
   h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  h2 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;

@@ -28,7 +28,12 @@
 {#    </script>#}
 </head>
 
+{# ToDo: Nav and Cards should be ul #}
+
 <body>
+
+{#---#}
+<header>
 {#1. Nav----------------------------------------------------------------------#}
     {% block nav %}
         {% include 'core/nav.html' %}
@@ -36,16 +41,22 @@
 
 {#2. Header-------------------------------------------------------------------#}
     {% block page_name %}
-        <header>
             <h1>
                 Base Page
             </h1>
-        </header>
     {% endblock %}
 
+</header>
+{#---#}
+
+{#---#}
+<main>
+
 {% block page_content %}
+
+<section>
 {#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
+    <article class="container" id="con1">
         <button
                 class="card"
                 onclick="location.href='{% url 'process mng index' %}';"
@@ -75,10 +86,12 @@
                 Manage personnel, training, health and safety, etc.
             </p>
         </button>
-    </div>
+    </article>
+</section>
 
+<section>
 {#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
+    <article class="container" id="con2">
         <div class="card">
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -87,14 +100,18 @@
                 saepe sunt tempore vel voluptate voluptatibus! Ipsam, laboriosam!
             </p>
         </div>
-    </div>
+    </article>
 
 {% endblock %}
+</section>
+
+</main>
+{#---#}
 
 {#5. Footer-------------------------------------------------------------------#}
 <footer>
     <h4>
-        &copy; DZ
+        &copy; 2023 Daniel Zorov
     </h4>
 </footer>
 

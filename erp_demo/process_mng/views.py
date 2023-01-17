@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 
 from erp_demo.main_app.custom_logic import SupportFunctions
-from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm
+from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, \
+    ProcessStepEditForm, ProcessStepDeleteForm
 from erp_demo.process_mng.models import Process, ProcessStep
 
 
@@ -32,5 +33,39 @@ class ProcessMngViews:
             'process_info': SupportFunctions.sort_process_steps(Process, ProcessStep),
             'process_form': process_form,
             'process_step_form': process_step_form,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def edit_process_step(request, pk, slug):
+        template = 'process_mng/edit_process_step.html'
+        current_process_step = ProcessStep.objects.filter(pk=pk).get()
+        if request.method == 'GET':
+            form = ProcessStepEditForm(instance=current_process_step)
+        else:
+            form = ProcessStepEditForm(request.POST, instance=current_process_step)
+            if form.is_valid():
+                form.save()
+                return redirect('process mng index')
+        context = {
+            'form': form,
+            'process_step': current_process_step,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def delete_process_step(request, pk, slug):
+        template = 'process_mng/delete_process_step.html'
+        current_process_step = ProcessStep.objects.filter(pk=pk).get()
+        if request.method == 'GET':
+            form = ProcessStepDeleteForm(instance=current_process_step)
+        else:
+            form = ProcessStepDeleteForm(request.POST, instance=current_process_step)
+            if form.is_valid():
+                form.save()
+                return redirect('process mng index')
+        context = {
+            'form': form,
+            'process_step': current_process_step,
         }
         return render(request, template, context)

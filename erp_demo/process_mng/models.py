@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 from erp_demo.dox_mng.models import Document
 
@@ -74,6 +75,17 @@ class ProcessStep(models.Model):
         through='ProcessStepToDocuments',
         # doesn't auto create a table but uses the one specified
     )
+
+    slug = models.SlugField(
+        blank=True, null=True,
+        editable=False,
+    )
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.name[0:11]}")
+        return super().save(*args, **kwargs)
 
     @property
     def get_related_documents(self):

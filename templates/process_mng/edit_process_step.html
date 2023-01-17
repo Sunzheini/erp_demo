@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Welcome
+    Edit Process Step
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Welcome to My ERP
+                Edit Process Step
             </h1>
         </header>
     {% endblock %}
@@ -22,33 +22,28 @@
                 class="card"
                 onclick="location.href='{% url 'process mng index' %}';"
         >
-            <h2>Process Management</h2>
+            <h2>< Back</h2>
             <p>
-                Add, change or remove processes and process steps
+                Go back to the proces index
             </p>
         </button>
 
-        <button
-                class="card"
-                onclick="location.href='{% url 'dox mng index' %}';"
-        >
-            <h2>Documents & Records</h2>
-            <p>
-                Add, change or remove documented information
-            </p>
-        </button>
+        <button class="card"></button>
 
-        <button
-                class="card"
-                onclick="location.href='{% url 'hr mng index' %}';"
-        >
-            <h2>Human Resources</h2>
-            <p>
-                Manage personnel, training, health and safety, etc.
-            </p>
-        </button>
+        <button class="card"></button>
     </div>
 
 {#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
+
+            <form action="{% url 'edit process step' pk=process_step.pk slug=process_step.slug %}" method="post" enctype="multipart/form-data">
+                {{ form.as_div }}
+                {% csrf_token %}
+                <button>submit</button>
+            </form>
+
+        </div>
+    </div>
 
 {% endblock %}
