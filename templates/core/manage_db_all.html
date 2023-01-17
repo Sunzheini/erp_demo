@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}
+    Manage DB All
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Manage Database All
+            </h1>
+        </header>
+    {% endblock %}
+
+{% block page_content %}
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'manage db' %}';"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the main menu
+            </p>
+        </button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card">
+
+            <p>Delete whole database</p>
+            <form action="{% url 'manage db all' %}"
+                  method="post">
+                 {{ form.as_div }}
+                 {% csrf_token %}
+                 <br><br>
+
+                 <button class="form_button" name="button_delete_db">
+                     Delete
+                 </button>
+            </form>
+
+            <p>
+                {% if message %}
+                    {{ message }}
+                {% endif %}
+            </p>
+
+            <hr>
+
+            <p>Select an excel file to recreate database after deletion:</p>
+            <form action="{% url 'manage db all' %}"
+                  method="post"
+                  enctype="multipart/form-data">
+                 {{ form2.as_div }}
+                 {% csrf_token %}
+                 <br><br>
+
+                 <button class="form_button" name="button_manage_db_all">
+                     Add to database
+                 </button>
+            </form>
+
+            <p>
+                {% if message %}
+                    {{ message }}
+                {% endif %}
+            </p>
+
+        </div>
+    </div>
+
+{% endblock %}

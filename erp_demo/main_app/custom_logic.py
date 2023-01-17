@@ -1,10 +1,11 @@
-from erp_demo.dox_mng.models import Document
-from erp_demo.hr_mng.models import Employee
-
 from django.utils.text import slugify
-
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
+
+from erp_demo.dox_mng.models import Document
+from erp_demo.hr_mng.models import Employee
+from erp_demo.process_mng.models import ProcessStepToDocuments, \
+    ProcessStep, Process
 
 
 class SupportFunctions:
@@ -63,6 +64,15 @@ class SupportFunctions:
         return 'Successfully added'
 
     @staticmethod
+    def delete_database():
+        Employee.objects.all().delete()
+        ProcessStepToDocuments.objects.all().delete()
+        ProcessStep.objects.all().delete()
+        Process.objects.all().delete()
+        Document.objects.all().delete()
+        return 'Successfully deleted'
+
+    @staticmethod
     def sort_process_steps(process_obj, process_step_obj):
         p_list = []
         for process in range(len(process_obj.objects.all())):
@@ -72,3 +82,43 @@ class SupportFunctions:
                 if process_step.parent_process.id == process_obj.objects.all()[process].id:
                     p_list[process].append(process_step)
         return p_list
+
+# ------------------------------------------------------------------------
+
+    # ToDo: hardcoded for file Demo2.xlsx and All models
+    @staticmethod
+    def recreate_database(request_object):
+        current_file_path = request_object['select_file']
+        info_to_update = {
+        }
+        list_of_keys = [
+            'first_name',
+            'last_name',
+            'identification',
+            'position',
+            'slug',
+        ]
+
+        workbook = load_workbook(current_file_path)
+        worksheet = workbook[workbook.sheetnames[0]]
+        for row in range(3, 5):                        # 1 is first row, not 0
+            info_to_update[row] = {
+                'first_name': None,
+                'last_name': None,
+                'identification': None,
+                'position': None,
+                'slug': None,
+            }
+            for col in range(1, 6):                     # 1 is first col, not 0
+                char = get_column_letter(col)           # == chr(65 + col)
+                info_to_update[row][list_of_keys[col-1]] = worksheet[char + str(row)].value
+
+        Employee.objects.bulk_create([Employee(
+            first_name=info_to_update[obj]['first_name'],
+            last_name=info_to_update[obj]['last_name'],
+            identification=info_to_update[obj]['identification'],
+            position=info_to_update[obj]['position'],
+            slug=slugify(f"{info_to_update[obj]['first_name']}-{info_to_update[obj]['last_name']}"),
+        ) for obj in info_to_update.keys()])
+
+        return 'Successfully added'

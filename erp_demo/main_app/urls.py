@@ -5,6 +5,11 @@ from erp_demo.main_app.views import MainAppViews
 
 urlpatterns = [
     path('', MainAppViews().index, name='index'),
+    path('manage_db/', include([
+        path('', MainAppViews().manage_db, name='manage db'),
+        path('manage_db_hr/', MainAppViews().manage_db_hr, name='manage db hr'),
+        path('manage_db_all/', MainAppViews().manage_db_all, name='manage db all'),
+    ])),
     path('manage_db/', MainAppViews().manage_db, name='manage db'),
     path('contact-list/', MainAppViews().contact_list, name='contact list'),
 ]

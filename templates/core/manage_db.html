@@ -28,43 +28,27 @@
             </p>
         </button>
 
-        <button class="card"></button>
-
-                <button
+        <button
                 class="card"
-                onclick="location.href='{% url 'employee list' %}';"
+                onclick="location.href='{% url 'manage db hr' %}';"
         >
-            <h2>Employee List</h2>
+            <h2>Manage DB HR</h2>
             <p>
-                Display a list of all employees. Edit or delete employees
+                Manage the database related to human resources only
+            </p>
+        </button>
+
+        <button
+                class="card"
+                onclick="location.href='{% url 'manage db all' %}';"
+        >
+            <h2>Manage DB All</h2>
+            <p>
+                Manage the whole database. Drop and upload again
             </p>
         </button>
     </div>
 
 {#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card">
-
-            <p>Select an excel file to add the employees to the database:</p>
-            <form action="{% url 'manage db' %}"
-                  method="post"
-                  enctype="multipart/form-data">
-                 {{ form.as_div }}
-                 {% csrf_token %}
-                 <br><br>
-
-                 <button class="form_button">
-                     Add to database
-                 </button>
-            </form>
-
-            <p>
-                {% if message %}
-                    {{ message }}
-                {% endif %}
-            </p>
-
-        </div>
-    </div>
 
 {% endblock %}
