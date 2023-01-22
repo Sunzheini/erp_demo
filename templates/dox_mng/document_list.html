@@ -35,7 +35,7 @@
 
 {#4. Display------------------------------------------------------------------#}
     <div class="container" id="con2">
-        <div class="card">
+        <div class="card display">
 
     <form action="{% url 'document list' %}" method="post">
         {{ type_form }}
@@ -47,7 +47,8 @@
 
     <br><br>
 
-    <table border="1">
+    <table>
+    <thead>
         <tr>
             <th>Type</th>
             <th>Name</th>
@@ -57,8 +58,10 @@
             <th>Edit</th>
             <th>Delete</th>
         </tr>
+    </thead>
 
-    {% for document in all_documents %}
+    <tbody>
+            {% for document in all_documents %}
         <tr>
             <td>{{ document.type }}</td>
             <td>{{ document.name }}</td>
@@ -74,12 +77,15 @@
                         Link</a></td>
 
 
-            <td><a href="{% url 'edit document' pk=document.pk slug=document.slug %}">
+            <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                     Edit</a></td>
-            <td><a href="{% url 'delete document' pk=document.pk slug=document.slug %}">
+            <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
                     Delete</a></td>
         </tr>
     {% endfor %}
+
+    </tbody>
+
     </table>
 
         {% endif %}

@@ -11,6 +11,15 @@
     <title>{% block page_title %}My ERP{% endblock %}</title>
 
 {#Styles-------------------------------------------------------------------#}
+{#    <link#}
+{#      rel="stylesheet"#}
+{#      href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"#}
+{#    />#}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
       rel="stylesheet"/>
@@ -29,6 +38,7 @@
 </head>
 
 {# ToDo: Nav and Cards should be ul #}
+{# ToDo: Forms stylize #}
 
 <body>
 
@@ -36,7 +46,14 @@
 <header>
 {#1. Nav----------------------------------------------------------------------#}
     {% block nav %}
-        {% include 'core/nav.html' %}
+{#        {% include 'core/nav.html' %}#}
+
+        <nav>
+        <a href="{% url 'index' %}"><i class="fas fa-home"></i>Main Menu</a>
+        <a href="{% url 'contact list' %}"><i class="fa-solid fa-address-book"></i>Contact List</a>
+        <a href="{% url 'manage db' %}"><i class="fa-solid fa-database"></i>Manage DB</a>
+        </nav>
+
     {% endblock %}
 
 {#2. Header-------------------------------------------------------------------#}

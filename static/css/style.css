@@ -1,7 +1,26 @@
-body {
-    font-family: "Open Sans", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+html {
+    /*font-family: "Open Sans", sans-serif;*/
+    font-family: 'Roboto', sans-serif;
     font-size: 16px; /* increase font size */
   }
+
+/* Links to use in the tables */
+/*-----------------------------------------------------------------------*/
+
+a.table-link {
+  color: black;
+  transition: color 100ms linear;
+}
+
+a.table-link:hover {
+  color: blue;
+}
+
+/* Nav */
+/*-----------------------------------------------------------------------*/
 
   nav {
     background-color: #333;
@@ -27,6 +46,41 @@ body {
     background-color: #555;
   }
 
+/* General */
+/*-----------------------------------------------------------------------*/
+
+  /* page h1 */
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  /* affects title of the cards */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  /* affects footer */
+  h4 {
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  /* affects small text in the cards */
+  p {
+    color: #666;
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+
+/* Cards */
+/*-----------------------------------------------------------------------*/
+
   .container {
     max-width: 1200px;
     margin: 40px auto; /* increase top and bottom margin to center content */
@@ -35,6 +89,7 @@ body {
     justify-content: center;
   }
 
+  /* buttons class card and a div class card */
   .card {
     flex: 1;
     background-color: #fff;
@@ -42,50 +97,87 @@ body {
     margin: 20px;
     padding: 30px;
     border-radius: 10px; /* give a rounder look*/
-  }
-
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  h4 {
-    font-size: 12px;
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  p {
-    color: #666;
-    line-height: 1.5;
-    margin-top: 20px;
+    transition: background-color 300ms linear, color 300ms linear;
   }
 
   button.card:active {
     background-color: #f2f2f2;
   }
 
-  button.card {
-    border-width: 0;
-    font-family: "Open Sans", sans-serif;
+  button.card:hover {
+    cursor: pointer;
+    background-color: ghostwhite;
   }
 
+  button.card {
+    border-width: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* Affects text in the display */
+  .display{
+    color: #333333;
+    font-size: 16px;
+  }
+  .display p{
+    color: #333333;
+    font-size: 16px;
+  }
+
+/* Buttons */
+/*-----------------------------------------------------------------------*/
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background-color: grey;
+  width: 144px;
+  height: 32px;
+  text-align: left;
+  border: solid 1px #ccc;
+  font-size: 16px;
+}
+
+td {
+  width: 144px;
+  height: 32px;
+  border: solid 1px #ccc;
+  padding-left: 5px;
+  font-size: 14px;
+
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+/* Buttons */
+/*-----------------------------------------------------------------------*/
+
   button.form_button {
-    background-color: lightgreen;
-    transition: .3s ease all;
-    border-width: thin;
+    padding: 3px 7px;
+    color: #333333;
+    font-weight: 500;
+    border: solid 1px black;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 0px; /* give a rounder look*/
+    background-color: ghostwhite;
+    transition: background-color 300ms linear, color 300ms linear;
   }
 
   button.form_button:hover {
-    background-color: skyblue;
-    transition: .3s ease all;
-    transform: translateY(-5px);
+    color: whitesmoke;
+    background-color: #333333;
   }
+
+/* Icons */
+/*-----------------------------------------------------------------------*/
+
+i {
+    width: 1.14em;
+    padding-right: 0.28em;
+}

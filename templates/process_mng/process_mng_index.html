@@ -35,7 +35,7 @@
 
 {#4. Display------------------------------------------------------------------#}
     <div class="container" id="con2">
-        <div class="card">
+        <div class="card display">
 
     <form action="{% url 'process mng index' %}" method="post">
         <strong>1) Process Creation Form</strong>
@@ -60,7 +60,7 @@
             <br>
 
     <div>
-         <table border="1" style="font-size: 90%">
+         <table>
       <thead>
         <tr>
           <th colspan="2">Process</th>
@@ -89,9 +89,9 @@
                 <td>{{ i.type }}</td>
                 <td>{{ i.name }}</td>
                 <td>{{ i.get_related_documents }}</td>
-                <td><a href="{% url 'edit process step' pk=i.pk slug=i.slug %}">
+                <td><a class="table-link" href="{% url 'edit process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                     Edit</a></td>
-                <td><a href="{% url 'delete process step' pk=i.pk slug=i.slug %}">
+                <td><a class="table-link" href="{% url 'delete process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-trash"></i>
                     Delete</a></td>
 
                 </tr>
