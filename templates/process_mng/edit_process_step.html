@@ -38,9 +38,13 @@
         <div class="card display">
 
             <form action="{% url 'edit process step' pk=process_step.pk slug=process_step.slug %}" method="post" enctype="multipart/form-data">
-                {{ form.as_div }}
+
+                <table class="table-form">
+                    {{ form }}
+                </table>
+
                 {% csrf_token %}
-                <button>submit</button>
+                <button class="form_button">submit</button>
             </form>
 
         </div>

@@ -41,7 +41,11 @@
             <p>Delete whole database</p>
             <form action="{% url 'manage db all' %}"
                   method="post">
-                 {{ form.as_div }}
+
+                 <table class="table-form">
+                    {{ form }}
+                 </table>
+
                  {% csrf_token %}
                  <br><br>
 
@@ -72,8 +76,8 @@
             </form>
 
             <p>
-                {% if message %}
-                    {{ message }}
+                {% if message2 %}
+                    {{ message2 }}
                 {% endif %}
             </p>
 

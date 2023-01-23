@@ -42,14 +42,14 @@
     <form action="{% url 'employee list' %}" method="post">
         {{ position_form }}
         {% csrf_token %}
-        <button>filter</button>
+        <button class="form_button">filter</button>
     </form>
 
         {% if all_employees %}
 
     <br><br>
 
-    <table>
+    <table class="table-data">
         <thead>
             <tr>
                 <th>First Name</th>

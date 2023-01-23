@@ -38,9 +38,13 @@
         <div class="card display">
 
             <form action="{% url 'edit employee' pk=employee.pk slug=employee.slug %}" method="post">
-                {{ form.as_div }}
+
+                <table class="table-form">
+                    {{ form }}
+                </table>
+
                 {% csrf_token %}
-                <button>submit</button>
+                <button class="form_button">submit</button>
             </form>
 
         </div>

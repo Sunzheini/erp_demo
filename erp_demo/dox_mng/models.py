@@ -36,7 +36,7 @@ class Document(models.Model):
     attachment = cloudinary_models.CloudinaryField(
         'file',
         resource_type="auto",
-        blank=False, null=False,
+        blank=True, null=True,
         use_filename=True,
         unique_filename=False,
     )

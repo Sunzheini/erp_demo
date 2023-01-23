@@ -106,7 +106,7 @@ a.table-link:hover {
 
   button.card:hover {
     cursor: pointer;
-    background-color: ghostwhite;
+    background-color: #f2f2f2;
   }
 
   button.card {
@@ -124,14 +124,14 @@ a.table-link:hover {
     font-size: 16px;
   }
 
-/* Buttons */
+/* Tables for data */
 /*-----------------------------------------------------------------------*/
 
-table {
+.table-data  {
   border-collapse: collapse;
 }
 
-th {
+.table-data th {
   background-color: grey;
   width: 144px;
   height: 32px;
@@ -140,7 +140,7 @@ th {
   font-size: 16px;
 }
 
-td {
+.table-data td {
   width: 144px;
   height: 32px;
   border: solid 1px #ccc;
@@ -149,8 +149,34 @@ td {
 
 }
 
-table tbody tr:nth-child(odd) {
+.table-data tbody tr:nth-child(odd) {
   background-color: lightgrey;
+}
+
+/* Tables for forms */
+/*-----------------------------------------------------------------------*/
+
+.table-form  {
+  border-collapse: collapse;
+}
+
+.table-form th {
+  background-color: #f2f2f2;
+  width: 144px;
+  height: 32px;
+  text-align: left;
+  border: solid 1px #ccc;
+  font-size: 15px;
+}
+
+.table-form td {
+  background-color: #f2f2f2;
+  width: 144px;
+  height: 32px;
+  border: solid 1px #ccc;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
 }
 
 /* Buttons */
@@ -165,13 +191,13 @@ table tbody tr:nth-child(odd) {
     margin-top: 4px;
     margin-bottom: 4px;
     border-radius: 0px; /* give a rounder look*/
-    background-color: ghostwhite;
+    background-color: #f2f2f2;
     transition: background-color 300ms linear, color 300ms linear;
   }
 
   button.form_button:hover {
     color: whitesmoke;
-    background-color: #333333;
+    background-color: gray;
   }
 
 /* Icons */

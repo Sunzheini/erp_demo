@@ -36,7 +36,6 @@ class SupportFunctions:
             'last_name',
             'identification',
             'position',
-            'slug',
         ]
 
         workbook = load_workbook(current_file_path)
@@ -47,9 +46,8 @@ class SupportFunctions:
                 'last_name': None,
                 'identification': None,
                 'position': None,
-                'slug': None,
             }
-            for col in range(1, 6):                     # 1 is first col, not 0
+            for col in range(1, 5):                     # 1 is first col, not 0
                 char = get_column_letter(col)           # == chr(65 + col)
                 info_to_update[row][list_of_keys[col-1]] = worksheet[char + str(row)].value
 
@@ -89,6 +87,8 @@ class SupportFunctions:
     @staticmethod
     def recreate_database(request_object):
         current_file_path = request_object['select_file']
+
+        # Employee
         info_to_update = {
         }
         list_of_keys = [
@@ -96,7 +96,6 @@ class SupportFunctions:
             'last_name',
             'identification',
             'position',
-            'slug',
         ]
 
         workbook = load_workbook(current_file_path)
@@ -107,9 +106,8 @@ class SupportFunctions:
                 'last_name': None,
                 'identification': None,
                 'position': None,
-                'slug': None,
             }
-            for col in range(1, 6):                     # 1 is first col, not 0
+            for col in range(1, 5):                     # 1 is first col, not 0
                 char = get_column_letter(col)           # == chr(65 + col)
                 info_to_update[row][list_of_keys[col-1]] = worksheet[char + str(row)].value
 
@@ -121,4 +119,96 @@ class SupportFunctions:
             slug=slugify(f"{info_to_update[obj]['first_name']}-{info_to_update[obj]['last_name']}"),
         ) for obj in info_to_update.keys()])
 
-        return 'Successfully added'
+        #  --------------------------------------------------
+
+        # Document
+        info_to_update = {
+        }
+        list_of_keys = [
+            'type',
+            'name',
+            'revision',
+            'owner',
+        ]
+
+        for row in range(8, 12):  # 1 is first row, not 0
+            info_to_update[row] = {
+                'type': None,
+                'name': None,
+                'revision': None,
+                'owner': None,
+            }
+            for col in range(1, 5):  # 1 is first col, not 0
+                char = get_column_letter(col)  # == chr(65 + col)
+                info_to_update[row][list_of_keys[col - 1]] = worksheet[char + str(row)].value
+
+        Document.objects.bulk_create([Document(
+            type=info_to_update[obj]['type'],
+            name=info_to_update[obj]['name'],
+            revision=info_to_update[obj]['revision'],
+            owner=info_to_update[obj]['owner'],
+            slug=slugify(f"{info_to_update[obj]['name']}"),
+        ) for obj in info_to_update.keys()])
+
+        #  --------------------------------------------------
+
+        # Process
+        info_to_update = {
+        }
+        list_of_keys = [
+            'type',
+            'number',
+            'name',
+        ]
+
+        for row in range(15, 17):  # 1 is first row, not 0
+            info_to_update[row] = {
+                'type': None,
+                'number': None,
+                'name': None,
+            }
+            for col in range(1, 4):  # 1 is first col, not 0
+                char = get_column_letter(col)  # == chr(65 + col)
+                info_to_update[row][list_of_keys[col - 1]] = worksheet[char + str(row)].value
+
+        Process.objects.bulk_create([Process(
+            type=info_to_update[obj]['type'],
+            number=info_to_update[obj]['number'],
+            name=info_to_update[obj]['name'],
+        ) for obj in info_to_update.keys()])
+
+        #  --------------------------------------------------
+
+        # ProcessStep
+        info_to_update = {
+        }
+        list_of_keys = [
+            'type',
+            'number',
+            'name',
+            'parent_process',
+        ]
+
+        for row in range(20, 22):  # 1 is first row, not 0
+            info_to_update[row] = {
+                'type': None,
+                'number': None,
+                'name': None,
+                'parent_process': None,
+            }
+            for col in range(1, 4):  # 1 is first col, not 0
+                char = get_column_letter(col)  # == chr(65 + col)
+                info_to_update[row][list_of_keys[col - 1]] = worksheet[char + str(row)].value
+
+        ProcessStep.objects.bulk_create([ProcessStep(
+            type=info_to_update[obj]['type'],
+            number=info_to_update[obj]['number'],
+            name=info_to_update[obj]['name'],
+            parent_process=Process.objects.all()[0]
+        ) for obj in info_to_update.keys()])
+
+        #  --------------------------------------------------
+
+        return 'Successfully added \n' \
+               '(*documents have no attachments and \n' \
+               'process steps have no linked documents!)'

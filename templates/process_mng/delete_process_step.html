@@ -38,9 +38,13 @@
         <div class="card display">
 
             <form action="{% url 'delete process step' pk=process_step.pk slug=process_step.slug %}" method="post">
-                {{ form.as_div }}
+
+                 <table class="table-form">
+                    {{ form }}
+                 </table>
+
                 {% csrf_token %}
-                <button>delete</button>
+                <button class="form_button">delete</button>
             </form>
 
         </div>

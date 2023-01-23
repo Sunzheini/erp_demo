@@ -38,16 +38,20 @@
         <div class="card display">
 
     <form action="{% url 'document list' %}" method="post">
-        {{ type_form }}
+
+        <table class="table-form">
+            {{ type_form }}
+        </table>
+
         {% csrf_token %}
-        <button>filter</button>
+        <button class="form_button">filter</button>
     </form>
 
         {% if all_documents %}
 
     <br><br>
 
-    <table>
+    <table class="table-data">
     <thead>
         <tr>
             <th>Type</th>
@@ -73,9 +77,12 @@
 {#                    "/media/{{ document.attachment }}"</a></td>#}
 
 {#cloudinary#}
+            {% if document.attachment.url %}
             <td><a href="{{ document.attachment.url }}">
                         Link</a></td>
-
+            {% else %}
+                <td>N/A</td>
+            {% endif %}
 
             <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                     Edit</a></td>

@@ -49,7 +49,9 @@
             <form action="{% url 'manage db hr' %}"
                   method="post"
                   enctype="multipart/form-data">
-                 {{ form.as_div }}
+
+                    {{ form }}
+
                  {% csrf_token %}
                  <br><br>
 

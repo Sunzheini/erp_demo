@@ -37,8 +37,19 @@
     <div class="container" id="con2">
         <div class="card display">
 
+{#            <form action="{% url 'add employee' %}" method="post">#}
+{#                {{ form.as_div }}#}
+{#                {% csrf_token %}#}
+{#            <br><br>#}
+{#                <button class="form_button">add this employee</button>#}
+{#            </form>#}
+
             <form action="{% url 'add employee' %}" method="post">
-                {{ form.as_div }}
+
+                <table class="table-form">
+                    {{ form }}
+                </table>
+
                 {% csrf_token %}
             <br><br>
                 <button class="form_button">add this employee</button>
