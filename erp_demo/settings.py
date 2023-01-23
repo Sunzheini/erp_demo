@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dgkidcq5gj9f7',
-        'USER': 'jmuleeahqrgshm',
-        'PASSWORD': '5d18d3be0bf0f40d19da019cb357f8d149ea2b0480c423d408d306fefb32b3ad',
-        'HOST': 'ec2-52-48-159-67.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd89a52fqrjbfcr',
+        'USER': 'kpzezgxgibfmri',
+        'PASSWORD': '6cfbb5cf87c3f23efda692b3870cc1266f2f1345e22eecbd296bb7b4e74be763',
+        'HOST': 'ec2-54-228-201-167.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
