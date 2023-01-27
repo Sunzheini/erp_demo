@@ -40,14 +40,14 @@
     <form action="{% url 'document list' %}" method="post">
 
         <table class="table-form">
-            {{ type_form }}
+            {{ choice_form }}
         </table>
 
         {% csrf_token %}
         <button class="form_button">filter</button>
     </form>
 
-        {% if all_documents %}
+        {% if all_objects %}
 
     <br><br>
 
@@ -65,7 +65,7 @@
     </thead>
 
     <tbody>
-            {% for document in all_documents %}
+            {% for document in all_objects %}
         <tr>
             <td>{{ document.type }}</td>
             <td>{{ document.name }}</td>

@@ -16,17 +16,20 @@ class HrMngViews:
     def employee_list(request):     # ToDo: cache
         template = 'hr_mng/employee_list.html'
 
-        selected_position = None
+        table = Employee
+        column_name = 'position'
+        choice = None
+
         if request.method == 'GET':
             form = EmployeePositionForm()
         else:
             form = EmployeePositionForm(request.POST)
             if form.is_valid():
-                selected_position = form.cleaned_data['employee_position_dropdown']
+                choice = form.cleaned_data['employee_position_dropdown']
 
         context = {
-            'all_employees': SupportFunctions.extract_employee_by_position(selected_position),
-            'position_form': form,
+            'all_objects': SupportFunctions.extract_entry_by_choice(table, column_name, choice),
+            'choice_form': form,
         }
         return render(request, template, context)
 

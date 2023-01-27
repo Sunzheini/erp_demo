@@ -14,20 +14,13 @@ from erp_demo.process_mng.models import ProcessStepToDocuments, \
 
 class SupportFunctions:
     @staticmethod
-    def extract_documents_by_type(selected_type):
-        if selected_type == 'All':
-            extracted_documents = Document.objects.all()
+    def extract_entry_by_choice(table, column_name, choice):
+        if choice == 'All':
+            extracted_documents = table.objects.all()
             return extracted_documents
-        extracted_documents = Document.objects.filter(type=selected_type)
+        data = {column_name: choice}
+        extracted_documents = table.objects.filter(**data)
         return extracted_documents
-
-    @staticmethod
-    def extract_employee_by_position(selected_position):
-        if selected_position == 'All':
-            extracted_employees = Employee.objects.all()
-            return extracted_employees
-        extracted_employees = Employee.objects.filter(position=selected_position)
-        return extracted_employees
 
 # Delete whole db (the order is chosen in order not have issues with the links between tables)
 # -----------------------------------------------------------------------
@@ -58,7 +51,7 @@ class SupportFunctions:
 # Upload to db
 # -----------------------------------------------------------------------
 
-    # hardcoded
+    # hardcoded for HR
     @staticmethod
     def add_to_database(request_object):
         current_file_path = request_object['select_file']

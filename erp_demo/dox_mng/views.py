@@ -16,17 +16,20 @@ class DoxMngViews:
     def document_list(request):     # ToDo: cache
         template = 'dox_mng/document_list.html'
 
-        selected_type = None
+        table = Document
+        column_name = 'type'
+        choice = None
+
         if request.method == 'GET':
             form = DocumentTypeForm()
         else:
             form = DocumentTypeForm(request.POST)
             if form.is_valid():
-                selected_type = form.cleaned_data['document_type_dropdown']
+                choice = form.cleaned_data['document_type_dropdown']
 
         context = {
-            'all_documents': SupportFunctions.extract_documents_by_type(selected_type),
-            'type_form': form,
+            'all_objects': SupportFunctions.extract_entry_by_choice(table, column_name, choice),
+            'choice_form': form,
         }
         return render(request, template, context)
 

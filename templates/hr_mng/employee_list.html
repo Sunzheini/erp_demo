@@ -40,12 +40,12 @@
     <p>Employees:</p>
 
     <form action="{% url 'employee list' %}" method="post">
-        {{ position_form }}
+        {{ choice_form }}
         {% csrf_token %}
         <button class="form_button">filter</button>
     </form>
 
-        {% if all_employees %}
+        {% if all_objects %}
 
     <br><br>
 
@@ -62,7 +62,7 @@
         </thead>
 
         <tbody>
-            {% for employee in all_employees %}
+            {% for employee in all_objects %}
                 <tr>
                     <td>{{ employee.first_name }}</td>
                     <td>{{ employee.last_name }}</td>
