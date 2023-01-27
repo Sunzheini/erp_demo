@@ -48,7 +48,20 @@ class SupportFunctions:
                     p_list[process].append(process_step)
         return p_list
 
-# Upload to db
+# Get list of process steps for a process
+# -----------------------------------------------------------------------
+
+    @staticmethod
+    def get_process_step_list(process, process_step_obj):
+        process_step_list = []
+
+        for process_step in process_step_obj.objects.all():
+            if process_step.parent_process.id == process.id:
+                process_step_list.append(process_step)
+
+        return process_step_list
+
+    # Upload to db
 # -----------------------------------------------------------------------
 
     # hardcoded for HR

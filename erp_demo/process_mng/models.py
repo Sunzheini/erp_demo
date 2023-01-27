@@ -26,7 +26,7 @@ class Process(models.Model):
     )
 
     name = models.CharField(
-        max_length=40,
+        max_length=99,
         blank=False, null=False,
         unique=True,
     )
@@ -55,7 +55,7 @@ class ProcessStep(models.Model):
     )
 
     name = models.CharField(
-        max_length=50,
+        max_length=99,
         blank=False, null=False,
         unique=True,
     )

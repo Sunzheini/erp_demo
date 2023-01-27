@@ -24,7 +24,7 @@ a.table-link:hover {
 
   nav {
     background-color: #333;
-    width: 59%;
+    width: 60%;
     height: 50px;
     display: flex;
     align-items: center;
@@ -206,4 +206,15 @@ a.table-link:hover {
 i {
     width: 1.14em;
     padding-right: 0.28em;
+}
+
+/* Icons */
+/*-----------------------------------------------------------------------*/
+
+.flowchart-step {
+  background-color: lightblue;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+  border: 1px solid black;
 }

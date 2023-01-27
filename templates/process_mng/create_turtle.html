@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}
+    Create Turtle
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Create Turtle
+            </h1>
+        </header>
+    {% endblock %}
+
+{% block page_content %}
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onclick="location.href='{% url 'process mng index' %}';"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the proces index
+            </p>
+        </button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card display">
+
+            {{ process.name }}
+            <hr>
+
+            {% for process_step in process_steps %}
+
+                <div class="flowchart-step">
+                    {{ process_step.number }}.&nbsp{{ process_step.name }}
+                </div>
+                <br>
+                <br>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -69,3 +69,23 @@ class ProcessMngViews:
             'process_step': current_process_step,
         }
         return render(request, template, context)
+
+    @staticmethod
+    def create_flowchart(request, pk):
+        template = 'process_mng/create_flowchart.html'
+        current_process = Process.objects.filter(pk=pk).get()
+        context = {
+            'process': current_process,
+            'process_steps': SupportFunctions.get_process_step_list(current_process, ProcessStep)
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def create_turtle(request, pk):
+        template = 'process_mng/create_turtle.html'
+        current_process = Process.objects.filter(pk=pk).get()
+        context = {
+            'process': current_process,
+            'process_steps': SupportFunctions.get_process_step_list(current_process, ProcessStep)
+        }
+        return render(request, template, context)
