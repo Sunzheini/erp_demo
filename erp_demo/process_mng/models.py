@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from erp_demo.dox_mng.models import Document
+from erp_demo.hr_mng.models import Employee
 
 
 class Process(models.Model):
@@ -63,6 +64,8 @@ class ProcessStep(models.Model):
     # many-to-one
     parent_process = models.ForeignKey(
         Process,                    # which is the related table
+        to_field="number",
+        db_column="parent_process_number",
         on_delete=models.CASCADE,   # when process is deleted, delete related process steps
         # on_delete=models.SET_NULL, null=True,   # set null when process is deleted
         # on_delete=models.RESTRICT,  # can delete if there is a process step attached
@@ -74,6 +77,17 @@ class ProcessStep(models.Model):
         blank=True,
         through='ProcessStepToDocuments',
         # doesn't auto create a table but uses the one specified
+    )
+
+    description = models.TextField(
+        blank=True, null=True,
+    )
+
+    responsible = models.ForeignKey(
+        Employee,
+        to_field="identification",
+        db_column="responsible_ident",
+        on_delete=models.CASCADE,
     )
 
     slug = models.SlugField(

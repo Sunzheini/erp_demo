@@ -3,7 +3,8 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
 from erp_demo.dox_mng.models import Document
-from erp_demo.hr_mng.models import Employee
+from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
+    AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.main_app import custom_collections
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process
@@ -27,11 +28,24 @@ class SupportFunctions:
 
     @staticmethod
     def delete_database():
-        Employee.objects.all().delete()
+        # M2M tables
         ProcessStepToDocuments.objects.all().delete()
+        PositionsToAccessLevels.objects.all().delete()
+        EmployeeToTrainings.objects.all().delete()
+
+        # tables with no dependencies to other tables
+        AccessLevels.objects.all().delete()
+        AccessRights.objects.all().delete()
+        Trainings.objects.all().delete()
+
+        # tables with dependencies from other tables
+        Positions.objects.all().delete()
+        Employee.objects.all().delete()
         ProcessStep.objects.all().delete()
+
         Process.objects.all().delete()
         Document.objects.all().delete()
+
         return 'Successfully deleted'
 
 # Sort process steps
@@ -168,15 +182,53 @@ class SupportFunctions:
                     info_to_update[row][list_of_keys[table][col-1]] = worksheet[char + str(row)].value
 
         # Update all table 1 by 1
-            if table == 'Employee':
-                eval(table).objects.bulk_create([eval(table)(
+
+            if table == 'AccessLevels':
+                AccessLevels.objects.bulk_create([AccessLevels(
+                    code=info_to_update[obj]['code'],
+                    description=info_to_update[obj]['description'],
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'AccessRights':
+                AccessRights.objects.bulk_create([AccessRights(
+                    type=info_to_update[obj]['type'],
+                    description=info_to_update[obj]['description'],
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Trainings':
+                Trainings.objects.bulk_create([Trainings(
+                    code=info_to_update[obj]['code'],
+                    name=info_to_update[obj]['name'],
+                    description=info_to_update[obj]['description'],
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Positions':
+                Positions.objects.bulk_create([Positions(
+                    code=info_to_update[obj]['code'],
+                    name=info_to_update[obj]['name'],
+                    access_rights=AccessRights.objects.all()[0],  # ToDo: hardcoded for the excel upload
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Employee':
+                Employee.objects.bulk_create([Employee(
                     first_name=info_to_update[row_number]['first_name'],
+                    middle_name=info_to_update[row_number]['middle_name'],
                     last_name=info_to_update[row_number]['last_name'],
                     identification=info_to_update[row_number]['identification'],
-                    position=info_to_update[row_number]['position'],
-                    slug=slugify(f"{info_to_update[row_number]['first_name']}-{info_to_update[row_number]['last_name']}"),
+
+                    position=Positions.objects.all()[0],  # ToDo: hardcoded for the excel upload
+
+                    contract_number=info_to_update[row_number]['contract_number'],
+                    starting_date=info_to_update[row_number]['starting_date'],
+                    date_last_hse_training=info_to_update[row_number]['date_last_hse_training'],
+                    date_next_hse_training=info_to_update[row_number]['date_next_hse_training'],
+                    egn=info_to_update[row_number]['egn'],
+                    # slug=slugify(f"{info_to_update[row_number]['first_name']}-{info_to_update[row_number]['last_name']}"),
+                    slug=slugify(f"{info_to_update[row_number]['identification']}-"
+                                 f"{info_to_update[row_number]['position']}"),
                 )
                     for row_number in info_to_update.keys()])
+            # ToDo: slugs can't use cyrillic, what is why I changed them from 'name'
 
             elif table == 'Document':
                 Document.objects.bulk_create([Document(
@@ -184,7 +236,10 @@ class SupportFunctions:
                     name=info_to_update[obj]['name'],
                     revision=info_to_update[obj]['revision'],
                     owner=info_to_update[obj]['owner'],
-                    slug=slugify(f"{info_to_update[obj]['name']}"),
+                    # slug=slugify(f"{info_to_update[obj]['name']}"),
+                    slug=slugify(f"{info_to_update[obj]['owner']}-"
+                                 f"{info_to_update[obj]['type']}-"
+                                 f"{info_to_update[obj]['revision']}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'Process':
@@ -199,7 +254,12 @@ class SupportFunctions:
                     type=info_to_update[obj]['type'],
                     number=info_to_update[obj]['number'],
                     name=info_to_update[obj]['name'],
-                    parent_process=Process.objects.all()[0]
+                    parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
+                    description=info_to_update[obj]['description'],
+                    responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
+                    # slug=slugify(f"{info_to_update[obj]['name']}"),
+                    slug=slugify(f"{info_to_update[obj]['parent_process']}-"
+                                 f"{info_to_update[obj]['number']}"),
                 ) for obj in info_to_update.keys()])
 
             info_to_update = {}

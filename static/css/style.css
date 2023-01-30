@@ -217,4 +217,13 @@ i {
   width: 250px;
   height: 40px;
   border: 1px solid black;
+  margin-right: 20px;
+}
+
+.flowchart-desc {
+  background-color: lightcyan;
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+  border: 1px solid black;
 }

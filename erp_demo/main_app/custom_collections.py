@@ -1,4 +1,8 @@
 list_of_keys = {
+    'AccessLevels': [],
+    'AccessRights': [],
+    'Positions': [],
+    'Trainings': [],
     'Employee': [],
     'Document': [],
     'Process': [],
@@ -6,6 +10,30 @@ list_of_keys = {
 }
 
 coordinates = {
+    'AccessLevels': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'AccessRights': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Positions': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Trainings': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
     'Employee': {
         'start_row': None,
         'end_row': None,

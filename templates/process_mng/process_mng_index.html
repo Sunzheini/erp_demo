@@ -72,10 +72,10 @@
       <thead>
         <tr>
           <th colspan="4">Process</th>
-          <th colspan="6">Process Step</th>
+          <th colspan="7">Process Step</th>
         </tr>
         <tr>
-          <th>Number</th>
+          <th>Nr</th>
           <th>Name</th>
           <th>FC</th>
           <th>TL</th>
@@ -83,6 +83,7 @@
           <th>Type</th>
           <th>Name</th>
           <th>Documents</th>
+          <th>Resp</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -104,7 +105,10 @@
                 <td>{{ i.number }}</td>
                 <td>{{ i.type }}</td>
                 <td>{{ i.name }}</td>
+
                 <td>{{ i.get_related_documents }}</td>
+                <td>{{ i.responsible.get_full_name }}</td>
+
                 <td><a class="table-link" href="{% url 'edit process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                     Edit</a></td>
                 <td><a class="table-link" href="{% url 'delete process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-trash"></i>
