@@ -30,14 +30,25 @@
 
         <button class="card"></button>
 
-        <button class="card"></button>
+        <button class="card" onclick="fShowHideProcessForm()">
+            <h2>New Process</h2>
+            <p>
+                Show / Hide Form
+            </p>
+        </button>
 
-        <button class="card"></button>
+        <button class="card" onclick="fShowHideProcessStepForm()">
+            <h2>New Process Step</h2>
+            <p>
+                Show / Hide Form
+            </p>
+        </button>
 
 {#4. Display------------------------------------------------------------------#}
     <div class="container" id="con2">
         <div class="card display">
 
+    <div style="display: none;" id="process_form" >
     <form action="{% url 'process mng index' %}" method="post">
         <strong>1) Process Creation Form</strong>
 
@@ -48,11 +59,10 @@
         {% csrf_token %}
         <button class="form_button" name="button1">add this process</button>
     </form>
+    <br><hr><br>
+    </div>
 
-    <br>
-            <hr>
-            <br>
-
+    <div style="display: none;" id="process_step_form" >
     <form action="{% url 'process mng index' %}" method="post">
         <strong>2) Process Step Creation Form</strong>
 
@@ -63,10 +73,9 @@
         {% csrf_token %}
         <button class="form_button" name="button2">add this process step</button>
     </form>
+    <br><hr><br>
+    </div>
 
-        <br>
-            <hr>
-            <br>
 
     <div>
 

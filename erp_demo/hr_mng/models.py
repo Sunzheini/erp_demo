@@ -157,6 +157,7 @@ class Employee(models.Model):
     #     blank=False, null=False,
     # )
 
+    # ToDo: fix to DateTime or similar field
     starting_date = models.CharField(
         max_length=30,
         blank=False, null=False,

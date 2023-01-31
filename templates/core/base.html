@@ -27,15 +27,25 @@
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
 
 {#JS Functions-------------------------------------------------------------#}
-{#    <script>#}
-{#      function myFunction1() {#}
-{#        document.getElementById("demo").style.color = "orange";#}
-{#      }#}
-{##}
-{#      function myFunction2() {#}
-{#        document.getElementById("demo").style.color = "black";#}
-{#      }#}
-{#    </script>#}
+    <script>
+        function fShowHideProcessForm() {
+            let x = document.getElementById("process_form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function fShowHideProcessStepForm() {
+            let x = document.getElementById("process_step_form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 </head>
 
 {# ToDo: Nav and Cards should be ul #}
