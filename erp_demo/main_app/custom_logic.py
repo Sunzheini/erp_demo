@@ -42,9 +42,9 @@ class SupportFunctions:
         Positions.objects.all().delete()
         Employee.objects.all().delete()
         ProcessStep.objects.all().delete()
+        Document.objects.all().delete()
 
         Process.objects.all().delete()
-        Document.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -75,44 +75,8 @@ class SupportFunctions:
 
         return process_step_list
 
-    # Upload to db
+# Upload to db
 # -----------------------------------------------------------------------
-
-    # hardcoded for HR
-    @staticmethod
-    def add_to_database(request_object):
-        current_file_path = request_object['select_file']
-        info_to_update = {
-        }
-        list_of_keys = [
-            'first_name',
-            'last_name',
-            'identification',
-            'position',
-        ]
-
-        workbook = load_workbook(current_file_path)
-        worksheet = workbook[workbook.sheetnames[0]]
-        for row in range(3, 5):                        # 1 is first row, not 0
-            info_to_update[row] = {
-                'first_name': None,
-                'last_name': None,
-                'identification': None,
-                'position': None,
-            }
-            for col in range(1, 5):                     # 1 is first col, not 0
-                char = get_column_letter(col)           # == chr(65 + col)
-                info_to_update[row][list_of_keys[col-1]] = worksheet[char + str(row)].value
-
-        Employee.objects.bulk_create([Employee(
-            first_name=info_to_update[obj]['first_name'],
-            last_name=info_to_update[obj]['last_name'],
-            identification=info_to_update[obj]['identification'],
-            position=info_to_update[obj]['position'],
-            slug=slugify(f"{info_to_update[obj]['first_name']}-{info_to_update[obj]['last_name']}"),
-        ) for obj in info_to_update.keys()])
-
-        return 'Successfully added'
 
     @staticmethod
     def recreate_database(request_object):
@@ -233,9 +197,14 @@ class SupportFunctions:
             elif table == 'Document':
                 Document.objects.bulk_create([Document(
                     type=info_to_update[obj]['type'],
+                    number=info_to_update[obj]['number'],
                     name=info_to_update[obj]['name'],
                     revision=info_to_update[obj]['revision'],
-                    owner=info_to_update[obj]['owner'],
+                    creation_date=info_to_update[obj]['creation_date'],
+                    revision_date=info_to_update[obj]['revision_date'],
+                    revision_details=info_to_update[obj]['revision_details'],
+                    status=info_to_update[obj]['status'],
+                    owner=Employee.objects.all()[0],  # ToDo: hardcoded for the excel upload
                     # slug=slugify(f"{info_to_update[obj]['name']}"),
                     slug=slugify(f"{info_to_update[obj]['owner']}-"
                                  f"{info_to_update[obj]['type']}-"

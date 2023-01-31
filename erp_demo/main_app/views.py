@@ -25,28 +25,6 @@ class MainAppViews:
         return render(request, 'core/manage_db.html', context)
 
     @staticmethod
-    def manage_db_hr(request):
-        template = 'core/manage_db_hr.html'
-        message = None
-        if request.method == 'GET':
-            form = ManageDbHRForm()
-        else:
-            form = ManageDbHRForm(request.POST, request.FILES)
-            if form.is_valid():
-                message = SupportFunctions.add_to_database(request.FILES)
-                # return redirect('manage db')
-                context = {
-                    'form': form,
-                    'message': message,
-                }
-                return render(request, template, context)
-        context = {
-            'form': form,
-            'message': message,
-        }
-        return render(request, template, context)
-
-    @staticmethod
     def manage_db_all(request):
         template = 'core/manage_db_all.html'
         message = None

@@ -98,7 +98,8 @@ class ProcessStep(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(f"{self.name[0:11]}")
+            # self.slug = slugify(f"{self.name[0:11]}")
+            self.slug = slugify(f"{self.parent_process.number}-{self.number}")
         return super().save(*args, **kwargs)
 
     @property

@@ -55,8 +55,10 @@
     <thead>
         <tr>
             <th>Type</th>
+            <th>Number</th>
             <th>Name</th>
             <th>Revision</th>
+            <th>Status</th>
             <th>Owner</th>
             <th>Link</th>
             <th>Edit</th>
@@ -68,8 +70,10 @@
             {% for document in all_objects %}
         <tr>
             <td>{{ document.type }}</td>
+            <td>{{ document.number }}</td>
             <td>{{ document.name }}</td>
             <td>{{ document.revision }}</td>
+            <td>{{ document.status }}</td>
             <td>{{ document.owner }}</td>
 
 {#no cloudinary#}

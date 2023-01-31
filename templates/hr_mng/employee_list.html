@@ -49,13 +49,44 @@
 
     <br><br>
 
+{#    <table class="table-data">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>First Name</th>#}
+{#                <th>Last Name</th>#}
+{#                <th>ID</th>#}
+{#                <th>Position</th>#}
+{#                <th>Edit</th>#}
+{#                <th>Delete</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{##}
+{#        <tbody>#}
+{#            {% for employee in all_objects %}#}
+{#                <tr>#}
+{#                    <td>{{ employee.first_name }}</td>#}
+{#                    <td>{{ employee.last_name }}</td>#}
+{#                    <td>{{ employee.identification }}</td>#}
+{#                    <td>{{ employee.position }}</td>#}
+{#                    <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>#}
+{#                        Edit</a></td>#}
+{#                    <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>#}
+{#                        Delete</a></td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{##}
+{#    </table>#}
+
     <table class="table-data">
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>ID</th>
+                <th>Full Name</th>
                 <th>Position</th>
+                <th>Contract Nr</th>
+                <th>Starting Date</th>
+                <th>Trainings</th>
+
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -64,10 +95,12 @@
         <tbody>
             {% for employee in all_objects %}
                 <tr>
-                    <td>{{ employee.first_name }}</td>
-                    <td>{{ employee.last_name }}</td>
-                    <td>{{ employee.identification }}</td>
-                    <td>{{ employee.position }}</td>
+                    <td>{{ employee.get_full_name }}</td>
+                    <td>{{ employee.position.name }}</td>
+                    <td>{{ employee.contract_number }}</td>
+                    <td>{{ employee.starting_date }}</td>
+                    <td>{{ employee.get_related_trainings }}</td>
+
                     <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                         Edit</a></td>
                     <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>

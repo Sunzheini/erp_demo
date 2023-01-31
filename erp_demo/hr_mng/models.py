@@ -52,6 +52,9 @@ class Trainings(models.Model):
         blank=True, null=True,
     )
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class EmployeeToTrainings(models.Model):
     training_id = models.ForeignKey(
@@ -101,6 +104,9 @@ class Positions(models.Model):
         # doesn't auto create a table but uses the one specified
     )
 
+    def __str__(self):
+        return f"{self.code}"
+
 
 class PositionsToAccessLevels(models.Model):
     access_level_id = models.ForeignKey(
@@ -135,6 +141,11 @@ class Employee(models.Model):
         max_length=30,
         blank=False, null=False,
     )
+
+    # starting_date = models.CharField(
+    #     max_length=30,
+    #     blank=False, null=False,
+    # )
 
     starting_date = models.CharField(
         max_length=30,
@@ -189,15 +200,20 @@ class Employee(models.Model):
     )
 
     @property
+    def get_related_trainings(self):
+        return ', '.join([str(f) for f in EmployeeToTrainings.objects.filter(employee_id=self.pk)])
+
+    @property
     def get_full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.middle_name} {self.last_name}"
 
     def __str__(self):
-        return f"Name: {self.get_full_name}, " \
-               f"ID: {self.identification}, Position: {self.position}"
+        return f"{self.get_full_name}, " \
+               f"{self.identification}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(f"{self.get_full_name}")
+            # self.slug = slugify(f"{self.get_full_name}")
+            self.slug = slugify(f"{self.identification}-{self.position}")
         return super().save(*args, **kwargs)
