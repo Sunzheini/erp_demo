@@ -1,11 +1,17 @@
 import os
 from django import forms
-from erp_demo.hr_mng.models import Employee
+from erp_demo.hr_mng.models import Employee, Trainings
 
 
 class EmployeeModelAndExcludeMixin:
     class Meta:
         model = Employee
+        exclude = ['slug']
+
+
+class TrainingsModelAndExcludeMixin:
+    class Meta:
+        model = Trainings
         exclude = ['slug']
 
 
@@ -51,3 +57,32 @@ class EmployeePositionForm(forms.Form):
         label='Select employee position',
         choices=EMPLOYEE_POSITIONS,
     )
+
+
+# Trainings
+# ----------------------------------------------------------------------
+
+class TrainingsForm(forms.ModelForm, TrainingsModelAndExcludeMixin):
+    pass
+
+
+class TrainingsEditForm(forms.ModelForm, TrainingsModelAndExcludeMixin):
+    pass
+
+
+class TrainingsDeleteForm(forms.ModelForm, TrainingsModelAndExcludeMixin):
+    class Meta:
+        model = Trainings
+        exclude = ['slug']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__disable_fields()
+
+    def __disable_fields(self):
+        for name, field in self.fields.items():
+            field.widget.attrs['readonly'] = 'readonly'
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance

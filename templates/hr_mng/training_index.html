@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Add Employee
+    Training
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Add Employee
+                Training Management
             </h1>
         </header>
     {% endblock %}
@@ -28,36 +28,37 @@
             </p>
         </button>
 
-        <button class="card"></button>
+        <button
+                class="card"
+                onclick="location.href='{% url 'add training' %}';"
+        >
+            <h2>Add Training</h2>
+            <p>
+                Add new trainings and define its properties
+            </p>
+        </button>
 
-        <button class="card"></button>
+        <button
+                class="card"
+                onclick="location.href='{% url 'training list' %}';"
+        >
+            <h2>Trainings List</h2>
+            <p>
+                Display a list of all trainings. Edit or delete
+            </p>
+        </button>
 
-        <button class="card"></button>
+        <button
+                class="card"
+                onclick="location.href='{% url 'training matrix' %}';"
+        >
+            <h2>Trainings Matrix</h2>
+            <p>
+                Generate a current training matrix
+            </p>
+        </button>
     </div>
 
 {#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card display">
-
-{#            <form action="{% url 'add employee' %}" method="post">#}
-{#                {{ form.as_div }}#}
-{#                {% csrf_token %}#}
-{#            <br><br>#}
-{#                <button class="form_button">add this employee</button>#}
-{#            </form>#}
-
-            <form action="{% url 'add employee' %}" method="post">
-
-                <table class="table-form">
-                    {{ form }}
-                </table>
-
-                {% csrf_token %}
-            <br><br>
-                <button class="form_button">add this employee</button>
-            </form>
-
-        </div>
-    </div>
 
 {% endblock %}

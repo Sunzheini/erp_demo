@@ -164,6 +164,7 @@ class SupportFunctions:
                     code=info_to_update[obj]['code'],
                     name=info_to_update[obj]['name'],
                     description=info_to_update[obj]['description'],
+                    slug=slugify(f"{info_to_update[obj]['code']}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'Positions':

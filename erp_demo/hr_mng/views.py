@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 
 from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.hr_mng.forms import EmployeeForm, EmployeeEditForm, \
-    EmployeeDeleteForm, EmployeePositionForm
-from erp_demo.hr_mng.models import Employee
+    EmployeeDeleteForm, EmployeePositionForm, \
+    TrainingsForm, TrainingsEditForm, TrainingsDeleteForm
+from erp_demo.hr_mng.models import Employee, Trainings
 
 
 class HrMngViews:
@@ -81,3 +82,73 @@ class HrMngViews:
             'employee': current_employee,
         }
         return render(request, template, context)
+
+    # Trainings
+    #  ---------------------------------------------------------------------------------------
+
+    @staticmethod
+    def training_index(request):
+        context = {}
+        return render(request, 'hr_mng/training_index.html', context)
+
+    @staticmethod
+    def training_list(request):
+        template = 'hr_mng/training_list.html'
+        context = {
+            'all_objects': Trainings.objects.all(),
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def add_training(request):
+        template = 'hr_mng/add_training.html'
+        if request.method == 'GET':
+            form = TrainingsForm()
+        else:
+            form = TrainingsForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('training list')
+        context = {
+            'form': form,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def edit_training(request, pk, slug):
+        template = 'hr_mng/edit_training.html'
+        current_training = Trainings.objects.filter(pk=pk).get()
+        if request.method == 'GET':
+            form = TrainingsEditForm(instance=current_training)
+        else:
+            form = TrainingsEditForm(request.POST, instance=current_training)
+            if form.is_valid():
+                form.save()
+                return redirect('training list')
+        context = {
+            'form': form,
+            'training': current_training,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def delete_training(request, pk, slug):
+        template = 'hr_mng/delete_training.html'
+        current_training = Trainings.objects.filter(pk=pk).get()
+        if request.method == 'GET':
+            form = TrainingsDeleteForm(instance=current_training)
+        else:
+            form = TrainingsDeleteForm(request.POST, instance=current_training)
+            if form.is_valid():
+                form.save()
+                return redirect('training list')
+        context = {
+            'form': form,
+            'training': current_training,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    def training_matrix(request):
+        context = {}
+        return render(request, 'hr_mng/training_matrix.html', context)

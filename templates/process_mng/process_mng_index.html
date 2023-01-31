@@ -32,6 +32,8 @@
 
         <button class="card"></button>
 
+        <button class="card"></button>
+
 {#4. Display------------------------------------------------------------------#}
     <div class="container" id="con2">
         <div class="card display">
@@ -97,10 +99,10 @@
                 <td>{{ i.parent_process.number }}</td>
                 <td>{{ i.parent_process.name }}</td>
 
-                <td><a class="table-link" href="{% url 'create flowchart' pk=i.parent_process.pk %}"><i class="fa-sharp fa-solid fa-florin-sign"></i>
-                    Flow chart</a></td>
-                <td><a class="table-link" href="{% url 'create turtle' pk=i.parent_process.pk %}"><i class="fa-sharp fa-solid fa-pizza-slice"></i>
-                    Turtle</a></td>
+                <td><a class="table-link" href="{% url 'create flowchart' pk=i.parent_process.pk %}">
+                    <i class="fa-sharp fa-solid fa-florin-sign"></i>Flowchart</a></td>
+                <td><a class="table-link" href="{% url 'create turtle' pk=i.parent_process.pk %}">
+                    <i class="fa-sharp fa-solid fa-pizza-slice"></i>Turtle</a></td>
 
                 <td>{{ i.number }}</td>
                 <td>{{ i.type }}</td>

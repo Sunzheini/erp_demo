@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Delete Process Step
+    Add Training
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Delete Process Step
+                Add Training
             </h1>
         </header>
     {% endblock %}
@@ -20,11 +20,11 @@
     <div class="container" id="con1">
         <button
                 class="card"
-                onclick="location.href='{% url 'process mng index' %}';"
+                onclick="location.href='{% url 'training index' %}';"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the process index
+                Go back to the training menu
             </p>
         </button>
 
@@ -39,14 +39,15 @@
     <div class="container" id="con2">
         <div class="card display">
 
-            <form action="{% url 'delete process step' pk=process_step.pk slug=process_step.slug %}" method="post">
+            <form action="{% url 'add training' %}" method="post">
 
-                 <table class="table-form">
+                <table class="table-form">
                     {{ form }}
-                 </table>
+                </table>
 
                 {% csrf_token %}
-                <button class="form_button">delete</button>
+            <br><br>
+                <button class="form_button">add this training</button>
             </form>
 
         </div>

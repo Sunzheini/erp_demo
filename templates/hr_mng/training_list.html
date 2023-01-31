@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Employee List
+    Trainings List
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Employee List
+                Trainings List
             </h1>
         </header>
     {% endblock %}
@@ -20,11 +20,11 @@
     <div class="container" id="con1">
         <button
                 class="card"
-                onclick="location.href='{% url 'hr mng index' %}';"
+                onclick="location.href='{% url 'training index' %}';"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the hr management menu
+                Go back to the training menu
             </p>
         </button>
 
@@ -39,26 +39,18 @@
     <div class="container" id="con2">
         <div class="card display">
 
-    <p>Employees:</p>
+    <p>Trainings:</p>
 
-    <form action="{% url 'employee list' %}" method="post">
-        {{ choice_form }}
-        {% csrf_token %}
-        <button class="form_button">filter</button>
-    </form>
-
-        {% if all_objects %}
+    {% if all_objects %}
 
     <br><br>
 
     <table class="table-data">
         <thead>
             <tr>
-                <th>Full Name</th>
-                <th>Position</th>
-                <th>Contract Nr</th>
-                <th>Starting Date</th>
-                <th>Trainings</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Description</th>
 
                 <th>Edit</th>
                 <th>Delete</th>
@@ -66,17 +58,15 @@
         </thead>
 
         <tbody>
-            {% for employee in all_objects %}
+            {% for training in all_objects %}
                 <tr>
-                    <td>{{ employee.get_full_name }}</td>
-                    <td>{{ employee.position.name }}</td>
-                    <td>{{ employee.contract_number }}</td>
-                    <td>{{ employee.starting_date }}</td>
-                    <td>{{ employee.get_related_trainings }}</td>
+                    <td>{{ training.code }}</td>
+                    <td>{{ training.name }}</td>
+                    <td>{{ training.description }}</td>
 
-                    <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                    <td><a class="table-link" href="{% url 'edit training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                         Edit</a></td>
-                    <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>
+                    <td><a class="table-link" href="{% url 'delete training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-trash"></i>
                         Delete</a></td>
                 </tr>
             {% endfor %}

@@ -52,8 +52,18 @@ class Trainings(models.Model):
         blank=True, null=True,
     )
 
+    slug = models.SlugField(
+        blank=True, null=True, editable=False,
+    )
+
     def __str__(self):
         return f"{self.name}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.code}")
+        return super().save(*args, **kwargs)
 
 
 class EmployeeToTrainings(models.Model):
