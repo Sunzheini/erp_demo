@@ -59,3 +59,5 @@ coordinates = {
         'end_column': None,
     },
 }
+
+logging_info_stack = []

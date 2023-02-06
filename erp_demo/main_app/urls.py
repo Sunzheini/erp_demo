@@ -11,4 +11,6 @@ urlpatterns = [
     ])),
     # path('manage_db/', MainAppViews().manage_db, name='manage db'),
     path('contact-list/', MainAppViews().contact_list, name='contact list'),
+    path('logs/', MainAppViews().logs, name='logs'),
+    path('my-tasks/', MainAppViews().my_tasks, name='my tasks'),
 ]

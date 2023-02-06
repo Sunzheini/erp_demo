@@ -34,6 +34,7 @@ class DoxMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def add_document(request):
         template = 'dox_mng/add_document.html'
         if request.method == 'GET':
@@ -41,7 +42,8 @@ class DoxMngViews:
         else:
             form = DocumentForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
+                output = form.save()    # get the created object
+                SupportFunctions.log_info(f"Added a document `{output.name}`")
                 return redirect('document list')
         context = {
             'form': form,
@@ -49,6 +51,16 @@ class DoxMngViews:
         return render(request, template, context)
 
     @staticmethod
+    def show_document(request, pk, slug):
+        template = 'dox_mng/show_document.html'
+        current_document = Document.objects.filter(pk=pk).get()
+        context = {
+            'document': current_document,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    @SupportFunctions.log_entry(True)
     def edit_document(request, pk, slug):
         template = 'dox_mng/edit_document.html'
         current_document = Document.objects.filter(pk=pk).get()
@@ -57,7 +69,8 @@ class DoxMngViews:
         else:
             form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Edited a document `{output.name}`")
                 return redirect('document list')
         context = {
             'form': form,
@@ -66,6 +79,7 @@ class DoxMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def delete_document(request, pk, slug):
         template = 'dox_mng/delete_document.html'
         current_document = Document.objects.filter(pk=pk).get()
@@ -74,7 +88,8 @@ class DoxMngViews:
         else:
             form = DocumentDeleteForm(request.POST, instance=current_document)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Deleted a document `{output.name}`")
                 return redirect('document list')
         context = {
             'form': form,

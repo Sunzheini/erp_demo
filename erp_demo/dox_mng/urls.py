@@ -9,6 +9,7 @@ urlpatterns = [
     path('', DoxMngViews().dox_mng_index, name='dox mng index'),
     path('document-list/', DoxMngViews().document_list, name='document list'),
     path('add-document/', DoxMngViews().add_document, name='add document'),
+    path('show-document/<int:pk>/<slug:slug>/', DoxMngViews().show_document, name='show document'),
     path('edit-document/<int:pk>/<slug:slug>/', DoxMngViews().edit_document, name='edit document'),
     path('delete-document/<int:pk>/<slug:slug>/', DoxMngViews().delete_document, name='delete document'),
 ]

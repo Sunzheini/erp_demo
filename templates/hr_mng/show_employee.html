@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Trainings List
+    Show Employee
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Trainings List
+                Show Employee
             </h1>
         </header>
     {% endblock %}
@@ -18,16 +18,6 @@
 {% block page_content %}
 {#3. Buttons------------------------------------------------------------------#}
     <div class="container" id="con1">
-{#        <button#}
-{#                class="card"#}
-{#                onclick="location.href='{% url 'training index' %}';"#}
-{#        >#}
-{#            <h2>< Back</h2>#}
-{#            <p>#}
-{#                Go back to the training menu#}
-{#            </p>#}
-{#        </button>#}
-
         <button
                 class="card"
                 onClick="javascript:history.go(-1);"
@@ -49,45 +39,43 @@
     <div class="container" id="con2">
         <div class="card display">
 
-    <p>Trainings:</p>
-
-    {% if all_objects %}
-
-    <br><br>
-
     <table class="table-data">
         <thead>
             <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Description</th>
+                <th>Full Name</th>
+                <th>Position</th>
+                <th>Contract Nr</th>
+                <th>Starting Date</th>
+                <th>Trainings</th>
 
-                <th>Show</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for training in all_objects %}
                 <tr>
-                    <td>{{ training.code }}</td>
-                    <td>{{ training.name }}</td>
-                    <td>{{ training.description }}</td>
+                    <td>{{ employee.get_full_name }}</td>
+                    <td>{{ employee.position.name }}</td>
+                    <td>{{ employee.contract_number }}</td>
+                    <td>{{ employee.starting_date }}</td>
+{#                    <td>{{ employee.get_related_trainings }}</td>#}
 
-                    <td><a class="table-link" href="{% url 'show training' pk=training.pk slug=training.slug %}">
-                        <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
-                    <td><a class="table-link" href="{% url 'edit training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                    <td>
+                       {% for training in employee.get_related_trainings %}
+                           <a class="table-link" href="{% url 'show training' pk=training.training_id.pk slug=training.training_id.slug %}">
+                               <i class="fa-solid fa-magnifying-glass"></i>{{ training.training_id.name }}</a>
+                        {% endfor %}
+                    </td>
+
+                    <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                         Edit</a></td>
-                    <td><a class="table-link" href="{% url 'delete training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-trash"></i>
+                    <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>
                         Delete</a></td>
                 </tr>
-            {% endfor %}
         </tbody>
 
     </table>
-
-        {% endif %}
 
         </div>
     </div>

@@ -8,6 +8,7 @@ from erp_demo.process_mng.models import Process, ProcessStep
 
 class ProcessMngViews:
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def process_mng_index(request):
         template = 'process_mng/process_mng_index.html'
 
@@ -37,6 +38,7 @@ class ProcessMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def edit_process_step(request, pk, slug):
         template = 'process_mng/edit_process_step.html'
         current_process_step = ProcessStep.objects.filter(pk=pk).get()
@@ -45,7 +47,8 @@ class ProcessMngViews:
         else:
             form = ProcessStepEditForm(request.POST, instance=current_process_step)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Edited a process step `{output.name}`")
                 return redirect('process mng index')
         context = {
             'form': form,
@@ -54,6 +57,7 @@ class ProcessMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def delete_process_step(request, pk, slug):
         template = 'process_mng/delete_process_step.html'
         current_process_step = ProcessStep.objects.filter(pk=pk).get()
@@ -62,7 +66,8 @@ class ProcessMngViews:
         else:
             form = ProcessStepDeleteForm(request.POST, instance=current_process_step)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Deleted a process step `{output.name}`")
                 return redirect('process mng index')
         context = {
             'form': form,

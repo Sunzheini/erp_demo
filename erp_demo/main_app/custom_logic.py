@@ -1,3 +1,6 @@
+import time
+from functools import wraps
+
 from django.utils.text import slugify
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
@@ -6,6 +9,7 @@ from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.main_app import custom_collections
+from erp_demo.main_app.models import CaptainsLog
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process
 
@@ -45,6 +49,8 @@ class SupportFunctions:
         Document.objects.all().delete()
 
         Process.objects.all().delete()
+
+        CaptainsLog.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -224,7 +230,11 @@ class SupportFunctions:
                     type=info_to_update[obj]['type'],
                     number=info_to_update[obj]['number'],
                     name=info_to_update[obj]['name'],
-                    parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
+                    # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
+
+                    # use the `PXX` from the excel
+                    parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'][-1])-1],
+
                     description=info_to_update[obj]['description'],
                     responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
                     # slug=slugify(f"{info_to_update[obj]['name']}"),
@@ -238,175 +248,35 @@ class SupportFunctions:
                '(*documents have no attachments and \n' \
                'process steps have no linked documents!)'
 
-# -----------------------------------------------------------------------
-# Upload to db - old code
-# -----------------------------------------------------------------------
+    # Decorator + function: time measurement and writing to a log
+    # -----------------------------------------------------------------------
 
-#     # hardcoded for file Demo.xlsx and Employee model
-#     @staticmethod
-#     def add_to_database(request_object):
-#         current_file_path = request_object['select_file']
-#         info_to_update = {
-#         }
-#         list_of_keys = [
-#             'first_name',
-#             'last_name',
-#             'identification',
-#             'position',
-#         ]
-#
-#         workbook = load_workbook(current_file_path)
-#         worksheet = workbook[workbook.sheetnames[0]]
-#         for row in range(3, 5):                        # 1 is first row, not 0
-#             info_to_update[row] = {
-#                 'first_name': None,
-#                 'last_name': None,
-#                 'identification': None,
-#                 'position': None,
-#             }
-#             for col in range(1, 5):                     # 1 is first col, not 0
-#                 char = get_column_letter(col)           # == chr(65 + col)
-#                 info_to_update[row][list_of_keys[col-1]] = worksheet[char + str(row)].value
-#
-#         Employee.objects.bulk_create([Employee(
-#             first_name=info_to_update[obj]['first_name'],
-#             last_name=info_to_update[obj]['last_name'],
-#             identification=info_to_update[obj]['identification'],
-#             position=info_to_update[obj]['position'],
-#             slug=slugify(f"{info_to_update[obj]['first_name']}-{info_to_update[obj]['last_name']}"),
-#         ) for obj in info_to_update.keys()])
-#
-#         return 'Successfully added'
-#
-#
-# # ------------------------------------------------------------------------
-#
-#     # hardcoded for file Demo2.xlsx and All models
-#     @staticmethod
-#     def recreate_database(request_object):
-#         current_file_path = request_object['select_file']
-#
-#         # Employee
-#         info_to_update = {
-#         }
-#         list_of_keys = [
-#             'first_name',
-#             'last_name',
-#             'identification',
-#             'position',
-#         ]
-#
-#         workbook = load_workbook(current_file_path)
-#         worksheet = workbook[workbook.sheetnames[0]]
-#         for row in range(3, 5):                        # 1 is first row, not 0
-#             info_to_update[row] = {
-#                 'first_name': None,
-#                 'last_name': None,
-#                 'identification': None,
-#                 'position': None,
-#             }
-#             for col in range(1, 5):                     # 1 is first col, not 0
-#                 char = get_column_letter(col)           # == chr(65 + col)
-#                 info_to_update[row][list_of_keys[col-1]] = worksheet[char + str(row)].value
-#
-#         Employee.objects.bulk_create([Employee(
-#             first_name=info_to_update[obj]['first_name'],
-#             last_name=info_to_update[obj]['last_name'],
-#             identification=info_to_update[obj]['identification'],
-#             position=info_to_update[obj]['position'],
-#             slug=slugify(f"{info_to_update[obj]['first_name']}-{info_to_update[obj]['last_name']}"),
-#         ) for obj in info_to_update.keys()])
-#
-#         #  --------------------------------------------------
-#
-#         # Document
-#         info_to_update = {
-#         }
-#         list_of_keys = [
-#             'type',
-#             'name',
-#             'revision',
-#             'owner',
-#         ]
-#
-#         for row in range(8, 12):  # 1 is first row, not 0
-#             info_to_update[row] = {
-#                 'type': None,
-#                 'name': None,
-#                 'revision': None,
-#                 'owner': None,
-#             }
-#             for col in range(1, 5):  # 1 is first col, not 0
-#                 char = get_column_letter(col)  # == chr(65 + col)
-#                 info_to_update[row][list_of_keys[col - 1]] = worksheet[char + str(row)].value
-#
-#         Document.objects.bulk_create([Document(
-#             type=info_to_update[obj]['type'],
-#             name=info_to_update[obj]['name'],
-#             revision=info_to_update[obj]['revision'],
-#             owner=info_to_update[obj]['owner'],
-#             slug=slugify(f"{info_to_update[obj]['name']}"),
-#         ) for obj in info_to_update.keys()])
-#
-#         #  --------------------------------------------------
-#
-#         # Process
-#         info_to_update = {
-#         }
-#         list_of_keys = [
-#             'type',
-#             'number',
-#             'name',
-#         ]
-#
-#         for row in range(15, 17):  # 1 is first row, not 0
-#             info_to_update[row] = {
-#                 'type': None,
-#                 'number': None,
-#                 'name': None,
-#             }
-#             for col in range(1, 4):  # 1 is first col, not 0
-#                 char = get_column_letter(col)  # == chr(65 + col)
-#                 info_to_update[row][list_of_keys[col - 1]] = worksheet[char + str(row)].value
-#
-#         Process.objects.bulk_create([Process(
-#             type=info_to_update[obj]['type'],
-#             number=info_to_update[obj]['number'],
-#             name=info_to_update[obj]['name'],
-#         ) for obj in info_to_update.keys()])
-#
-#         #  --------------------------------------------------
-#
-#         # ProcessStep
-#         info_to_update = {
-#         }
-#         list_of_keys = [
-#             'type',
-#             'number',
-#             'name',
-#             'parent_process',
-#         ]
-#
-#         for row in range(20, 22):  # 1 is first row, not 0
-#             info_to_update[row] = {
-#                 'type': None,
-#                 'number': None,
-#                 'name': None,
-#                 'parent_process': None,
-#             }
-#             for col in range(1, 4):  # 1 is first col, not 0
-#                 char = get_column_letter(col)  # == chr(65 + col)
-#                 info_to_update[row][list_of_keys[col - 1]] = worksheet[char + str(row)].value
-#
-#         ProcessStep.objects.bulk_create([ProcessStep(
-#             type=info_to_update[obj]['type'],
-#             number=info_to_update[obj]['number'],
-#             name=info_to_update[obj]['name'],
-#             parent_process=Process.objects.all()[0]
-#         ) for obj in info_to_update.keys()])
-#
-#         #  --------------------------------------------------
-#
-#         return 'Successfully added \n' \
-#                '(*documents have no attachments and \n' \
-#                'process steps have no linked documents!)'
+    @staticmethod
+    def log_entry(command):
+        def decorator_depending_on_command(some_function):
+            @wraps(some_function)
+            def wrapper(*args, **kwargs):
+                if command:
+                    start = time.time()
+                    result = some_function(*args, **kwargs)  # the function
+                    end = time.time()
+                    measurement = end - start
+
+                    if custom_collections.logging_info_stack:
+                        CaptainsLog.objects.create(
+                            operation=f"{custom_collections.logging_info_stack.pop()} "
+                                      f"with `{some_function.__name__}`",
+                            performed_at_time=end,
+                            execution_time=measurement,
+                        )
+                else:
+                    result = some_function(*args, **kwargs)  # the function
+                return result  # the function
+            return wrapper
+        return decorator_depending_on_command
+
+    @staticmethod
+    def log_info(function_result):
+        custom_collections.logging_info_stack.append(function_result)
+
+    # -----------------------------------------------------------------------

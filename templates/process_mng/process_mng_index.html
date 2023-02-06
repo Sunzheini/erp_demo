@@ -18,13 +18,23 @@
 {% block page_content %}
 {#3. Buttons------------------------------------------------------------------#}
     <div class="container" id="con1">
+{#        <button#}
+{#                class="card"#}
+{#                onclick="location.href='{% url 'index' %}';"#}
+{#        >#}
+{#            <h2>< Back</h2>#}
+{#            <p>#}
+{#                Go back to the main menu#}
+{#            </p>#}
+{#        </button>#}
+
         <button
                 class="card"
-                onclick="location.href='{% url 'index' %}';"
+                onClick="javascript:history.go(-1);"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the main menu
+                Go back to the previous menu
             </p>
         </button>
 
@@ -43,7 +53,7 @@
                 Show / Hide Form
             </p>
         </button>
-
+</div>
 {#4. Display------------------------------------------------------------------#}
     <div class="container" id="con2">
         <div class="card display">
@@ -92,9 +102,9 @@
           <th>TL</th>
           <th>Number</th>
           <th>Type</th>
-          <th>Name</th>
-          <th>Documents</th>
+          <th>Step Name</th>
           <th>Resp</th>
+          <th>Documents</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -117,9 +127,15 @@
                 <td>{{ i.type }}</td>
                 <td>{{ i.name }}</td>
 
-                <td>{{ i.get_related_documents }}</td>
-                <td>{{ i.responsible.get_full_name }}</td>
+                <td><a class="table-link" href="{% url 'show employee' pk=i.responsible.pk slug=i.responsible.slug %}">
+                        <i class="fa-solid fa-magnifying-glass"></i>{{ i.responsible.get_full_name }}</a></td>
 
+                <td>
+                   {% for doc in i.get_related_documents %}
+                       <a class="table-link" href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
+                           <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}</a>
+                    {% endfor %}
+                </td>
                 <td><a class="table-link" href="{% url 'edit process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                     Edit</a></td>
                 <td><a class="table-link" href="{% url 'delete process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-trash"></i>

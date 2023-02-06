@@ -18,13 +18,23 @@
 {% block page_content %}
 {#3. Buttons------------------------------------------------------------------#}
     <div class="container" id="con1">
+{#        <button#}
+{#                class="card"#}
+{#                onclick="location.href='{% url 'hr mng index' %}';"#}
+{#        >#}
+{#            <h2>< Back</h2>#}
+{#            <p>#}
+{#                Go back to the hr management menu#}
+{#            </p>#}
+{#        </button>#}
+
         <button
                 class="card"
-                onclick="location.href='{% url 'hr mng index' %}';"
+                onClick="javascript:history.go(-1);"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the hr management menu
+                Go back to the previous menu
             </p>
         </button>
 
@@ -60,6 +70,7 @@
                 <th>Starting Date</th>
                 <th>Trainings</th>
 
+                <th>Show</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -72,8 +83,16 @@
                     <td>{{ employee.position.name }}</td>
                     <td>{{ employee.contract_number }}</td>
                     <td>{{ employee.starting_date }}</td>
-                    <td>{{ employee.get_related_trainings }}</td>
 
+                    <td>
+                       {% for training in employee.get_related_trainings %}
+                           <a class="table-link" href="{% url 'show training' pk=training.training_id.pk slug=training.training_id.slug %}">
+                               <i class="fa-solid fa-magnifying-glass"></i>{{ training.training_id.name }}</a>
+                        {% endfor %}
+                    </td>
+
+                    <td><a class="table-link" href="{% url 'show employee' pk=employee.pk slug=employee.slug %}">
+                        <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
                     <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                         Edit</a></td>
                     <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>

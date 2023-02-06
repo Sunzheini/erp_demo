@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block page_title %}
-    Document List
+    Show Document
 {% endblock %}
 
 {#1. Nav----------------------------------------------------------------------#}
@@ -10,7 +10,7 @@
     {% block page_name %}
         <header>
             <h1>
-                Document List
+                Show Document
             </h1>
         </header>
     {% endblock %}
@@ -18,23 +18,14 @@
 {% block page_content %}
 {#3. Buttons------------------------------------------------------------------#}
     <div class="container" id="con1">
-{#        <button#}
-{#                class="card"#}
-{#                onclick="location.href='{% url 'dox mng index' %}';"#}
-{#        >#}
-{#            <h2>< Back</h2>#}
-{#            <p>#}
-{#                Go back to the document management menu#}
-{#            </p>#}
-{#        </button>#}
-
         <button
                 class="card"
+{#                onclick="location.href='{% url 'document list' %}';"#}
                 onClick="javascript:history.go(-1);"
         >
             <h2>< Back</h2>
             <p>
-                Go back to the previous menu
+                Go back to the document list
             </p>
         </button>
 
@@ -49,20 +40,6 @@
     <div class="container" id="con2">
         <div class="card display">
 
-    <form action="{% url 'document list' %}" method="post">
-
-        <table class="table-form">
-            {{ choice_form }}
-        </table>
-
-        {% csrf_token %}
-        <button class="form_button">filter</button>
-    </form>
-
-        {% if all_objects %}
-
-    <br><br>
-
     <table class="table-data">
     <thead>
         <tr>
@@ -72,7 +49,6 @@
             <th>Revision</th>
             <th>Status</th>
             <th>Owner</th>
-            <th>Show</th>
             <th>Link</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -80,7 +56,6 @@
     </thead>
 
     <tbody>
-            {% for document in all_objects %}
         <tr>
             <td>{{ document.type }}</td>
             <td>{{ document.number }}</td>
@@ -88,9 +63,6 @@
             <td>{{ document.revision }}</td>
             <td>{{ document.status }}</td>
             <td>{{ document.owner }}</td>
-
-            <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
-                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
 
 {#no cloudinary#}
 {#            <td><a href="/media/{{ document.attachment }}">#}
@@ -109,13 +81,10 @@
             <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
                     Delete</a></td>
         </tr>
-    {% endfor %}
 
     </tbody>
 
     </table>
-
-        {% endif %}
 
         </div>
     </div>

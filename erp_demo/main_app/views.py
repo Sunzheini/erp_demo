@@ -5,6 +5,7 @@ from erp_demo.main_app.forms import ManageDbHRForm, \
     ManageDbAllForm, DeleteDatabaseForm
 
 from erp_demo.main_app.custom_logic import SupportFunctions
+from erp_demo.main_app.models import CaptainsLog
 
 
 class MainAppViews:
@@ -55,3 +56,18 @@ class MainAppViews:
             'message2': message2,
         }
         return render(request, template, context)
+
+    @staticmethod
+    def logs(request):
+        context = {
+            'logs': CaptainsLog.objects.all(),
+        }
+        return render(request, 'core/logs.html', context)
+
+    @staticmethod
+    def my_tasks(request):
+        context = {
+            'tasks': CaptainsLog.objects.all(),
+        }
+        return render(request, 'core/my_tasks.html', context)
+

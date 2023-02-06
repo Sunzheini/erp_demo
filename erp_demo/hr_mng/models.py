@@ -212,7 +212,10 @@ class Employee(models.Model):
 
     @property
     def get_related_trainings(self):
-        return ', '.join([str(f) for f in EmployeeToTrainings.objects.filter(employee_id=self.pk)])
+        # return ', '.join([str(f) for f in EmployeeToTrainings.objects.filter(employee_id=self.pk)])
+
+        # return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
+        return EmployeeToTrainings.objects.filter(employee_id=self.pk)
 
     @property
     def get_full_name(self):

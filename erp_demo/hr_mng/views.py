@@ -35,6 +35,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def add_employee(request):
         template = 'hr_mng/add_employee.html'
         if request.method == 'GET':
@@ -42,7 +43,8 @@ class HrMngViews:
         else:
             form = EmployeeForm(request.POST)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Added an employee `{output.name}`")
                 return redirect('employee list')
         context = {
             'form': form,
@@ -50,6 +52,16 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    def show_employee(request, pk, slug):
+        template = 'hr_mng/show_employee.html'
+        current_employee = Employee.objects.filter(pk=pk).get()
+        context = {
+            'employee': current_employee,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    @SupportFunctions.log_entry(True)
     def edit_employee(request, pk, slug):
         template = 'hr_mng/edit_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -58,7 +70,8 @@ class HrMngViews:
         else:
             form = EmployeeEditForm(request.POST, instance=current_employee)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Edited an employee `{output.name}`")
                 return redirect('employee list')
         context = {
             'form': form,
@@ -67,6 +80,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def delete_employee(request, pk, slug):
         template = 'hr_mng/delete_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -75,7 +89,8 @@ class HrMngViews:
         else:
             form = EmployeeDeleteForm(request.POST, instance=current_employee)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Deleted an employee `{output.name}`")
                 return redirect('employee list')
         context = {
             'form': form,
@@ -100,6 +115,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def add_training(request):
         template = 'hr_mng/add_training.html'
         if request.method == 'GET':
@@ -107,7 +123,8 @@ class HrMngViews:
         else:
             form = TrainingsForm(request.POST)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Added a training `{output.name}`")
                 return redirect('training list')
         context = {
             'form': form,
@@ -115,6 +132,16 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    def show_training(request, pk, slug):
+        template = 'hr_mng/show_training.html'
+        current_training = Trainings.objects.filter(pk=pk).get()
+        context = {
+            'training': current_training,
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    @SupportFunctions.log_entry(True)
     def edit_training(request, pk, slug):
         template = 'hr_mng/edit_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()
@@ -123,7 +150,8 @@ class HrMngViews:
         else:
             form = TrainingsEditForm(request.POST, instance=current_training)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Edited a training `{output.name}`")
                 return redirect('training list')
         context = {
             'form': form,
@@ -132,6 +160,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.log_entry(True)
     def delete_training(request, pk, slug):
         template = 'hr_mng/delete_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()
@@ -140,7 +169,8 @@ class HrMngViews:
         else:
             form = TrainingsDeleteForm(request.POST, instance=current_training)
             if form.is_valid():
-                form.save()
+                output = form.save()
+                SupportFunctions.log_info(f"Deleted a training `{output.name}`")
                 return redirect('training list')
         context = {
             'form': form,
