@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from django.utils.text import slugify
 
 from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.dox_mng.forms import DocumentForm, DocumentEditForm, \
     DocumentDeleteForm, DocumentTypeForm
-from erp_demo.dox_mng.models import Document
+from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 
 
 class DoxMngViews:
@@ -59,6 +60,25 @@ class DoxMngViews:
         }
         return render(request, template, context)
 
+    # @staticmethod
+    # @SupportFunctions.log_entry(True)
+    # def edit_document(request, pk, slug):
+    #     template = 'dox_mng/edit_document.html'
+    #     current_document = Document.objects.filter(pk=pk).get()
+    #     if request.method == 'GET':
+    #         form = DocumentEditForm(instance=current_document)
+    #     else:
+    #         form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
+    #         if form.is_valid():
+    #             output = form.save()
+    #             SupportFunctions.log_info(f"Edited a document `{output.name}`")
+    #             return redirect('document list')
+    #     context = {
+    #         'form': form,
+    #         'document': current_document,
+    #     }
+    #     return render(request, template, context)
+
     @staticmethod
     @SupportFunctions.log_entry(True)
     def edit_document(request, pk, slug):
@@ -69,8 +89,8 @@ class DoxMngViews:
         else:
             form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
             if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Edited a document `{output.name}`")
+                output = SupportFunctions.new_revision(form)
+                SupportFunctions.log_info(f"Edited a document `{output}`")
                 return redirect('document list')
         context = {
             'form': form,

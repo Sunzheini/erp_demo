@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
-from erp_demo.dox_mng.models import Document
+from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.main_app import custom_collections
@@ -327,4 +327,23 @@ class SupportFunctions:
     def log_info(function_result):
         custom_collections.logging_info_stack.append(function_result)
 
+    # new document revision
     # -----------------------------------------------------------------------
+    @staticmethod
+    def new_revision(the_form):
+        result = DocumentEditPurgatory.objects.create(
+            type=the_form.cleaned_data['type'],
+            number=the_form.cleaned_data['number'],
+            name=the_form.cleaned_data['name'],
+            revision=the_form.cleaned_data['revision'],
+            creation_date=the_form.cleaned_data['creation_date'],
+            revision_date=the_form.cleaned_data['revision_date'],
+            revision_details=the_form.cleaned_data['revision_details'],
+            status=the_form.cleaned_data['status'],
+            owner=the_form.cleaned_data['owner'],
+            # slug=slugify(f"{info_to_update[obj]['name']}"),
+            slug=slugify(f"{the_form.cleaned_data['owner']}-"
+                         f"{the_form.cleaned_data['type']}-"
+                         f"{the_form.cleaned_data['revision']}"),
+        )
+        return result
