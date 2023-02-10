@@ -30,9 +30,9 @@ body {
     /*color: #eef4f6;*/
     color: #B5D1DB;
     text-decoration: none;
-    padding: 0 20px;
+    padding: 0 10px;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 30px;
   }
 
   nav a:hover {
@@ -217,22 +217,73 @@ i {
   margin-right: 0.28em;
 }
 
-/* Icons */
+/* Flowchart */
 /*-----------------------------------------------------------------------*/
 
-.flowchart-step {
-  background-color: lightblue;
-  display: inline-block;
-  width: 250px;
-  height: 40px;
-  border: 1px solid black;
-  margin-right: 20px;
+.flowchart-grid {
+  display: grid;
+  grid-template-columns: 420px 420px;
+  grid-template-rows: repeat(15, 100px);
+  gap: 20px;
 }
 
-.flowchart-desc {
-  background-color: lightcyan;
+.flowchart-box {
+  border: solid 1px #ccc;
   display: inline-block;
-  width: 250px;
-  height: 40px;
-  border: 1px solid black;
+}
+
+.flowchart-box.overflow-box {
+  font-size: 12px;
+  overflow: auto;
+}
+
+
+/* Process Map */
+/*-----------------------------------------------------------------------*/
+
+.process-map-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.process-box {
+  border: solid 1px #ccc;
+}
+
+/* Turtle */
+/*-----------------------------------------------------------------------*/
+
+.turtle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.turtle-box {
+  border: solid 1px #ccc;
+  height: 170px;
+}
+
+.turtle-box.overflow-box {
+  font-size: 12px;
+  overflow: auto;
+}
+
+/* Organigramm */
+/*-----------------------------------------------------------------------*/
+
+.organigramm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.organigramm-box {
+  border: solid 1px #ccc;
+  height: 170px;
+  overflow: auto;
 }

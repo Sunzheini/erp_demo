@@ -38,7 +38,12 @@
             </p>
         </button>
 
-        <button class="card"></button>
+        <button class="card" onclick="location.href='{% url 'create process map' %}';">
+            <h2>Process Map</h2>
+            <p>
+                P30-01-001. Business Processes Interaction Chart
+            </p>
+        </button>
 
         <button class="card" onclick="fShowHideProcessForm()">
             <h2>New Process</h2>
@@ -57,6 +62,18 @@
 {#4. Display------------------------------------------------------------------#}
     <div class="container" id="con2">
         <div class="card display">
+
+
+    <form action="{% url 'process mng index' %}" method="post">
+
+        <table class="table-form">
+            {{ choice_form }}
+        </table>
+
+        {% csrf_token %}
+        <button class="form_button" name="button0">filter</button>
+    </form>
+
 
     <div style="display: none;" id="process_form" >
     <form action="{% url 'process mng index' %}" method="post">
@@ -87,24 +104,26 @@
     </div>
 
 
+        {% if process_info %}
     <div>
 
          <table class="table-data">
       <thead>
         <tr>
-          <th colspan="4">Process</th>
-          <th colspan="7">Process Step</th>
+          <th colspan="2">Process</th>
+          <th colspan="8">Process Step</th>
         </tr>
         <tr>
           <th>Nr</th>
           <th>Name</th>
-          <th>FC</th>
-          <th>TL</th>
+{#          <th>FC</th>#}
+{#          <th>TL</th>#}
           <th>Number</th>
           <th>Type</th>
           <th>Step Name</th>
           <th>Resp</th>
           <th>Documents</th>
+          <th>Show</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
@@ -118,10 +137,10 @@
                 <td>{{ i.parent_process.number }}</td>
                 <td>{{ i.parent_process.name }}</td>
 
-                <td><a class="table-link" href="{% url 'create flowchart' pk=i.parent_process.pk %}">
-                    <i class="fa-sharp fa-solid fa-florin-sign"></i>Flowchart</a></td>
-                <td><a class="table-link" href="{% url 'create turtle' pk=i.parent_process.pk %}">
-                    <i class="fa-sharp fa-solid fa-pizza-slice"></i>Turtle</a></td>
+{#                <td><a class="table-link" href="{% url 'create flowchart' pk=i.parent_process.pk %}">#}
+{#                    <i class="fa-sharp fa-solid fa-florin-sign"></i>Flowchart</a></td>#}
+{#                <td><a class="table-link" href="{% url 'create turtle' pk=i.parent_process.pk %}">#}
+{#                    <i class="fa-sharp fa-solid fa-pizza-slice"></i>Turtle</a></td>#}
 
                 <td>{{ i.number }}</td>
                 <td>{{ i.type }}</td>
@@ -136,10 +155,16 @@
                            <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}</a>
                     {% endfor %}
                 </td>
-                <td><a class="table-link" href="{% url 'edit process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                    Edit</a></td>
-                <td><a class="table-link" href="{% url 'delete process step' pk=i.pk slug=i.slug %}"><i class="fa-solid fa-trash"></i>
-                    Delete</a></td>
+
+                <td><a class="table-link"
+                       href="{% url 'show process step' pk=i.pk slug=i.slug %}">
+                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                <td><a class="table-link"
+                       href="{% url 'edit process step' pk=i.pk slug=i.slug %}">
+                    <i class="fa-solid fa-pen-to-square"></i>Edit</a></td>
+                <td><a class="table-link"
+                       href="{% url 'delete process step' pk=i.pk slug=i.slug %}">
+                    <i class="fa-solid fa-trash"></i>Delete</a></td>
 
                 </tr>
                 {% endfor %}
@@ -149,6 +174,8 @@
 
     </table>
     </div>
+        {% endif %}
+
 
         </div>
     </div>

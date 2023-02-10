@@ -9,7 +9,7 @@ from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.main_app import custom_collections
-from erp_demo.main_app.models import CaptainsLog
+from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process
 
@@ -52,20 +52,38 @@ class SupportFunctions:
 
         CaptainsLog.objects.all().delete()
 
+        Requirements.objects.all().delete()
+
         return 'Successfully deleted'
 
 # Sort process steps
 # -----------------------------------------------------------------------
 
     @staticmethod
-    def sort_process_steps(process_obj, process_step_obj):
+    def sort_process_steps(process_obj, process_step_obj, choice):
         p_list = []
-        for process in range(len(process_obj.objects.all())):
+
+        if choice is None:
+            p_list = []
+
+        elif choice == 'All':
+            for process in range(len(process_obj.objects.all())):
+                p_list.append([])
+
+                for process_step in process_step_obj.objects.all():
+                    if process_step.parent_process.id == process_obj.objects.all()[process].id:
+                        p_list[process].append(process_step)
+
+        elif choice != 'All':
+            chosen_process = process_obj.objects.filter(number=choice).get()
             p_list.append([])
 
+            print(chosen_process)
+
             for process_step in process_step_obj.objects.all():
-                if process_step.parent_process.id == process_obj.objects.all()[process].id:
-                    p_list[process].append(process_step)
+                if process_step.parent_process.number == chosen_process.number:
+                    p_list[0].append(process_step)
+
         return p_list
 
 # Get list of process steps for a process
@@ -80,6 +98,22 @@ class SupportFunctions:
                 process_step_list.append(process_step)
 
         return process_step_list
+
+# Dict with all employees and their owned processes in a list
+# -----------------------------------------------------------------------
+
+    @staticmethod
+    def get_owned_processes_list(employees, processes):
+        owned_processes_dict = {
+            employee: [] for employee in employees.objects.all()
+        }
+
+        for process in processes.objects.all():
+            if process.process_owner in owned_processes_dict.keys():
+                owned_processes_dict[process.process_owner].append(process)
+
+        print(owned_processes_dict)
+        return owned_processes_dict
 
 # Upload to db
 # -----------------------------------------------------------------------
@@ -223,6 +257,9 @@ class SupportFunctions:
                     type=info_to_update[obj]['type'],
                     number=info_to_update[obj]['number'],
                     name=info_to_update[obj]['name'],
+                    process_owner=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
+                    slug=slugify(f"{info_to_update[obj]['number']}-"
+                                 f"{info_to_update[obj]['type']}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'ProcessStep':
@@ -233,13 +270,24 @@ class SupportFunctions:
                     # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
 
                     # use the `PXX` from the excel
-                    parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'][-1])-1],
+                    # parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'][-1])-1],
+                    parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'])-1],
 
                     description=info_to_update[obj]['description'],
                     responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
                     # slug=slugify(f"{info_to_update[obj]['name']}"),
                     slug=slugify(f"{info_to_update[obj]['parent_process']}-"
                                  f"{info_to_update[obj]['number']}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Requirements':
+                Requirements.objects.bulk_create([Requirements(
+                    organization=info_to_update[obj]['organization'],
+                    external_document=info_to_update[obj]['external_document'],
+                    clause=info_to_update[obj]['clause'],
+                    description=info_to_update[obj]['description'],
+                    slug=slugify(f"{info_to_update[obj]['organization']}-"
+                                 f"{info_to_update[obj]['clause']}"),
                 ) for obj in info_to_update.keys()])
 
             info_to_update = {}

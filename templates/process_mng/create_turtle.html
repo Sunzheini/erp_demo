@@ -49,18 +49,28 @@
     <div class="container" id="con2">
         <div class="card display">
 
-            {{ process.name }}
-            <hr>
+            <div class="turtle-grid">
 
-            {% for process_step in process_steps %}
+                <div class="turtle-box"></div>
+                <div class="turtle-box">{{ process.name }}</div>
+                <div class="turtle-box"></div>
+                <div class="turtle-box"></div>
 
-                <div class="flowchart-step">
-                    {{ process_step.number }}.&nbsp{{ process_step.name }}
+                <div class="turtle-box overflow-box">
+                    {% for process_step in process_steps %}
+
+                        <a class="table-link" href="{% url 'edit process step' pk=process_step.pk slug=process_step.slug %}">
+                            {{ process_step.number }}.&nbsp{{ process_step.name }}</a>
+                    <br>
+                {% endfor %}
                 </div>
-                <br>
-                <br>
 
-            {% endfor %}
+                <div class="turtle-box"></div>
+                <div class="turtle-box"></div>
+                <div class="turtle-box"></div>
+                <div class="turtle-box"></div>
+
+            </div>
 
         </div>
     </div>

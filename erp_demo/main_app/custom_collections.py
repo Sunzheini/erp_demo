@@ -1,3 +1,39 @@
+document_types = (
+    ('All', 'All'),
+    ('Manual', 'Manual'),
+    ('Procedure', 'Procedure'),
+    ('Instruction', 'Instruction'),
+    ('Form', 'Form'),
+)
+
+process_numbers = (
+    ('All', 'All'),
+    ('P01', 'P01'),
+    ('P02', 'P02'),
+    ('P03', 'P03'),
+    ('P04', 'P04'),
+    ('P05', 'P05'),
+    ('P06', 'P06'),
+    ('P07', 'P07'),
+    ('P08', 'P08'),
+    ('P09', 'P09'),
+    ('P10', 'P10'),
+    ('P11', 'P11'),
+    ('P12', 'P12'),
+    ('P13', 'P13'),
+    ('P14', 'P14'),
+    ('P15', 'P15'),
+    ('P16', 'P16'),
+    ('P17', 'P17'),
+    ('P18', 'P18'),
+    ('P20', 'P20'),
+    ('P21', 'P21'),
+    ('P22', 'P22'),
+    ('P23', 'P23'),
+    ('P24', 'P24'),
+    ('P25', 'P25'),
+)
+
 list_of_keys = {
     'AccessLevels': [],
     'AccessRights': [],
@@ -7,6 +43,7 @@ list_of_keys = {
     'Document': [],
     'Process': [],
     'ProcessStep': [],
+    'Requirements': [],
 }
 
 coordinates = {
@@ -53,6 +90,12 @@ coordinates = {
         'end_column': None,
     },
     'ProcessStep': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Requirements': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

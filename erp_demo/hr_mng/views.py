@@ -71,7 +71,7 @@ class HrMngViews:
             form = EmployeeEditForm(request.POST, instance=current_employee)
             if form.is_valid():
                 output = form.save()
-                SupportFunctions.log_info(f"Edited an employee `{output.name}`")
+                SupportFunctions.log_info(f"Edited an employee `{output.get_full_name}`")
                 return redirect('employee list')
         context = {
             'form': form,

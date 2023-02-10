@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}
+    Show Process
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Show Process
+            </h1>
+        </header>
+    {% endblock %}
+
+{% block page_content %}
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+        <button
+                class="card"
+                onClick="javascript:history.go(-1);"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the document list
+            </p>
+        </button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card display">
+
+    <table class="table-data">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Number</th>
+            <th>Name</th>
+
+            <th>Owner</th>
+
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{ process.type }}</td>
+            <td>{{ process.number }}</td>
+            <td>{{ process.name }}</td>
+
+            <td><a class="table-link" href="{% url 'show employee' pk=process.process_owner.pk slug=process.process_owner.slug %}">
+                        <i class="fa-solid fa-magnifying-glass"></i>{{ process.process_owner.get_full_name }}</a></td>
+
+            <td><a class="table-link" href="{% url 'edit proces' pk=process.pk slug=process.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                    Edit</a></td>
+            <td><a class="table-link" href="{% url 'delete process' pk=process.pk slug=process.slug %}"><i class="fa-solid fa-trash"></i>
+                    Delete</a></td>
+        </tr>
+
+    </tbody>
+
+    </table>
+
+        </div>
+    </div>
+
+{% endblock %}

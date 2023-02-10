@@ -1,6 +1,7 @@
 import os
 from django import forms
 from erp_demo.dox_mng.models import Document
+from erp_demo.main_app.custom_collections import document_types
 
 
 class DocumentModelAndExcludeMixin:
@@ -48,13 +49,7 @@ class DocumentDeleteForm(forms.ModelForm, DocumentModelAndExcludeMixin):
 # ----------------------------------------------------------------------
 
 class DocumentTypeForm(forms.Form):
-    DOCUMENT_TYPES = (
-                  ('All', 'All'),
-                  ('Manual', 'Manual'),
-                  ('Procedure', 'Procedure'),
-                  ('Instruction', 'Instruction'),
-                  ('Form', 'Form'),
-    )
+    DOCUMENT_TYPES = document_types
 
     document_type_dropdown = forms.ChoiceField(
         label='Select document type',

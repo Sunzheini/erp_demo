@@ -32,6 +32,24 @@ class Process(models.Model):
         unique=True,
     )
 
+    process_owner = models.ForeignKey(
+        Employee,
+        to_field="identification",
+        db_column="responsible_ident",
+        on_delete=models.CASCADE,
+    )
+
+    slug = models.SlugField(
+        blank=True, null=True,
+        editable=False,
+    )
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.number}-{self.type}")
+        return super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.number} {self.name}, Type: {self.type}, PK: {self.pk}"
 
@@ -56,7 +74,7 @@ class ProcessStep(models.Model):
     )
 
     name = models.CharField(
-        max_length=99,
+        max_length=199,
         blank=False, null=False,
         unique=True,
     )
@@ -108,7 +126,9 @@ class ProcessStep(models.Model):
         return ProcessStepToDocuments.objects.filter(process_step_id=self.pk)
 
     def __str__(self):
-        return f"step {self.number} {self.name}, Type: {self.type}, Dox: {self.get_related_documents}"
+        # return f"step {self.number} {self.name}, Type: {self.type}, Dox: {self.get_related_documents}"
+        return f"{self.parent_process.number},  " \
+               f"step: {self.number} {self.name[0:70]}"
 
 
 class ProcessStepToDocuments(models.Model):

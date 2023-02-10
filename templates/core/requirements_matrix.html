@@ -1,0 +1,120 @@
+{% extends 'core/base.html' %}
+
+{% block page_title %}
+    Requirements
+{% endblock %}
+
+{#1. Nav----------------------------------------------------------------------#}
+
+{#2. Header-------------------------------------------------------------------#}
+    {% block page_name %}
+        <header>
+            <h1>
+                Requirements Matrix
+            </h1>
+        </header>
+    {% endblock %}
+
+{% block page_content %}
+{#3. Buttons------------------------------------------------------------------#}
+    <div class="container" id="con1">
+
+        <button
+                class="card"
+                onClick="javascript:history.go(-1);"
+        >
+            <h2>< Back</h2>
+            <p>
+                Go back to the previous menu
+            </p>
+        </button>
+
+        <button class="card"></button>
+
+        <button class="card"></button>
+
+        <button class="card" onclick="fShowHideRequirementForm()">
+            <h2>New Requirement</h2>
+            <p>
+                Show / Hide Form
+            </p>
+        </button>
+    </div>
+
+{#4. Display------------------------------------------------------------------#}
+    <div class="container" id="con2">
+        <div class="card display">
+
+    <div style="display: none;" id="requirement_form" >
+    <form action="{% url 'requirements matrix' %}" method="post">
+        <strong>Requirement Creation Form</strong>
+
+        <table class="table-form">
+             {{ requirement_form }}
+        </table>
+
+        {% csrf_token %}
+        <button class="form_button" name="button1">add this requirement</button>
+    </form>
+    <br><hr><br>
+    </div>
+
+
+    {% if requirements %}
+    <div>
+
+         <table class="table-data">
+      <thead>
+        <tr>
+          <th>Organization</th>
+          <th>External Document</th>
+          <th>Clause</th>
+          <th>Description</th>
+          <th>Covered by</th>
+
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for requirement in requirements %}
+            <tr>
+            <td>{{ requirement.organization }}</td>
+            <td>{{ requirement.external_document }}</td>
+            <td>{{ requirement.clause }}</td>
+            <td>{{ requirement.description }}</td>
+
+            <td>
+                {% for process_step in requirement.get_related_process_steps %}
+                    <a class="table-link"
+                       href="{% url 'show process step' pk=process_step.process_step_id.pk slug=process_step.process_step_id.slug %}">
+                        <i class="fa-solid fa-magnifying-glass">
+
+                        </i>{{ process_step.process_step_id.name }}</a><br>
+                {% endfor %}
+            </td>
+
+            <td><a class="table-link"
+                   href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">
+                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+            <td><a class="table-link"
+                   href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}">
+                <i class="fa-solid fa-pen-to-square"></i>Edit</a></td>
+            <td><a class="table-link"
+                   href="{% url 'delete requirement' pk=requirement.pk slug=requirement.slug %}">
+                <i class="fa-solid fa-trash"></i>Delete</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+    </div>
+        {% endif %}
+
+
+        </div>
+    </div>
+
+{% endblock %}
