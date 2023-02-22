@@ -7,155 +7,116 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
 
-    <title>{% block page_title %}My ERP{% endblock %}</title>
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}My ERP{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+    </title>
 
 {#Styles-------------------------------------------------------------------#}
-{#    <link#}
-{#      rel="stylesheet"#}
-{#      href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"#}
-{#    />#}
-{#    <link rel="stylesheet" href="{% static 'css/reset.css' %}">#}
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-      rel="stylesheet"/>
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 {#JS Functions-------------------------------------------------------------#}
-    <script>
-        function fShowHideProcessForm() {
-            let x = document.getElementById("process_form");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-
-        function fShowHideProcessStepForm() {
-            let x = document.getElementById("process_step_form");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-
-        function fShowHideRequirementForm() {
-            let x = document.getElementById("requirement_form");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
+    <script type="text/javascript" src="{% static 'css/custom_functions.js' %}"></script>
 </head>
 
-{# ToDo: Nav and Cards should be ul #}
-{# ToDo: Forms stylize #}
-
 <body>
+    <header class="header">
 
-{#---#}
-<header>
-{#1. Nav----------------------------------------------------------------------#}
+{#2. Nav-------------------------------------------------------------------#}
     {% block nav %}
-{#        {% include 'core/nav.html' %}#}
-
-        <nav>
-        <a href="{% url 'index' %}"><i class="fas fa-home"></i>Main Menu</a>
-        <a href="{% url 'organigramm' %}"><i class="fa-solid fa-ranking-star"></i>Org. chart</a>
-        <a href="{% url 'manage db' %}"><i class="fa-solid fa-database"></i>Manage DB</a>
-{#        <a href="{% url 'my tasks' %}"><i class="fa-solid fa-list-check"></i>Tasks</a>#}
-        <a href="{% url 'logs' %}"><i class="fa-sharp fa-solid fa-chart-simple"></i>Logs</a>
-        <a href="{% url 'my tasks' %}"><i class="fa-solid fa-thumbtack"></i>My Tasks</a>
+        <nav class="navigation">
+            <ul class="nav-list" role="list">
+                <li class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <a href="{% url 'index' %}">Main Menu</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <a href="{% url 'organigramm' %}">Org. chart</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-database"></i>
+                    <a href="{% url 'manage db' %}">Manage DB</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-sharp fa-solid fa-chart-simple"></i>
+                    <a href="{% url 'logs' %}">Logs</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-thumbtack"></i>
+                    <a href="{% url 'my tasks' %}">My Tasks</a>
+                </li>
+            </ul>
         </nav>
-
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-            <h1>
-                Base Page
-            </h1>
+        <h1 class="page-title">Base Page to be used as a template</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
 </header>
-{#---#}
-
-{#---#}
 <main>
 
-{% block page_content %}
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
 
-<section>
-{#3. Buttons------------------------------------------------------------------#}
-    <article class="container" id="con1">
-        <button
-                class="card"
-                onclick="location.href='{% url 'process mng index' %}';"
-        >
-            <h2>Process Management</h2>
-            <p>
-                Add, change or remove processes and process steps
-            </p>
-        </button>
+            <button class="card-btn" onclick="location.href='{% url 'process mng index' %}';">
+                <span class="card-btn-title">Process Management</span>
+                <span class="card-btn-desc">Add, change or remove processes and process steps</span>
+            </button>
 
-        <button
-                class="card"
-                onclick="location.href='{% url 'dox mng index' %}';"
-        >
-            <h2>Documents and Records</h2>
-            <p>
-                Add, change or remove documented information
-            </p>
-        </button>
+            <button class="card-btn" onclick="location.href='{% url 'dox mng index' %}';">
+                <span class="card-btn-title">Documents and Records</span>
+                <span class="card-btn-desc">Add, change or remove documented information</span>
+            </button>
 
-        <button
-                class="card"
-                onclick="location.href='{% url 'hr mng index' %}';"
-        >
-            <h2>Human Resources</h2>
-            <p>
-                Manage personnel, training, health and safety, etc.
-            </p>
-        </button>
+            <button class="card-btn" onclick="location.href='{% url 'hr mng index' %}';">
+                <span class="card-btn-title">Human Resources</span>
+                <span class="card-btn-desc">Manage personnel, training, health and safety, etc.</span>
+            </button>
 
-        <button class="card"></button>
-    </article>
-</section>
+            <button class="card-btn"></button>
 
-<section>
-{#4. Display------------------------------------------------------------------#}
-    <article class="container" id="con2">
-        <div class="card">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Animi architecto aspernatur consequatur dolorem eos, eveniet
-                explicabo iste maiores, neque provident ratione repudiandae
-                saepe sunt tempore vel voluptate voluptatibus! Ipsam, laboriosam!
-            </p>
         </div>
-    </article>
-
+    </section>
 {% endblock %}
-</section>
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Some Title</h2>
+                <p class="card-display-content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Animi architecto aspernatur consequatur dolorem eos, eveniet
+                    explicabo iste maiores, neque provident ratione repudiandae
+                    saepe sunt tempore vel voluptate voluptatibus! Ipsam, laboriosam!
+                </p>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
 
 </main>
-{#---#}
 
-{#5. Footer-------------------------------------------------------------------#}
-<footer>
-    <h4>
-        &copy; 2023 DZ
-    </h4>
+<footer class="footer">
+    <h3 class="footer-title">&copy; 2023 DZ</h3>
 </footer>
-
 </body>
 </html>

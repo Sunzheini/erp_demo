@@ -1,128 +1,177 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-
-html {
-    /*font-family: "Open Sans", sans-serif;*/
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px; /* increase font size */
-  }
-
-/* Links to use in the tables */
-/*-----------------------------------------------------------------------*/
-
-a.table-link {
-  color: black;
-  transition: color 100ms linear;
+:root {
+  --clr-main-bg: #AAC6D0;
+  --clr-nav-bg: #190f05;
+  --clr-nav-a: #B5D1DB;
+  --clr-nav-a-hover: #555;
+  --clr-title-text: #333;
+  --clr-p-text: #666;
+  --clr-card-bg: #eef4f6;
+  --clr-card-bg-hover: #ccdde3;
+  --clr-display-text: #333333;
+  --clr-table-border: #ccc;
+  --clr-table-data-odd-bg: lightgrey;
+  --clr-forms: #f2f2f2;
 }
 
-a.table-link:hover {
-  color: blue;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--clr-main-bg);
+  }
+
+/* 2. Nav -----------------------------------------------------------------*/
+.header .navigation {
+  background-color: var(--clr-nav-bg);
+  width: 95vw;
+  max-width: 1200px;
+
+  height: 2rem;
+  margin: 0.5rem auto 1rem auto;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-/* Nav */
-/*-----------------------------------------------------------------------*/
+.header .navigation .nav-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
 
-  nav {
-    background-color: #333;
-    width: 60%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    justify-content: space-evenly;
-    padding: 0 20px;
-    border-radius: 10px; /* give a rounder look*/
-  }
+.header .navigation .nav-list .nav-item {
+  height: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+}
 
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0 20px;
-    font-weight: bold;
-    line-height: 50px;
-  }
+.header .navigation .nav-list .nav-item:hover {
+  background-color: var(--clr-nav-a-hover);
+}
 
-  nav a:hover {
-    background-color: #555;
-  }
+.header .navigation .nav-list .nav-item a,
+.header .navigation .nav-list .nav-item i {
+  color: var(--clr-nav-a);
+  text-decoration: none;
+}
+/*-------------------------------------------------------------------------*/
 
-/* General */
-/*-----------------------------------------------------------------------*/
+/* 3. Page Name -----------------------------------------------------------*/
+.header .page-title {
+  font-size: 1.9rem;
+  text-align: center;
+  color: var(--clr-title-text);
+  margin-bottom: 2rem;
+}
+/*-------------------------------------------------------------------------*/
 
-  /* page h1 */
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
+/* 4. Section1 ------------------------------------------------------------*/
+.card-buttons-section {
+  /*width: 80vw;*/
+  width: 95vw;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+}
 
-  /* affects title of the cards */
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
+.card-buttons-section .all-card-buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
 
-  /* affects footer */
-  h4 {
-    font-size: 12px;
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
+.card-buttons-section .all-card-buttons-container .card-btn {
+  background-color: var(--clr-card-bg);
+  min-height: 6rem;
+  width: 21%;
+  border-width: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  transition: background-color 250ms linear, color 300ms linear;
+}
 
-  /* affects small text in the cards */
-  p {
-    color: #666;
-    line-height: 1.5;
-    margin-top: 20px;
-  }
+.card-buttons-section .all-card-buttons-container .card-btn:hover,
+.card-buttons-section .all-card-buttons-container .card-btn:active{
+  background-color: var(--clr-card-bg-hover);
+}
 
-/* Cards */
-/*-----------------------------------------------------------------------*/
+.card-buttons-section .all-card-buttons-container .card-btn .card-btn-title {
+  display: block;
+  height: 50%;
+  padding: 0.8rem 0.2rem 0 0.2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--clr-title-text);
+}
 
-  .container {
-    max-width: 1200px;
-    margin: 40px auto; /* increase top and bottom margin to center content */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.card-buttons-section .all-card-buttons-container .card-btn .card-btn-desc {
+  display: block;
+  height: 50%;
+  padding: 0.2rem 1rem 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--clr-p-text);
+}
+/*-------------------------------------------------------------------------*/
 
-  /* buttons class card and a div class card */
-  .card {
-    flex: 1;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-    margin: 20px;
-    padding: 30px;
-    border-radius: 10px; /* give a rounder look*/
-    transition: background-color 300ms linear, color 300ms linear;
-  }
+/* 5. Section2 ------------------------------------------------------------*/
+.display-content-section {
+  /*width: 80vw;*/
+  width: 95vw;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+}
 
-  button.card:active {
-    background-color: #f2f2f2;
-  }
+.display-content-section .all-display-content-container {
+  width: 100%;
+  height: 100%;
+}
 
-  button.card:hover {
-    cursor: pointer;
-    background-color: #f2f2f2;
-  }
+.display-content-section .all-display-content-container .card-display {
+  background-color: var(--clr-card-bg);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
 
-  button.card {
-    border-width: 0;
-    font-family: 'Roboto', sans-serif;
-  }
+.display-content-section .all-display-content-container .card-display .card-display-title {
+  padding: 0.8rem 0.2rem 0.8rem 0.2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--clr-title-text);
+}
 
-  /* Affects text in the display */
-  .display{
-    color: #333333;
-    font-size: 16px;
-  }
-  .display p{
-    color: #333333;
-    font-size: 16px;
-  }
+.display-content-section .all-display-content-container .card-display .card-display-content {
+  padding: 0 1rem 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: var(--clr-display-text);
+}
+/*-------------------------------------------------------------------------*/
+
+
+
+
+
+
+/* Footer -----------------------------------------------------------------*/
+.footer .footer-title {
+  font-size: 0.7rem;
+  font-weight: normal;
+  text-align: center;
+}
+/*-------------------------------------------------------------------------*/
+
 
 /* Tables for data */
 /*-----------------------------------------------------------------------*/
@@ -137,7 +186,7 @@ a.table-link:hover {
   height: 32px;
   text-align: left;
   border: solid 1px #ccc;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .table-data td {
@@ -166,7 +215,7 @@ a.table-link:hover {
   height: 32px;
   text-align: left;
   border: solid 1px #ccc;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .table-form td {
@@ -200,30 +249,94 @@ a.table-link:hover {
     background-color: gray;
   }
 
+/* Links to use in the tables */
+/*-----------------------------------------------------------------------*/
+
+a.table-link {
+  color: black;
+  transition: color 100ms linear;
+}
+
+a.table-link:hover {
+  color: blue;
+}
+
 /* Icons */
 /*-----------------------------------------------------------------------*/
 
 i {
-    width: 1.14em;
-    padding-right: 0.28em;
+  width: 1.14em;
+  padding-right: 0.28em;
+  margin-right: 0.28em;
 }
 
-/* Icons */
+/* Flowchart */
 /*-----------------------------------------------------------------------*/
 
-.flowchart-step {
-  background-color: lightblue;
-  display: inline-block;
-  width: 250px;
-  height: 40px;
-  border: 1px solid black;
-  margin-right: 20px;
+.flowchart-grid {
+  display: grid;
+  grid-template-columns: 420px 420px;
+  grid-template-rows: repeat(15, 100px);
+  gap: 20px;
 }
 
-.flowchart-desc {
-  background-color: lightcyan;
+.flowchart-box {
+  border: solid 1px #ccc;
   display: inline-block;
-  width: 250px;
-  height: 40px;
-  border: 1px solid black;
+}
+
+.flowchart-box.overflow-box {
+  font-size: 12px;
+  overflow: auto;
+}
+
+
+/* Process Map */
+/*-----------------------------------------------------------------------*/
+
+.process-map-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.process-box {
+  border: solid 1px #ccc;
+}
+
+/* Turtle */
+/*-----------------------------------------------------------------------*/
+
+.turtle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.turtle-box {
+  border: solid 1px #ccc;
+  height: 170px;
+}
+
+.turtle-box.overflow-box {
+  font-size: 12px;
+  overflow: auto;
+}
+
+/* Organigramm */
+/*-----------------------------------------------------------------------*/
+
+.organigramm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.organigramm-box {
+  border: solid 1px #ccc;
+  height: 170px;
+  overflow: auto;
 }

@@ -1,57 +1,16 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}
-    Welcome
-{% endblock %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Welcome{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#1. Nav----------------------------------------------------------------------#}
-
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <header>
-            <h1>
-                Welcome to My ERP
-            </h1>
-        </header>
+        <h1 class="page-title">Welcome to My ERP</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{% block page_content %}
-{#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
-        <button
-                class="card"
-                onclick="location.href='{% url 'process mng index' %}';"
-        >
-            <h2>Process Management</h2>
-            <p>
-                Add, change or remove processes and process steps
-            </p>
-        </button>
-
-        <button
-                class="card"
-                onclick="location.href='{% url 'dox mng index' %}';"
-        >
-            <h2>Documents & Records</h2>
-            <p>
-                Add, change or remove documented information
-            </p>
-        </button>
-
-        <button
-                class="card"
-                onclick="location.href='{% url 'hr mng index' %}';"
-        >
-            <h2>Human Resources</h2>
-            <p>
-                Manage personnel, training, health and safety, etc.
-            </p>
-        </button>
-
-        <button class="card"></button>
-    </div>
-
-
-{#4. Display------------------------------------------------------------------#}
-
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
 {% endblock %}
+{#-------------------------------------------------------------------------#}
