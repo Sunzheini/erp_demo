@@ -1,120 +1,114 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}
-    Requirements
-{% endblock %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Requirements{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#1. Nav----------------------------------------------------------------------#}
-
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <header>
-            <h1>
-                Requirements Matrix
-            </h1>
-        </header>
+        <h1 class="page-title">Requirements Matrix</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{% block page_content %}
-{#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
 
-        <button
-                class="card"
-                onClick="javascript:history.go(-1);"
-        >
-            <h2>< Back</h2>
-            <p>
-                Go back to the previous menu
-            </p>
-        </button>
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title">Back</span>
+                <span class="card-btn-desc">Go back to the previous menu</span>
+            </button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card" onclick="fShowHideRequirementForm()">
-            <h2>New Requirement</h2>
-            <p>
-                Show / Hide Form
-            </p>
-        </button>
-    </div>
-
-{#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card display">
-
-    <div style="display: none;" id="requirement_form" >
-    <form action="{% url 'requirements matrix' %}" method="post">
-        <strong>Requirement Creation Form</strong>
-
-        <table class="table-form">
-             {{ requirement_form }}
-        </table>
-
-        {% csrf_token %}
-        <button class="form_button" name="button1">add this requirement</button>
-    </form>
-    <br><hr><br>
-    </div>
-
-
-    {% if requirements %}
-    <div>
-
-         <table class="table-data">
-      <thead>
-        <tr>
-          <th>Organization</th>
-          <th>External Document</th>
-          <th>Clause</th>
-          <th>Description</th>
-          <th>Covered by</th>
-
-          <th>Show</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {% for requirement in requirements %}
-            <tr>
-            <td>{{ requirement.organization }}</td>
-            <td>{{ requirement.external_document }}</td>
-            <td>{{ requirement.clause }}</td>
-            <td>{{ requirement.description }}</td>
-
-            <td>
-                {% for process_step in requirement.get_related_process_steps %}
-                    <a class="table-link"
-                       href="{% url 'show process step' pk=process_step.process_step_id.pk slug=process_step.process_step_id.slug %}">
-                        <i class="fa-solid fa-magnifying-glass">
-
-                        </i>{{ process_step.process_step_id.name }}</a><br>
-                {% endfor %}
-            </td>
-
-            <td><a class="table-link"
-                   href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">
-                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
-            <td><a class="table-link"
-                   href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}">
-                <i class="fa-solid fa-pen-to-square"></i>Edit</a></td>
-            <td><a class="table-link"
-                   href="{% url 'delete requirement' pk=requirement.pk slug=requirement.slug %}">
-                <i class="fa-solid fa-trash"></i>Delete</a></td>
-            </tr>
-        {% endfor %}
-      </tbody>
-
-    </table>
-    </div>
-        {% endif %}
-
+            <button class="card-btn" onclick="fShowHideRequirementForm()">
+                <span class="card-btn-title">New Requirement</span>
+                <span class="card-btn-desc">Show / Hide Form</span>
+            </button>
 
         </div>
-    </div>
-
+    </section>
 {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Requirements matrix</h2>
+
+                    <div style="display: none;" id="requirement_form" >
+                        <form action="{% url 'requirements matrix' %}" method="post">
+                            <p class="card-display-content-bold">Requirement Creation Form:</p>
+                            <table class="table-form">
+                                 {{ requirement_form }}
+                            </table>
+                            {% csrf_token %}
+                            <button class="form-button" name="button1">add this requirement</button>
+                        </form>
+                        <br><hr>
+                    </div>
+
+                    {% if requirements %}
+                    <div class="table-data-container">
+
+         <table class="table-data">
+          <thead>
+            <tr>
+              <th>Organization</th>
+              <th>External Document</th>
+              <th>Clause</th>
+              <th>Description</th>
+              <th>Covered by</th>
+
+              <th>Show</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for requirement in requirements %}
+                <tr>
+                <td>{{ requirement.organization }}</td>
+                <td>{{ requirement.external_document }}</td>
+                <td>{{ requirement.clause }}</td>
+                <td>{{ requirement.description }}</td>
+
+                <td>
+                    {% for process_step in requirement.get_related_process_steps %}
+                        <a class="table-link"
+                           href="{% url 'show process step' pk=process_step.process_step_id.pk slug=process_step.process_step_id.slug %}">
+                            <i class="fa-solid fa-magnifying-glass">
+
+                            </i>{{ process_step.process_step_id.name }}</a><br>
+                    {% endfor %}
+                </td>
+
+                <td><a class="table-link"
+                       href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">
+                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                <td><a class="table-link"
+                       href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}">
+                    <i class="fa-solid fa-pen-to-square"></i>Edit</a></td>
+                <td><a class="table-link"
+                       href="{% url 'delete requirement' pk=requirement.pk slug=requirement.slug %}">
+                    <i class="fa-solid fa-trash"></i>Delete</a></td>
+                </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+        </div>
+        {% endif %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

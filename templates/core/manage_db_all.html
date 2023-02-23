@@ -1,102 +1,88 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}
-    Manage DB All
-{% endblock %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Manage DB All{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#1. Nav----------------------------------------------------------------------#}
-
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <header>
-            <h1>
-                Manage Database All
-            </h1>
-        </header>
+        <h1 class="page-title">Manage Database All</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{% block page_content %}
-{#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
-{#        <button#}
-{#                class="card"#}
-{#                onclick="location.href='{% url 'manage db' %}';"#}
-{#        >#}
-{#            <h2>< Back</h2>#}
-{#            <p>#}
-{#                Go back to the main menu#}
-{#            </p>#}
-{#        </button>#}
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
 
-        <button
-                class="card"
-                onClick="javascript:history.go(-1);"
-        >
-            <h2>< Back</h2>
-            <p>
-                Go back to the previous menu
-            </p>
-        </button>
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title">Back</span>
+                <span class="card-btn-desc">Go back to the previous menu</span>
+            </button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
-
-    </div>
-
-{#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card display">
-
-            <p>Delete whole database</p>
-            <form action="{% url 'manage db all' %}"
-                  method="post">
-
-                 <table class="table-form">
-                    {{ form }}
-                 </table>
-
-                 {% csrf_token %}
-                 <br><br>
-
-                 <button class="form_button" name="button_delete_db">
-                     Delete
-                 </button>
-            </form>
-
-            <p>
-                {% if message %}
-                    {{ message }}
-                {% endif %}
-            </p>
-
-            <hr>
-
-            <p>
-                Select an excel file to recreate database after deletion: <br>
-                (Requirements: acc. to DemoX.xlsx)
-            </p>
-            <form action="{% url 'manage db all' %}"
-                  method="post"
-                  enctype="multipart/form-data">
-                 {{ form2.as_div }}
-                 {% csrf_token %}
-                 <br><br>
-
-                 <button class="form_button" name="button_manage_db_all">
-                     Add to database
-                 </button>
-            </form>
-
-            <p>
-                {% if message2 %}
-                    {{ message2 }}
-                {% endif %}
-            </p>
+            <button class="card-btn"></button>
 
         </div>
-    </div>
-
+    </section>
 {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+
+                <h2 class="card-display-title">Delete / recreate whole database</h2>
+
+                <p class="card-display-content">Delete whole database</p>
+
+                <form action="{% url 'manage db all' %}" method="post">
+                    <table class="table-form">
+                        {{ form }}
+                    </table>
+                    {% csrf_token %}
+
+                    <button class="form-button" name="button_delete_db">
+                        Delete
+                    </button>
+                </form>
+
+                <p class="card-display-return-message">
+                    {% if message %}
+                        {{ message }}
+                    {% endif %}
+                </p>
+                <hr>
+
+                <p class="card-display-content">
+                    Select an excel file to recreate database after deletion (requirements acc. to `DemoX.xlsx`):
+                </p>
+
+                <form action="{% url 'manage db all' %}" method="post" enctype="multipart/form-data">
+                    <table class="table-form">
+                        {{ form2.as_div }}
+                    </table>
+                    {% csrf_token %}
+
+                    <button class="form-button" name="button_manage_db_all">
+                        Add to database
+                    </button>
+                </form>
+
+                <p class="card-display-return-message">
+                    {% if message2 %}
+                        {{ message2 }}
+                    {% endif %}
+                </p>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

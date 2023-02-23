@@ -1,55 +1,55 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}
-    Edit Requirement
-{% endblock %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Edit Requirement{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#1. Nav----------------------------------------------------------------------#}
-
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <header>
-            <h1>
-                Edit Requirement
-            </h1>
-        </header>
+        <h1 class="page-title">Edit Requirement</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{% block page_content %}
-{#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
-        <button
-                class="card"
-                onClick="javascript:history.go(-1);"
-        >
-            <h2>< Back</h2>
-            <p>
-                Go back to the previous menu
-            </p>
-        </button>
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
 
-        <button class="card"></button>
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title">Back</span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
-    </div>
+            <button class="card-btn"></button>
 
-{#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card display">
-
-            <form action="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}" method="post">
-
-                <table class="table-form">
-                    {{ form }}
-                </table>
-
-                {% csrf_token %}
-                <button class="form_button">submit</button>
-            </form>
+            <button class="card-btn"></button>
 
         </div>
-    </div>
-
+    </section>
 {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Edit Requirement</h2>
+
+                <form action="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}" method="post">
+                    <table class="table-form">
+                        {{ form }}
+                    </table>
+
+                    {% csrf_token %}
+                    <button class="form-button">submit</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

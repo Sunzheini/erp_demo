@@ -1,123 +1,109 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}
-    Document List
-{% endblock %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Document List{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#1. Nav----------------------------------------------------------------------#}
-
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <header>
-            <h1>
-                Document List
-            </h1>
-        </header>
+        <h1 class="page-title">Document List</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{% block page_content %}
-{#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
-{#        <button#}
-{#                class="card"#}
-{#                onclick="location.href='{% url 'dox mng index' %}';"#}
-{#        >#}
-{#            <h2>< Back</h2>#}
-{#            <p>#}
-{#                Go back to the document management menu#}
-{#            </p>#}
-{#        </button>#}
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
 
-        <button
-                class="card"
-                onClick="javascript:history.go(-1);"
-        >
-            <h2>< Back</h2>
-            <p>
-                Go back to the previous menu
-            </p>
-        </button>
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title">Back</span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
-    </div>
-
-{#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card display">
-
-    <form action="{% url 'document list' %}" method="post">
-
-        <table class="table-form">
-            {{ choice_form }}
-        </table>
-
-        {% csrf_token %}
-        <button class="form_button">filter</button>
-    </form>
-
-        {% if all_objects %}
-
-    <br><br>
-
-    <table class="table-data">
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>Number</th>
-            <th>Name</th>
-            <th>Revision</th>
-            <th>Status</th>
-            <th>Owner</th>
-            <th>Show</th>
-            <th>Link</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-
-    <tbody>
-            {% for document in all_objects %}
-        <tr>
-            <td>{{ document.type }}</td>
-            <td>{{ document.number }}</td>
-            <td>{{ document.name }}</td>
-            <td>{{ document.revision }}</td>
-            <td>{{ document.status }}</td>
-            <td>{{ document.owner }}</td>
-
-            <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
-                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
-
-{#no cloudinary#}
-{#            <td><a href="/media/{{ document.attachment }}">#}
-{#                    "/media/{{ document.attachment }}"</a></td>#}
-
-{#cloudinary#}
-            {% if document.attachment.url %}
-            <td><a href="{{ document.attachment.url }}">
-                        Link</a></td>
-            {% else %}
-                <td>N/A</td>
-            {% endif %}
-
-            <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                    Edit</a></td>
-            <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
-                    Delete</a></td>
-        </tr>
-    {% endfor %}
-
-    </tbody>
-
-    </table>
-
-        {% endif %}
+            <button class="card-btn"></button>
 
         </div>
-    </div>
-
+    </section>
 {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Document list</h2>
+
+                <form action="{% url 'document list' %}" method="post">
+                    <table class="table-form">
+                        {{ choice_form }}
+                    </table>
+                    {% csrf_token %}
+                    <button class="form-button">filter</button>
+                </form>
+
+                {% if all_objects %}
+                    <br><hr>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Revision</th>
+                            <th>Status</th>
+                            <th>Owner</th>
+                            <th>Show</th>
+                            <th>Link</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            {% for document in all_objects %}
+                        <tr>
+                            <td>{{ document.type }}</td>
+                            <td>{{ document.number }}</td>
+                            <td>{{ document.name }}</td>
+                            <td>{{ document.revision }}</td>
+                            <td>{{ document.status }}</td>
+                            <td>{{ document.owner }}</td>
+
+                            <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
+                                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+
+                {#no cloudinary#}
+                {#            <td><a href="/media/{{ document.attachment }}">#}
+                {#                    "/media/{{ document.attachment }}"</a></td>#}
+
+                {#cloudinary#}
+                            {% if document.attachment.url %}
+                            <td><a href="{{ document.attachment.url }}">
+                                        Link</a></td>
+                            {% else %}
+                                <td>N/A</td>
+                            {% endif %}
+
+                            <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                    Edit</a></td>
+                            <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
+                                    Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

@@ -1,83 +1,84 @@
 {% extends 'core/base.html' %}
 
-{% block page_title %}
-    Show Employee
-{% endblock %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Show Employee{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{#1. Nav----------------------------------------------------------------------#}
-
-{#2. Header-------------------------------------------------------------------#}
+{#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <header>
-            <h1>
-                Show Employee
-            </h1>
-        </header>
+        <h1 class="page-title">Show Employee</h1>
     {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{% block page_content %}
-{#3. Buttons------------------------------------------------------------------#}
-    <div class="container" id="con1">
-        <button
-                class="card"
-                onClick="javascript:history.go(-1);"
-        >
-            <h2>< Back</h2>
-            <p>
-                Go back to the previous menu
-            </p>
-        </button>
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
 
-        <button class="card"></button>
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title">Back</span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
 
-        <button class="card"></button>
+            <button class="card-btn"></button>
 
-        <button class="card"></button>
-    </div>
+            <button class="card-btn"></button>
 
-{#4. Display------------------------------------------------------------------#}
-    <div class="container" id="con2">
-        <div class="card display">
-
-    <table class="table-data">
-        <thead>
-            <tr>
-                <th>Full Name</th>
-                <th>Position</th>
-                <th>Contract Nr</th>
-                <th>Starting Date</th>
-                <th>Trainings</th>
-
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-
-        <tbody>
-                <tr>
-                    <td>{{ employee.get_full_name }}</td>
-                    <td>{{ employee.position.name }}</td>
-                    <td>{{ employee.contract_number }}</td>
-                    <td>{{ employee.starting_date }}</td>
-{#                    <td>{{ employee.get_related_trainings }}</td>#}
-
-                    <td>
-                       {% for training in employee.get_related_trainings %}
-                           <a class="table-link" href="{% url 'show training' pk=training.training_id.pk slug=training.training_id.slug %}">
-                               <i class="fa-solid fa-magnifying-glass"></i>{{ training.training_id.name }}</a>
-                        {% endfor %}
-                    </td>
-
-                    <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                        Edit</a></td>
-                    <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>
-                        Delete</a></td>
-                </tr>
-        </tbody>
-
-    </table>
+            <button class="card-btn"></button>
 
         </div>
-    </div>
-
+    </section>
 {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Show employee</h2>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Position</th>
+                            <th>Contract Nr</th>
+                            <th>Starting Date</th>
+                            <th>Trainings</th>
+
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            <tr>
+                                <td>{{ employee.get_full_name }}</td>
+                                <td>{{ employee.position.name }}</td>
+                                <td>{{ employee.contract_number }}</td>
+                                <td>{{ employee.starting_date }}</td>
+            {#                    <td>{{ employee.get_related_trainings }}</td>#}
+
+                                <td>
+                                   {% for training in employee.get_related_trainings %}
+                                       <a class="table-link" href="{% url 'show training' pk=training.training_id.pk slug=training.training_id.slug %}">
+                                           <i class="fa-solid fa-magnifying-glass"></i>{{ training.training_id.name }}</a>
+                                    {% endfor %}
+                                </td>
+
+                                <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                    Edit</a></td>
+                                <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>
+                                    Delete</a></td>
+                            </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

@@ -10,15 +10,23 @@
   --clr-card-bg: #eef4f6;
   --clr-card-bg-hover: #ccdde3;
   --clr-display-text: #333333;
+  --clr-display-message: blue;
   --clr-table-border: #ccc;
   --clr-table-data-odd-bg: lightgrey;
   --clr-forms: #f2f2f2;
+  --clr-table-hd: grey;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--clr-main-bg);
   }
+
+i {
+  width: 1.14em;
+  padding-right: 0.28em;
+  margin-right: 0.28em;
+}
 
 /* 2. Nav -----------------------------------------------------------------*/
 .header .navigation {
@@ -92,12 +100,18 @@ body {
 
 .card-buttons-section .all-card-buttons-container .card-btn {
   background-color: var(--clr-card-bg);
-  min-height: 6rem;
+  min-height: 7rem;
   width: 21%;
   border-width: 0;
   border-radius: 0.5rem;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
   transition: background-color 250ms linear, color 300ms linear;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
 }
 
 .card-buttons-section .all-card-buttons-container .card-btn:hover,
@@ -108,7 +122,6 @@ body {
 .card-buttons-section .all-card-buttons-container .card-btn .card-btn-title {
   display: block;
   height: 50%;
-  padding: 0.8rem 0.2rem 0 0.2rem;
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--clr-title-text);
@@ -117,7 +130,6 @@ body {
 .card-buttons-section .all-card-buttons-container .card-btn .card-btn-desc {
   display: block;
   height: 50%;
-  padding: 0.2rem 1rem 0.5rem 1rem;
   font-size: 0.8rem;
   color: var(--clr-p-text);
 }
@@ -142,27 +154,144 @@ body {
   height: 100%;
   border-radius: 0.5rem;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
 }
 
 .display-content-section .all-display-content-container .card-display .card-display-title {
-  padding: 0.8rem 0.2rem 0.8rem 0.2rem;
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--clr-title-text);
+  margin-bottom: 0.5rem;
 }
 
 .display-content-section .all-display-content-container .card-display .card-display-content {
-  padding: 0 1rem 0.5rem 1rem;
-  font-size: 0.9rem;
+  font-size: 15px;
   color: var(--clr-display-text);
+  margin-bottom: 0.5rem;
+}
+
+.display-content-section .all-display-content-container .card-display .card-display-content-bold {
+  font-size: 15px;
+  color: var(--clr-display-text);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.display-content-section .all-display-content-container .card-display .card-display-return-message {
+  font-size: 15px;
+  color: var(--clr-display-message);
+  margin-bottom: 0.5rem;
 }
 /*-------------------------------------------------------------------------*/
 
+/* Table links ------------------------------------------------------------*/
+a.table-link {
+  color: var(--clr-display-text);
+  transition: color 100ms linear;
+  font-size: 15px;
+}
 
+a.table-link:hover {
+  color: var(--clr-display-message);
+}
+/*-------------------------------------------------------------------------*/
 
+/* Tables for forms -------------------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .table-form  {
+  border-collapse: collapse;
+  margin-bottom: 0.5rem;
+}
 
+.display-content-section .all-display-content-container .card-display .table-form th {
+  background-color: var(--clr-forms);
+  width: 144px;
+  height: 32px;
+  text-align: left;
+  border: solid 1px var(--clr-table-border);
+  font-size: 14px;
+}
 
+.display-content-section .all-display-content-container .card-display .table-form td {
+  background-color: var(--clr-forms);
+  width: 144px;
+  height: 32px;
+  border: solid 1px var(--clr-table-border);
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
+}
+/*-------------------------------------------------------------------------*/
+
+/* Buttons ----------------------------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .form-button {
+  padding: 3px 7px;
+  color: var(--clr-display-text);
+  cursor: pointer;
+  background-color: var(--clr-forms);
+  border-width: 1px;
+  border-color: var(--clr-p-text);
+  /*border-radius: 0.5rem;*/
+  transition: background-color 250ms linear, color 200ms linear;
+  line-height: 1;
+  font-size: 15px;
+  }
+
+.display-content-section .all-display-content-container .card-display .form-button:hover {
+    color: var(--clr-card-bg);
+    background-color: var(--clr-nav-a-hover);
+  }
+/*-------------------------------------------------------------------------*/
+
+/* Tables for data---------------------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .table-data-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-content-section .all-display-content-container .card-display .table-data  {
+  border-collapse: collapse;
+}
+
+.display-content-section .all-display-content-container .card-display .table-data th {
+  background-color: var(--clr-table-hd);
+  text-align: left;
+  border: solid 1px var(--clr-table-border);
+  font-size: 15px;
+  color: var(--clr-display-text);
+  padding: 0 0.6rem 0 0.5rem;
+  max-width: 200px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-data td {
+  border: solid 1px var(--clr-table-border);
+  font-size: 15px;
+  color: var(--clr-display-text);
+  padding: 0 0.6rem 0 0.5rem;
+  max-width: 200px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-data tbody tr:nth-child(even) {
+  background-color: var(--clr-table-data-odd-bg);
+}
+/*-------------------------------------------------------------------------*/
+
+/* Organigramm ------------------------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .organigramm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.display-content-section .all-display-content-container .card-display .organigramm-box {
+  border: solid 1px var(--clr-table-border);
+  height: 170px;
+  overflow: auto;
+}
+/*-------------------------------------------------------------------------*/
 
 /* Footer -----------------------------------------------------------------*/
 .footer .footer-title {
@@ -173,102 +302,8 @@ body {
 /*-------------------------------------------------------------------------*/
 
 
-/* Tables for data */
-/*-----------------------------------------------------------------------*/
 
-.table-data  {
-  border-collapse: collapse;
-}
 
-.table-data th {
-  background-color: grey;
-  width: 144px;
-  height: 32px;
-  text-align: left;
-  border: solid 1px #ccc;
-  font-size: 14px;
-}
-
-.table-data td {
-  width: 144px;
-  height: 32px;
-  border: solid 1px #ccc;
-  padding-left: 5px;
-  font-size: 14px;
-
-}
-
-.table-data tbody tr:nth-child(odd) {
-  background-color: lightgrey;
-}
-
-/* Tables for forms */
-/*-----------------------------------------------------------------------*/
-
-.table-form  {
-  border-collapse: collapse;
-}
-
-.table-form th {
-  background-color: #f2f2f2;
-  width: 144px;
-  height: 32px;
-  text-align: left;
-  border: solid 1px #ccc;
-  font-size: 14px;
-}
-
-.table-form td {
-  background-color: #f2f2f2;
-  width: 144px;
-  height: 32px;
-  border: solid 1px #ccc;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 14px;
-}
-
-/* Buttons */
-/*-----------------------------------------------------------------------*/
-
-  button.form_button {
-    padding: 3px 7px;
-    color: #333333;
-    font-weight: 500;
-    border: solid 1px black;
-    cursor: pointer;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border-radius: 0px; /* give a rounder look*/
-    background-color: #f2f2f2;
-    transition: background-color 300ms linear, color 300ms linear;
-  }
-
-  button.form_button:hover {
-    color: whitesmoke;
-    background-color: gray;
-  }
-
-/* Links to use in the tables */
-/*-----------------------------------------------------------------------*/
-
-a.table-link {
-  color: black;
-  transition: color 100ms linear;
-}
-
-a.table-link:hover {
-  color: blue;
-}
-
-/* Icons */
-/*-----------------------------------------------------------------------*/
-
-i {
-  width: 1.14em;
-  padding-right: 0.28em;
-  margin-right: 0.28em;
-}
 
 /* Flowchart */
 /*-----------------------------------------------------------------------*/
@@ -325,18 +360,4 @@ i {
   overflow: auto;
 }
 
-/* Organigramm */
-/*-----------------------------------------------------------------------*/
 
-.organigramm-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.organigramm-box {
-  border: solid 1px #ccc;
-  height: 170px;
-  overflow: auto;
-}
