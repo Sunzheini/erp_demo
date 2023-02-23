@@ -39,25 +39,45 @@
             <div class="card-display">
                 <h2 class="card-display-title">Create flowchart</h2>
 
-                            {{ process.name }}
+                <p class="card-display-content-bold">{{ process.number }}.&nbsp;{{ process.name }}</p><hr>
 
-            <hr>
-            <div class="flowchart-grid">
+                <div class="flowchart-grid">
+                {% for process_step in process_steps %}
 
-            {% for process_step in process_steps %}
+                    <div class="flowchart-box-number">
+                        {{ process_step.number }}
+                    </div>
 
-                <div class="flowchart-box">
-                    {{ process_step.number }}.&nbsp{{ process_step.name }}
+                    <div class="flowchart-box">
+                        <a class="table-link"
+                            href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">
+                            <i class="fa-solid fa-magnifying-glass"></i>{{ process_step.name }}
+                        </a>
+                    </div>
+
+                    <div class="flowchart-box-text">
+                        {{ process_step.description }}
+                    </div>
+
+                    <div class="flowchart-box">
+                        <a class="table-link"
+                            href="{% url 'show employee' pk=process_step.responsible.pk slug=process_step.responsible.slug %}">
+                            <i class="fa-solid fa-magnifying-glass"></i>{{ process_step.responsible.get_full_name }}
+                        </a>
+                    </div>
+
+                    <div class="flowchart-box">
+                        {% for doc in process_step.get_related_documents %}
+                        <a class="table-link"
+                            href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
+                            <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}
+                        </a><br>
+                        {% endfor %}
+                    </div>
+
+                {% endfor %}
                 </div>
-                <div class="flowchart-box overflow-box">
-                    {{ process_step.description }}
-                </div>
-
-            {% endfor %}
             </div>
-
-            </div>
-
         </div>
     </section>
 {% endblock %}

@@ -41,12 +41,13 @@
 
                 <div class="turtle-grid">
 
-                <div class="turtle-box"></div>
-                <div class="turtle-box">{{ process.name }}</div>
-                <div class="turtle-box"></div>
-                <div class="turtle-box"></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">Material resources:</p></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">{{ process.number }}.&nbsp;{{ process.name }}</p></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">Human resources:</p></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">Inputs:</p></div>
 
-                <div class="turtle-box overflow-box">
+                <div class="flowchart-box-text">
+                    <p class="card-display-content-bold">Steps:</p>
                     {% for process_step in process_steps %}
 
                         <a class="table-link" href="{% url 'edit process step' pk=process_step.pk slug=process_step.slug %}">
@@ -55,10 +56,10 @@
                 {% endfor %}
                 </div>
 
-                <div class="turtle-box"></div>
-                <div class="turtle-box"></div>
-                <div class="turtle-box"></div>
-                <div class="turtle-box"></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">Outputs:</p></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">Risks:</p></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">Opportunities:</p></div>
+                <div class="flowchart-box"><p class="card-display-content-bold">KPIs:</p></div>
 
             </div>
 

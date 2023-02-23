@@ -30,8 +30,18 @@ block display_content
 		.card-display (div)
 			.card-display-title (h2)
 			.card-display-content (p)
+			.card-display-content-bold (p)
 
+			.table-form (table)
+				.form_button (button)
+			.card-display-return message (p)
 
+			.organigramm-grid (div)
+				.organigramm-box (div)
+					.table-link (a)
+
+			.table-data-container (div)
+				.table-data (table)
 
 .footer (footer)
 	.footer-title (h2)

@@ -285,11 +285,63 @@ a.table-link:hover {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
+/*-------------------------------------------------------------------------*/
 
-.display-content-section .all-display-content-container .card-display .organigramm-box {
+/* Process Map ------------------------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .process-map-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+}
+/*-------------------------------------------------------------------------*/
+
+/* Organigramm, Process Map -----------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .organigramm-box,
+.display-content-section .all-display-content-container .card-display .process-box {
   border: solid 1px var(--clr-table-border);
   height: 170px;
   overflow: auto;
+}
+/*-------------------------------------------------------------------------*/
+
+/* Flowchart and turtle ---------------------------------------------------*/
+.flowchart-grid {
+  display: grid;
+  grid-template-columns: 1% 15% 51% 14% 15%;
+  grid-template-rows: repeat(15, 100px);
+  gap: 20px 7px;
+}
+
+.turtle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  gap: 10px;
+}
+
+.flowchart-box {
+  border: solid 1px var(--clr-table-border);
+  font-size: 14px;
+  overflow: auto;
+  background-color: var(--clr-card-bg-hover);
+}
+
+.flowchart-box-text {
+  border: solid 1px var(--clr-table-border);
+  font-size: 13px;
+  overflow: auto;
+  background-color: var(--clr-card-bg-hover);
+}
+
+.flowchart-box-number {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.flowchart-box a.table-link,
+.flowchart-box-text a.table-link{
+  font-size: 14px;
 }
 /*-------------------------------------------------------------------------*/
 
@@ -300,64 +352,3 @@ a.table-link:hover {
   text-align: center;
 }
 /*-------------------------------------------------------------------------*/
-
-
-
-
-
-/* Flowchart */
-/*-----------------------------------------------------------------------*/
-
-.flowchart-grid {
-  display: grid;
-  grid-template-columns: 420px 420px;
-  grid-template-rows: repeat(15, 100px);
-  gap: 20px;
-}
-
-.flowchart-box {
-  border: solid 1px #ccc;
-  display: inline-block;
-}
-
-.flowchart-box.overflow-box {
-  font-size: 12px;
-  overflow: auto;
-}
-
-
-/* Process Map */
-/*-----------------------------------------------------------------------*/
-
-.process-map-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.process-box {
-  border: solid 1px #ccc;
-}
-
-/* Turtle */
-/*-----------------------------------------------------------------------*/
-
-.turtle-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.turtle-box {
-  border: solid 1px #ccc;
-  height: 170px;
-}
-
-.turtle-box.overflow-box {
-  font-size: 12px;
-  overflow: auto;
-}
-
-
