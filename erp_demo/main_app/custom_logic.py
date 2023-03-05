@@ -25,6 +25,7 @@ class SupportFunctions:
             return extracted_documents
         data = {column_name: choice}
         extracted_documents = table.objects.filter(**data)
+
         return extracted_documents
 
 # Delete whole db (the order is chosen in order not have issues with the links between tables)

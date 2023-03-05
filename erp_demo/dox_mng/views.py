@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.utils.text import slugify
 
@@ -28,11 +29,29 @@ class DoxMngViews:
             if form.is_valid():
                 choice = form.cleaned_data['document_type_dropdown']
 
+        all_objects = SupportFunctions.extract_entry_by_choice(table, column_name, choice)
+
         context = {
-            'all_objects': SupportFunctions.extract_entry_by_choice(table, column_name, choice),
+            'all_objects': all_objects,
             'choice_form': form,
         }
         return render(request, template, context)
+
+    # added for likes
+    @staticmethod
+    def like_document(request, pk):
+
+        liked_document = Document.objects.get(id=pk)
+
+        if liked_document.is_liked_by_user:
+            liked_document.is_liked_by_user = False
+            liked_document.save()
+        else:
+            liked_document.is_liked_by_user = True
+            liked_document.save()
+
+        redirect_path = request.META['HTTP_REFERER']
+        return redirect(redirect_path)
 
     @staticmethod
     @SupportFunctions.log_entry(True)

@@ -12,6 +12,9 @@ urlpatterns = [
     path('show-document/<int:pk>/<slug:slug>/', DoxMngViews().show_document, name='show document'),
     path('edit-document/<int:pk>/<slug:slug>/', DoxMngViews().edit_document, name='edit document'),
     path('delete-document/<int:pk>/<slug:slug>/', DoxMngViews().delete_document, name='delete document'),
+
+    # added for likes
+    path('like/<int:pk>/', DoxMngViews().like_document, name='like document'),
 ]
 
 if settings.DEBUG:

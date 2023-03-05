@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from erp_demo.hr_mng.models import Employee
+from erp_demo.main_app.custom_validators import validate_file_size
 
 
 class Document(models.Model):
@@ -84,7 +85,12 @@ class Document(models.Model):
 # without cloudinary
     # attachment = models.FileField(
     #     blank=False, null=False,
+    #     validators = (validate_file_size,),
     # )
+
+    is_liked_by_user = models.BooleanField(
+        default=False,
+    )
 
     slug = models.SlugField(
         blank=True, null=True, editable=False,
