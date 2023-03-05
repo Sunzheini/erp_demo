@@ -27,10 +27,9 @@ class CaptainsLog(models.Model):
         blank=False, null=False,
     )
 
-    # ToDo: fix format
-    performed_at_time = models.CharField(
-        max_length=30,
+    performed_at_time = models.DateTimeField(
         blank=False, null=False,
+        auto_now_add=True,
     )
 
     execution_time = models.CharField(

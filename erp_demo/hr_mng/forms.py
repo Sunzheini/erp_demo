@@ -8,6 +8,27 @@ class EmployeeModelAndExcludeMixin:
         model = Employee
         exclude = ['slug']
 
+        widgets = {
+            'starting_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',  # taka veshe izkarva kalendara
+                }
+            ),
+            'date_last_hse_training': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+            'date_next_hse_training': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+        }
+
 
 class TrainingsModelAndExcludeMixin:
     class Meta:

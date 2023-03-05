@@ -35,14 +35,12 @@ class Document(models.Model):
         blank=False, null=False,
     )
 
-    creation_date = models.CharField(
-        max_length=30,
-        blank=False, null=False,
+    creation_date = models.DateField(
+        blank=True, null=True,
     )
 
-    revision_date = models.CharField(
-        max_length=30,
-        blank=False, null=False,
+    revision_date = models.DateField(
+        blank=True, null=True,
     )
 
     revision_details = models.TextField(

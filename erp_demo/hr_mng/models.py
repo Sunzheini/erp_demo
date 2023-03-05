@@ -152,25 +152,16 @@ class Employee(models.Model):
         blank=False, null=False,
     )
 
-    # starting_date = models.CharField(
-    #     max_length=30,
-    #     blank=False, null=False,
-    # )
-
-    # ToDo: fix to DateTime or similar field
-    starting_date = models.CharField(
-        max_length=30,
-        blank=False, null=False,
+    starting_date = models.DateField(
+        blank=True, null=True,
     )
 
-    date_last_hse_training = models.CharField(
-        max_length=30,
-        blank=False, null=False,
+    date_last_hse_training = models.DateField(
+        blank=True, null=True,
     )
 
-    date_next_hse_training = models.CharField(
-        max_length=30,
-        blank=False, null=False,
+    date_next_hse_training = models.DateField(
+        blank=True, null=True,
     )
 
     egn = models.CharField(

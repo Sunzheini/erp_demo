@@ -314,8 +314,8 @@ class SupportFunctions:
                         CaptainsLog.objects.create(
                             operation=f"{custom_collections.logging_info_stack.pop()} "
                                       f"with `{some_function.__name__}`",
-                            performed_at_time=end,
-                            execution_time=measurement,
+                            # performed_at_time=end, # auto added in model
+                            execution_time=f"{measurement:.5f} s",
                         )
                 else:
                     result = some_function(*args, **kwargs)  # the function

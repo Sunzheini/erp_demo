@@ -9,6 +9,21 @@ class DocumentModelAndExcludeMixin:
         model = Document
         exclude = ['slug']
 
+        widgets = {
+            'creation_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',  # taka veshe izkarva kalendara
+                }
+            ),
+            'revision_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+        }
+
 
 # ----------------------------------------------------------------------
 
