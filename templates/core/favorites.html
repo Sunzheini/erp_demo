@@ -1,12 +1,12 @@
 {% extends 'core/base.html' %}
 
 {#1. Page Title------------------------------------------------------------#}
-    {% block page_title %}Document List{% endblock %}
+    {% block page_title %}Favorites{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <h1 class="page-title">Document List</h1>
+        <h1 class="page-title">Favorites</h1>
     {% endblock %}
 {#-------------------------------------------------------------------------#}
 
@@ -17,7 +17,7 @@
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
                 <span class="card-btn-title">Back</span>
-                <span class="card-btn-desc">Go back to the document list</span>
+                <span class="card-btn-desc">Go back to the previous menu</span>
             </button>
 
             <button class="card-btn"></button>
@@ -37,17 +37,10 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Document list</h2>
 
-                <form action="{% url 'document list' %}" method="post">
-                    <table class="table-form">
-                        {{ choice_form }}
-                    </table>
-                    {% csrf_token %}
-                    <button class="form-button">filter</button>
-                </form>
+                <h2 class="card-display-title">Favorites</h2>
 
-                {% if all_objects %}
+                {% if favorites %}
                     <br><hr>
 
                 <div class="table-data-container">
@@ -69,7 +62,7 @@
                     </thead>
 
                     <tbody>
-                            {% for document in all_objects %}
+                            {% for document in favorites %}
                         <tr>
                             <td>{{ document.type }}</td>
                             <td>{{ document.number }}</td>
@@ -155,6 +148,7 @@
                     </table>
                 </div>
                 {% endif %}
+
             </div>
         </div>
     </section>

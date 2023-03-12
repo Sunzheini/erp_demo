@@ -348,3 +348,55 @@ class SupportFunctions:
                          f"{the_form.cleaned_data['revision']}"),
         )
         return result
+
+    # search results on the index page
+    # -----------------------------------------------------------------------
+    @staticmethod
+    def search_results(search_pattern, choice):
+        result = {}
+
+        if choice == 'All':
+            processes = Process.objects.filter(name__icontains=search_pattern)
+            process_steps = ProcessStep.objects.filter(name__icontains=search_pattern)
+            documents = Document.objects.filter(name__icontains=search_pattern)
+
+            employees_by_first_names = list(Employee.objects.filter(first_name__icontains=search_pattern))
+            employees_by_middle_names = list(Employee.objects.filter(middle_name__icontains=search_pattern))
+            employees_by_last_names = list(Employee.objects.filter(last_name__icontains=search_pattern))
+            employees_temp_list = employees_by_first_names + employees_by_middle_names + employees_by_last_names
+            employee_set = set(employees_temp_list)
+
+            trainings = Trainings.objects.filter(name__icontains=search_pattern)
+
+            result['processes'] = processes
+            result['process_steps'] = process_steps
+            result['documents'] = documents
+            result['employees'] = employee_set
+            result['trainings'] = trainings
+
+        elif choice == 'Process':
+            processes = Process.objects.filter(name__icontains=search_pattern)
+            result['processes'] = processes
+
+        elif choice == 'ProcessStep':
+            process_steps = ProcessStep.objects.filter(name__icontains=search_pattern)
+            result['process_steps'] = process_steps
+
+        elif choice == 'Document':
+            documents = Document.objects.filter(name__icontains=search_pattern)
+            result['documents'] = documents
+
+        elif choice == 'Employee':
+            employees_by_first_names = list(Employee.objects.filter(first_name__icontains=search_pattern))
+            employees_by_middle_names = list(Employee.objects.filter(middle_name__icontains=search_pattern))
+            employees_by_last_names = list(Employee.objects.filter(last_name__icontains=search_pattern))
+            employees_temp_list = employees_by_first_names + employees_by_middle_names + employees_by_last_names
+            employee_set = set(employees_temp_list)
+
+            result['employees'] = employee_set
+
+        elif choice == 'Trainings':
+            trainings = Trainings.objects.filter(name__icontains=search_pattern)
+            result['trainings'] = trainings
+
+        return result

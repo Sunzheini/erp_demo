@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 
+from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee
 from erp_demo.main_app.forms import ManageDbHRForm, \
     ManageDbAllForm, DeleteDatabaseForm, \
-    RequirementsForm, RequirementsEditForm, RequirementsDeleteForm
+    RequirementsForm, RequirementsEditForm, RequirementsDeleteForm, \
+    SearchForm
 
 from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.main_app.models import CaptainsLog, Requirements
@@ -11,10 +13,24 @@ from erp_demo.process_mng.models import Process
 
 
 class MainAppViews:
-
     @staticmethod
     def index(request):
-        context = {}
+        search_pattern = None
+        info_to_display = None
+        if request.method == 'GET':
+            form = SearchForm()
+        else:
+            form = SearchForm(request.POST)
+            if form.is_valid():
+                search_pattern = form.cleaned_data['form_keyword']
+                choice = form.cleaned_data['search_type_dropdown']
+                info_to_display = SupportFunctions.search_results(search_pattern, choice)
+                form = SearchForm()
+        context = {
+            'search_form': form,
+            'info_to_display': info_to_display,
+            'info': search_pattern,
+        }
         return render(request, 'index.html', context)
 
     @staticmethod
@@ -67,6 +83,13 @@ class MainAppViews:
             'logs': CaptainsLog.objects.all(),
         }
         return render(request, 'core/logs.html', context)
+
+    @staticmethod
+    def favorites(request):
+        context = {
+            'favorites': Document.objects.filter(is_liked_by_user=True),
+        }
+        return render(request, 'core/favorites.html', context)
 
     @staticmethod
     def my_tasks(request):

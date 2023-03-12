@@ -68,5 +68,5 @@ class DocumentTypeForm(forms.Form):
 
     document_type_dropdown = forms.ChoiceField(
         label='Select document type',
-        choices=DOCUMENT_TYPES,
+        choices=DOCUMENT_TYPES
     )

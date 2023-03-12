@@ -6,6 +6,15 @@ document_types = (
     ('Form', 'Form'),
 )
 
+search_types = {
+    ('All', 'All'),
+    ('Process', 'Processes'),
+    ('ProcessStep', 'Process steps'),
+    ('Document', 'Documents'),
+    ('Employee', 'Employees'),
+    ('Trainings', 'Trainings'),
+}
+
 process_numbers = (
     ('All', 'All'),
     ('P01', 'P01'),

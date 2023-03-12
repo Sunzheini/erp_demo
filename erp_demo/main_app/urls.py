@@ -12,6 +12,7 @@ urlpatterns = [
     # path('manage_db/', MainAppViews().manage_db, name='manage db'),
     path('organigramm/', MainAppViews().organigramm, name='organigramm'),
     path('logs/', MainAppViews().logs, name='logs'),
+    path('favorites/', MainAppViews().favorites, name='favorites'),
     path('my-tasks/', MainAppViews().my_tasks, name='my tasks'),
     path('requirements-matrix/', MainAppViews().requirements_matrix, name='requirements matrix'),
 

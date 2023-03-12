@@ -12,5 +12,159 @@
 
 {#5. Section2--------------------------------------------------------------#}
 {% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Search</h2>
+
+                <form action="{% url 'index' %}" method="post">
+                    <table class="table-form">
+                        {{ search_form }}
+                    </table>
+                    {% csrf_token %}
+                    <button class="form-button">search</button>
+                </form>
+
+                {% if info %}
+                <br><hr>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Process Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.processes %}
+                            {% for process in info_to_display.processes %}
+                        <tr>
+                            <td>{{ process.number }}. {{ process.name }}</td>
+                            <td><a class="table-link"
+                                href="{% url 'show process' pk=process.pk slug=process.slug %}">
+                                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+                    <br>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Process Step Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.process_steps %}
+                            {% for process_step in info_to_display.process_steps %}
+                        <tr>
+                            <td>{{ process_step.number }}. {{ process_step.name }}</td>
+                            <td><a class="table-link"
+                                       href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+                    <br>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Document Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.documents %}
+                            {% for document in info_to_display.documents %}
+                        <tr>
+                            <td>{{ document.name }}</td>
+                            <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
+                                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+                    <br>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.employees %}
+                            {% for employee in info_to_display.employees %}
+                        <tr>
+                            <td>{{ employee.get_full_name }}</td>
+                            <td><a class="table-link" href="{% url 'show employee' pk=employee.pk slug=employee.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+                    <br>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Training Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.trainings %}
+                            {% for training in info_to_display.trainings %}
+                        <tr>
+                            <td>{{ training.name }}</td>
+                            <td><a class="table-link" href="{% url 'show training' pk=training.pk slug=training.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                {% else %}
+                {% endif %}
+            </div>
+
+        </div>
+    </section>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

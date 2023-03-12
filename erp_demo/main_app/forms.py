@@ -3,6 +3,7 @@ from django import forms
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
+from erp_demo.main_app.custom_collections import search_types
 from erp_demo.main_app.models import Requirements
 
 
@@ -52,3 +53,18 @@ class RequirementsDeleteForm(forms.ModelForm):
     def save(self, commit=True):
         self.instance.delete()
         return self.instance
+
+
+class SearchForm(forms.Form):
+    SEARCH_TYPES = search_types
+
+    form_keyword = forms.CharField(
+        max_length=30,
+        label='Enter keyword',
+    )
+
+    search_type_dropdown = forms.ChoiceField(
+        label='Search categories',
+        choices=SEARCH_TYPES,
+        initial='All',
+    )
