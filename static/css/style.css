@@ -114,9 +114,19 @@ i {
   padding: 1rem;
 }
 
+.card-buttons-section .all-card-buttons-container .card-btn-hidden {
+  background-color: #e0e0e0;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
 .card-buttons-section .all-card-buttons-container .card-btn:hover,
 .card-buttons-section .all-card-buttons-container .card-btn:active{
   background-color: var(--clr-card-bg-hover);
+}
+
+.card-buttons-section .all-card-buttons-container .card-btn-hidden:hover {
+  background-color: #e0e0e0;
 }
 
 .card-buttons-section .all-card-buttons-container .card-btn .card-btn-title {
