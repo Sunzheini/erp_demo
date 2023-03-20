@@ -10,6 +10,7 @@ from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.main_app import custom_collections
 from erp_demo.main_app.models import CaptainsLog, Requirements
+from erp_demo.main_app.translator import translate_to_maimunica
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process
 
@@ -205,7 +206,9 @@ class SupportFunctions:
                     code=info_to_update[obj]['code'],
                     name=info_to_update[obj]['name'],
                     description=info_to_update[obj]['description'],
-                    slug=slugify(f"{info_to_update[obj]['code']}"),
+                    # slug=slugify(f"{info_to_update[obj]['code']}"),
+                    slug=slugify(f"{info_to_update[obj]['code']}-"
+                                 f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'Positions':
@@ -230,11 +233,13 @@ class SupportFunctions:
                     date_next_hse_training=info_to_update[row_number]['date_next_hse_training'],
                     egn=info_to_update[row_number]['egn'],
                     # slug=slugify(f"{info_to_update[row_number]['first_name']}-{info_to_update[row_number]['last_name']}"),
+                    # slug=slugify(f"{info_to_update[row_number]['identification']}-"
+                    #              f"{info_to_update[row_number]['position']}"),
                     slug=slugify(f"{info_to_update[row_number]['identification']}-"
-                                 f"{info_to_update[row_number]['position']}"),
+                                 f"{translate_to_maimunica(info_to_update[row_number]['first_name'])}-"
+                                 f"{translate_to_maimunica(info_to_update[row_number]['last_name'])}"),
                 )
                     for row_number in info_to_update.keys()])
-            # ToDo: slugs can't use cyrillic, what is why I changed them from 'name'
 
             elif table == 'Document':
                 Document.objects.bulk_create([Document(
@@ -248,9 +253,10 @@ class SupportFunctions:
                     status=info_to_update[obj]['status'],
                     owner=Employee.objects.all()[0],  # ToDo: hardcoded for the excel upload
                     # slug=slugify(f"{info_to_update[obj]['name']}"),
-                    slug=slugify(f"{info_to_update[obj]['owner']}-"
-                                 f"{info_to_update[obj]['type']}-"
-                                 f"{info_to_update[obj]['revision']}"),
+                    # slug=slugify(f"{info_to_update[obj]['owner']}-"
+                    #              f"{info_to_update[obj]['type']}-"
+                    #              f"{info_to_update[obj]['revision']}"),
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'Process':
@@ -259,8 +265,9 @@ class SupportFunctions:
                     number=info_to_update[obj]['number'],
                     name=info_to_update[obj]['name'],
                     process_owner=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
-                    slug=slugify(f"{info_to_update[obj]['number']}-"
-                                 f"{info_to_update[obj]['type']}"),
+                    # slug=slugify(f"{info_to_update[obj]['number']}-"
+                    #              f"{info_to_update[obj]['type']}"),
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'ProcessStep':
@@ -277,8 +284,9 @@ class SupportFunctions:
                     description=info_to_update[obj]['description'],
                     responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
                     # slug=slugify(f"{info_to_update[obj]['name']}"),
-                    slug=slugify(f"{info_to_update[obj]['parent_process']}-"
-                                 f"{info_to_update[obj]['number']}"),
+                    # slug=slugify(f"{info_to_update[obj]['parent_process']}-"
+                    #              f"{info_to_update[obj]['number']}"),
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'Requirements':
@@ -288,7 +296,8 @@ class SupportFunctions:
                     clause=info_to_update[obj]['clause'],
                     description=info_to_update[obj]['description'],
                     slug=slugify(f"{info_to_update[obj]['organization']}-"
-                                 f"{info_to_update[obj]['clause']}"),
+                                 f"{info_to_update[obj]['clause']}-"
+                                 f"{translate_to_maimunica(info_to_update[obj]['description'][0:20])}"),
                 ) for obj in info_to_update.keys()])
 
             info_to_update = {}

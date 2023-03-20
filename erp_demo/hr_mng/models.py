@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 
+from erp_demo.main_app.translator import translate_to_maimunica
+
 
 class AccessLevels(models.Model):
     class Meta:
@@ -62,7 +64,9 @@ class Trainings(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(f"{self.code}")
+            # self.slug = slugify(f"{self.code}")
+            slug = slugify(f"{self.code}-"
+                           f"{self.name}"),
         return super().save(*args, **kwargs)
 
 
@@ -220,5 +224,10 @@ class Employee(models.Model):
         super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.get_full_name}")
-            self.slug = slugify(f"{self.identification}-{self.position}")
+            # self.slug = slugify(f"{self.identification}-{self.position}")
+
+            self.slug = slugify(f"{self.identification}-"
+                                f"{translate_to_maimunica(self.first_name)}-"
+                                f"{translate_to_maimunica(self.last_name)}")
+
         return super().save(*args, **kwargs)

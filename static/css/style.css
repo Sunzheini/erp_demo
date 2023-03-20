@@ -214,7 +214,8 @@ a.table-link:hover {
 }
 
 .display-content-section .all-display-content-container .card-display .table-form th {
-  background-color: var(--clr-forms);
+  /*background-color: var(--clr-forms);*/
+  background-color: var(--clr-card-bg);
   width: 144px;
   height: 32px;
   text-align: left;
@@ -223,7 +224,8 @@ a.table-link:hover {
 }
 
 .display-content-section .all-display-content-container .card-display .table-form td {
-  background-color: var(--clr-forms);
+  /*background-color: var(--clr-forms);*/
+  background-color: var(--clr-card-bg);
   width: 144px;
   height: 32px;
   border: solid 1px var(--clr-table-border);

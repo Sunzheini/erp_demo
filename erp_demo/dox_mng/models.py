@@ -4,6 +4,7 @@ from django.utils.text import slugify
 
 from erp_demo.hr_mng.models import Employee
 from erp_demo.main_app.custom_validators import validate_file_size
+from erp_demo.main_app.translator import translate_to_maimunica
 
 
 class Document(models.Model):
@@ -108,7 +109,8 @@ class Document(models.Model):
         super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.name}")
-            self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
+            # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
+            self.slug = slugify(f"{translate_to_maimunica(self.name)}")
         return super().save(*args, **kwargs)
 
 
@@ -208,5 +210,6 @@ class DocumentEditPurgatory(models.Model):
         # super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.name}")
-            self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
+            # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
+            self.slug = slugify(f"{translate_to_maimunica(self.name)}")
         return super().save(*args, **kwargs)

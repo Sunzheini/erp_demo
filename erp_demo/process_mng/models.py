@@ -3,6 +3,7 @@ from django.utils.text import slugify
 
 from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee
+from erp_demo.main_app.translator import translate_to_maimunica
 
 
 class Process(models.Model):
@@ -47,7 +48,8 @@ class Process(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(f"{self.number}-{self.type}")
+            # self.slug = slugify(f"{self.number}-{self.type}")
+            self.slug = slugify(f"{translate_to_maimunica(self.name)}")
         return super().save(*args, **kwargs)
 
     def __str__(self):
@@ -117,7 +119,8 @@ class ProcessStep(models.Model):
         super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.name[0:11]}")
-            self.slug = slugify(f"{self.parent_process.number}-{self.number}")
+            # self.slug = slugify(f"{self.parent_process.number}-{self.number}")
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:50])}")
         return super().save(*args, **kwargs)
 
     @property

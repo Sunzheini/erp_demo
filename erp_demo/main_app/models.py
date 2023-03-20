@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
+from erp_demo.main_app.translator import translate_to_maimunica
 from erp_demo.process_mng.models import ProcessStep
 
 
@@ -77,7 +78,9 @@ class Requirements(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:
-            self.slug = slugify(f"{self.organization}-{self.clause}")
+            self.slug = slugify(f"{self.organization}-"
+                                f"{self.clause}-"
+                                f"{translate_to_maimunica(self.description[0:20])}")
         return super().save(*args, **kwargs)
 
     @property
