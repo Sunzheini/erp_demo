@@ -37,15 +37,65 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Some Title</h2>
-                <p class="card-display-content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Animi architecto aspernatur consequatur dolorem eos, eveniet
-                    explicabo iste maiores, neque provident ratione repudiandae
-                    saepe sunt tempore vel voluptate voluptatibus! Ipsam, laboriosam!
-                </p>
-            </div>
+                <h2 class="card-display-title">Documents for approval:</h2>
 
+                {% if all_objects %}
+                    <br><hr>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Revision</th>
+                            <th>R. date</th>
+                            <th>R. details</th>
+                            <th>Owner</th>
+                            <th>Link</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            {% for document in all_objects %}
+                        <tr>
+                            <td>{{ document.type }}</td>
+                            <td>{{ document.number }}</td>
+                            <td>{{ document.name }}</td>
+                            <td>{{ document.revision }}</td>
+                            <td>{{ document.revision_date }}</td>
+                            <td>{{ document.revision_details }}</td>
+                            <td><a class="table-link" href="{% url 'show employee' pk=document.owner.pk slug=document.owner.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ document.owner.get_full_name }}</a></td>
+
+                            {#no cloudinary#}
+                            {#            <td><a href="/media/{{ document.attachment }}">#}
+                            {#                    "/media/{{ document.attachment }}"</a></td>#}
+
+                            {#cloudinary#}
+                            {% if document.attachment.url %}
+                            <td><a href="{{ document.attachment.url }}">
+                                        Link</a></td>
+                            {% else %}
+                                <td>N/A</td>
+                            {% endif %}
+
+                            <td><a class="table-link" href="{% url 'approve revision' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-arrow-up"></i>
+                                    Approve</a></td>
+                            <td><a class="table-link" href="{% url 'delete revision' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
+                                    Del Rev</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+                {% else %}
+                   Nothing currently
+                {% endif %}
+            </div>
         </div>
     </section>
 {% endblock %}

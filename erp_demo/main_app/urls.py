@@ -19,4 +19,7 @@ urlpatterns = [
     path('show-requirement/<int:pk>/<slug:slug>/', MainAppViews().show_requirement, name='show requirement'),
     path('edit-requirement/<int:pk>/<slug:slug>/', MainAppViews().edit_requirement, name='edit requirement'),
     path('delete-requirement/<int:pk>/<slug:slug>/', MainAppViews().delete_requirement, name='delete requirement'),
+
+    path('approve-revision/<int:pk>/<slug:slug>/', MainAppViews().approve_revision, name='approve revision'),
+    path('delete-revision/<int:pk>/<slug:slug>/', MainAppViews().delete_revision, name='delete revision'),
 ]

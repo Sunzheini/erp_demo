@@ -106,7 +106,7 @@ class Document(models.Model):
                f"owner is: {self.owner}"
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.name}")
             # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
@@ -207,7 +207,7 @@ class DocumentEditPurgatory(models.Model):
                f"owner is: {self.owner}"
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)     # this method saves twice so commented!!!
         if not self.slug:
             # self.slug = slugify(f"{self.name}")
             # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")

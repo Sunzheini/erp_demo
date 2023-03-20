@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from erp_demo.dox_mng.models import Document
+from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee
 from erp_demo.main_app.forms import ManageDbHRForm, \
     ManageDbAllForm, DeleteDatabaseForm, \
@@ -93,10 +93,24 @@ class MainAppViews:
 
     @staticmethod
     def my_tasks(request):
+        template = 'core/my_tasks.html'
+        all_objects = DocumentEditPurgatory.objects.all()
         context = {
-            'tasks': CaptainsLog.objects.all(),
+            'all_objects': all_objects,
         }
-        return render(request, 'core/my_tasks.html', context)
+        return render(request, template, context)
+
+    @staticmethod
+    def approve_revision(request, pk, slug):
+        current_revision = DocumentEditPurgatory.objects.filter(pk=pk).get()
+        SupportFunctions.approve_and_upload_revision(current_revision)
+        return redirect('my tasks')
+
+    @staticmethod
+    def delete_revision(request, pk, slug):
+        current_revision = DocumentEditPurgatory.objects.filter(pk=pk).get()
+        current_revision.delete()
+        return redirect('my tasks')
 
     @staticmethod
     def requirements_matrix(request):

@@ -79,25 +79,6 @@ class DoxMngViews:
         }
         return render(request, template, context)
 
-    # @staticmethod
-    # @SupportFunctions.log_entry(True)
-    # def edit_document(request, pk, slug):
-    #     template = 'dox_mng/edit_document.html'
-    #     current_document = Document.objects.filter(pk=pk).get()
-    #     if request.method == 'GET':
-    #         form = DocumentEditForm(instance=current_document)
-    #     else:
-    #         form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
-    #         if form.is_valid():
-    #             output = form.save()
-    #             SupportFunctions.log_info(f"Edited a document `{output.name}`")
-    #             return redirect('document list')
-    #     context = {
-    #         'form': form,
-    #         'document': current_document,
-    #     }
-    #     return render(request, template, context)
-
     @staticmethod
     @SupportFunctions.log_entry(True)
     def edit_document(request, pk, slug):
@@ -108,8 +89,9 @@ class DoxMngViews:
         else:
             form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
             if form.is_valid():
+                # output = form.save()      # before the logic for the new revisions
                 output = SupportFunctions.new_revision(form)
-                SupportFunctions.log_info(f"Edited a document `{output}`")
+                SupportFunctions.log_info(f"Edited a document `{output.name}`")
                 return redirect('document list')
         context = {
             'form': form,

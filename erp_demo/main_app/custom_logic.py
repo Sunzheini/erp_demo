@@ -351,12 +351,34 @@ class SupportFunctions:
             revision_details=the_form.cleaned_data['revision_details'],
             status=the_form.cleaned_data['status'],
             owner=the_form.cleaned_data['owner'],
+            attachment=the_form.cleaned_data['attachment'],
             # slug=slugify(f"{info_to_update[obj]['name']}"),
-            slug=slugify(f"{the_form.cleaned_data['owner']}-"
-                         f"{the_form.cleaned_data['type']}-"
-                         f"{the_form.cleaned_data['revision']}"),
+            # slug=slugify(f"{the_form.cleaned_data['owner']}-"
+            #              f"{the_form.cleaned_data['type']}-"
+            #              f"{the_form.cleaned_data['revision']}"),
+            slug=slugify(f"{translate_to_maimunica(the_form.cleaned_data['name'])}"),
         )
         return result
+
+    @staticmethod
+    def approve_and_upload_revision(prototype: DocumentEditPurgatory):
+        document_to_delete = Document.objects.filter(name=prototype.name)
+        document_to_delete.delete()
+
+        Document.objects.create(
+            type=prototype.type,
+            number=prototype.number,
+            name=prototype.name,
+            revision=prototype.revision,
+            creation_date=prototype.creation_date,
+            revision_date=prototype.revision_date,
+            revision_details=prototype.revision_details,
+            status=prototype.status,
+            owner=prototype.owner,
+            attachment=prototype.attachment,
+            slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
+        )
+        prototype.delete()
 
     # search results on the index page
     # -----------------------------------------------------------------------
