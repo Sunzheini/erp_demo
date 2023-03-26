@@ -24,3 +24,15 @@
                 x.style.display = "none";
             }
         }
+
+        function fShowHideSearchForm() {
+            let x = document.getElementById("search_form");
+            let y = document.getElementById("search_form_container")
+            if (x.style.display === "block") {
+                x.style.display = "none";
+                y.style.display = "none";
+            } else {
+                x.style.display = "block";
+                y.style.display = "block";
+            }
+        }

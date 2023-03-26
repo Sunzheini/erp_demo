@@ -15,16 +15,19 @@
     <section class="display-content-section">
         <div class="all-display-content-container">
 
-            <div class="card-display">
-                <h2 class="card-display-title">Search</h2>
+            <div class="card-display" id="search_form_container">
 
-                <form action="{% url 'index' %}" method="post">
-                    <table class="table-form">
+                <div style="display: block;" id="search_form" >
+                    <h2 class="card-display-title">Search</h2>
+
+                    <form action="{% url 'index' %}" method="post">
+                        <table class="table-form">
                         {{ search_form }}
                     </table>
                     {% csrf_token %}
                     <button class="form-button">search</button>
                 </form>
+                </div>
 
                 {% if info %}
                 <br><hr>
