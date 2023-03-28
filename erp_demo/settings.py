@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'erp_demo.dox_mng',
     'erp_demo.process_mng',
     'erp_demo.hr_mng',
+    'erp_demo.organization_mng',
 
     'cloudinary',
 ]

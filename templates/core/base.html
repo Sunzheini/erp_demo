@@ -90,9 +90,14 @@
                 <span class="card-btn-desc">Manage personnel, training, health and safety, etc.</span>
             </button>
 
-            <button class="card-btn" onclick="fShowHideSearchForm()">
-                <span class="card-btn-title">Search</span>
-                <span class="card-btn-desc">Show / Hide Form</span>
+{#            <button class="card-btn" onclick="fShowHideSearchForm()">#}
+{#                <span class="card-btn-title">Search</span>#}
+{#                <span class="card-btn-desc">Show / Hide Form</span>#}
+{#            </button>#}
+
+            <button class="card-btn" onclick="location.href='{% url 'org mng index' %}';">
+                <span class="card-btn-title">Org Mng</span>
+                <span class="card-btn-desc">Open</span>
             </button>
 
         </div>
