@@ -93,7 +93,18 @@ body {
   align-items: center;
 }
 
-.main-screen {
+/*.main-screen {*/
+/*  !*display: flex;*!*/
+/*  !*flex-direction: column;*!*/
+/*  !*align-items: center;*!*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  border: 1px solid black;*/
+/*}*/
+
+#main-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,6 +112,7 @@ body {
 
 .main-screen-title {
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .form-container {
@@ -110,6 +122,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 70px;
 }
 
 .form-container-title-holder {
@@ -119,22 +132,41 @@ body {
   border: 1px solid var(--clr-red);
   background-color: var(--clr-red);
   padding: 5px 10px;
+  margin-bottom: 30px;
 }
 
 .form-holder {
-  border: 1px solid black;
   width: 100%;
   height: 400px;
   margin-bottom: 50px;
+  padding-left: 30px;
+  padding-top: 20px;
 }
 
-.button-holder {
-  width: 100%;
-  text-align: right;
-  padding-right: 50px;
+.new-table-form-type {
+  position: relative;
+}
+
+.new-table-form-type th {
+  text-align: left;
+  font-weight: normal;
+  width: 250px;
+  height: 40px;
+}
+
+.new-table-form-type td {
+  width: 800px;
+}
+
+#id_name, #id_eik, #id_mol, #id_address, #id_manager_name {
+  border: 1px solid var(--clr-red);
+  width: 780px;
 }
 
 .save-button {
+  position: absolute;
+  top: 730px;
+  left: 1450px;
   border-radius: 10px;
   width: 120px;
   height: 40px;
@@ -147,6 +179,19 @@ body {
   background-color: var(--clr-white);
 }
 
+.new-table {
+  border-collapse: collapse;
+}
+
+.new-table th {
+  border: 1px solid var(--clr-red);
+  background-color: var(--clr-red);
+  width: 200px;
+}
+
+.new-table td {
+  border: 1px solid var(--clr-red);
+}
 
 
 

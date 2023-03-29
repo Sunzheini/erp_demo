@@ -36,3 +36,12 @@
                 y.style.display = "block";
             }
         }
+
+        function fShowHideOrgForm() {
+            let x = document.getElementById("main-container");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }

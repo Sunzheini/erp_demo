@@ -7,14 +7,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Org</title>
+    <title>Orgs List</title>
 
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'css/style_org.css' %}">
-
-    <script type="text/javascript" src="{% static 'css/custom_functions.js' %}"></script>
 </head>
 
 <body>
@@ -28,14 +26,8 @@
                     <nav class="navigation">
                         <ul class="nav-item-list">
                             <li class="nav-item">
-                                <button class="nav-item-text" onclick="fShowHideOrgForm()">
-                                    Създай организация
-                                </button>
-                            </li>
-                            <li class="nav-item">
-                                <button class="nav-item-text"
-                                        onclick="location.href='{% url 'org list' %}';">
-                                    Списък на организациите
+                                <button class="nav-item-text" onclick="location.href='{% url 'org mng index' %}';">
+                                    Назад
                                 </button>
                             </li>
                         </ul>
@@ -55,26 +47,36 @@
         </header>
         <main>
             <section class="main-screen">
-                <div  style="display: none;" id="main-container">
+                <div id="main-container">
                     <h1 class="main-screen-title">
-                        Създаване на нова организация
+                        Създадени организации
                     </h1>
-                    <div class="form-container">
-                        <div class="form-container-title-holder">
-                            <h3 class="form-container-title">
-                                Общи данни за организацията
-                            </h3>
-                        </div>
-                        <div class="form-holder">
-                            <form action="{% url 'org mng index' %}" method="post">
-                                <table class="new-table-form-type">
-                                    {{ form }}
-                                </table>
-                                {% csrf_token %}
-                                <button class="save-button">Запази</button>
-                            </form>
-                        </div>
-                    </div>
+                    {% if all_organizations %}
+                        <table class="new-table">
+                            <thead>
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>ЕИК</th>
+                                    <th>МОЛ</th>
+                                    <th>Адрес на управление</th>
+                                    <th>Имена на ръководителя</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for org in all_organizations %}
+                                <tr>
+                                    <td>{{ org.name }}</td>
+                                    <td>{{ org.eik }}</td>
+                                    <td>{{ org.mol }}</td>
+                                    <td>{{ org.address }}</td>
+                                    <td>{{ org.manager_name }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        Няма организации
+                    {% endif %}
                 </div>
             </section>
         </main>
