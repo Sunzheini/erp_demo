@@ -2,24 +2,44 @@
 
 :root {
   --clr-main-bg: #AAC6D0;
-  --clr-nav-bg: #190f05;
-  --clr-nav-a: #B5D1DB;
-  --clr-nav-a-hover: #555;
+
+  /*--clr-nav-bg: #190f05;*/
+  /*--clr-nav-bg: #e89238;*/
+  --clr-nav-bg: #e89238;
+
+  /*--clr-nav-a: #B5D1DB;*/
+  --clr-nav-a: black;
+
+  /*--clr-nav-a-hover: #555;*/
+  --clr-nav-a-hover: #dedede;
+
   --clr-title-text: #333;
   --clr-p-text: #666;
-  --clr-card-bg: #eef4f6;
-  --clr-card-bg-hover: #ccdde3;
+
+  /*--clr-card-bg: #eef4f6;*/
+  --clr-card-bg: white;
+
+  /*--clr-card-bg-hover: #ccdde3;*/
+  --clr-card-bg-hover: #dedede;
+
   --clr-display-text: #333333;
   --clr-display-message: blue;
   --clr-table-border: #ccc;
   --clr-table-data-odd-bg: lightgrey;
   --clr-forms: #f2f2f2;
   --clr-table-hd: grey;
+
+  --clr-dark-grey: #CCCCCC;
+  --clr-light-grey: #F3F3F3;
+  --clr-red: #EA9999;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--clr-main-bg);
+  /*background-color: var(--clr-main-bg);*/
+
+  /* change bg color*/
+  background-color: #F3F3F3;
   }
 
 i {
@@ -33,7 +53,6 @@ i {
   background-color: var(--clr-nav-bg);
   width: 95vw;
   max-width: 1200px;
-
   height: 2rem;
   margin: 0.5rem auto 1rem auto;
   border-radius: 1rem;
@@ -47,7 +66,10 @@ i {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+
+  /*justify-content: space-around;*/
+  justify-content: flex-start;
+
   align-items: center;
 }
 
@@ -69,7 +91,40 @@ i {
 .header .navigation .nav-list .nav-item i {
   color: var(--clr-nav-a);
   text-decoration: none;
+  /*font-weight: bold;*/
 }
+
+.user-container {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-size: 1rem;
+  color: white;
+  font-weight: normal;
+}
+
+.user-letter-container {
+  width: 25px;
+  height: 25px;
+  background-color: var(--clr-dark-grey);
+  border: 1px solid white;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-letter {
+  font-size: 0.9rem;
+}
+
 /*-------------------------------------------------------------------------*/
 
 /* 3. Page Name -----------------------------------------------------------*/
@@ -78,6 +133,9 @@ i {
   text-align: center;
   color: var(--clr-title-text);
   margin-bottom: 2rem;
+
+  /*Hide the page title */
+  display: none;
 }
 /*-------------------------------------------------------------------------*/
 
@@ -86,7 +144,8 @@ i {
   /*width: 80vw;*/
   width: 95vw;
   max-width: 1200px;
-  margin: 0 auto 3rem auto;
+  /*margin: 0 auto 3rem auto;*/
+  margin: 0 auto 1px auto;
 }
 
 .card-buttons-section .all-card-buttons-container {
@@ -99,12 +158,23 @@ i {
 }
 
 .card-buttons-section .all-card-buttons-container .card-btn {
-  background-color: var(--clr-card-bg);
-  min-height: 7rem;
+  /*background-color: var(--clr-card-bg);*/
+  background-color: var(--clr-dark-grey);
+  /*background-color: var(--clr-card-bg-hover);*/
+
+  /*change height*/
+  /*min-height: 7rem;*/
+  min-height: 2rem;
+
   width: 21%;
   border-width: 0;
-  border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+
+  /*change border*/
+  /*border-radius: 0.5rem;*/
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  /*box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);*/
+
   transition: background-color 250ms linear, color 300ms linear;
   display: flex;
   flex-direction: column;
@@ -123,6 +193,7 @@ i {
 .card-buttons-section .all-card-buttons-container .card-btn:hover,
 .card-buttons-section .all-card-buttons-container .card-btn:active{
   background-color: var(--clr-card-bg-hover);
+  /*background-color: var(--clr-dark-grey);*/
 }
 
 .card-buttons-section .all-card-buttons-container .card-btn-hidden:hover {
@@ -133,15 +204,21 @@ i {
   display: block;
   height: 50%;
   font-weight: bold;
-  font-size: 1.2rem;
+  /*font-size: 1.2rem;*/
+  font-size: 1rem;
   color: var(--clr-title-text);
 }
 
 .card-buttons-section .all-card-buttons-container .card-btn .card-btn-desc {
-  display: block;
+  /* hide desc */
+  /*display: block;*/
+    display: none;
+
   height: 50%;
   font-size: 0.8rem;
   color: var(--clr-p-text);
+
+
 }
 /*-------------------------------------------------------------------------*/
 
@@ -162,7 +239,14 @@ i {
   background-color: var(--clr-card-bg);
   width: 100%;
   height: 100%;
-  border-radius: 0.5rem;
+
+  /*adding min height*/
+  min-height: 500px;
+
+  /*change border*/
+  /*border-radius: 0.5rem;*/
+  border-radius: 0 0 0.5rem 0.5rem;
+
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
   padding: 1rem;
 }
@@ -209,12 +293,15 @@ a.table-link:hover {
 
 /* Tables for forms -------------------------------------------------------*/
 .display-content-section .all-display-content-container .card-display .table-form  {
-  border-collapse: collapse;
   margin-bottom: 0.5rem;
+
+/*border-collapse: collapse;*/
+  border: solid 1px var(--clr-nav-bg);
+  padding: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 .display-content-section .all-display-content-container .card-display .table-form th {
-  /*background-color: var(--clr-forms);*/
   background-color: var(--clr-card-bg);
   width: 144px;
   height: 32px;
@@ -251,7 +338,7 @@ a.table-link:hover {
 
 .display-content-section .all-display-content-container .card-display .form-button:hover {
     color: var(--clr-card-bg);
-    background-color: var(--clr-nav-a-hover);
+    background-color: #555;
   }
 /*-------------------------------------------------------------------------*/
 
@@ -262,6 +349,10 @@ a.table-link:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  border: solid 1px var(--clr-nav-bg);
+  padding: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
 }
 
 .display-content-section .all-display-content-container .card-display .table-data  {
@@ -269,7 +360,8 @@ a.table-link:hover {
 }
 
 .display-content-section .all-display-content-container .card-display .table-data th {
-  background-color: var(--clr-table-hd);
+  /*background-color: var(--clr-table-hd);*/
+  background-color: var(--clr-nav-bg);
   text-align: left;
   border: solid 1px var(--clr-table-border);
   font-size: 15px;
@@ -362,5 +454,8 @@ a.table-link:hover {
   font-size: 0.7rem;
   font-weight: normal;
   text-align: center;
+
+  /*hide footer*/
+  display: none;
 }
 /*-------------------------------------------------------------------------*/

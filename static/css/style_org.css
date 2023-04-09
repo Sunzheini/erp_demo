@@ -19,7 +19,7 @@ body {
   background-color: var(--clr-light-grey);
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--clr-dark-grey);
+  border: 1px solid #3A3F44FF;
 }
 
 .top-ribbon-container {
@@ -92,15 +92,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-/*.main-screen {*/
-/*  !*display: flex;*!*/
-/*  !*flex-direction: column;*!*/
-/*  !*align-items: center;*!*/
-/*  width: 100%;*/
-/*  height: 100%;*/
-/*  border: 1px solid black;*/
-/*}*/
 
 #main-container {
   width: 100%;

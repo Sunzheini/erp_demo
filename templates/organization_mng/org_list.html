@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Organization List{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Organization List</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">Списък на организациите</h2>
+
+                {% if all_objects %}
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>ЕИК</th>
+                            <th>МОЛ</th>
+                            <th>Адрес на управление</th>
+                            <th>Имена на ръководителя</th>
+                            <th>Покажи</th>
+                            <th>Редактирай</th>
+                            <th>Изтрий</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            {% for org in all_objects %}
+                        <tr>
+                            <td>{{ org.name }}</td>
+                            <td>{{ org.eik }}</td>
+                            <td>{{ org.mol }}</td>
+                            <td>{{ org.address }}</td>
+                            <td>{{ org.manager_name }}</td>
+
+                            <td><a class="table-link" href="{% url 'show org' pk=org.pk slug=org.slug %}">
+                                <i class="fa-solid fa-magnifying-glass"></i>Покажи</a></td>
+                            <td><a class="table-link" href="{% url 'edit org' pk=org.pk slug=org.slug %}"><i class="fa-solid fa-pen-to-square"></i>Редактирай</a></td>
+                            <td><a class="table-link" href="{% url 'delete org' pk=org.pk slug=org.slug %}"><i class="fa-solid fa-trash"></i>Изтрий</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
