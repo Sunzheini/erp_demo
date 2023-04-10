@@ -11,6 +11,7 @@ class Organization(models.Model):
     name = models.CharField(
         max_length=99,
         blank=False, null=False,
+        unique=True,
     )
 
     eik = models.PositiveIntegerField(

@@ -43,9 +43,10 @@
                 <p class="card-display-content">Delete whole database</p>
 
                 <form action="{% url 'manage db all' %}" method="post">
-                    <table class="table-form">
-                        {{ form }}
-                    </table>
+{#                    <table class="table-form">#}
+{#                        {{ form }}#}
+{#                    </table>#}
+                    {{ form }}
                     {% csrf_token %}
 
                     <button class="form-button" name="button_delete_db">
@@ -65,9 +66,11 @@
                 </p>
 
                 <form action="{% url 'manage db all' %}" method="post" enctype="multipart/form-data">
-                    <table class="table-form">
-                        {{ form2.as_div }}
-                    </table>
+{#                    <table class="table-form">#}
+{#                        {{ form2.as_div }}#}
+{#                    </table>#}
+{#                    {% csrf_token %}#}
+                    {{ form2.as_div }}
                     {% csrf_token %}
 
                     <button class="form-button" name="button_manage_db_all">

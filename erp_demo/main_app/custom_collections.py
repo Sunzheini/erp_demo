@@ -53,6 +53,7 @@ list_of_keys = {
     'Process': [],
     'ProcessStep': [],
     'Requirements': [],
+    'Organization': [],
 }
 
 coordinates = {
@@ -105,6 +106,12 @@ coordinates = {
         'end_column': None,
     },
     'Requirements': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Organization': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

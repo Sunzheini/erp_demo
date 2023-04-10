@@ -1,12 +1,12 @@
 {% extends 'core/base.html' %}
 
 {#1. Page Title------------------------------------------------------------#}
-    {% block page_title %}Delete Organization{% endblock %}
+    {% block page_title %}Customers{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <h1 class="page-title">Delete Organization</h1>
+        <h1 class="page-title">Customers</h1>
     {% endblock %}
 {#-------------------------------------------------------------------------#}
 
@@ -20,9 +20,16 @@
                 <span class="card-btn-desc">Go back to the document list</span>
             </button>
 
-            <button class="card-btn card-btn-hidden"></button>
+            <button class="card-btn" onclick="location.href='{% url 'add customer' %}';">
+{#                <span class="card-btn-title">Добавяне на организация</span>#}
+                <span class="card-btn-title"><i class="fa-solid fa-plus"></i>Добави нов клиент</span>
+                <span class="card-btn-desc">Add a new document and define its properties</span>
+            </button>
 
-            <button class="card-btn card-btn-hidden"></button>
+            <button class="card-btn" onclick="location.href='{% url 'customer list' %}';">
+                <span class="card-btn-title"><i class="fa-solid fa-list-ul"></i>Списък на клиентите</span>
+                <span class="card-btn-desc">Display a list of all documents. Edit or delete documents</span>
+            </button>
 
             <button class="card-btn card-btn-hidden"></button>
 
@@ -35,20 +42,8 @@
 {% block display_content %}
     <section class="display-content-section">
         <div class="all-display-content-container">
-
             <div class="card-display">
-                <h2 class="card-display-title">Изтриване на организацията</h2>
-                <form action="{% url 'delete org' pk=org.pk slug=org.slug %}" method="post">
-
-                    <table class="table-form">
-                        {{ form }}
-                    </table>
-
-                    {% csrf_token %}
-                    <button class="form-button">Изтрий</button>
-                </form>
             </div>
-
         </div>
     </section>
 {% endblock %}

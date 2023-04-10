@@ -1,12 +1,12 @@
 {% extends 'core/base.html' %}
 
 {#1. Page Title------------------------------------------------------------#}
-    {% block page_title %}Delete Organization{% endblock %}
+    {% block page_title %}Delete Customer{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <h1 class="page-title">Delete Organization</h1>
+        <h1 class="page-title">Delete Customer</h1>
     {% endblock %}
 {#-------------------------------------------------------------------------#}
 
@@ -37,8 +37,8 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Изтриване на организацията</h2>
-                <form action="{% url 'delete org' pk=org.pk slug=org.slug %}" method="post">
+                <h2 class="card-display-title">Изтриване на клиента</h2>
+                <form action="{% url 'delete customer' pk=customer.pk slug=customer.slug %}" method="post">
 
                     <table class="table-form">
                         {{ form }}

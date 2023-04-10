@@ -11,6 +11,7 @@ from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
 from erp_demo.main_app import custom_collections
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.main_app.translator import translate_to_maimunica
+from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process
 
@@ -55,6 +56,8 @@ class SupportFunctions:
         CaptainsLog.objects.all().delete()
 
         Requirements.objects.all().delete()
+
+        Organization.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -298,6 +301,16 @@ class SupportFunctions:
                     slug=slugify(f"{info_to_update[obj]['organization']}-"
                                  f"{info_to_update[obj]['clause']}-"
                                  f"{translate_to_maimunica(info_to_update[obj]['description'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Organization':
+                Organization.objects.bulk_create([Organization(
+                    name=info_to_update[obj]['name'],
+                    eik=info_to_update[obj]['eik'],
+                    mol=info_to_update[obj]['mol'],
+                    address=info_to_update[obj]['address'],
+                    manager_name=info_to_update[obj]['manager_name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
                 ) for obj in info_to_update.keys()])
 
             info_to_update = {}
