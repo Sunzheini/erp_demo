@@ -16,6 +16,8 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
+{#            <button class="card-btn" onclick="if(document.referrer){window.history.go(-1);}else{window.location.href='{% url 'customer mng index' %}';}">#}
+
                 <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the document list</span>
             </button>

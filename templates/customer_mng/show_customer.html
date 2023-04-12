@@ -39,46 +39,60 @@
             <div class="card-display">
                 <h2 class="card-display-title">Покажи данните за клиента</h2>
 
-                <div class="table-data-container">
-                    <table class="table-data">
-                    <thead>
-                        <tr>
-                            <th>Тип</th>
-                            <th>Име</th>
-                            <th>Адрес по регистрация</th>
-                            <th>Населено място</th>
-                            <th>ЕИК</th>
-                            <th>МОЛ</th>
-                            <th>Адрес за кореспонденция</th>
-                            <th>Лице за контакт</th>
-                            <th>Телефон</th>
-                            <th>Имейл</th>
-                            <th>Редактирай</th>
-                            <th>Изтрий</th>
-                        </tr>
-                    </thead>
+{#                <div class="table-data-container">#}
+{#                    <table class="table-data">#}
+{#                    <thead>#}
+{#                        <tr>#}
+{#                            <th>Тип</th>#}
+{#                            <th>Име</th>#}
+{#                            <th>Адрес по регистрация</th>#}
+{#                            <th>Населено място</th>#}
+{#                            <th>ЕИК</th>#}
+{#                            <th>МОЛ</th>#}
+{#                            <th>Адрес за кореспонденция</th>#}
+{#                            <th>Лице за контакт</th>#}
+{#                            <th>Телефон</th>#}
+{#                            <th>Имейл</th>#}
+{#                            <th>Редактирай</th>#}
+{#                            <th>Изтрий</th>#}
+{#                        </tr>#}
+{#                    </thead>#}
+{##}
+{#                    <tbody>#}
+{#                        <tr>#}
+{#                            <td>{{ customer.type }}</td>#}
+{#                            <td>{{ customer.name }}</td>#}
+{#                            <td>{{ customer.registration_address }}</td>#}
+{#                            <td>{{ customer.registration_city }}</td>#}
+{#                            <td>{{ customer.eik }}</td>#}
+{#                            <td>{{ customer.mol }}</td>#}
+{#                            <td>{{ customer.correspondence_address }}</td>#}
+{#                            <td>{{ customer.contact_person }}</td>#}
+{#                            <td>{{ customer.phone }}</td>#}
+{#                            <td>{{ customer.email }}</td>#}
+{##}
+{#                            <td><a class="table-link" href="{% url 'edit customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-pen-to-square"></i>Редактирай</a></td>#}
+{#                            <td><a class="table-link" href="{% url 'delete customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-trash"></i>Изтрий</a></td>#}
+{#                        </tr>#}
+{#                    </tbody>#}
+{#                    </table>#}
+{#                </div>#}
 
-                    <tbody>
-                        <tr>
-                            <td>{{ customer.type }}</td>
-                            <td>{{ customer.name }}</td>
-                            <td>{{ customer.registration_address }}</td>
-                            <td>{{ customer.registration_city }}</td>
-                            <td>{{ customer.eik }}</td>
-                            <td>{{ customer.mol }}</td>
-                            <td>{{ customer.correspondence_address }}</td>
-                            <td>{{ customer.contact_person }}</td>
-                            <td>{{ customer.phone }}</td>
-                            <td>{{ customer.email }}</td>
+                <form action="{% url 'show customer' pk=customer.pk slug=customer.slug %}" method="post">
 
-                            <td><a class="table-link" href="{% url 'edit customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-pen-to-square"></i>Редактирай</a></td>
-                            <td><a class="table-link" href="{% url 'delete customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-trash"></i>Изтрий</a></td>
-                        </tr>
-                    </tbody>
+                    <table class="table-form">
+                        {{ form }}
                     </table>
-                </div>
+
+                    {% csrf_token %}
+{#                    <button class="form-button">Запази</button>#}
+                </form>
+
+
             </div>
         </div>
     </section>
+
+    <script src="/static/css/show_customer.js"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

@@ -386,7 +386,6 @@ a.table-link:hover {
 
 .display-content-section .all-display-content-container .card-display .table-data  {
   border-collapse: collapse;
-  border: solid 3px black;
 }
 
 .display-content-section .all-display-content-container .card-display .table-data th {
@@ -397,7 +396,7 @@ a.table-link:hover {
   font-size: 15px;
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 130px;
+  max-width: 120px;
 }
 
 .display-content-section .all-display-content-container .card-display .table-data td {
@@ -405,7 +404,7 @@ a.table-link:hover {
   font-size: 15px;
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 130px;
+  max-width: 120px;
   overflow: hidden;
 }
 

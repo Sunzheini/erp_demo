@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from erp_demo.customer_mng.models import Customer
 from erp_demo.main_app.custom_logic import SupportFunctions
-from erp_demo.customer_mng.forms import CustomerForm, CustomerEditForm, CustomerDeleteForm
+from erp_demo.customer_mng.forms import CustomerForm, CustomerEditForm, CustomerDeleteForm, CustomerViewForm
 
 
 class CustomerAppViews:
@@ -41,7 +41,9 @@ class CustomerAppViews:
     def show_customer(request, pk, slug):
         template = 'customer_mng/show_customer.html'
         customer = Customer.objects.filter(pk=pk).get()
+        form = CustomerViewForm(instance=customer)
         context = {
+            'form': form,
             'customer': customer,
         }
         return render(request, template, context)
