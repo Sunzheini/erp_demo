@@ -67,23 +67,23 @@ class SupportFunctions:
     @staticmethod
     def sort_process_steps(process_obj, process_step_obj, choice):
         p_list = []
+        all_processes = process_obj.objects.all()
+        process_obj_length = len(all_processes)
 
         if choice is None:
-            p_list = []
+            pass
 
         elif choice == 'All':
-            for process in range(len(process_obj.objects.all())):
+            for process in range(process_obj_length):
                 p_list.append([])
 
                 for process_step in process_step_obj.objects.all():
-                    if process_step.parent_process.id == process_obj.objects.all()[process].id:
+                    if process_step.parent_process.id == all_processes[process].id:
                         p_list[process].append(process_step)
 
         elif choice != 'All':
             chosen_process = process_obj.objects.filter(number=choice).get()
             p_list.append([])
-
-            print(chosen_process)
 
             for process_step in process_step_obj.objects.all():
                 if process_step.parent_process.number == chosen_process.number:

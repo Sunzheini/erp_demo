@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login     # users and login
 
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee
@@ -12,9 +13,36 @@ from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.process_mng.models import Process
 
 
+"""
+Creation of login
+superuser: daniel, daniel_zorov@abv.bg, Maimun06
++1:10:00: create User model
++1:39:00: user = User.objects.create_user(
+		username='maxi',
+		password='Maimun04',
+	)
++1:52:00: login(request, user)  # creates session, attaches user to req, logs in user
+          logout...  # deletes session, ...
+
+can and should change user permissions in django admin, can also make groups
+
+
+	
+	
+"""
+
+
 class MainAppViews:
     @staticmethod
     def index(request):
+
+# --------------------------------------------------------
+
+        # prints the username if ok else None
+        print(authenticate(username='daniel', password='Maimun06'))
+
+# --------------------------------------------------------
+
         search_pattern = None
         info_to_display = None
         if request.method == 'GET':

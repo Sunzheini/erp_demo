@@ -199,6 +199,7 @@ i {
 .card-buttons-section .all-card-buttons-container .card-btn:hover,
 .card-buttons-section .all-card-buttons-container .card-btn:active{
   background-color: var(--clr-card-bg-hover);
+  /*cursor: pointer;*/
   /*background-color: var(--clr-dark-grey);*/
 }
 
@@ -386,6 +387,8 @@ a.table-link:hover {
 
 .display-content-section .all-display-content-container .card-display .table-data  {
   border-collapse: collapse;
+  table-layout: fixed;
+  width: 1200px;
 }
 
 .display-content-section .all-display-content-container .card-display .table-data th {
@@ -396,7 +399,8 @@ a.table-link:hover {
   font-size: 15px;
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 120px;
+  max-width: 200px;
+  overflow: hidden;
 }
 
 .display-content-section .all-display-content-container .card-display .table-data td {
@@ -404,8 +408,9 @@ a.table-link:hover {
   font-size: 15px;
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 120px;
+  max-width: 200px;
   overflow: hidden;
+  /*word-wrap: break-word;*/
 }
 
 .display-content-section .all-display-content-container .card-display .table-data tbody tr:nth-child(even) {
