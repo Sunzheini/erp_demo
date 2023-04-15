@@ -40,9 +40,13 @@
                 <h2 class="card-display-title">Добавяне на организация</h2>
                 <form action="{% url 'add org' %}" method="post">
 
-                    <table class="table-form">
+{#                    <table class="table-form">#}
+{#                        {{ form }}#}
+{#                    </table>#}
+
+                    <div class="table-div">
                         {{ form }}
-                    </table>
+                    </div>
 
                     {% csrf_token %}
                 <br>
@@ -51,5 +55,7 @@
             </div>
         </div>
     </section>
+
+    <script src="../../static/css/add_organization.js"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

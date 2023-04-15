@@ -35,8 +35,8 @@
                 <li class="nav-item">
                     <i class="fas fa-home"></i>
 {#                    <a href="{% url 'index' %}">Main Menu</a>#}
-{#                    <a href="{% url 'index' %}">Начало</a>#}
-                    <a href="{% url 'org mng index' %}">Начало</a>
+                    <a href="{% url 'index' %}">Начало</a>
+{#                    <a href="{% url 'org mng index' %}">Начало</a>#}
                 </li>
                 <li class="nav-item">
                     <i class="fa-solid fa-ranking-star"></i>
@@ -83,7 +83,43 @@
 
 </header>
 <main>
+<div class="total-container">
 
+{#3.5. Menu----------------------------------------------------------------#}
+<div class="menu-container">
+    <ul class="menu-list" role="list">
+        <button class="menu-item" onclick="location.href='{% url 'org mng index' %}';">
+            <i class="fa-solid fa-landmark-flag"></i>
+            <span class="menu-item-title">Организация</span>
+        </button>
+        <button class="menu-item" onclick="location.href='{% url 'customer mng index' %}';">
+            <i class="fa-solid fa-business-time"></i>
+            <span class="menu-item-title">Клиенти</span>
+        </button>
+
+        {# --- #}
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'index' %}';">
+            <i class="fa-solid fa-thumbtack"></i>
+            <span class="menu-item-title">Стар Индекс</span>
+        </button>
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'process mng index' %}';">
+            <i class="fa-solid fa-thumbtack"></i>
+            <span class="menu-item-title">Процеси</span>
+        </button>
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'dox mng index' %}';">
+            <i class="fa-solid fa-thumbtack"></i>
+            <span class="menu-item-title">Документи</span>
+        </button>
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'hr mng index' %}';">
+            <i class="fa-solid fa-thumbtack"></i>
+            <span class="menu-item-title">Персонал</span>
+        </button>
+        {# --- #}
+    </ul>
+</div>
+{#-------------------------------------------------------------------------#}
+
+<div class="all-sections-container">
 {#4. Section1--------------------------------------------------------------#}
 {% block card_buttons %}
     <section class="card-buttons-section">
@@ -138,7 +174,8 @@
     </section>
 {% endblock %}
 {#-------------------------------------------------------------------------#}
-
+</div>
+</div>
 </main>
 
 <footer class="footer">

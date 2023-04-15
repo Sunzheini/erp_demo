@@ -44,40 +44,64 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Тип</th>
+{#                            <th>Тип</th>#}
+{#                            <th>Име</th>#}
+{#                            <th>Адрес по регистрация</th>#}
+{#                            <th>Населено място</th>#}
+{#                            <th>ЕИК</th>#}
+{#                            <th>МОЛ</th>#}
+{#                            <th>Адрес за кореспонденц</th>#}
+{#                            <th>Лице за контакт</th>#}
+{#                            <th>Телефон</th>#}
+{#                            <th>Имейл</th>#}
+{#                            <th>Покажи</th>#}
+{#                            <th>Редактирай</th>#}
+{#                            <th>Изтрий</th>#}
+{#                            <th>Действия</th>#}
+
                             <th>Име</th>
-                            <th>Адрес по регистрация</th>
                             <th>Населено място</th>
+                            <th>Адрес за кореспонденция</th>
                             <th>ЕИК</th>
                             <th>МОЛ</th>
-                            <th>Адрес за кореспонденц</th>
-                            <th>Лице за контакт</th>
-                            <th>Телефон</th>
-                            <th>Имейл</th>
-                            <th>Покажи</th>
-                            <th>Редактирай</th>
-                            <th>Изтрий</th>
+                            <th>Действия</th>
                         </tr>
                     </thead>
 
                     <tbody>
                             {% for customer in all_objects %}
                         <tr>
-                            <td>{{ customer.type }}</td>
+{#                            <td>{{ customer.type }}</td>#}
+{#                            <td>{{ customer.name }}</td>#}
+{#                            <td>{{ customer.registration_address }}</td>#}
+{#                            <td>{{ customer.registration_city }}</td>#}
+{#                            <td>{{ customer.eik }}</td>#}
+{#                            <td>{{ customer.mol1 }}</td>#}
+{#                            <td>{{ customer.correspondence_address1 }}</td>#}
+{#                            <td>{{ customer.contact_person1 }}</td>#}
+{#                            <td>{{ customer.phone1 }}</td>#}
+{#                            <td>{{ customer.email1 }}</td>#}
+
                             <td>{{ customer.name }}</td>
-                            <td>{{ customer.registration_address }}</td>
                             <td>{{ customer.registration_city }}</td>
+                            <td>{{ customer.correspondence_address1 }}</td>
                             <td>{{ customer.eik }}</td>
                             <td>{{ customer.mol1 }}</td>
-                            <td>{{ customer.correspondence_address1 }}</td>
-                            <td>{{ customer.contact_person1 }}</td>
-                            <td>{{ customer.phone1 }}</td>
-                            <td>{{ customer.email1 }}</td>
 
+{#                            <td><a class="table-link" href="{% url 'show customer' pk=customer.pk slug=customer.slug %}">#}
+{#                                <i class="fa-solid fa-magnifying-glass"></i>Покажи</a></td>#}
+{#                            <td><a class="table-link" href="{% url 'edit customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-pen-to-square"></i>Редактирай</a></td>#}
+{#                            <td><a class="table-link" href="{% url 'delete customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-trash"></i>Изтрий</a></td>#}
+{#                        #}
                             <td><a class="table-link" href="{% url 'show customer' pk=customer.pk slug=customer.slug %}">
-                                <i class="fa-solid fa-magnifying-glass"></i>Покажи</a></td>
-                            <td><a class="table-link" href="{% url 'edit customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-pen-to-square"></i>Редактирай</a></td>
-                            <td><a class="table-link" href="{% url 'delete customer' pk=customer.pk slug=customer.slug %}"><i class="fa-solid fa-trash"></i>Изтрий</a></td>
+                                <i class="fa-solid fa-magnifying-glass"></i></a>
+                                &nbsp
+                                <a class="table-link" href="{% url 'edit customer' pk=customer.pk slug=customer.slug %}">
+                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                &nbsp
+                                <a class="table-link" href="{% url 'delete customer' pk=customer.pk slug=customer.slug %}">
+                                <i class="fa-solid fa-trash"></i></a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

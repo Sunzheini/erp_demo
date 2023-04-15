@@ -49,9 +49,10 @@
                             <th>МОЛ</th>
                             <th>Адрес на управление</th>
                             <th>Имена на ръководителя</th>
-                            <th>Покажи</th>
-                            <th>Редактирай</th>
-                            <th>Изтрий</th>
+{#                            <th>Покажи</th>#}
+{#                            <th>Редактирай</th>#}
+{#                            <th>Изтрий</th>#}
+                            <th>Действия</th>
                         </tr>
                     </thead>
 
@@ -64,10 +65,23 @@
                             <td>{{ org.address }}</td>
                             <td>{{ org.manager_name }}</td>
 
-                            <td><a class="table-link" href="{% url 'show org' pk=org.pk slug=org.slug %}">
-                                <i class="fa-solid fa-magnifying-glass"></i>Покажи</a></td>
-                            <td><a class="table-link" href="{% url 'edit org' pk=org.pk slug=org.slug %}"><i class="fa-solid fa-pen-to-square"></i>Редактирай</a></td>
-                            <td><a class="table-link" href="{% url 'delete org' pk=org.pk slug=org.slug %}"><i class="fa-solid fa-trash"></i>Изтрий</a></td>
+{#                            <td class="actions"><a class="table-link" href="{% url 'show org' pk=org.pk slug=org.slug %}">#}
+{#                                <i class="fa-solid fa-magnifying-glass"></i></a></td>#}
+{#                            <td class="actions"><a class="table-link" href="{% url 'edit org' pk=org.pk slug=org.slug %}">#}
+{#                                <i class="fa-solid fa-pen-to-square"></i></a></td>#}
+{#                            <td class="actions"><a class="table-link" href="{% url 'delete org' pk=org.pk slug=org.slug %}">#}
+{#                                <i class="fa-solid fa-trash"></i></a></td>#}
+
+                            <td>
+                                <a class="table-link" href="{% url 'show org' pk=org.pk slug=org.slug %}">
+                                <i class="fa-solid fa-magnifying-glass"></i></a>
+                                &nbsp
+                                <a class="table-link" href="{% url 'edit org' pk=org.pk slug=org.slug %}">
+                                <i class="fa-solid fa-pen-to-square"></i></a>
+                                &nbsp
+                                <a class="table-link" href="{% url 'delete org' pk=org.pk slug=org.slug %}">
+                                <i class="fa-solid fa-trash"></i></a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

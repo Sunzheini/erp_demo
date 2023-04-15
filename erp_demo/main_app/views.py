@@ -1,5 +1,9 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login     # users and login
+from django.utils.decorators import method_decorator
 
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee
@@ -14,8 +18,13 @@ from erp_demo.process_mng.models import Process
 
 
 """
+-- 1 --
+# prints the username if ok else None
+print(authenticate(username='daniel', password='Maimun06'))
+
 Creation of login
 superuser: daniel, daniel_zorov@abv.bg, Maimun06
+user: a.atanasov, erp_demo
 +1:10:00: create User model
 +1:39:00: user = User.objects.create_user(
 		username='maxi',
@@ -26,23 +35,21 @@ superuser: daniel, daniel_zorov@abv.bg, Maimun06
 
 can and should change user permissions in django admin, can also make groups
 
+2:31: 
+@login_required is for function based views   # gives an error when on my views
+@method_decorator(login_required())???
+LoginRequiredMixin za class based views???
 
-	
-	
+-- 2 --
+
+
 """
 
 
 class MainAppViews:
     @staticmethod
+    @SupportFunctions.allow_groups(groups=['owners'])
     def index(request):
-
-# --------------------------------------------------------
-
-        # prints the username if ok else None
-        print(authenticate(username='daniel', password='Maimun06'))
-
-# --------------------------------------------------------
-
         search_pattern = None
         info_to_display = None
         if request.method == 'GET':

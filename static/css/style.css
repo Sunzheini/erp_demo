@@ -42,17 +42,33 @@ body {
   background-color: #F3F3F3;
   }
 
+/* Icons -----------------------------------------------------------------*/
+
 i {
   width: 1.14em;
   padding-right: 0.28em;
   margin-right: 0.28em;
 }
 
+.fa-magnifying-glass {
+  color: blue;
+}
+
+.fa-pen-to-square {
+  color: darkcyan;
+}
+
+.fa-trash {
+  color: red;
+}
+/*-------------------------------------------------------------------------*/
+
 /* 2. Nav -----------------------------------------------------------------*/
+
 .header .navigation {
   background-color: var(--clr-nav-bg);
   width: 95vw;
-  max-width: 1200px;
+  max-width: 1500px;
   height: 2rem;
   margin: 0.5rem auto 1rem auto;
   border-radius: 1rem;
@@ -145,11 +161,79 @@ i {
 }
 /*-------------------------------------------------------------------------*/
 
+/*---*/
+.total-container {
+  width: 95vw;
+  max-width: 1500px;
+  min-height: 700px;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+}
+/*---*/
+
+/* 3.5. Menu --------------------------------------------------------------*/
+.menu-container {
+  width: 282px;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+}
+
+.menu-list {
+}
+
+.menu-item {
+  width: 100%;
+  margin: 0 auto 10px auto;
+
+  background-color: var(--clr-dark-grey);
+
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+
+  height: 1rem;
+  border-width: 0;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  transition: background-color 250ms linear, color 300ms linear;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.menu-item:hover {
+  /*background-color: var(--clr-card-bg-hover);*/
+  background-color: var(--clr-nav-bg);
+}
+
+.menu-item .menu-item-title {
+  display: block;
+  /*font-weight: bold;*/
+  font-size: 1rem;
+  color: var(--clr-title-text);
+}
+
+/*-------------------------------------------------------------------------*/
+
+/*---*/
+.all-sections-container {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+/*---*/
+
 /* 4. Section1 ------------------------------------------------------------*/
 .card-buttons-section {
-  /*width: 80vw;*/
-  width: 95vw;
-  max-width: 1200px;
+  /*width: 95vw;*/
+  /*max-width: 1200px;*/
+  width: 100%;
+
   /*margin: 0 auto 3rem auto;*/
   margin: 0 auto 1px auto;
 }
@@ -198,7 +282,8 @@ i {
 
 .card-buttons-section .all-card-buttons-container .card-btn:hover,
 .card-buttons-section .all-card-buttons-container .card-btn:active{
-  background-color: var(--clr-card-bg-hover);
+  /*background-color: var(--clr-card-bg-hover);*/
+  background-color: var(--clr-nav-bg);
   /*cursor: pointer;*/
   /*background-color: var(--clr-dark-grey);*/
 }
@@ -209,7 +294,7 @@ i {
 
 .card-buttons-section .all-card-buttons-container .card-btn .card-btn-title {
   display: block;
-  height: 50%;
+  /*height: 50%;*/
   font-weight: bold;
   /*font-size: 1.2rem;*/
   font-size: 1rem;
@@ -231,15 +316,17 @@ i {
 
 /* 5. Section2 ------------------------------------------------------------*/
 .display-content-section {
-  /*width: 80vw;*/
-  width: 95vw;
-  max-width: 1200px;
-  margin: 0 auto 3rem auto;
+  /*width: 95vw;*/
+  /*max-width: 1200px;*/
+  width: 100%;
+  height: 100%;
+
+  /*margin: 0 auto 3rem auto;*/
+  margin: 0 auto 0 auto;
 }
 
 .display-content-section .all-display-content-container {
   width: 100%;
-  height: 100%;
 }
 
 .display-content-section .all-display-content-container .card-display {
@@ -248,7 +335,7 @@ i {
   height: 100%;
 
   /*adding min height*/
-  min-height: 500px;
+  min-height: 650px;
 
   /*change border*/
   /*border-radius: 0.5rem;*/
@@ -266,6 +353,8 @@ i {
   font-size: 1.2rem;
   color: var(--clr-title-text);
   margin-bottom: 0.5rem;
+
+  background-color: #F3F3F3;
 
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
 }
@@ -317,8 +406,9 @@ a.table-link:hover {
   width: 144px;
   height: 32px;
   text-align: left;
-  border: solid 1px var(--clr-table-border);
+  /*border: solid 1px var(--clr-table-border);*/
   font-size: 14px;
+  font-weight: normal;
 }
 
 .display-content-section .all-display-content-container .card-display .table-form td {
@@ -326,7 +416,7 @@ a.table-link:hover {
   background-color: var(--clr-card-bg);
   width: 300px;
   height: 32px;
-  border: solid 1px var(--clr-table-border);
+  /*border: solid 1px var(--clr-table-border);*/
   padding-left: 5px;
   padding-right: 5px;
   font-size: 14px;
@@ -336,6 +426,64 @@ a.table-link:hover {
   width: 100%;
 
 }
+
+/*-------------------------------------------------------------------------*/
+
+/* Divs for forms -------------------------------------------------------*/
+.display-content-section .all-display-content-container .card-display .table-div  {
+  margin-bottom: 0.5rem;
+/*border-collapse: collapse;*/
+  border: solid 1px var(--clr-nav-bg);
+  padding: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.display-content-section .all-display-content-container .card-display .table-div > label {
+  height: 32px;
+  text-align: left;
+  font-size: 0.9rem;
+  display: inline-block;
+  /*font-weight: bold;*/
+}
+
+.display-content-section .all-display-content-container .card-display .table-div > input {
+  width: 200px;
+  height: 28px;
+  border: solid 1px #1c1a1a;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
+  /*background-color: #FFEACE;*/
+  background-color: #EDE0DC;
+
+  margin-right: 30px;
+}
+/*-------------------------------------------------------------------------*/
+
+/* Specifically for add org form ------------------------------------------*/
+/*.display-content-section .all-display-content-container .card-display .table-div > input:first-of-type {*/
+#create-org-form > div > input:first-of-type {
+  margin-top: 10px;
+  margin-right: 0;
+  margin-bottom: 20px;
+  width: 500px;
+}
+
+#create-org-form > div > input:nth-of-type(3) {
+  width: 300px;
+}
+
+#create-org-form > div > input:nth-of-type(4) {
+  margin-right: 0;
+  width: 350px;
+  margin-bottom: 20px;
+}
+
+#create-org-form > div > input:nth-of-type(5) {
+  margin-right: 0;
+  width: 438px;
+}
+
 
 /*-------------------------------------------------------------------------*/
 
@@ -414,7 +562,8 @@ a.table-link:hover {
 }
 
 .display-content-section .all-display-content-container .card-display .table-data tbody tr:nth-child(even) {
-  background-color: var(--clr-table-data-odd-bg);
+  /*background-color: var(--clr-table-data-odd-bg);*/
+  background-color: #F3F3F3;
 }
 /*-------------------------------------------------------------------------*/
 
