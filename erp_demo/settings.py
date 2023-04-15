@@ -6,6 +6,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'erp_demo.hr_mng',
     'erp_demo.organization_mng',
     'erp_demo.customer_mng',
+    'erp_demo.user_mng',
+    'erp_demo.supplier_mng',
 
     'cloudinary',
 ]
@@ -169,4 +172,5 @@ cloudinary.config(
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/login2'
+LOGIN_URL = reverse_lazy('login')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')

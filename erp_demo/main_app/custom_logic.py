@@ -2,6 +2,7 @@ import time
 from functools import wraps
 
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.utils.text import slugify
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
@@ -456,7 +457,8 @@ class SupportFunctions:
         def decorator(view_func):
             def wrapper(request, *args, **kwargs):
                 if not request.user.is_authenticated:
-                    return HttpResponse('Not authenticated!')
+                    # return HttpResponse('Not authenticated!')
+                    return redirect('login')
 
                 if request.user.is_superuser or not groups:
                     return view_func(request, *args, **kwargs)
@@ -470,7 +472,6 @@ class SupportFunctions:
 
             return wrapper
 
-        print(groups)
         if callable(groups):
             func = groups
             groups = []
