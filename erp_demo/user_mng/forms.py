@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 
 
 class MySignUpForm(UserCreationForm):
+
+    #  2
+    # age = forms.IntegerField()
+
     class Meta:
         model = User
         fields = ('email', 'username')

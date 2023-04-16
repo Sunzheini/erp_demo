@@ -41,7 +41,7 @@ can and should change user permissions in django admin, can also make groups
 LoginRequiredMixin za class based views???
 
 -- 2 --
-
+-1:37: Extend Django user - havent done that
 
 """
 

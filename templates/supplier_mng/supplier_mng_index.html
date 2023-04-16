@@ -5,8 +5,12 @@
     <title>Supplier Management Index</title>
 </head>
 <body>
-    {% for document in document_list %}
-        {{ document.name }}
-    {% endfor %}
+    <ul>
+        {% for document in document_list %}
+            <li>{{ document.name }}</li>
+        {% endfor %}
+    </ul>
+    <br><br>
+
 </body>
 </html>
