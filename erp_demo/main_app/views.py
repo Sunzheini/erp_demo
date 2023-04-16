@@ -48,7 +48,7 @@ LoginRequiredMixin za class based views???
 
 class MainAppViews:
     @staticmethod
-    @SupportFunctions.allow_groups(groups=['owners'])
+    # @SupportFunctions.allow_groups(groups=['owners'])
     def index(request):
         search_pattern = None
         info_to_display = None
