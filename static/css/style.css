@@ -413,7 +413,7 @@ a.table-link:hover {
   text-align: left;
   /*border: solid 1px var(--clr-table-border);*/
   font-size: 14px;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 .display-content-section .all-display-content-container .card-display .table-form td {
@@ -441,54 +441,58 @@ a.table-link:hover {
   border: solid 1px var(--clr-nav-bg);
   padding: 5px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.display-content-section .all-display-content-container .card-display .table-div > label {
+.table-div-holder {
+  margin-bottom: 20px;
+}
+
+.table-div-holder:first-child {
+  margin-top: 10px;
+}
+
+.table-div-holder:last-child {
+  margin-bottom: 10px;
+}
+
+.table-div-label {
   height: 32px;
-  text-align: left;
   font-size: 0.9rem;
-  display: inline-block;
-  /*font-weight: bold;*/
+  margin-right: 10px;
+  margin-left: 20px;
+  font-weight: bold;
 }
 
-.display-content-section .all-display-content-container .card-display .table-div > input {
+.table-div-label:first-child {
+  margin-left: 0;
+}
+
+.table-div-input {
   width: 200px;
   height: 28px;
   border: solid 1px #1c1a1a;
   padding-left: 5px;
   padding-right: 5px;
   font-size: 14px;
-  /*background-color: #FFEACE;*/
-  background-color: #EDE0DC;
-
-  margin-right: 30px;
-}
-/*-------------------------------------------------------------------------*/
-
-/* Specifically for add org form ------------------------------------------*/
-/*.display-content-section .all-display-content-container .card-display .table-div > input:first-of-type {*/
-#create-org-form > div > input:first-of-type {
-  margin-top: 10px;
-  margin-right: 0;
-  margin-bottom: 20px;
-  width: 500px;
+  background-color: #FFEACE;
+  /*background-color: #EDE0DC;*/
 }
 
-#create-org-form > div > input:nth-of-type(3) {
+/* Specifically for add org -----------------------------------------------*/
+
+.table-div-input-1 {
+  width: 392px;
+}
+
+.table-div-input-3,
+.table-div-input-4,
+.table-div-input-5{
   width: 300px;
 }
-
-#create-org-form > div > input:nth-of-type(4) {
-  margin-right: 0;
-  width: 350px;
-  margin-bottom: 20px;
-}
-
-#create-org-form > div > input:nth-of-type(5) {
-  margin-right: 0;
-  width: 438px;
-}
-
 
 /*-------------------------------------------------------------------------*/
 
@@ -540,8 +544,11 @@ a.table-link:hover {
 
 .display-content-section .all-display-content-container .card-display .table-data  {
   border-collapse: collapse;
+
   table-layout: fixed;
-  width: 1200px;
+  /*width: 1200px;*/
+
+  max-width: 1200px;
 }
 
 .display-content-section .all-display-content-container .card-display .table-data th {
@@ -552,7 +559,11 @@ a.table-link:hover {
   font-size: 15px;
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 200px;
+
+  /*max-width: 200px;*/
+  /*overflow: hidden;*/
+
+  max-width: 250px;
   overflow: hidden;
 }
 
@@ -561,7 +572,12 @@ a.table-link:hover {
   font-size: 15px;
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 200px;
+
+  /*max-width: 200px;*/
+  /*overflow: hidden;*/
+  /*!*word-wrap: break-word;*!*/
+
+  max-width: 250px;
   overflow: hidden;
   /*word-wrap: break-word;*/
 }

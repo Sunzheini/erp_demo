@@ -3,9 +3,9 @@
 function solve() {
     let position_left = 485
     const INCREMENT = 34
-    let position_top_mol = 280
-    let position_top_address = 320
-    let position_top_contact = 360
+    let position_top_mol = 275
+    let position_top_address = 315
+    let position_top_contact = 355
 
     let molCounter = 1
     let addressCounter = 1
@@ -137,7 +137,7 @@ function solve() {
                    break
            }
 
-            position_top_contact += (INCREMENT + 15)
+            position_top_contact += (INCREMENT + 12)
             positionButtons(buttonContact, position_left, position_top_contact)
         }
     }

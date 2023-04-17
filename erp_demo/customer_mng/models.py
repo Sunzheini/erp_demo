@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
+from cloudinary import models as cloudinary_models
 from erp_demo.main_app.translator import translate_to_maimunica
 
 
@@ -162,3 +163,9 @@ class Customer(models.Model):
         blank=True, null=True,
         editable=False,
     )
+
+    def save(self, *args, **kwargs):
+        # super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:20])}")
+        return super().save(*args, **kwargs)
