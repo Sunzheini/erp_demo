@@ -38,7 +38,7 @@
 
             <div class="card-display">
                 <h2 class="card-display-title">Добавяне на нов клиент</h2>
-                <form action="{% url 'add customer' %}" method="post">
+                <form action="{% url 'add customer' %}" method="post" enctype="multipart/form-data">
 
                     <table class="table-form">
                         {{ form }}

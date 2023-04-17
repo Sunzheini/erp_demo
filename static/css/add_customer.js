@@ -3,15 +3,16 @@
 function solve() {
     let position_left = 485
     const INCREMENT = 34
-    let position_top_mol = 275
-    let position_top_address = 315
-    let position_top_contact = 355
+    let position_top_mol = 310
+    let position_top_address = 350
+    let position_top_contact = 390
 
     let molCounter = 1
     let addressCounter = 1
     let contactCounter = 1
 
     // Selections
+    let cardDisplayDiv = document.getElementsByClassName('card-display')[0]
     let tableForm = document.getElementsByClassName('table-form')[0]
     let tableFormBody = Array.from(tableForm.children)[0]
     let saveButton = document.getElementsByClassName('form-button')[0]
@@ -30,42 +31,42 @@ function solve() {
 
     // Initially hiding the additional fields
     let allChildren = Array.from(tableFormBody.children)
-    let mol2Tr = allChildren[6]
-    let mol3Tr = allChildren[7]
-    let mol4Tr = allChildren[8]
-    let mol5Tr = allChildren[9]
+    let mol2Tr = allChildren[7]
+    let mol3Tr = allChildren[8]
+    let mol4Tr = allChildren[9]
+    let mol5Tr = allChildren[10]
     mol2Tr.style.display = 'none'
     mol3Tr.style.display = 'none'
     mol4Tr.style.display = 'none'
     mol5Tr.style.display = 'none'
-    let address2Tr = allChildren[11]
-    let address3Tr = allChildren[12]
-    let address4Tr = allChildren[13]
-    let address5Tr = allChildren[14]
+    let address2Tr = allChildren[12]
+    let address3Tr = allChildren[13]
+    let address4Tr = allChildren[14]
+    let address5Tr = allChildren[15]
     address2Tr.style.display = 'none'
     address3Tr.style.display = 'none'
     address4Tr.style.display = 'none'
     address5Tr.style.display = 'none'
-    let contact2Tr = allChildren[16]
-    let contact3Tr = allChildren[17]
-    let contact4Tr = allChildren[18]
-    let contact5Tr = allChildren[19]
+    let contact2Tr = allChildren[17]
+    let contact3Tr = allChildren[18]
+    let contact4Tr = allChildren[19]
+    let contact5Tr = allChildren[20]
     contact2Tr.style.display = 'none'
     contact3Tr.style.display = 'none'
     contact4Tr.style.display = 'none'
     contact5Tr.style.display = 'none'
-    let phone2Tr = allChildren[21]
-    let phone3Tr = allChildren[22]
-    let phone4Tr = allChildren[23]
-    let phone5Tr = allChildren[24]
+    let phone2Tr = allChildren[22]
+    let phone3Tr = allChildren[23]
+    let phone4Tr = allChildren[24]
+    let phone5Tr = allChildren[25]
     phone2Tr.style.display = 'none'
     phone3Tr.style.display = 'none'
     phone4Tr.style.display = 'none'
     phone5Tr.style.display = 'none'
-    let email2tr= allChildren[26]
-    let email3tr= allChildren[27]
-    let email4tr= allChildren[28]
-    let email5tr= allChildren[29]
+    let email2tr= allChildren[27]
+    let email3tr= allChildren[28]
+    let email4tr= allChildren[29]
+    let email5tr= allChildren[30]
     email2tr.style.display = 'none'
     email3tr.style.display = 'none'
     email4tr.style.display = 'none'
@@ -91,6 +92,16 @@ function solve() {
     positionButtons(buttonContact, position_left, position_top_contact)
     buttonContact.addEventListener('click', contactHandler)
     divCardDisplay.appendChild(buttonContact)
+
+    // working with the file input
+    let fileInput = document.getElementsByClassName('.file-input')[0]
+
+    let buttonReplacement = customElements(
+        'button', divCardDisplay, null, ['button-replacement'], null,
+        {onclick: "document.getElementsByClassName('file-input')[0].click();" }
+    )
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери лого '
+
 
     function molHandler() {
         if (molCounter < 5) {

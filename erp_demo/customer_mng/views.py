@@ -27,7 +27,7 @@ class CustomerAppViews:
         if request.method == 'GET':
             form = CustomerForm()
         else:
-            form = CustomerForm(request.POST)
+            form = CustomerForm(request.POST, request.FILES)
             if form.is_valid():
                 output = form.save()  # get the created object
                 SupportFunctions.log_info(f"Added a customer `{output.name}`")
@@ -56,7 +56,7 @@ class CustomerAppViews:
         if request.method == 'GET':
             form = CustomerEditForm(instance=customer)
         else:
-            form = CustomerEditForm(request.POST, instance=customer)
+            form = CustomerEditForm(request.POST,request.FILES, instance=customer)
             if form.is_valid():
                 output = form.save()
                 SupportFunctions.log_info(f"Edited a customer `{output.name}`")

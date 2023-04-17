@@ -154,6 +154,27 @@ i {
 
 /*-------------------------------------------------------------------------*/
 
+/* File input -------------------------------------------------------------*/
+
+.file-input {
+  visibility: hidden;
+}
+
+.button-replacement {
+  position: absolute;
+  top: 130px;
+  left: 175px;
+  height: 25px;
+  font-size: 0.9rem;
+  border: 1px solid black;
+}
+
+.button-replacement:hover {
+  background-color: var(--clr-nav-bg);
+}
+
+/*-------------------------------------------------------------------------*/
+
 /* 3. Page Name -----------------------------------------------------------*/
 .header .page-title {
   font-size: 1.9rem;

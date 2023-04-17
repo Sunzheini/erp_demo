@@ -4,6 +4,7 @@ from erp_demo.customer_mng.models import Customer
 
 LABELS = {
             'type': 'Тип на клиента',
+            'attachment': 'Лого на клиента',
             'name': 'Име на клиента',
             'registration_address': 'Адрес по регистрация',
             'registration_city': 'Населено място',
@@ -45,6 +46,12 @@ class CustomerForm(forms.ModelForm):
         widgets = {
             'type': forms.RadioSelect(
             ),
+            'attachment': forms.ClearableFileInput(
+                attrs={
+                    'class': 'file-input',
+                    'accept': 'image/*',
+                }
+            ),
             'name': forms.TextInput(
                 attrs={
                     'placeholder': 'Пълно име (с правната форма)',
@@ -65,27 +72,27 @@ class CustomerForm(forms.ModelForm):
                     'placeholder': 'ЕИК',
                 }
             ),
-            'mol': forms.TextInput(
+            'mol1': forms.TextInput(
                 attrs={
                     'placeholder': 'МОЛ',
                 }
             ),
-            'correspondence_address': forms.TextInput(
+            'correspondence_address1': forms.TextInput(
                 attrs={
                     'placeholder': 'Основен адрес за кореспонденция',
                 }
             ),
-            'contact_person': forms.TextInput(
+            'contact_person1': forms.TextInput(
                 attrs={
                     'placeholder': 'Основно лице за контакт',
                 }
             ),
-            'phone': forms.TextInput(
+            'phone1': forms.TextInput(
                 attrs={
                     'placeholder': '+359 xx xxx xxx',
                 }
             ),
-            'email': forms.EmailInput(
+            'email1': forms.EmailInput(
                 attrs={
                     'placeholder': 'Валиден имейл адрес',
                 }
@@ -104,7 +111,7 @@ class CustomerEditForm(forms.ModelForm):
 class CustomerDeleteForm(forms.ModelForm):
     class Meta:
         model = Customer
-        exclude = ['slug', 'type']
+        exclude = ['slug', 'type', 'attachment']
 
         labels = LABELS
 
@@ -124,7 +131,7 @@ class CustomerDeleteForm(forms.ModelForm):
 class CustomerViewForm(forms.ModelForm):
     class Meta:
         model = Customer
-        exclude = ['slug']
+        exclude = ['slug', 'attachment']
 
         labels = LABELS
 

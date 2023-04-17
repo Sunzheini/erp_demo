@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
-
 from cloudinary import models as cloudinary_models
+
 from erp_demo.main_app.translator import translate_to_maimunica
 
 
@@ -18,6 +18,15 @@ class Customer(models.Model):
             ('Институция', 'Институция'),
         ),
         blank=False, null=False,
+    )
+
+    # with cloudinary
+    attachment = cloudinary_models.CloudinaryField(
+        'photo',
+        resource_type="auto",
+        blank=True, null=True,
+        use_filename=True,
+        unique_filename=False,
     )
 
     name = models.CharField(
