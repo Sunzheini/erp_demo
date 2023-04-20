@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Edit Organization{% endblock %}
@@ -38,7 +39,7 @@
 
             <div class="card-display">
                 <h2 class="card-display-title">Редактиране на организация</h2>
-                <form action="{% url 'edit org' pk=org.pk slug=org.slug %}" method="post">
+                <form action="{% url 'edit org' pk=org.pk slug=org.slug %}" method="post" enctype="multipart/form-data">
 
                     <table class="table-form">
                         {{ form }}
@@ -51,5 +52,7 @@
 
         </div>
     </section>
+
+    <script type="text/javascript" src="{% static 'css/edit_organization.js' %}"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

@@ -61,6 +61,18 @@ i {
 .fa-trash {
   color: red;
 }
+
+/*-------------------------------------------------------------------------*/
+
+/* Images -----------------------------------------------------------------*/
+
+.logo-img {
+  max-width: 200px;
+  position: absolute;
+  top: 120px;
+  left: 730px;
+}
+
 /*-------------------------------------------------------------------------*/
 
 /* 2. Nav -----------------------------------------------------------------*/
@@ -150,27 +162,6 @@ i {
 .sign-out-a {
   text-decoration: none;
   color: black;
-}
-
-/*-------------------------------------------------------------------------*/
-
-/* File input -------------------------------------------------------------*/
-
-.file-input {
-  visibility: hidden;
-}
-
-.button-replacement {
-  position: absolute;
-  top: 130px;
-  left: 175px;
-  height: 25px;
-  font-size: 0.9rem;
-  border: 1px solid black;
-}
-
-.button-replacement:hover {
-  background-color: var(--clr-nav-bg);
 }
 
 /*-------------------------------------------------------------------------*/
@@ -451,6 +442,27 @@ a.table-link:hover {
 .display-content-section .all-display-content-container .card-display .table-form td > input {
   width: 100%;
 
+}
+
+/*-------------------------------------------------------------------------*/
+
+/* File input -------------------------------------------------------------*/
+
+.file-input {
+  visibility: hidden;
+}
+
+.button-replacement {
+  position: absolute;
+  top: 130px;
+  left: 175px;
+  height: 25px;
+  font-size: 0.9rem;
+  border: 1px solid black;
+}
+
+.button-replacement:hover {
+  background-color: var(--clr-nav-bg);
 }
 
 /*-------------------------------------------------------------------------*/

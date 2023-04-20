@@ -56,7 +56,7 @@ class CustomerAppViews:
         if request.method == 'GET':
             form = CustomerEditForm(instance=customer)
         else:
-            form = CustomerEditForm(request.POST,request.FILES, instance=customer)
+            form = CustomerEditForm(request.POST, request.FILES, instance=customer)
             if form.is_valid():
                 output = form.save()
                 SupportFunctions.log_info(f"Edited a customer `{output.name}`")

@@ -72,6 +72,13 @@ function solve() {
     email4tr.style.display = 'none'
     email5tr.style.display = 'none'
 
+    // Replacing input = file
+    let buttonReplacement = customElements(
+        'button', cardDisplayDiv, null, ['button-replacement'], null,
+        {onclick: "document.getElementsByClassName('file-input')[0].click();" }
+    )
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери лого '
+
     // Adding the + buttons
     const divCardDisplay = document.getElementsByClassName('card-display')[0]
     // 1
@@ -92,16 +99,6 @@ function solve() {
     positionButtons(buttonContact, position_left, position_top_contact)
     buttonContact.addEventListener('click', contactHandler)
     divCardDisplay.appendChild(buttonContact)
-
-    // working with the file input
-    let fileInput = document.getElementsByClassName('.file-input')[0]
-
-    let buttonReplacement = customElements(
-        'button', divCardDisplay, null, ['button-replacement'], null,
-        {onclick: "document.getElementsByClassName('file-input')[0].click();" }
-    )
-    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери лого '
-
 
     function molHandler() {
         if (molCounter < 5) {

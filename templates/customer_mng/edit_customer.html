@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Edit Customer{% endblock %}
@@ -51,5 +52,7 @@
 
         </div>
     </section>
+
+    <script type="text/javascript" src="{% static 'css/edit_customer.js' %}"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

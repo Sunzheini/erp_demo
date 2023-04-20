@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Show Customer{% endblock %}
@@ -48,12 +49,12 @@
                     {% csrf_token %}
 {#                    <button class="form-button">Запази</button>#}
                 </form>
-                <img src="{{ customer.attachment.url }}" alt="customer_photo"
-                     style="max-width: 200px; position: absolute; top: 100px; left: 700px;">
+
+                <img src="{{ customer.attachment.url }}" class="logo-img" alt="customer_photo">
             </div>
         </div>
     </section>
 
-    <script src="/static/css/show_customer.js"></script>
+    <script type="text/javascript" src="{% static 'css/show_customer.js' %}"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

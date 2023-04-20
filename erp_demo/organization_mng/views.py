@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from erp_demo.main_app.custom_logic import SupportFunctions
-from erp_demo.organization_mng.forms import OrgForm, OrgEditForm, OrgDeleteForm
+from erp_demo.organization_mng.forms import OrgForm, OrgEditForm, OrgDeleteForm, OrgViewForm
 from erp_demo.organization_mng.models import Organization
 
 
@@ -27,7 +27,7 @@ class OrgAppViews:
         if request.method == 'GET':
             form = OrgForm()
         else:
-            form = OrgForm(request.POST)
+            form = OrgForm(request.POST, request.FILES)
             if form.is_valid():
                 output = form.save()  # get the created object
                 SupportFunctions.log_info(f"Added an organization `{output.name}`")
@@ -41,10 +41,13 @@ class OrgAppViews:
     def show_org(request, pk, slug):
         template = 'organization_mng/show_org.html'
         org = Organization.objects.filter(pk=pk).get()
+        form = OrgViewForm(instance=org)
         context = {
+            'form': form,
             'org': org,
         }
         return render(request, template, context)
+
 
     @staticmethod
     @SupportFunctions.log_entry(True)
@@ -54,7 +57,7 @@ class OrgAppViews:
         if request.method == 'GET':
             form = OrgEditForm(instance=org)
         else:
-            form = OrgEditForm(request.POST, instance=org)
+            form = OrgEditForm(request.POST, request.FILES, instance=org)
             if form.is_valid():
                 output = form.save()
                 SupportFunctions.log_info(f"Edited an organization `{output.name}`")

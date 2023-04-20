@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Add Organization{% endblock %}
@@ -38,15 +39,11 @@
 
             <div class="card-display">
                 <h2 class="card-display-title">Добавяне на организация</h2>
-                <form action="{% url 'add org' %}" method="post">
+                <form action="{% url 'add org' %}" method="post" enctype="multipart/form-data">
 
-{#                    <table class="table-form">#}
-{#                        {{ form }}#}
-{#                    </table>#}
-
-                    <div class="table-div">
+                    <table class="table-form">
                         {{ form }}
-                    </div>
+                    </table>
 
                     {% csrf_token %}
                 <br>
@@ -56,6 +53,6 @@
         </div>
     </section>
 
-    <script src="../../static/css/add_organization.js"></script>
+    <script type="text/javascript" src="{% static 'css/add_organization.js' %}"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}
