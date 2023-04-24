@@ -10,21 +10,4 @@ class TestListView(LoginRequiredMixin, ListView):
     template_name = 'supplier_mng/supplier_mng_index.html'
 
 
-#  delete
-class SupplierListView(LoginRequiredMixin, ListView):
-    model = Document
-    template_name = 'supplier_mng/supplier_mng_index.html'
 
-
-class SupplierDetailView(LoginRequiredMixin, ListView):
-    model = Document
-    template_name = 'supplier_mng/supplier_mng_index.html'
-
-
-class SupplierCreateView(LoginRequiredMixin, ListView):
-    model = Document
-    template_name = 'supplier_mng/supplier_mng_index.html'
-
-
-def supplier_mng_index(request):
-    return render(request, 'supplier_mng/supplier_mng_index.html')

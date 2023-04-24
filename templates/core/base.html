@@ -63,7 +63,8 @@
             <div class="user-container">
                     <hr class="vertical">
                     <h2 class="user-name">
-                        <a class="sign-out-a" href="{% url 'logout' %}">Атанас Атанасов</a>
+{#                        <a class="sign-out-a" href="{% url 'logout' %}">Атанас Атанасов</a>#}
+                        <a class="sign-out-a" href="{% url 'login' %}">Атанас Атанасов</a>
                     </h2>
                     <div class="user-letter-container">
                         <h2 class="user-letter">
@@ -99,23 +100,23 @@
 
         {# --- #}
         <button class="menu-item" onclick="location.href='{% url 'supplier mng index' %}';">
-            <i class="fa-solid fa-business-time"></i>
+            <i class="fa-solid fa-truck-field"></i>
             <span class="menu-item-title">Доставчици - тест</span>
         </button>
-        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'index' %}';">
-            <i class="fa-solid fa-thumbtack"></i>
-            <span class="menu-item-title">Стар Индекс</span>
-        </button>
+{#        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'index' %}';">#}
+{#            <i class="fa-solid fa-thumbtack"></i>#}
+{#            <span class="menu-item-title">Стар Индекс</span>#}
+{#        </button>#}
         <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'process mng index' %}';">
-            <i class="fa-solid fa-thumbtack"></i>
+            <i class="fa-solid fa-chalkboard-user"></i>
             <span class="menu-item-title">Процеси</span>
         </button>
         <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'dox mng index' %}';">
-            <i class="fa-solid fa-thumbtack"></i>
+            <i class="fa-regular fa-folder-open"></i>
             <span class="menu-item-title">Документи</span>
         </button>
         <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'hr mng index' %}';">
-            <i class="fa-solid fa-thumbtack"></i>
+            <i class="fa-solid fa-people-group"></i>
             <span class="menu-item-title">Персонал</span>
         </button>
         {# --- #}

@@ -172,5 +172,9 @@ cloudinary.config(
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = reverse_lazy('login')
-LOGOUT_REDIRECT_URL = reverse_lazy('login')
+# LOGIN_URL = reverse_lazy('login')
+LOGIN_URL = reverse_lazy('index')
+# LOGOUT_REDIRECT_URL = reverse_lazy('login')
+
+# this is needed for the custom user model
+AUTH_USER_MODEL = 'user_mng.AppUser'

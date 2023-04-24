@@ -24,7 +24,7 @@ print(authenticate(username='daniel', password='Maimun06'))
 
 Creation of login
 superuser: daniel, daniel_zorov@abv.bg, Maimun06
-user: a.atanasov, erp_demo
+user: a.atanasov, a.atanasov@abv.bg, erp_demo
 +1:10:00: create User model
 +1:39:00: user = User.objects.create_user(
 		username='maxi',
@@ -48,7 +48,8 @@ LoginRequiredMixin za class based views???
 
 class MainAppViews:
     @staticmethod
-    @SupportFunctions.allow_groups(groups=['owners'])
+    # @SupportFunctions.allow_groups(groups=['owners'])
+    # @SupportFunctions.allow_groups()
     def index(request):
         search_pattern = None
         info_to_display = None
