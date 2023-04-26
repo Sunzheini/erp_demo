@@ -8,10 +8,20 @@
     Sign-up!!!
 
     <form method="post" action="{% url 'sign up' %}">
-        {{ form.as_p }}
+{#        {{ form.as_p }}#}
+        <label for="username">Username:</label>
+        {{ form.username }}<br>
+        <label for="email">Email:</label>
+        {{ form.email }}<br>
+        <label for="password1">Password:</label>
+        {{ form.password1 }}<br>
+        <label for="password2">Confirm Password:</label>
+        {{ form.password2 }}<br>
         <button>Sign Up!</button>
         {% csrf_token %}
     </form>
+    <br><br>
+    <a href="{% url 'login' %}">Login</a>
 
 </body>
 </html>

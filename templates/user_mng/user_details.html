@@ -1,0 +1,11 @@
+Username:
+{{ object.username }}
+
+{% if is_owner %}
+    <a href="{% url 'edit user' pk=object.pk %}">Edit profile</a>
+    <a href="{% url 'delete user' pk=object.pk %}">Delete profile</a>
+{% endif %}
+
+<br><br>
+
+{{ object.get_full_name }}

@@ -48,35 +48,41 @@ class SignUpView(views.CreateView):
 
 class SignInView(LoginView):
     template_name = 'user_mng/login.html'
-    # success_url = reverse_lazy('index')
-    #
-    # def get_success_url(self):
-    #     if self.success_url:
-    #         return self.success_url
-    #
-    #     return self.get_redirect_url() or self.get_default_redirect_url()
+    success_url = reverse_lazy('index')
+
+    def get_success_url(self):
+        if self.success_url:
+            return self.success_url
+
+        return self.get_redirect_url() or self.get_default_redirect_url()
 
 
-# class SignOutView(LogoutView):
-#     template_name = 'user_mng/logout.html'
+class SignOutView(LogoutView):
+    template_name = 'user_mng/logout.html'
+    # next_page = reverse_lazy('index')     # here or in settings.py
 
 
-def delete_user(request, pk):
-    user = AppUser.objects.get(pk=pk)
-    user.delete()
-    return redirect('index')
+class UserDetailsView(views.DetailView):
+    template_name = 'user_mng/user_details.html'
+    model = UserModel
 
-def edit_user(request, pk):
-    # user = AppUser.objects.get(pk=pk)
-    # if request.method == 'GET':
-    #     form = MySignUpForm(instance=user)
-    # else:
-    #     form = MySignUpForm(request.POST, instance=user)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('index')
-    # context = {
-    #     'form': form,
-    # }
-    # return render(request, 'user_mng/edit_user.html', context)
-    pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # if the owner of the profile sees it, he can edit / delete it
+        context['is_owner'] = self.request.user == self.object
+        return context
+
+
+class EditUserView(views.UpdateView):
+    template_name = 'user_mng/edit_user.html'
+    model = UserModel
+    fields = ('first_name', 'last_name', 'email')
+
+    def get_success_url(self):
+        return reverse_lazy('user details', kwargs={'pk': self.request.user.pk})
+
+
+class DeleteUserView(views.DeleteView):
+    template_name = 'user_mng/delete_user.html'
+    model = UserModel
+    success_url = reverse_lazy('index')

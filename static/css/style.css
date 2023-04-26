@@ -123,12 +123,12 @@ i {
 }
 
 .user-container {
-  width: 250px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   margin-right: 4px;
 }
 
@@ -136,8 +136,15 @@ i {
   height: 20px;
 }
 
+.log-out {
+  font-size: 0.9rem;
+  color: gray;
+  font-weight: normal;
+  margin-right: 0;
+}
+
 .user-name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: white;
   font-weight: normal;
   margin-right: 7px;
@@ -159,7 +166,7 @@ i {
   font-size: 0.9rem;
 }
 
-.sign-out-a {
+.user-name-a {
   text-decoration: none;
   color: black;
 }

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, UsernameField
+from django.contrib.auth.forms import UserCreationForm, UsernameField, UserChangeForm
 
 # from erp_demo.user_mng.models import Profile
 
@@ -12,7 +12,14 @@ class UserMngCreationForm(UserCreationForm):
     class Meta:
         model = UserModel
         # fields = (UserModel.USERNAME_FIELD, 'password1', 'password2')
-        fields = ('username',)
+        fields = ('username', 'email')
+        field_classes = {'username': UsernameField}
+
+
+class UserEditForm(UserChangeForm):
+    class Meta:
+        model = UserModel
+        fields = '__all__'
         field_classes = {'username': UsernameField}
 
 

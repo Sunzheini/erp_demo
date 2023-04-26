@@ -1,0 +1,11 @@
+<form action="{% url 'edit user' pk=object.pk %}" method="post">
+    {{ form.first_name }}
+    <br><br>
+    {{ form.last_name }}
+    <br><br>
+    {{ form.email }}
+
+    <button>Edit</button>
+
+    {% csrf_token %}
+</form>
