@@ -123,10 +123,10 @@ i {
 }
 
 .user-container {
-  width: 300px;
+  width: 350px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   gap: 5px;
   margin-right: 4px;
@@ -134,6 +134,8 @@ i {
 
 .vertical {
   height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .log-out {
@@ -163,12 +165,19 @@ i {
 }
 
 .user-letter {
+  margin-top: 1px;
+  margin-left: 1px;
   font-size: 0.9rem;
 }
 
 .user-name-a {
   text-decoration: none;
   color: black;
+}
+
+.user-name-a:hover {
+  text-decoration: none;
+  color: white;
 }
 
 /*-------------------------------------------------------------------------*/
@@ -208,6 +217,12 @@ i {
 }
 
 .menu-list {
+}
+
+.horizontal {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 2px;
 }
 
 .menu-item {

@@ -5,7 +5,6 @@ from erp_demo.user_mng.views import SignUpView, SignInView, SignOutView, \
 
 urlpatterns = [
     path('sign-up/', SignUpView.as_view(), name='sign up'),
-    # # path('login/', my_login, name='login'),
     path('login/', SignInView.as_view(), name='login'),
     path('logout/', SignOutView.as_view(), name='logout'),
     path('profile/<int:pk>/', include([

@@ -7,11 +7,13 @@ from erp_demo.organization_mng.models import Organization
 
 class OrgAppViews:
     @staticmethod
+    @SupportFunctions.allow_groups()
     def org_mng_index(request):
         context = {}
         return render(request, 'organization_mng/org_mng_index.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def org_list(request):
         template = 'organization_mng/org_list.html'
         all_objects = Organization.objects.all()
@@ -22,6 +24,7 @@ class OrgAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def add_org(request):
         template = 'organization_mng/add_org.html'
         if request.method == 'GET':
@@ -38,6 +41,7 @@ class OrgAppViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def show_org(request, pk, slug):
         template = 'organization_mng/show_org.html'
         org = Organization.objects.filter(pk=pk).get()
@@ -51,6 +55,7 @@ class OrgAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def edit_org(request, pk, slug):
         template = 'organization_mng/edit_org.html'
         org = Organization.objects.filter(pk=pk).get()
@@ -70,6 +75,7 @@ class OrgAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def delete_org(request, pk, slug):
         template = 'organization_mng/delete_org.html'
         org = Organization.objects.filter(pk=pk).get()

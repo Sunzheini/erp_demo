@@ -1,11 +1,6 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login     # users and login
-from django.utils.decorators import method_decorator
 
-from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
+from erp_demo.dox_mng.models import Document, DocumentEditPurgatory, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee
 from erp_demo.main_app.forms import ManageDbHRForm, \
     ManageDbAllForm, DeleteDatabaseForm, \
@@ -17,39 +12,10 @@ from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.process_mng.models import Process
 
 
-"""
--- 1 --
-# prints the username if ok else None
-print(authenticate(username='daniel', password='Maimun06'))
-
-Creation of login
-superuser: daniel, daniel_zorov@abv.bg, Maimun06
-user: a.atanasov, a.atanasov@abv.bg, erp_demo
-+1:10:00: create User model
-+1:39:00: user = User.objects.create_user(
-		username='maxi',
-		password='Maimun04',
-	)
-+1:52:00: login(request, user)  # creates session, attaches user to req, logs in user
-          logout...  # deletes session, ...
-
-can and should change user permissions in django admin, can also make groups
-
-2:31: 
-@login_required is for function based views   # gives an error when on my views
-@method_decorator(login_required())???
-LoginRequiredMixin za class based views???
-
--- 2 --
--1:37: Extend Django user - havent done that
-
-"""
-
-
 class MainAppViews:
     @staticmethod
     # @SupportFunctions.allow_groups(groups=['owners'])
-    # @SupportFunctions.allow_groups()
+    @SupportFunctions.allow_groups()
     def index(request):
         search_pattern = None
         info_to_display = None
@@ -70,6 +36,7 @@ class MainAppViews:
         return render(request, 'index.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def organigramm(request):
         context = {
             'employees_w_owned_processes': SupportFunctions.get_owned_processes_list(Employee, Process),
@@ -77,11 +44,13 @@ class MainAppViews:
         return render(request, 'core/organigramm.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def manage_db(request):
         context = {}
         return render(request, 'core/manage_db.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def manage_db_all(request):
         template = 'core/manage_db_all.html'
         message = None
@@ -114,6 +83,7 @@ class MainAppViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def logs(request):
         context = {
             'logs': CaptainsLog.objects.all(),
@@ -121,34 +91,45 @@ class MainAppViews:
         return render(request, 'core/logs.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def favorites(request):
+        favorites = Document.objects.filter(likes=request.user.id)
+        for f in favorites:
+            f.is_liked_by_user = True
+
         context = {
-            'favorites': Document.objects.filter(is_liked_by_user=True),
+            # 'favorites': Document.objects.filter(is_liked_by_user=True),
+            'favorites': favorites,
         }
         return render(request, 'core/favorites.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def my_tasks(request):
         template = 'core/my_tasks.html'
         all_objects = DocumentEditPurgatory.objects.all()
+
         context = {
             'all_objects': all_objects,
         }
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def approve_revision(request, pk, slug):
         current_revision = DocumentEditPurgatory.objects.filter(pk=pk).get()
         SupportFunctions.approve_and_upload_revision(current_revision)
         return redirect('my tasks')
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def delete_revision(request, pk, slug):
         current_revision = DocumentEditPurgatory.objects.filter(pk=pk).get()
         current_revision.delete()
         return redirect('my tasks')
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def requirements_matrix(request):
         if 'button1' in request.POST:
             requirement_form = RequirementsForm(request.POST)
@@ -165,6 +146,7 @@ class MainAppViews:
         return render(request, 'core/requirements_matrix.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def show_requirement(request, pk, slug):
         template = 'core/show_requirement.html'
         current_requirement = Requirements.objects.filter(pk=pk).get()
@@ -175,6 +157,7 @@ class MainAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def edit_requirement(request, pk, slug):
         template = 'core/edit_requirement.html'
         current_requirement = Requirements.objects.filter(pk=pk).get()
@@ -194,6 +177,7 @@ class MainAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def delete_requirement(request, pk, slug):
         template = 'core/delete_requirement.html'
         current_requirement = Requirements.objects.filter(pk=pk).get()

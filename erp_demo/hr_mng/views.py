@@ -9,11 +9,13 @@ from erp_demo.hr_mng.models import Employee, Trainings
 
 class HrMngViews:
     @staticmethod
+    @SupportFunctions.allow_groups()
     def hr_mng_index(request):
         context = {}
         return render(request, 'hr_mng/hr_mng_index.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def employee_list(request):     # ToDo: cache
         template = 'hr_mng/employee_list.html'
 
@@ -36,6 +38,7 @@ class HrMngViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def add_employee(request):
         template = 'hr_mng/add_employee.html'
         if request.method == 'GET':
@@ -52,6 +55,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def show_employee(request, pk, slug):
         template = 'hr_mng/show_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -62,6 +66,7 @@ class HrMngViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def edit_employee(request, pk, slug):
         template = 'hr_mng/edit_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -81,6 +86,7 @@ class HrMngViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def delete_employee(request, pk, slug):
         template = 'hr_mng/delete_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -102,11 +108,13 @@ class HrMngViews:
     #  ---------------------------------------------------------------------------------------
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def training_index(request):
         context = {}
         return render(request, 'hr_mng/training_index.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def training_list(request):
         template = 'hr_mng/training_list.html'
         context = {
@@ -116,6 +124,7 @@ class HrMngViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def add_training(request):
         template = 'hr_mng/add_training.html'
         if request.method == 'GET':
@@ -132,6 +141,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def show_training(request, pk, slug):
         template = 'hr_mng/show_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()
@@ -142,6 +152,7 @@ class HrMngViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def edit_training(request, pk, slug):
         template = 'hr_mng/edit_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()
@@ -161,6 +172,7 @@ class HrMngViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def delete_training(request, pk, slug):
         template = 'hr_mng/delete_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()
@@ -179,6 +191,7 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def training_matrix(request):
         context = {}
         return render(request, 'hr_mng/training_matrix.html', context)

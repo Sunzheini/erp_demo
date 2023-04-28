@@ -1,11 +1,58 @@
-Username:
-{{ object.username }}
+{% extends 'core/base.html' %}
 
-{% if is_owner %}
-    <a href="{% url 'edit user' pk=object.pk %}">Edit profile</a>
-    <a href="{% url 'delete user' pk=object.pk %}">Delete profile</a>
-{% endif %}
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}User details{% endblock %}
+{#-------------------------------------------------------------------------#}
 
-<br><br>
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">User Details</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
 
-{{ object.get_full_name }}
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">User Details: {{ object.username }}</h2>
+
+                <form action="{% url 'user details' pk=object.pk %}" method="post">
+                    <label for="username">Username:</label>
+                    {{ object.username }}<br>
+                    <label for="email">Email:</label>
+                    {{ object.email }}<br>
+                    {% csrf_token %}
+                </form>
+
+                {% if is_owner %}
+                    <button onclick="location.href='{% url 'edit user' pk=object.pk %}';">Edit user</button>
+                    <button onclick="location.href='{% url 'delete user' pk=object.pk %}';">Delete user</button>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

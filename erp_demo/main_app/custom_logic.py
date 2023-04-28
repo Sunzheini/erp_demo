@@ -7,7 +7,7 @@ from django.utils.text import slugify
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
-from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
+from erp_demo.dox_mng.models import Document, DocumentEditPurgatory, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.main_app import custom_collections
@@ -23,13 +23,28 @@ from erp_demo.process_mng.models import ProcessStepToDocuments, \
 
 class SupportFunctions:
     @staticmethod
-    def extract_entry_by_choice(table, column_name, choice):
+    def extract_entry_by_choice(request, table, column_name, choice):
+        # if choice == 'All':
+        #     extracted_documents = table.objects.all()
+        #     return extracted_documents
+        # data = {column_name: choice}
+        # extracted_documents = table.objects.filter(**data)
+        #
+        # return extracted_documents
+
+        all_documents = table.objects.all()
+
+        for ed in all_documents:
+            ed.is_liked_by_user = False
+            if ed.likes.filter(id=request.user.id).exists():
+                ed.is_liked_by_user = True
+
         if choice == 'All':
-            extracted_documents = table.objects.all()
+            extracted_documents = all_documents
             return extracted_documents
+
         data = {column_name: choice}
         extracted_documents = table.objects.filter(**data)
-
         return extracted_documents
 
 # Delete whole db (the order is chosen in order not have issues with the links between tables)
@@ -41,6 +56,7 @@ class SupportFunctions:
         ProcessStepToDocuments.objects.all().delete()
         PositionsToAccessLevels.objects.all().delete()
         EmployeeToTrainings.objects.all().delete()
+        DocumentLikesToUsers.objects.all().delete()
 
         # tables with no dependencies to other tables
         AccessLevels.objects.all().delete()
@@ -377,10 +393,27 @@ class SupportFunctions:
 
     @staticmethod
     def approve_and_upload_revision(prototype: DocumentEditPurgatory):
-        document_to_delete = Document.objects.filter(name=prototype.name)
-        document_to_delete.delete()
+        # document_to_delete = Document.objects.filter(name=prototype.name)
+        # document_to_delete.delete()
+        #
+        # Document.objects.create(
+        #     type=prototype.type,
+        #     number=prototype.number,
+        #     name=prototype.name,
+        #     revision=prototype.revision,
+        #     creation_date=prototype.creation_date,
+        #     revision_date=prototype.revision_date,
+        #     revision_details=prototype.revision_details,
+        #     status=prototype.status,
+        #     owner=prototype.owner,
+        #     attachment=prototype.attachment,
+        #     slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
+        # )
+        # prototype.delete()
 
-        Document.objects.create(
+        document_to_delete = Document.objects.filter(name=prototype.name)
+
+        document_to_delete.update(
             type=prototype.type,
             number=prototype.number,
             name=prototype.name,

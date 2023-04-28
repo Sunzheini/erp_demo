@@ -1,10 +1,14 @@
 from cloudinary import models as cloudinary_models
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
 
 from erp_demo.hr_mng.models import Employee
 from erp_demo.main_app.custom_validators import validate_file_size
 from erp_demo.main_app.translator import translate_to_maimunica
+
+
+UserModel = get_user_model()
 
 
 class Document(models.Model):
@@ -93,9 +97,18 @@ class Document(models.Model):
         default=False,
     )
 
+    # many-to-many
+    likes = models.ManyToManyField(
+        UserModel,
+        blank=True,
+        through='DocumentLikesToUsers',
+        # doesn't auto create a table but uses the one specified
+    )
+
     slug = models.SlugField(
         blank=True, null=True, editable=False,
     )
+
 
     def full_document_info(self):
         return f"{self.name}, rev.: {self.revision}, " \
@@ -112,6 +125,21 @@ class Document(models.Model):
             # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
             self.slug = slugify(f"{translate_to_maimunica(self.name)}")
         return super().save(*args, **kwargs)
+
+
+class DocumentLikesToUsers(models.Model):
+    document_id = models.ForeignKey(
+        Document,
+        on_delete=models.CASCADE,
+    )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.document_id}, {self.user}"
 
 
 # Purgatories

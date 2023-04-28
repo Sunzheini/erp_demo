@@ -86,28 +86,28 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # heroku
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8t6mefngo4f1b',
-        'USER': 'kluqvyzeeqxrrt',
-        'PASSWORD': 'fe97276c5981b92aa2c7faae9d6999913fb9bf2a2c5db58356097bcbd39c31c2',
-        'HOST': 'ec2-52-215-12-242.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    }
-}
-
-# without heroku
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'erp_demo_db',         # same name as the DB created
-#         'USER': 'postgres-user',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+#         'NAME': 'd8t6mefngo4f1b',
+#         'USER': 'kluqvyzeeqxrrt',
+#         'PASSWORD': 'fe97276c5981b92aa2c7faae9d6999913fb9bf2a2c5db58356097bcbd39c31c2',
+#         'HOST': 'ec2-52-215-12-242.eu-west-1.compute.amazonaws.com',
 #         'PORT': '5432',
 #     }
 # }
+
+# without heroku
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'erp_demo_db',         # same name as the DB created
+        'USER': 'postgres-user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -172,7 +172,6 @@ cloudinary.config(
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# LOGIN_URL = reverse_lazy('login')
 LOGIN_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 

@@ -7,11 +7,13 @@ from erp_demo.customer_mng.forms import CustomerForm, CustomerEditForm, Customer
 
 class CustomerAppViews:
     @staticmethod
+    @SupportFunctions.allow_groups()
     def customer_mng_index(request):
         context = {}
         return render(request, 'customer_mng/customer_mng_index.html', context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def customer_list(request):
         template = 'customer_mng/customer_list.html'
         all_objects = Customer.objects.all()
@@ -22,6 +24,7 @@ class CustomerAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def add_customer(request):
         template = 'customer_mng/add_customer.html'
         if request.method == 'GET':
@@ -38,6 +41,7 @@ class CustomerAppViews:
         return render(request, template, context)
 
     @staticmethod
+    @SupportFunctions.allow_groups()
     def show_customer(request, pk, slug):
         template = 'customer_mng/show_customer.html'
         customer = Customer.objects.filter(pk=pk).get()
@@ -50,6 +54,7 @@ class CustomerAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def edit_customer(request, pk, slug):
         template = 'customer_mng/edit_customer.html'
         customer = Customer.objects.filter(pk=pk).get()
@@ -69,6 +74,7 @@ class CustomerAppViews:
 
     @staticmethod
     @SupportFunctions.log_entry(True)
+    @SupportFunctions.allow_groups()
     def delete_customer(request, pk, slug):
         template = 'customer_mng/delete_customer.html'
         customer = Customer.objects.filter(pk=pk).get()
