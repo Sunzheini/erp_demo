@@ -37,8 +37,8 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def add_employee(request):
         template = 'hr_mng/add_employee.html'
         if request.method == 'GET':
@@ -65,8 +65,8 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_employee(request, pk, slug):
         template = 'hr_mng/edit_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -85,8 +85,8 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_employee(request, pk, slug):
         template = 'hr_mng/delete_employee.html'
         current_employee = Employee.objects.filter(pk=pk).get()
@@ -123,8 +123,8 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def add_training(request):
         template = 'hr_mng/add_training.html'
         if request.method == 'GET':
@@ -151,8 +151,8 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_training(request, pk, slug):
         template = 'hr_mng/edit_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()
@@ -171,8 +171,8 @@ class HrMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_training(request, pk, slug):
         template = 'hr_mng/delete_training.html'
         current_training = Trainings.objects.filter(pk=pk).get()

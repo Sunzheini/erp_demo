@@ -23,8 +23,8 @@ class CustomerAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def add_customer(request):
         template = 'customer_mng/add_customer.html'
         if request.method == 'GET':
@@ -53,8 +53,8 @@ class CustomerAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_customer(request, pk, slug):
         template = 'customer_mng/edit_customer.html'
         customer = Customer.objects.filter(pk=pk).get()
@@ -73,8 +73,8 @@ class CustomerAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_customer(request, pk, slug):
         template = 'customer_mng/delete_customer.html'
         customer = Customer.objects.filter(pk=pk).get()

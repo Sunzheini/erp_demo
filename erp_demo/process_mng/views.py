@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.views.decorators.cache import cache_page
 
 from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, \
@@ -11,6 +10,7 @@ from erp_demo.process_mng.models import Process, ProcessStep
 class ProcessMngViews:
     @staticmethod
     @SupportFunctions.allow_groups()
+    # @SupportFunctions.measure_time
     def process_mng_index(request):
         template = 'process_mng/process_mng_index.html'
 
@@ -64,8 +64,8 @@ class ProcessMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_process_step(request, pk, slug):
         template = 'process_mng/edit_process_step.html'
         current_process_step = ProcessStep.objects.filter(pk=pk).get()
@@ -84,8 +84,8 @@ class ProcessMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_process_step(request, pk, slug):
         template = 'process_mng/delete_process_step.html'
         current_process_step = ProcessStep.objects.filter(pk=pk).get()
@@ -145,8 +145,8 @@ class ProcessMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_process(request, pk, slug):
         template = 'process_mng/edit_process.html'
         current_process = Process.objects.filter(pk=pk).get()
@@ -165,8 +165,8 @@ class ProcessMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_process(request, pk, slug):
         template = 'process_mng/delete_process.html'
         current_process = Process.objects.filter(pk=pk).get()

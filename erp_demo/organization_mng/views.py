@@ -23,8 +23,8 @@ class OrgAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def add_org(request):
         template = 'organization_mng/add_org.html'
         if request.method == 'GET':
@@ -54,8 +54,8 @@ class OrgAppViews:
 
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_org(request, pk, slug):
         template = 'organization_mng/edit_org.html'
         org = Organization.objects.filter(pk=pk).get()
@@ -74,8 +74,8 @@ class OrgAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_org(request, pk, slug):
         template = 'organization_mng/delete_org.html'
         org = Organization.objects.filter(pk=pk).get()

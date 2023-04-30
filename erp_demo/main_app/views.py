@@ -156,8 +156,8 @@ class MainAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_requirement(request, pk, slug):
         template = 'core/edit_requirement.html'
         current_requirement = Requirements.objects.filter(pk=pk).get()
@@ -176,8 +176,8 @@ class MainAppViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_requirement(request, pk, slug):
         template = 'core/delete_requirement.html'
         current_requirement = Requirements.objects.filter(pk=pk).get()

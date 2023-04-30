@@ -68,8 +68,8 @@ class DoxMngViews:
 
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def add_document(request):
         template = 'dox_mng/add_document.html'
         if request.method == 'GET':
@@ -96,8 +96,8 @@ class DoxMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def edit_document(request, pk, slug):
         template = 'dox_mng/edit_document.html'
         current_document = Document.objects.filter(pk=pk).get()
@@ -117,8 +117,8 @@ class DoxMngViews:
         return render(request, template, context)
 
     @staticmethod
-    @SupportFunctions.log_entry(True)
     @SupportFunctions.allow_groups()
+    @SupportFunctions.log_entry(True)
     def delete_document(request, pk, slug):
         template = 'dox_mng/delete_document.html'
         current_document = Document.objects.filter(pk=pk).get()

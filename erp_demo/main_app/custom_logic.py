@@ -4,6 +4,7 @@ from functools import wraps
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.utils.text import slugify
+from django.core.cache import cache
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
@@ -82,34 +83,82 @@ class SupportFunctions:
 # Sort process steps
 # -----------------------------------------------------------------------
 
+# original
+    # @staticmethod
+    # def sort_process_steps(process_obj, process_step_obj, choice):
+    #     p_list = []
+    #     all_processes = process_obj.objects.all()
+    #     process_obj_length = len(all_processes)
+    #
+    #     if choice is None:
+    #         pass
+    #
+    #     elif choice == 'All':
+    #         for process in range(process_obj_length):
+    #             p_list.append([])
+    #
+    #             for process_step in process_step_obj.objects.all():
+    #                 if process_step.parent_process.id == all_processes[process].id:
+    #                     p_list[process].append(process_step)
+    #
+    #     elif choice != 'All':
+    #         chosen_process = process_obj.objects.filter(number=choice).get()
+    #         p_list.append([])
+    #
+    #         for process_step in process_step_obj.objects.all():
+    #             if process_step.parent_process.number == chosen_process.number:
+    #                 p_list[0].append(process_step)
+    #
+    #     return p_list
+
+# optimized
+    # @staticmethod
+    # def sort_process_steps(process_obj, process_step_obj, choice):
+    #     p_list = []
+    #     all_processes = process_obj.objects.all()
+    #
+    #     if choice == 'All':
+    #         for process in all_processes:
+    #             process_steps = process_step_obj.objects.filter(parent_process=process)
+    #             p_list.append(list(process_steps))
+    #     elif choice is not None:
+    #         chosen_process = process_obj.objects.get(number=choice)
+    #         process_steps = process_step_obj.objects.filter(parent_process=chosen_process)
+    #         p_list.append(list(process_steps))
+    #
+    #     return p_list
+
+# optimized with caching
     @staticmethod
     def sort_process_steps(process_obj, process_step_obj, choice):
+        cache_key = f'sort_process_steps_{choice}'
+        cache_version = cache.get(f'{cache_key}_version', 0)
+
+        cached_data = cache.get(cache_key)
+
+        if cached_data is not None and cache.get(f'{cache_key}_version', 0) == cache_version:
+            # Use the cached data if it is up-to-date
+            return cached_data
+
         p_list = []
         all_processes = process_obj.objects.all()
-        process_obj_length = len(all_processes)
 
-        if choice is None:
-            pass
+        if choice == 'All':
+            for process in all_processes:
+                process_steps = process_step_obj.objects.filter(parent_process=process)
+                p_list.append(list(process_steps))
+        elif choice is not None:
+            chosen_process = process_obj.objects.get(number=choice)
+            process_steps = process_step_obj.objects.filter(parent_process=chosen_process)
+            p_list.append(list(process_steps))
 
-        elif choice == 'All':
-            for process in range(process_obj_length):
-                p_list.append([])
-
-                for process_step in process_step_obj.objects.all():
-                    if process_step.parent_process.id == all_processes[process].id:
-                        p_list[process].append(process_step)
-
-        elif choice != 'All':
-            chosen_process = process_obj.objects.filter(number=choice).get()
-            p_list.append([])
-
-            for process_step in process_step_obj.objects.all():
-                if process_step.parent_process.number == chosen_process.number:
-                    p_list[0].append(process_step)
+        # Cache the processed data with the new version
+        cache.set(cache_key, p_list)
+        cache.set(f'{cache_key}_version', cache_version + 1)
 
         return p_list
 
-# Get list of process steps for a process
+    # Get list of process steps for a process
 # -----------------------------------------------------------------------
 
     @staticmethod
@@ -511,3 +560,19 @@ class SupportFunctions:
             return decorator(func)
 
         return decorator
+
+    # Decorator to measure time for execution of a function
+    # currently a middleware is used instead
+    # -----------------------------------------------------------------------
+    @staticmethod
+    def measure_time(func):
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            result = func(*args, **kwargs)
+            end = time.time()
+            exec_time = end - start
+            # print(f"Function {func.__name__} took {exec_time:.3f} s to execute")
+            print(f"------------------ {exec_time:.3f} s ------------------")
+            return result
+
+        return wrapper

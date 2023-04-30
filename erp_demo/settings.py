@@ -50,6 +50,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # comment when not needed
+    'erp_demo.main_app.middleware.measure_time_middleware',
+
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,6 +112,14 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND':
+            'django.core.cache.backends.redis.RedisCache',
+        'LOCATION':
+            'redis://127.0.0.1:6379',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
