@@ -138,6 +138,7 @@ class SupportFunctions:
 
         if cached_data is not None and cache.get(f'{cache_key}_version', 0) == cache_version:
             # Use the cached data if it is up-to-date
+
             return cached_data
 
         p_list = []
@@ -156,6 +157,7 @@ class SupportFunctions:
         cache.set(cache_key, p_list)
         cache.set(f'{cache_key}_version', cache_version + 1)
 
+        print(p_list)
         return p_list
 
     # Get list of process steps for a process

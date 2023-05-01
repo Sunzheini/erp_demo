@@ -112,6 +112,10 @@ DATABASES = {
     }
 }
 
+# heroku
+# not connected
+
+# without heroku
 CACHES = {
     'default': {
         'BACKEND':
@@ -188,3 +192,11 @@ LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 # this is needed for the custom user model
 AUTH_USER_MODEL = 'user_mng.AppUser'
+
+# email settings
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIl_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
+# DEFAULT_FROM_EMAIL = ''

@@ -46,7 +46,11 @@ class ProcessMngViews:
             process_step_form = ProcessStepForm()
 
         context = {
-            'process_info': SupportFunctions.sort_process_steps(Process, ProcessStep, choice),
+            'process_info': SupportFunctions.sort_process_steps(
+                Process,
+                ProcessStep,
+                choice,
+            ),
             'choice_form': process_number_form,
             'process_form': process_form,
             'process_step_form': process_step_form,
