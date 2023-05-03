@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views import View
 
 from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, \
@@ -6,6 +7,64 @@ from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, \
     ProcessEditForm, ProcessDeleteForm, ProcessNumberForm
 from erp_demo.process_mng.models import Process, ProcessStep
 
+# -------------------------------------------------------------
+# trying with a class based view
+
+# class ProcessMngIndexView(SupportFunctions, View):
+#     template_name = 'process_mng/process_mng_index.html'
+#
+#     @SupportFunctions.allow_groups()
+#     def dispatch(self, request, *args, **kwargs):
+#         return super().dispatch(request, *args, **kwargs)
+#
+#     def get(self, request, *args, **kwargs):
+#         process_number_form = ProcessNumberForm()
+#         process_form = ProcessForm()
+#         process_step_form = ProcessStepForm()
+#         context = self.get_context(process_number_form, process_form, process_step_form)
+#         return render(request, self.template_name, context)
+#
+#     def post(self, request, *args, **kwargs):
+#         process_number_form = ProcessNumberForm(request.POST)
+#         process_form = ProcessForm(request.POST)
+#         process_step_form = ProcessStepForm(request.POST)
+#
+#         if 'button0' in request.POST and process_number_form.is_valid():
+#             choice = process_number_form.cleaned_data['process_number_dropdown']
+#             process_step_form = ProcessStepForm()
+#             process_form = ProcessForm()
+#
+#         elif 'button1' in request.POST and process_form.is_valid():
+#             process_form.save()
+#             process_form = ProcessForm()
+#             process_number_form = ProcessNumberForm()
+#             process_step_form = ProcessStepForm()
+#
+#         elif 'button2' in request.POST and process_step_form.is_valid():
+#             process_step_form.save()
+#             process_step_form = ProcessStepForm()
+#             process_number_form = ProcessNumberForm()
+#             process_form = ProcessForm()
+#
+#         else:
+#             process_number_form = ProcessNumberForm()
+#             process_form = ProcessForm()
+#             process_step_form = ProcessStepForm()
+#
+#         context = self.get_context(process_number_form, process_form, process_step_form, choice)
+#         return render(request, self.template_name, context)
+#
+#     @staticmethod
+#     def get_context(process_number_form, process_form, process_step_form, choice=None):
+#         return {
+#             'process_info': SupportFunctions.sort_process_steps(Process, ProcessStep, choice),
+#             'choice_form': process_number_form,
+#             'process_form': process_form,
+#             'process_step_form': process_step_form,
+#         }
+
+
+# -------------------------------------------------------------
 
 class ProcessMngViews:
     @staticmethod

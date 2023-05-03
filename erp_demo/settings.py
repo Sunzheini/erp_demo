@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
+
     'erp_demo.main_app',
     'erp_demo.dox_mng',
     'erp_demo.process_mng',
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'erp_demo.customer_mng',
     'erp_demo.user_mng',
     'erp_demo.supplier_mng',
+    'erp_demo.api',
 
     'cloudinary',
 ]

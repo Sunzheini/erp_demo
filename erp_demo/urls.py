@@ -13,4 +13,7 @@ urlpatterns = [
     path('m5/', include('erp_demo.supplier_mng.urls')),
 
     path('users/', include('erp_demo.user_mng.urls')),
+
+    path('api-auth/', include('rest_framework.urls')),  # enable the browsable API
+    path('api/', include('erp_demo.api.urls')),
 ]
