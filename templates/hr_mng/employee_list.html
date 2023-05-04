@@ -40,9 +40,11 @@
                 <h2 class="card-display-title">Employees:</h2>
 
                 <form action="{% url 'employee list' %}" method="post">
-                    {{ choice_form }}
+                    <table class="table-form">
+                        {{ choice_form }}
+                    </table>
                     {% csrf_token %}
-                    <button class="form_button">filter</button>
+                    <button class="form-button">filter</button>
                 </form>
 
                 {% if all_objects %}

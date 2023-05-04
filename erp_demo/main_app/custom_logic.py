@@ -48,6 +48,16 @@ class SupportFunctions:
         extracted_documents = table.objects.filter(**data)
         return extracted_documents
 
+    @staticmethod
+    def data_after_choice_form(table, column_name, choice):
+        if choice == 'All':
+            extracted_data = table.objects.all()
+            return extracted_data
+        data = {column_name: choice}
+        extracted_data = table.objects.filter(**data)
+
+        return extracted_data
+
 # Delete whole db (the order is chosen in order not have issues with the links between tables)
 # -----------------------------------------------------------------------
 

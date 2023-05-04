@@ -31,7 +31,8 @@ class HrMngViews:
                 choice = form.cleaned_data['employee_position_dropdown']
 
         context = {
-            'all_objects': SupportFunctions.extract_entry_by_choice(table, column_name, choice),
+            # 'all_objects': SupportFunctions.extract_entry_by_choice(request, table, column_name, choice),
+            'all_objects': SupportFunctions.data_after_choice_form(table, column_name, choice),
             'choice_form': form,
         }
         return render(request, template, context)
