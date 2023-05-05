@@ -178,3 +178,6 @@ class Customer(models.Model):
         if not self.slug:
             self.slug = slugify(f"{translate_to_maimunica(self.name[0:20])}")
         return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.name}"
