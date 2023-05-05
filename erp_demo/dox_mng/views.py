@@ -108,7 +108,8 @@ class DoxMngViews:
             if form.is_valid():
                 # output = form.save()      # before the logic for the new revisions
                 output = SupportFunctions.new_revision(form)
-                SupportFunctions.log_info(f"Edited a document `{output.name}`")
+                SupportFunctions.log_info(f"Edited a document `{current_document.name}`")
+
                 return redirect('document list')
         context = {
             'form': form,

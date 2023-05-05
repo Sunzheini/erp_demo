@@ -7,7 +7,7 @@ from erp_demo.main_app.custom_collections import document_types
 class DocumentModelAndExcludeMixin:
     class Meta:
         model = Document
-        exclude = ['slug', 'likes', 'is_liked_by_user']
+        exclude = ['slug', 'status', 'likes', 'is_liked_by_user']
 
         widgets = {
             'creation_date': forms.DateInput(
@@ -32,13 +32,40 @@ class DocumentForm(forms.ModelForm, DocumentModelAndExcludeMixin):
 
 
 class DocumentEditForm(forms.ModelForm, DocumentModelAndExcludeMixin):
-    pass
+    class Meta:
+        model = Document
+        exclude = ['slug', 'status', 'likes', 'is_liked_by_user']
+
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'readonly': 'readonly',
+                }
+            ),
+            'revision': forms.NumberInput(
+                attrs={
+                    'readonly': 'readonly',
+                }
+            ),
+            'creation_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',  # taka veshe izkarva kalendara
+                }
+            ),
+            'revision_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+        }
 
 
 class DocumentDeleteForm(forms.ModelForm, DocumentModelAndExcludeMixin):
     class Meta:
         model = Document
-        exclude = ['slug', 'likes', 'is_liked_by_user']
+        exclude = ['slug', 'status', 'likes', 'is_liked_by_user']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -55,10 +55,14 @@ class Document(models.Model):
 
     status = models.CharField(
         max_length=30,
+        # choices=(
+        #     # ('Submitted', 'Submitted'),
+        #     # ('Rejected', 'Rejected'),
+        #     # ('Approved', 'Approved'),
+        # ),
         choices=(
-            ('Submitted', 'Submitted'),
-            ('Rejected', 'Rejected'),
-            ('Approved', 'Approved'),
+            ('Latest rev', 'Latest rev'),
+            ('Under rev', 'Under rev'),
         ),
         blank=False, null=False,
     )
@@ -191,9 +195,8 @@ class DocumentEditPurgatory(models.Model):
     status = models.CharField(
         max_length=30,
         choices=(
-            ('Submitted', 'Submitted'),
-            ('Rejected', 'Rejected'),
-            ('Approved', 'Approved'),
+            ('Latest rev', 'Latest rev'),
+            ('Under rev', 'Under rev'),
         ),
         blank=False, null=False,
     )
