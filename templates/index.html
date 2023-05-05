@@ -203,6 +203,58 @@
                     </tbody>
                     </table>
                 </div>
+                    <br>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Organization Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.organizations %}
+                            {% for organization in info_to_display.organizations %}
+                        <tr>
+                            <td>{{ organization.name }}</td>
+                            <td><a class="table-link" href="{% url 'show org' pk=organization.pk slug=organization.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+                    <br>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.customers %}
+                            {% for customer in info_to_display.customers %}
+                        <tr>
+                            <td>{{ customer.name }}</td>
+                            <td><a class="table-link" href="{% url 'show customer' pk=customer.pk slug=customer.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">Nothing found</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
 
                 {% else %}
                 {% endif %}

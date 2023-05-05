@@ -9,6 +9,7 @@ from django.core.cache import cache
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
+from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
@@ -88,6 +89,7 @@ class SupportFunctions:
         Requirements.objects.all().delete()
 
         Organization.objects.all().delete()
+        Customer.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -392,6 +394,41 @@ class SupportFunctions:
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
                 ) for obj in info_to_update.keys()])
 
+            elif table == 'Customer':
+                Customer.objects.bulk_create([Customer(
+                    type=info_to_update[obj]['type'],
+                    name=info_to_update[obj]['name'],
+                    registration_address=info_to_update[obj]['registration_address'],
+                    registration_city=info_to_update[obj]['registration_city'],
+                    eik=info_to_update[obj]['eik'],
+                    mol1=info_to_update[obj]['mol1'],
+                    mol2=info_to_update[obj]['mol2'],
+                    mol3=info_to_update[obj]['mol3'],
+                    mol4=info_to_update[obj]['mol4'],
+                    mol5=info_to_update[obj]['mol5'],
+                    correspondence_address1=info_to_update[obj]['correspondence_address1'],
+                    correspondence_address2=info_to_update[obj]['correspondence_address2'],
+                    correspondence_address3=info_to_update[obj]['correspondence_address3'],
+                    correspondence_address4=info_to_update[obj]['correspondence_address4'],
+                    correspondence_address5=info_to_update[obj]['correspondence_address5'],
+                    contact_person1=info_to_update[obj]['contact_person1'],
+                    contact_person2=info_to_update[obj]['contact_person2'],
+                    contact_person3=info_to_update[obj]['contact_person3'],
+                    contact_person4=info_to_update[obj]['contact_person4'],
+                    contact_person5=info_to_update[obj]['contact_person5'],
+                    phone1=info_to_update[obj]['phone1'],
+                    phone2=info_to_update[obj]['phone2'],
+                    phone3=info_to_update[obj]['phone3'],
+                    phone4=info_to_update[obj]['phone4'],
+                    phone5=info_to_update[obj]['phone5'],
+                    email1=info_to_update[obj]['email1'],
+                    email2=info_to_update[obj]['email2'],
+                    email3=info_to_update[obj]['email3'],
+                    email4=info_to_update[obj]['email4'],
+                    email5=info_to_update[obj]['email5'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
             info_to_update = {}
 
         return 'Successfully added \n' \
@@ -507,12 +544,16 @@ class SupportFunctions:
             employee_set = set(employees_temp_list)
 
             trainings = Trainings.objects.filter(name__icontains=search_pattern)
+            organizations = Organization.objects.filter(name__icontains=search_pattern)
+            customers = Customer.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
             result['documents'] = documents
             result['employees'] = employee_set
             result['trainings'] = trainings
+            result['organizations'] = organizations
+            result['customers'] = customers
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -538,6 +579,14 @@ class SupportFunctions:
         elif choice == 'Trainings':
             trainings = Trainings.objects.filter(name__icontains=search_pattern)
             result['trainings'] = trainings
+
+        elif choice == 'Organization':
+            organizations = Organization.objects.filter(name__icontains=search_pattern)
+            result['organizations'] = organizations
+
+        elif choice == 'Customer':
+            customers = Customer.objects.filter(name__icontains=search_pattern)
+            result['customers'] = customers
 
         return result
 

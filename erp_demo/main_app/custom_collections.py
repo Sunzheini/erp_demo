@@ -13,6 +13,8 @@ search_types = {
     ('Document', 'Documents'),
     ('Employee', 'Employees'),
     ('Trainings', 'Trainings'),
+    ('Organization', 'Organization'),
+    ('Customer', 'Customer'),
 }
 
 process_numbers = (
@@ -54,6 +56,7 @@ list_of_keys = {
     'ProcessStep': [],
     'Requirements': [],
     'Organization': [],
+    'Customer': [],
 }
 
 coordinates = {
@@ -112,6 +115,12 @@ coordinates = {
         'end_column': None,
     },
     'Organization': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Customer': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

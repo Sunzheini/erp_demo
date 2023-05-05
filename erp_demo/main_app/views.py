@@ -10,6 +10,7 @@ from erp_demo.main_app.forms import ManageDbHRForm, \
 from erp_demo.main_app.custom_logic import SupportFunctions
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.process_mng.models import Process
+from erp_demo.user_mng.models import AppUser
 
 
 class MainAppViews:
@@ -79,6 +80,7 @@ class MainAppViews:
             'form2': form2,
             'message': message,
             'message2': message2,
+            'users': AppUser.objects.all(),
         }
         return render(request, template, context)
 

@@ -84,6 +84,40 @@
                     {% endif %}
                 </p>
 
+                <hr>
+            Users:
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Superuser</th>
+                            <th>Show</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if users %}
+                            {% for user in users %}
+                        <tr>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.last_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.is_superuser }}</td>
+                            <td><a class="table-link"
+                                   href="{% url 'user details' pk=user.pk %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">No users</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </section>
