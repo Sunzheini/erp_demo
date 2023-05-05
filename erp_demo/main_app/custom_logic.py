@@ -1,4 +1,5 @@
 import time
+import threading
 from functools import wraps
 
 from django.http import HttpResponse
@@ -167,7 +168,6 @@ class SupportFunctions:
         cache.set(cache_key, p_list)
         cache.set(f'{cache_key}_version', cache_version + 1)
 
-        print(p_list)
         return p_list
 
     # Get list of process steps for a process

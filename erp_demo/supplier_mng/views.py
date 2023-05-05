@@ -16,7 +16,6 @@ class TestListView(LoginRequiredMixin, ListView):
 
 
 # 0.018s
-@SupportFunctions.measure_time
 @cache_page(1 * 60) # 1 minute
 def another_view(request):
     value = random.randint(1, 1024)

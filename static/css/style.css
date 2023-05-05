@@ -257,6 +257,30 @@ i {
   color: var(--clr-title-text);
 }
 
+/* Styles for the return-to-top button */
+#return-to-top {
+  position: fixed;
+  bottom: 200px;
+  left: 320px;
+  background: darkgray;
+  color: white;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+  border-width: 0;
+  display: none;
+
+  padding-left: 8px;
+}
+
+#return-to-top:hover {
+  background: var(--clr-nav-bg);
+}
+
 /*-------------------------------------------------------------------------*/
 
 /*---*/

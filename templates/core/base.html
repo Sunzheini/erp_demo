@@ -114,6 +114,9 @@
 <main>
 <div class="total-container">
 
+    <!-- Return-to-top button -->
+    <a id="return-to-top" href="#" title="Return to top"><i class="fa fa-chevron-up"></i></a>
+
 {#3.5. Menu----------------------------------------------------------------#}
 <div class="menu-container">
     <ul class="menu-list" role="list">
@@ -214,5 +217,29 @@
 <footer class="footer">
     <h3 class="footer-title">&copy; 2023 DZ</h3>
 </footer>
+
+{# for the return-to-top button #}
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- JavaScript for the return-to-top button -->
+    <script>
+        $(document).ready(function() {
+            // Show the button when the user scrolls down 20px from the top
+            $(window).scroll(function() {
+                if ($(this).scrollTop() >= 20) {
+                    $('#return-to-top').fadeIn();
+                } else {
+                    $('#return-to-top').fadeOut();
+                }
+            });
+
+            // Smooth scroll to the top when the button is clicked
+            $('#return-to-top').click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({scrollTop: 0}, 'fast');
+            });
+        });
+    </script>
 </body>
 </html>
