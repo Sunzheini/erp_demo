@@ -57,29 +57,29 @@
 
                     <tbody>
                         <tr>
-                            <td>{{ document.type }}</td>
-                            <td>{{ document.number }}</td>
-                            <td>{{ document.name }}</td>
-                            <td>{{ document.revision }}</td>
-                            <td>{{ document.status }}</td>
-                            <td><a class="table-link" href="{% url 'show employee' pk=document.owner.pk slug=document.owner.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{{ document.owner.get_full_name }}</a></td>
+                            <td>{{ current_object.type }}</td>
+                            <td>{{ current_object.number }}</td>
+                            <td>{{ current_object.name }}</td>
+                            <td>{{ current_object.revision }}</td>
+                            <td>{{ current_object.status }}</td>
+                            <td><a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.owner.get_full_name }}</a></td>
 
                 {#no cloudinary#}
                 {#            <td><a href="/media/{{ document.attachment }}">#}
                 {#                    "/media/{{ document.attachment }}"</a></td>#}
 
                 {#cloudinary#}
-                            {% if document.attachment.url %}
-                            <td><a href="{{ document.attachment.url }}">
+                            {% if current_object.attachment.url %}
+                            <td><a href="{{ current_object.attachment.url }}">
                                         Link</a></td>
                             {% else %}
                                 <td>N/A</td>
                             {% endif %}
 
-                            <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                            <td><a class="table-link" href="{% url 'edit document' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     Edit</a></td>
-                            <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
+                            <td><a class="table-link" href="{% url 'delete document' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
                                     Delete</a></td>
                         </tr>
                     </tbody>

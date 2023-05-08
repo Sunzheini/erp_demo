@@ -11,4 +11,6 @@ urlpatterns = [
     path('demo/', DemoApiView.as_view(), name='demo view'),
     # http://127.0.0.1:8000/api/
     path('', IndexView.as_view(), name='api index'),
+
+    path('employees/', ApiTestEmpListView.as_view(), name='api list employees'),
 ]

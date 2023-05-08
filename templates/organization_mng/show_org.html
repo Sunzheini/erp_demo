@@ -39,7 +39,7 @@
             <div class="card-display">
                 <h2 class="card-display-title">Покажи организация</h2>
 
-                <form action="{% url 'show org' pk=org.pk slug=org.slug %}" method="post">
+                <form action="{% url 'show org' pk=current_object.pk slug=current_object.slug %}" method="post">
 
                     <table class="table-form">
                         {{ form }}
@@ -49,7 +49,7 @@
 {#                    <button class="form-button">Запази</button>#}
                 </form>
 
-                <img src="{{ org.attachment.url }}" class="logo-img" alt="org_photo">
+                <img src="{{ current_object.attachment.url }}" class="logo-img" alt="org_photo">
             </div>
         </div>
     </section>

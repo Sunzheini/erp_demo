@@ -1,25 +1,18 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.utils.text import slugify
 
 from erp_demo.main_app.custom_logic import SupportFunctions
-from erp_demo.dox_mng.forms import DocumentForm, DocumentEditForm, \
-    DocumentDeleteForm, DocumentTypeForm
-from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
+from erp_demo.dox_mng.forms import DocumentEditForm, DocumentTypeForm
+from erp_demo.dox_mng.models import Document
+from erp_demo.main_app.custom_prototypes import PrototypeViews
 
 
-class DoxMngViews:
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def dox_mng_index(request):
-        context = {}
-        return render(request, 'dox_mng/dox_mng_index.html', context)
+class DoxMngViews(PrototypeViews):
+    @SupportFunctions.login_check
+    def list_view(self, request):
+        self._empty_context()
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def document_list(request):     # ToDo: cache
-        template = 'dox_mng/document_list.html'
-
+        # new logic for the dropdown
+        # ---------------------------------------------------------------------------------------
         table = Document
         column_name = 'type'
         choice = None
@@ -33,17 +26,15 @@ class DoxMngViews:
 
         all_objects = SupportFunctions.extract_entry_by_choice(request, table, column_name, choice)
 
-        context = {
-            'all_objects': all_objects,
-            'choice_form': form,
-        }
-        return render(request, template, context)
+        self.context['all_objects'] = all_objects
+        self.context['choice_form'] = form
+        # ---------------------------------------------------------------------------------------
+
+        return render(request, self.list_template, self.context)
 
     # added for likes
     @staticmethod
-    @SupportFunctions.allow_groups()
     def like_document(request, pk):
-
         current_document = Document.objects.get(id=pk)
 
         if current_document.likes.filter(id=request.user.id).exists():
@@ -54,85 +45,26 @@ class DoxMngViews:
         redirect_path = request.META['HTTP_REFERER']
         return redirect(redirect_path)
 
-        # liked_document = Document.objects.get(id=pk)
-        #
-        # if liked_document.is_liked_by_user:
-        #     liked_document.is_liked_by_user = False
-        #     liked_document.save()
-        # else:
-        #     liked_document.is_liked_by_user = True
-        #     liked_document.save()
-        #
-        # redirect_path = request.META['HTTP_REFERER']
-        # return redirect(redirect_path)
+    @SupportFunctions.login_check
+    def edit_view(self, request, pk, slug):
+        self._empty_context()
+        current_object = self._main_object_single(pk)
 
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def add_document(request):
-        template = 'dox_mng/add_document.html'
+        # new logic for the dropdown
+        # ---------------------------------------------------------------------------------------
         if request.method == 'GET':
-            form = DocumentForm()
+            form = DocumentEditForm(instance=current_object)
         else:
-            form = DocumentForm(request.POST, request.FILES)
-            if form.is_valid():
-                output = form.save()    # get the created object
-                SupportFunctions.log_info(f"Added a document `{output.name}`")
-                return redirect('document list')
-        context = {
-            'form': form,
-        }
-        return render(request, template, context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def show_document(request, pk, slug):
-        template = 'dox_mng/show_document.html'
-        current_document = Document.objects.filter(pk=pk).get()
-        context = {
-            'document': current_document,
-        }
-        return render(request, template, context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def edit_document(request, pk, slug):
-        template = 'dox_mng/edit_document.html'
-        current_document = Document.objects.filter(pk=pk).get()
-        if request.method == 'GET':
-            form = DocumentEditForm(instance=current_document)
-        else:
-            form = DocumentEditForm(request.POST, request.FILES, instance=current_document)
+            form = DocumentEditForm(request.POST, request.FILES, instance=current_object)
             if form.is_valid():
                 # output = form.save()      # before the logic for the new revisions
                 output = SupportFunctions.new_revision(form)
-                SupportFunctions.log_info(f"Edited a document `{current_document.name}`")
+                SupportFunctions.log_info(f"Edited a document `{current_object.name}`")
 
-                return redirect('document list')
-        context = {
-            'form': form,
-            'document': current_document,
-        }
-        return render(request, template, context)
+                return redirect(self.redirect_url)
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def delete_document(request, pk, slug):
-        template = 'dox_mng/delete_document.html'
-        current_document = Document.objects.filter(pk=pk).get()
-        if request.method == 'GET':
-            form = DocumentDeleteForm(instance=current_document)
-        else:
-            form = DocumentDeleteForm(request.POST, instance=current_document)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Deleted a document `{output.name}`")
-                return redirect('document list')
-        context = {
-            'form': form,
-            'document': current_document,
-        }
-        return render(request, template, context)
+        # ---------------------------------------------------------------------------------------
+
+        self._add_form_to_context(form)
+        self._add_current_object_to_context(current_object)
+        return render(request, self.edit_template, self.context)

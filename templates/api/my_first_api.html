@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API</title>
+</head>
+<body>
+    <div id="root">
+        <script>
+
+            const getEmployees = () => fetch('{% url 'api list employees' %}')
+                .then(response => response.json())
+
+            const renderEmployees = (employees) => {
+                const employeeItems = employees.map(employee => `
+                    <li>
+                        <span>${employee.name}</span>
+                        <span>${employee.salary}</span>
+                        <span>${employee.department.name}</span>
+                    </li>
+                `)
+
+                return `
+                    <ul>
+                        ${employeeItems.join('')}
+                    </ul>
+                `
+            }
+
+            window.onload = () => {
+                getEmployees()
+                    .then(employees => {
+                        document.querySelector('#root').innerHTML = renderEmployees(employees)
+                    })
+            }
+
+        </script>
+    </div>
+</body>
+</html>

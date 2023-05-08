@@ -85,7 +85,12 @@ class PrototypeViews:
     @SupportFunctions.login_check
     def list_view(self, request):
         self._empty_context()
+
+        # updated in some views
+        # ---------------------------------------------------------------------------------------
         self.context['all_objects'] = self._main_object_queryset()
+        # ---------------------------------------------------------------------------------------
+
         return render(request, self.list_template, self.context)
 
     @SupportFunctions.login_check
@@ -104,7 +109,11 @@ class PrototypeViews:
     def show_view(self, request, pk, slug):
         self._empty_context()
         current_object = self._main_object_single(pk)
+
+        # updated in some views
+        # ---------------------------------------------------------------------------------------
         form = self.view_form(instance=current_object)
+        # ---------------------------------------------------------------------------------------
 
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
