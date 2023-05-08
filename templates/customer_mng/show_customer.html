@@ -40,7 +40,7 @@
             <div class="card-display">
                 <h2 class="card-display-title">Покажи данните за клиента</h2>
 
-                <form action="{% url 'show customer' pk=customer.pk slug=customer.slug %}" method="post">
+                <form action="{% url 'show customer' pk=current_object.pk slug=current_object.slug %}" method="post">
 
                     <table class="table-form">
                         {{ form }}
@@ -50,7 +50,7 @@
 {#                    <button class="form-button">Запази</button>#}
                 </form>
 
-                <img src="{{ customer.attachment.url }}" class="logo-img" alt="customer_photo">
+                <img src="{{ current_object.attachment.url }}" class="logo-img" alt="customer_photo">
             </div>
         </div>
     </section>

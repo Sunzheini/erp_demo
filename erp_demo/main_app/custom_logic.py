@@ -451,8 +451,9 @@ class SupportFunctions:
 
                     if custom_collections.logging_info_stack:
                         CaptainsLog.objects.create(
-                            operation=f"{custom_collections.logging_info_stack.pop()} "
-                                      f"with `{some_function.__name__}`",
+                            # operation=f"{custom_collections.logging_info_stack.pop()} "
+                            #           f"with `{some_function.__name__}`",
+                            operation=f"{custom_collections.logging_info_stack.pop()}",
                             # performed_at_time=end, # auto added in model
                             execution_time=f"{measurement:.5f} s",
                         )
@@ -623,6 +624,17 @@ class SupportFunctions:
             return decorator(func)
 
         return decorator
+
+    # updated
+    @staticmethod
+    def login_check(func):
+        def wrapper(self, request, *args, **kwargs):
+            if not self._check_if_logged_in(request):
+                return redirect('login')
+            else:
+                return func(self, request, *args, **kwargs)
+
+        return wrapper
 
     # Decorator to measure time for execution of a function
     # currently a middleware is used instead
