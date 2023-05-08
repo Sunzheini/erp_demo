@@ -180,7 +180,8 @@ class ProcessMngViews:
     @staticmethod
     @SupportFunctions.allow_groups()
     def create_turtle(request, pk):
-        template = 'process_mng/create_turtle.html'
+        # template = 'process_mng/create_turtle.html'
+        template = 'process_mng/blank_turtle.html'
         current_process = Process.objects.filter(pk=pk).get()
         context = {
             'process': current_process,
