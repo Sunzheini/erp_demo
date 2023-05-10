@@ -155,12 +155,13 @@
 
         <section class="turtle-section turtle-section-middle">
         <div class="turtle-box turtle-box-4">
-            <h2 class="turtle-box-title">Костенуркова диаграма</h2>
+            <i class="fa-solid fa-diagram-project"></i>
+            <h2 class="turtle-box-title" id="main-title">Костенуркова диаграма</h2>
         </div>
         <div class="turtle-box turtle-box-5">
-            <h2 class="turtle-box-title">Наименование на процеса</h2>
+            <h2 class="turtle-box-title" id="process-title">{{ process.number }}.&nbsp{{ process.name }}</h2>
             <p class="turtle-box-text">
-                Мениджър Качество
+                Управлява: {{ process.process_owner.name_and_position }}
             </p>
         </div>
         <div class="turtle-box turtle-box-6">
@@ -169,23 +170,21 @@
                 <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Име</th>
-                            <th>Количество</th>
+                            <th id="t-number">Nr</th>
+                            <th id="t-name">Количество</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="body-6">
+                    {% for process_step in process_steps %}
                         <tr>
-                            <td>Име</td>
-                            <td>Количество</td>
+                            <td id="t-number">{{ process_step.number }}</td>
+                            <td id="t-name">
+                                <a class="table-link"
+                                href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">
+                                {{ process_step.name }}</a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>Име</td>
-                            <td>Количество</td>
-                        </tr>
-                        <tr>
-                            <td>Име</td>
-                            <td>Количество</td>
-                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

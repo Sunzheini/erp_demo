@@ -5,7 +5,7 @@ body {
   background-color: #F3F3F3;
   }
 
-.turtle-container {
+.flowchart-container {
   margin: 20px auto 0 auto;
   width: 1800px;
   height: 900px;
@@ -23,10 +23,6 @@ body {
   position: relative;
 }
 
-.fa-diagram-project {
-  margin-top: 10px;
-}
-
 .table-link {
   color: #1c1a1a;
   text-decoration: none;
@@ -35,16 +31,6 @@ body {
 .table-link:hover {
   color: blue;
   text-decoration: underline;
-}
-
-#main-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-#process-title {
-  margin-top: 5px;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -106,7 +92,7 @@ body {
 
 /* ------------------------------------------------------------------------ */
 
-.turtle-section {
+.flowchart-section {
   /*border: 1px solid white;*/
   height: 91%;
   padding: 5px;
@@ -118,22 +104,19 @@ body {
   align-items: center;
 }
 
-.turtle-section-left, .turtle-section-right {
-  width: 33%;
+.flowchart-section-left {
+  width: 15%;
 }
 
-.turtle-section-middle {
-  width: 25%;
-
-  justify-content: flex-start;
-  align-items: center;
-  gap: 38px;
+.flowchart-section-right {
+  width: 60%;
 }
 
 /* ------------------------------------------------------------------------ */
 
-.turtle-box {
+.flowchart-box {
   width: 100%;
+  min-height: 93px;
   background-color: #FFFFFFFF;
   border-radius: 0.3rem;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
@@ -144,56 +127,37 @@ body {
   align-items: center;
 
   position: relative;
+  margin-bottom: 50px;
 }
 
-.turtle-box:hover {
+.flowchart-box:last-child {
+  margin-bottom: 0;
+}
+
+.flowchart-box:hover {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.turtle-box-title {
+.flowchart-box-title {
   font-size: 1rem;
-  margin-top: 10px;
 }
 
-.turtle-box-text {
+.flowchart-box-text {
   font-size: 0.9rem;
   margin-bottom: 5px;
 }
 
-.turtle-box-1, .turtle-box-3, .turtle-box-7, .turtle-box-9 {
-  height: 20%;
+.flowchart-box-type-1 {
+  align-items: flex-start;
+  padding: 10px;
 }
 
-.turtle-box-2, .turtle-box-8 {
-  height: 50%;
-}
-
-.turtle-box-4 {
-  height: 7%;
-
-  box-shadow: none;
-  background-color: #CCCCCCFF;
-
+.flowchart-box-type-2 {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  gap: 10px;
-}
 
-.turtle-box-5 {
-  height: 8.3%;
-  margin-bottom: 2px;
-
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-
-  box-shadow: none;
-  background-color: #CCCCCCFF;
-}
-
-.turtle-box-6 {
-  height: 50%;
   overflow: scroll;
   overflow-x: hidden; /* Hide the horizontal scrollbar */
   overflow-y: auto; /* Show the vertical scrollbar */
@@ -226,7 +190,7 @@ body {
 
 .table-data-container {
   position: absolute;
-  top: 45px;
+  top: 10px;
 
   width: 95%;
   margin: auto;
@@ -254,7 +218,7 @@ body {
   font-size: 15px;
   color: #333333FF;
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 250px;
+  /*max-width: 250px;*/
   overflow: hidden;
 }
 
@@ -263,22 +227,21 @@ body {
   font-size: 15px;
   color: #333333FF;
   padding: 0 0.6rem 0 0.5rem;
-  max-width: 250px;
+  /*max-width: 250px;*/
   overflow: hidden;
 }
 
-.table-data #t-number {
-  width: 45px;
+.table-data #t-step {
+}
+
+.table-data #t-resp {
+  width: 80px;
+}
+
+.table-data #t-dox {
+  width: 80px;
 }
 
 .table-data tbody tr:nth-child(even) {
   background-color: #F3F3F3;
 }
-
-
-
-
-
-
-
-

@@ -169,7 +169,8 @@ class ProcessMngViews:
     @staticmethod
     @SupportFunctions.allow_groups()
     def create_flowchart(request, pk):
-        template = 'process_mng/create_flowchart.html'
+        # template = 'process_mng/create_flowchart.html'
+        template = 'process_mng/blank_flowchart.html'
         current_process = Process.objects.filter(pk=pk).get()
         context = {
             'process': current_process,

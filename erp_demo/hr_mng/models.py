@@ -119,7 +119,7 @@ class Positions(models.Model):
     )
 
     def __str__(self):
-        return f"{self.code}"
+        return f"{self.name}"
 
 
 class PositionsToAccessLevels(models.Model):
@@ -215,6 +215,10 @@ class Employee(models.Model):
     @property
     def get_full_name(self):
         return f"{self.first_name} {self.middle_name} {self.last_name}"
+
+    @property
+    def name_and_position(self):
+        return f"{self.get_full_name}, {self.position}"
 
     def __str__(self):
         return f"{self.get_full_name}, " \
