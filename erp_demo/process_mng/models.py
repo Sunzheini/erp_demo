@@ -3,7 +3,7 @@ from django.utils.text import slugify
 
 from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee
-from erp_demo.main_app.translator import translate_to_maimunica
+from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
 class Process(models.Model):

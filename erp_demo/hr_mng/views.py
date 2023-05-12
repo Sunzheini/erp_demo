@@ -1,24 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
-from erp_demo.main_app.custom_logic import SupportFunctions
-from erp_demo.hr_mng.forms import EmployeeForm, EmployeeEditForm, \
-    EmployeeDeleteForm, EmployeePositionForm, \
-    TrainingsForm, TrainingsEditForm, TrainingsDeleteForm
-from erp_demo.hr_mng.models import Employee, Trainings
+from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
+from erp_demo.hr_mng.forms import EmployeePositionForm
+from erp_demo.hr_mng.models import Employee
+from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 
 
-class HrMngViews:
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def hr_mng_index(request):
-        context = {}
-        return render(request, 'hr_mng/hr_mng_index.html', context)
+class HrMngViewsEmployees(PrototypeViews):
+    @SupportFunctions.login_check
+    def list_view(self, request):
+        self._empty_context()
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def employee_list(request):     # ToDo: cache
-        template = 'hr_mng/employee_list.html'
-
+        # new logic for the dropdown
+        # ---------------------------------------------------------------------------------------
         table = Employee
         column_name = 'position'
         choice = None
@@ -30,167 +24,16 @@ class HrMngViews:
             if form.is_valid():
                 choice = form.cleaned_data['employee_position_dropdown']
 
-        context = {
-            # 'all_objects': SupportFunctions.extract_entry_by_choice(request, table, column_name, choice),
-            'all_objects': SupportFunctions.data_after_choice_form(table, column_name, choice),
-            'choice_form': form,
-        }
-        return render(request, template, context)
+        all_objects = DataManipulation.data_after_choice_form(table, column_name, choice)
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def add_employee(request):
-        template = 'hr_mng/add_employee.html'
-        if request.method == 'GET':
-            form = EmployeeForm()
-        else:
-            form = EmployeeForm(request.POST)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Added an employee `{output.name}`")
-                return redirect('employee list')
-        context = {
-            'form': form,
-        }
-        return render(request, template, context)
+        self.context['all_objects'] = all_objects
+        self.context['choice_form'] = form
+        # ---------------------------------------------------------------------------------------
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def show_employee(request, pk, slug):
-        template = 'hr_mng/show_employee.html'
-        current_employee = Employee.objects.filter(pk=pk).get()
-        context = {
-            'employee': current_employee,
-        }
-        return render(request, template, context)
+        return render(request, self.list_template, self.context)
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def edit_employee(request, pk, slug):
-        template = 'hr_mng/edit_employee.html'
-        current_employee = Employee.objects.filter(pk=pk).get()
-        if request.method == 'GET':
-            form = EmployeeEditForm(instance=current_employee)
-        else:
-            form = EmployeeEditForm(request.POST, instance=current_employee)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Edited an employee `{output.get_full_name}`")
-                return redirect('employee list')
-        context = {
-            'form': form,
-            'employee': current_employee,
-        }
-        return render(request, template, context)
 
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def delete_employee(request, pk, slug):
-        template = 'hr_mng/delete_employee.html'
-        current_employee = Employee.objects.filter(pk=pk).get()
-        if request.method == 'GET':
-            form = EmployeeDeleteForm(instance=current_employee)
-        else:
-            form = EmployeeDeleteForm(request.POST, instance=current_employee)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Deleted an employee `{output.name}`")
-                return redirect('employee list')
-        context = {
-            'form': form,
-            'employee': current_employee,
-        }
-        return render(request, template, context)
-
-    # Trainings
-    #  ---------------------------------------------------------------------------------------
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def training_index(request):
-        context = {}
-        return render(request, 'hr_mng/training_index.html', context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def training_list(request):
-        template = 'hr_mng/training_list.html'
-        context = {
-            'all_objects': Trainings.objects.all(),
-        }
-        return render(request, template, context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def add_training(request):
-        template = 'hr_mng/add_training.html'
-        if request.method == 'GET':
-            form = TrainingsForm()
-        else:
-            form = TrainingsForm(request.POST)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Added a training `{output.name}`")
-                return redirect('training list')
-        context = {
-            'form': form,
-        }
-        return render(request, template, context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    def show_training(request, pk, slug):
-        template = 'hr_mng/show_training.html'
-        current_training = Trainings.objects.filter(pk=pk).get()
-        context = {
-            'training': current_training,
-        }
-        return render(request, template, context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def edit_training(request, pk, slug):
-        template = 'hr_mng/edit_training.html'
-        current_training = Trainings.objects.filter(pk=pk).get()
-        if request.method == 'GET':
-            form = TrainingsEditForm(instance=current_training)
-        else:
-            form = TrainingsEditForm(request.POST, instance=current_training)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Edited a training `{output.name}`")
-                return redirect('training list')
-        context = {
-            'form': form,
-            'training': current_training,
-        }
-        return render(request, template, context)
-
-    @staticmethod
-    @SupportFunctions.allow_groups()
-    @SupportFunctions.log_entry(True)
-    def delete_training(request, pk, slug):
-        template = 'hr_mng/delete_training.html'
-        current_training = Trainings.objects.filter(pk=pk).get()
-        if request.method == 'GET':
-            form = TrainingsDeleteForm(instance=current_training)
-        else:
-            form = TrainingsDeleteForm(request.POST, instance=current_training)
-            if form.is_valid():
-                output = form.save()
-                SupportFunctions.log_info(f"Deleted a training `{output.name}`")
-                return redirect('training list')
-        context = {
-            'form': form,
-            'training': current_training,
-        }
-        return render(request, template, context)
-
+class HrMngViewsTrainings(PrototypeViews):
     @staticmethod
     @SupportFunctions.allow_groups()
     def training_matrix(request):

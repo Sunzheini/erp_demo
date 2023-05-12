@@ -1,7 +1,6 @@
-import os
 from django import forms
 
-from erp_demo.main_app.custom_collections import process_numbers
+from erp_demo.custom_logic.custom_collections import process_numbers
 from erp_demo.process_mng.models import Process, ProcessStep
 
 

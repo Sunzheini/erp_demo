@@ -1,4 +1,4 @@
-from erp_demo.main_app import custom_collections
+from erp_demo.custom_logic import custom_collections
 
 
 def translate_to_maimunica(text):

@@ -41,7 +41,7 @@
 
                 <div class="process-map-grid">
 
-                {% for process in processes %}
+                {% for process in all_objects %}
                 <div class="process-box">
                     <td><a class="table-link" href="{% url 'show process' pk=process.pk slug=process.slug %}">
                     {{ process.number }}. {{ process.name }}</a></td>

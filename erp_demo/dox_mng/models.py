@@ -4,8 +4,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from erp_demo.hr_mng.models import Employee
-from erp_demo.main_app.custom_validators import validate_file_size
-from erp_demo.main_app.translator import translate_to_maimunica
+from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
 UserModel = get_user_model()

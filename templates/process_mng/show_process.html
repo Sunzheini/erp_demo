@@ -54,16 +54,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{ process.type }}</td>
-                            <td>{{ process.number }}</td>
-                            <td>{{ process.name }}</td>
+                            <td>{{ current_object.type }}</td>
+                            <td>{{ current_object.number }}</td>
+                            <td>{{ current_object.name }}</td>
 
-                            <td><a class="table-link" href="{% url 'show employee' pk=process.process_owner.pk slug=process.process_owner.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{{ process.process_owner.get_full_name }}</a></td>
+                            <td><a class="table-link" href="{% url 'show employee' pk=current_object.process_owner.pk slug=current_object.process_owner.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.process_owner.get_full_name }}</a></td>
 
-                            <td><a class="table-link" href="{% url 'edit proces' pk=process.pk slug=process.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                            <td><a class="table-link" href="{% url 'edit proces' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     Edit</a></td>
-                            <td><a class="table-link" href="{% url 'delete process' pk=process.pk slug=process.slug %}"><i class="fa-solid fa-trash"></i>
+                            <td><a class="table-link" href="{% url 'delete process' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
                                     Delete</a></td>
                         </tr>
                     </tbody>

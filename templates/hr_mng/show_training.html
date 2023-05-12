@@ -53,13 +53,13 @@
                     </thead>
                     <tbody>
                             <tr>
-                                <td>{{ training.code }}</td>
-                                <td>{{ training.name }}</td>
-                                <td>{{ training.description }}</td>
+                                <td>{{ current_object.code }}</td>
+                                <td>{{ current_object.name }}</td>
+                                <td>{{ current_object.description }}</td>
 
-                                <td><a class="table-link" href="{% url 'edit training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                <td><a class="table-link" href="{% url 'edit training' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     Edit</a></td>
-                                <td><a class="table-link" href="{% url 'delete training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-trash"></i>
+                                <td><a class="table-link" href="{% url 'delete training' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
                                     Delete</a></td>
                             </tr>
                     </tbody>

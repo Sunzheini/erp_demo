@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 
-from erp_demo.dox_mng.models import Document, DocumentEditPurgatory, DocumentLikesToUsers
+from erp_demo.custom_logic.db_manipulation import DatabaseManipulation
+from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee
-from erp_demo.main_app.forms import ManageDbHRForm, \
-    ManageDbAllForm, DeleteDatabaseForm, \
+from erp_demo.main_app.forms import ManageDbAllForm, DeleteDatabaseForm, \
     RequirementsForm, RequirementsEditForm, RequirementsDeleteForm, \
     SearchForm
 
-from erp_demo.main_app.custom_logic import SupportFunctions
+from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.process_mng.models import Process
 from erp_demo.user_mng.models import AppUser
@@ -40,7 +40,7 @@ class MainAppViews:
     @SupportFunctions.allow_groups()
     def organigramm(request):
         context = {
-            'employees_w_owned_processes': SupportFunctions.get_owned_processes_list(Employee, Process),
+            'employees_w_owned_processes': DataManipulation.get_owned_processes_list(Employee, Process),
         }
         return render(request, 'core/organigramm.html', context)
 
@@ -60,14 +60,14 @@ class MainAppViews:
         if 'button_delete_db' in request.POST:
             form = DeleteDatabaseForm(request.POST)
             if form.is_valid():
-                message = SupportFunctions.delete_database()
+                message = DatabaseManipulation.delete_database()
                 form = DeleteDatabaseForm()
             form2 = ManageDbAllForm()
 
         elif 'button_manage_db_all' in request.POST:
             form2 = ManageDbAllForm(request.POST, request.FILES)
             if form2.is_valid():
-                message2 = SupportFunctions.recreate_database(request.FILES)
+                message2 = DatabaseManipulation.recreate_database(request.FILES)
                 form2 = ManageDbAllForm()
             form = DeleteDatabaseForm()
 

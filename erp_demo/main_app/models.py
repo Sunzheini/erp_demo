@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
-from erp_demo.main_app.translator import translate_to_maimunica
+from erp_demo.custom_logic.translator import translate_to_maimunica
 from erp_demo.process_mng.models import ProcessStep
 
 

@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 
-from erp_demo.main_app.custom_logic import SupportFunctions
+from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.dox_mng.forms import DocumentEditForm, DocumentTypeForm
 from erp_demo.dox_mng.models import Document
-from erp_demo.main_app.custom_prototypes import PrototypeViews
+from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 
 
 class DoxMngViews(PrototypeViews):
@@ -24,7 +24,7 @@ class DoxMngViews(PrototypeViews):
             if form.is_valid():
                 choice = form.cleaned_data['document_type_dropdown']
 
-        all_objects = SupportFunctions.extract_entry_by_choice(request, table, column_name, choice)
+        all_objects = DataManipulation.extract_entry_by_choice(request, table, column_name, choice)
 
         self.context['all_objects'] = all_objects
         self.context['choice_form'] = form

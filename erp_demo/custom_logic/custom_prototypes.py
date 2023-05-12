@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from erp_demo.main_app.custom_logic import SupportFunctions
+from erp_demo.custom_logic.custom_logic import SupportFunctions
 
 
 class PrototypeViews:

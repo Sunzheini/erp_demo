@@ -4,10 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 from django.views.generic import ListView
-from django.core.cache import cache
 
 from erp_demo.dox_mng.models import Document
-from erp_demo.main_app.custom_logic import SupportFunctions
 
 
 class TestListView(LoginRequiredMixin, ListView):

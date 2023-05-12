@@ -56,22 +56,22 @@
 
                     <tbody>
                             <tr>
-                                <td>{{ employee.get_full_name }}</td>
-                                <td>{{ employee.position.name }}</td>
-                                <td>{{ employee.contract_number }}</td>
-                                <td>{{ employee.starting_date }}</td>
+                                <td>{{ current_object.get_full_name }}</td>
+                                <td>{{ current_object.position.name }}</td>
+                                <td>{{ current_object.contract_number }}</td>
+                                <td>{{ current_object.starting_date }}</td>
             {#                    <td>{{ employee.get_related_trainings }}</td>#}
 
                                 <td>
-                                   {% for training in employee.get_related_trainings %}
+                                   {% for training in current_object.get_related_trainings %}
                                        <a class="table-link" href="{% url 'show training' pk=training.training_id.pk slug=training.training_id.slug %}">
                                            <i class="fa-solid fa-magnifying-glass"></i>{{ training.training_id.name }}</a>
                                     {% endfor %}
                                 </td>
 
-                                <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                <td><a class="table-link" href="{% url 'edit employee' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     Edit</a></td>
-                                <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>
+                                <td><a class="table-link" href="{% url 'delete employee' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
                                     Delete</a></td>
                             </tr>
                     </tbody>

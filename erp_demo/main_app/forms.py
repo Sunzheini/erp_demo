@@ -1,9 +1,6 @@
 from django import forms
 
-from openpyxl import load_workbook
-from openpyxl.utils import get_column_letter
-
-from erp_demo.main_app.custom_collections import search_types
+from erp_demo.custom_logic.custom_collections import search_types
 from erp_demo.main_app.models import Requirements
 
 

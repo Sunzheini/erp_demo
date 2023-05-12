@@ -60,19 +60,19 @@
                   </thead>
                   <tbody>
                             <tr>
-                            <td>{{ process_step.parent_process.number }}</td>
-                            <td>{{ process_step.parent_process.name }}</td>
+                            <td>{{ current_object.parent_process.number }}</td>
+                            <td>{{ current_object.parent_process.name }}</td>
 
-                            <td>{{ process_step.number }}</td>
-                            <td>{{ process_step.type }}</td>
-                            <td>{{ process_step.name }}</td>
+                            <td>{{ current_object.number }}</td>
+                            <td>{{ current_object.type }}</td>
+                            <td>{{ current_object.name }}</td>
 
                             <td><a class="table-link"
-                                   href="{% url 'show employee' pk=process_step.responsible.pk slug=process_step.responsible.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>{{ process_step.responsible.get_full_name }}</a></td>
+                                   href="{% url 'show employee' pk=current_object.responsible.pk slug=current_object.responsible.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.responsible.get_full_name }}</a></td>
 
                             <td>
-                               {% for doc in process_step.get_related_documents %}
+                               {% for doc in current_object.get_related_documents %}
                                    <a class="table-link"
                                       href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
                                        <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}</a>
@@ -80,10 +80,10 @@
                             </td>
 
                             <td><a class="table-link"
-                                   href="{% url 'edit process step' pk=process_step.pk slug=process_step.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                   href="{% url 'edit process step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                 Edit</a></td>
                             <td><a class="table-link"
-                                   href="{% url 'delete process step' pk=process_step.pk slug=process_step.slug %}"><i class="fa-solid fa-trash"></i>
+                                   href="{% url 'delete process step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
                                 Delete</a></td>
 
                             </tr>

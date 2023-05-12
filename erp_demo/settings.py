@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     # comment when not needed
-    'erp_demo.main_app.middleware.measure_time_middleware',
+    'erp_demo.custom_logic.middleware.measure_time_middleware',
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',

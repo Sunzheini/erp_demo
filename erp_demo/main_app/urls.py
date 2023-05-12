@@ -9,7 +9,7 @@ urlpatterns = [
         path('', MainAppViews().manage_db, name='manage db'),
         path('manage_db_all/', MainAppViews().manage_db_all, name='manage db all'),
     ])),
-    # path('manage_db/', MainAppViews().manage_db, name='manage db'),
+
     path('organigramm/', MainAppViews().organigramm, name='organigramm'),
     path('logs/', MainAppViews().logs, name='logs'),
     path('favorites/', MainAppViews().favorites, name='favorites'),

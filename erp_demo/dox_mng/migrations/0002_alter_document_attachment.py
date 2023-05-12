@@ -2,7 +2,7 @@
 
 import cloudinary.models
 from django.db import migrations
-import erp_demo.main_app.custom_validators
+import erp_demo.custom_logic.custom_validators
 
 
 class Migration(migrations.Migration):
@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='attachment',
-            field=cloudinary.models.CloudinaryField(blank=True, max_length=255, null=True, validators=[erp_demo.main_app.custom_validators.validate_file_size], verbose_name='file'),
+            field=cloudinary.models.CloudinaryField(blank=True, max_length=255, null=True, validators=[
+                erp_demo.custom_logic.custom_validators.validate_file_size], verbose_name='file'),
         ),
     ]

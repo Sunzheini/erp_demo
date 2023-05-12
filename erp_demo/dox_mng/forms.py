@@ -1,7 +1,6 @@
-import os
 from django import forms
 from erp_demo.dox_mng.models import Document
-from erp_demo.main_app.custom_collections import document_types
+from erp_demo.custom_logic.custom_collections import document_types
 
 
 class DocumentModelAndExcludeMixin:

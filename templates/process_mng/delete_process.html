@@ -39,7 +39,7 @@
             <div class="card-display">
                 <h2 class="card-display-title">Delete process</h2>
 
-                <form action="{% url 'delete process' pk=process.pk slug=process.slug %}" method="post">
+                <form action="{% url 'delete process' pk=current_object.pk slug=current_object.slug %}" method="post">
                      <table class="table-form">
                         {{ form }}
                      </table>
