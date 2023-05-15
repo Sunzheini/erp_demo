@@ -13,48 +13,150 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'css/flowchart-style.css' %}">
 
+    <script>
+        function expandDiv(div) {
+            if (div.classList.contains('expanded')) {
+                div.classList.remove('expanded');
+            } else {
+                div.classList.add('expanded');
+            }
+        }
+    </script>
+</head>
+
 <body>
     <header class="header">
 
     </header>
 <main>
     <div class="flowchart-container">
-        <section class="flowchart-section flowchart-section-left">
-            {% for process_step in process_steps %}
-            <div class="flowchart-box flowchart-box-type-1">
-                <h2 class="flowchart-box-title">{{ process_step.number }}.&nbsp{{ process_step.name }}</h2>
+        <section class="flowchart-section flowchart-section-top">
+            <div class="flowchart-box flowchart-box-type-0">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h2 class="flowchart-box-title" id="main-title">Флоучарт</h2>
             </div>
-            {% endfor %}
+            <div class="flowchart-box flowchart-box-type-1">
+                <h2 class="flowchart-box-title" id="process-title">
+                    <a class="table-link" href="{% url 'show process' pk=current_object.pk slug=current_object.slug %}">
+                    {{ current_object.number }}.&nbsp{{ current_object.name }}</a>
+                </h2>
+                <p class="flowchart-box-text">
+                    Управлява:
+                    <a class="table-link"
+                       href="{% url 'show employee' pk=current_object.process_owner.pk slug=current_object.process_owner.slug %}">
+                                {{ current_object.process_owner.name_and_position }}</a>
+                </p>
+            </div>
         </section>
 
-        <section class="flowchart-section flowchart-section-right">
-            {% for process_step in process_steps %}
+        <section class="flowchart-section flowchart-section-bottom">
             <div class="flowchart-box flowchart-box-type-2">
-
                 <div class="table-data-container">
-                <table class="table-data">
-                    <thead>
+                    <table class="table-data">
+                        <thead>
                         <tr>
-                            <th id="t-step">Описание на стъпката</th>
-                            <th id="t-resp">Отговорник</th>
-                            <th id="t-dox">Документи</th>
+                            <th class="t-number">Nr</th>
+                            <th class="t-shape">Стъпка</th>
+                            <th class="t-step">Описание на стъпката</th>
+                            <th class="t-resp">Отговорник</th>
+                            <th class="t-dox">Документи</th>
                         </tr>
-                    </thead>
-                    <tbody class="body-6">
+                        </thead>
+                        <tbody class="body-6">
+                        {% for process_step in process_steps %}
                         <tr>
-                            <td id="t-step">{{ process_step.description }}</td>
-                            <td id="t-resp">{{ process_step.responsible }}</td>
-                            <td id="t-dox">{{ process_step.documents }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
+                            <td class="t-number">
+                                <a class="table-link"
+                                       href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">{{ process_step.number }}
+                                </a>
+                            </td>
 
+                            <td class="t-shape">
+                                {% if process_step.type == 'Terminator' %}
+                                <div class="shape-box terminator">
+                                    <svg width="200" height="100">
+                                    <rect x="10" y="10" width="180" height="80"
+                                       fill="#B9A89B"
+                                    stroke="black" stroke-width="1" rx="5" ry="5"></rect>
+                                    <line x1="30" y1="10" x2="30" y2="90" stroke="black"
+                                    stroke-width="1"></line>
+                                    </svg>
+
+                                    <p class="shape-box-text">
+                                        <a class="table-link"
+                                        href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">{{ process_step.name }}
+                                        </a>
+                                    </p>
+
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </div>
+
+                                {% elif process_step.type == 'Process' %}
+                                <div class="shape-box process">
+                                    <svg width="200" height="100"><rect x="10" y="10"
+                                    width="180" height="80"
+                                        fill="#DFE0DF"
+                                    stroke="black" stroke-width="1" rx="5" ry="5"></rect></svg>
+
+                                    <p class="shape-box-text">
+                                        <a class="table-link"
+                                        href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">{{ process_step.name }}
+                                        </a>
+                                    </p>
+
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </div>
+
+                                {% elif process_step.type == 'Decision' %}
+                                <div class="shape-box decision">
+{#                                    <svg width="200" height="100"><path d="M100 5 L190 50#}
+{#                                    L100 95 L10 50 Z"#}
+{#                                        fill="#DFE0DF"#}
+{#                                    stroke="black" stroke-width="1"></path></svg>#}
+
+                                    <svg width="200" height="89"><path d="M100 3 L190 44
+                                    L100 84 L10 44 Z"
+                                        fill="#DFE0DF"
+                                    stroke="black" stroke-width="1"></path></svg>
+
+                                    <p class="shape-box-text shape-box-text-decision">
+                                        <a class="table-link"
+                                        href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">{{ process_step.name }}
+                                        </a>
+                                    </p>
+
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </div>
+                                {% endif %}
+                            </td>
+
+                            <td class="t-step">
+                                <div class="t-step-holder" onclick="expandDiv(this)">
+                                    {{ process_step.description }}
+                                </div>
+                            </td>
+
+                            <td class="t-resp"><a class="table-link" href="{% url 'show employee' pk=process_step.responsible.pk slug=process_step.responsible.slug %}">
+                                {{ process_step.responsible.get_full_name }}</a></td>
+
+                            <td class="t-dox">
+                                {% for doc in i.get_related_documents %}
+                                    <a class="table-link" href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}</a>
+                                {% endfor %}
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            {% endfor %}
         </section>
     </div>
 </main>
 
 </body>
+
+<script type="text/javascript" src="{% static 'css/remove_last_arrow_in_flowchart.js' %}"></script>
 </html>

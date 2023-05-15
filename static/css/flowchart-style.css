@@ -15,12 +15,22 @@ body {
   background-color: #CCCCCCFF;
 
   display: flex;
-  gap: 40px;
-  flex-direction: row;
+  /*gap: 40px;*/
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   position: relative;
+}
+
+.fa-diagram-project {
+  margin-left: 120px;
+}
+
+.fa-arrow-down {
+  position: absolute;
+  top: 90%;
+  font-size: 0.6rem;
 }
 
 .table-link {
@@ -33,83 +43,47 @@ body {
   text-decoration: underline;
 }
 
-/* ------------------------------------------------------------------------ */
-
-.vertical-1, .vertical-2 {
-  border: 1px solid #676565;
-  position: absolute;
-  width: 2px;
-  height: 645px;
-
-  top: 127px;
-  left: 653px;
+#main-title {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.vertical-2 {
-    left: 1142px;
-}
-
-.horizontal-1, .horizontal-2, .horizontal-3, .horizontal-4, .horizontal-5, .horizontal-6 {
-  border: 1px solid #676565;
-  position: absolute;
-  width: 55px;
-  height: 2px;
-}
-
-.horizontal-1 {
-  width: 27px;
-  top: 127px;
-  left: 627px;
-}
-
-.horizontal-2 {
-  top: 450px;
-  left: 627px;
-}
-
-.horizontal-3 {
-  width: 27px;
-  top: 770px;
-  left: 627px;
-}
-
-.horizontal-4 {
-  width: 27px;
-  top: 127px;
-  left: 1142px;
-}
-
-.horizontal-5 {
-  top: 450px;
-  left: 1115px;
-}
-
-.horizontal-6 {
-  width: 27px;
-  top: 770px;
-  left: 1142px;
+#process-title {
+  margin-top: 5px;
 }
 
 /* ------------------------------------------------------------------------ */
 
 .flowchart-section {
-  /*border: 1px solid white;*/
-  height: 91%;
+}
+
+.flowchart-section-top {
+  height: 7%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 94%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 0.3rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.flowchart-section-bottom {
+  height: 84%;
   padding: 5px;
-  /*background-color: #ece4d6;*/
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
 
-.flowchart-section-left {
-  width: 15%;
-}
-
-.flowchart-section-right {
-  width: 60%;
+  width: 95%;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -128,6 +102,10 @@ body {
 
   position: relative;
   margin-bottom: 50px;
+
+  overflow: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  overflow-y: auto; /* Show the vertical scrollbar */
 }
 
 .flowchart-box:last-child {
@@ -147,9 +125,38 @@ body {
   margin-bottom: 5px;
 }
 
+.flowchart-box-type-0 {
+  min-height: 0;
+  width: 300px;
+
+  box-shadow: none;
+  background-color: #CCCCCCFF;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 0;
+}
+
+.flowchart-box-type-0:hover {
+  box-shadow: none;
+}
+
 .flowchart-box-type-1 {
-  align-items: flex-start;
-  padding: 10px;
+  min-height: 0;
+  width: 500px;
+
+  margin-bottom: 0;
+
+  box-shadow: none;
+  background-color: #CCCCCCFF;
+}
+
+.flowchart-box-type-1:hover {
+  box-shadow: none;
 }
 
 .flowchart-box-type-2 {
@@ -157,6 +164,8 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+  height: 100%;
 
   overflow: scroll;
   overflow-x: hidden; /* Hide the horizontal scrollbar */
@@ -190,9 +199,9 @@ body {
 
 .table-data-container {
   position: absolute;
-  top: 10px;
+  top: 15px;
 
-  width: 95%;
+  width: 98%;
   margin: auto;
 
   display: flex;
@@ -207,13 +216,13 @@ body {
 
 .table-data  {
   border-collapse: collapse;
-  /*table-layout: fixed;*/
+  table-layout: fixed;
   width: 100%;
 }
 
 .table-data th {
   background-color: #E89238FF;
-  text-align: left;
+  text-align: center;
   border: solid 1px #CCCCCCFF;
   font-size: 15px;
   color: #333333FF;
@@ -231,17 +240,70 @@ body {
   overflow: hidden;
 }
 
-.table-data #t-step {
+.table-data .t-number {
+  width: 2%;
 }
 
-.table-data #t-resp {
-  width: 80px;
+.table-data .t-shape {
+  width: 20%;
 }
 
-.table-data #t-dox {
-  width: 80px;
+.table-data .t-step {
+  width: 60%;
+}
+
+.t-step-holder {
+  margin-top: 2px;
+  margin-bottom: 5px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+
+  cursor: pointer;
+}
+
+.t-step-holder.expanded {
+  -webkit-line-clamp: unset;
+  white-space: normal;
+}
+
+.table-data .t-resp {
+  width: 8%;
+}
+
+.table-data .t-dox {
+  width: 10%;
+  word-wrap: break-word;
 }
 
 .table-data tbody tr:nth-child(even) {
   background-color: #F3F3F3;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.shape-box {
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.shape-box-text {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.shape-box-text-decision {
+  width: 100px;
 }
