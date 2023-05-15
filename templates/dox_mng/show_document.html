@@ -85,6 +85,16 @@
                     </tbody>
                     </table>
                 </div>
+
+{#            <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://res.cloudinary.com/hpnglbxlz/raw/upload/v1672922985/8266.docx' width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>#}
+{#            <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={{ current_object.attachment.url }}' width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>#}
+
+            {% if is_file %}
+                <iframe class="iframe-ms-office" src='https://view.officeapps.live.com/op/embed.aspx?src={{ current_object.attachment.url }}' width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
+            {% else %}
+                <iframe class="iframe-pdf" src="{{ current_object.attachment.url }}"> </iframe>
+            {% endif %}
+
             </div>
         </div>
     </section>

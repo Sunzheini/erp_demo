@@ -50,6 +50,17 @@ i {
   margin-right: 0.28em;
 }
 
+.iframe-ms-office {
+  border: none;
+  width: 100%;
+}
+
+.iframe-pdf {
+  border: none;
+  width: 100%;
+  height: 510px;
+}
+
 .fa-magnifying-glass {
   color: blue;
 }

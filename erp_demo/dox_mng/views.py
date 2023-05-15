@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render, redirect
 
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
@@ -31,6 +33,26 @@ class DoxMngViews(PrototypeViews):
         # ---------------------------------------------------------------------------------------
 
         return render(request, self.list_template, self.context)
+
+    @SupportFunctions.login_check
+    def show_view(self, request, pk, slug):
+        self._empty_context()
+        current_object = self._main_object_single(pk)
+
+        # use different iframe based on document extension
+        # ---------------------------------------------------------------------------------------
+        form = self.view_form(instance=current_object)
+
+        allowed_extensions = ['.doc', '.docx', '.xls', '.xlsx']
+        file_extension = os.path.splitext(current_object.attachment.url)[1].lower()
+        if file_extension in allowed_extensions:
+            self.context['is_file'] = True
+
+        # ---------------------------------------------------------------------------------------
+
+        self._add_form_to_context(form)
+        self._add_current_object_to_context(current_object)
+        return render(request, self.show_template, self.context)
 
     # added for likes
     @staticmethod
