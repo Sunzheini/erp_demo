@@ -159,8 +159,24 @@ class DataManipulation:
             if process.process_owner in owned_processes_dict.keys():
                 owned_processes_dict[process.process_owner].append(process)
 
-        print(owned_processes_dict)
         return owned_processes_dict
+
+    @staticmethod
+    def get_owned_trainings_list(employees, trainings):
+        all_employees = employees.objects.all()
+        all_trainings = trainings.objects.all()
+
+        owned_trainings_dict = {
+            employee: [] for employee in all_employees
+        }
+
+        for training in all_trainings:
+            for employee in all_employees:
+                if training.id in employee.trainings.all().values_list('id', flat=True):
+                    owned_trainings_dict[employee].append(training)
+
+        print(owned_trainings_dict)
+        return owned_trainings_dict
 
 
 class SupportFunctions:

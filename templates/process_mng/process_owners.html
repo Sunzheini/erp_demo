@@ -1,12 +1,12 @@
 {% extends 'core/base.html' %}
 
 {#1. Page Title------------------------------------------------------------#}
-    {% block page_title %}Training Matrix{% endblock %}
+    {% block page_title %}Process Owners{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <h1 class="page-title">Training Matrix</h1>
+        <h1 class="page-title">Process Owners</h1>
     {% endblock %}
 {#-------------------------------------------------------------------------#}
 
@@ -37,51 +37,45 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Training Matrix</h2>
+                <h2 class="card-display-title">Process owners</h2>
 
-                <div class="table-data-container">
-                   <table class="table-data">
+                    <div class="table-data-container">
+                      <table class="table-data">
                       <thead>
-                        <tr>
-                          <th colspan="2">Employees</th>
-                          <th colspan="{{ number_of_trainings }}">Trainings</th>
-                        </tr>
                         <tr>
                           <th>Name</th>
                           <th>Position</th>
-                            {% for training in all_objects %}
-                                <th>{{ training.name }}</th>
-                            {% endfor %}
+                          <th>Owned processes</th>
                         </tr>
                       </thead>
 
                       <tbody>
-                        {% for key, value in employees_w_their_trainings.items %}
-                        <tr>
+                      {% for key, value in employees_w_owned_processes.items %}
+                         <tr>
                           <td>
-                             <a class="table-link" href="{% url 'show employee' pk=key.pk slug=key.slug %}">{{ key.get_full_name }}</a>
+                              <a class="table-link" href="{% url 'show employee' pk=key.pk slug=key.slug %}">{{ key.get_full_name }}</a>
                           </td>
 
-                          <td>
-                              {{ key.position.name }}
-                          </td>
+                          <td>{{ key.position.name }}</td>
 
-                          {% for training in all_objects %}
-                                <td>
-                                    {% if training in value %}
-                                        <i class="fas fa-check" style="color: limegreen"></i>
-                                    {% else %}
-                                        <i class="fas fa-times" style="color: red"></i>
-                                    {% endif %}
-                                </td>
-                            {% endfor %}
+                          <td>
+                            {% if value %}
+                                {% for v in value %}
+                                    <a class="table-link" href="{% url 'show process' pk=v.pk slug=v.slug %}">
+                                        {{ v.number }}.&nbsp;{{ v.name }}
+                                        <br>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                няма
+                            {% endif %}
+                          </td>
                         </tr>
-                        {% endfor %}
+                      {% endfor %}
                       </tbody>
                     </table>
-                </div>
+                    </div>
             </div>
-
         </div>
     </section>
 {% endblock %}

@@ -39,28 +39,36 @@
             <div class="card-display">
                 <h2 class="card-display-title">Process map</h2>
 
-                <div class="process-map-grid">
+                {% for process_type in list_of_process_types %}
+                    <div class="process-type-holder">
+                        <h3 class="process-type-title">{{ process_type }}</h3>
 
-                {% for process in all_objects %}
-                <div class="process-box">
-                    <td><a class="table-link" href="{% url 'show process' pk=process.pk slug=process.slug %}">
-                    {{ process.number }}. {{ process.name }}</a></td>
+                        <div class="process-box-holder">
+                            {% for process in all_objects %}
+                            {% if process.type == process_type %}
 
-                    <br><br>
+                                <div class="process-box">
+                                    <div class="process-map-link-title-wrapper">
+                                        <a class="process-map-link-title" href="{% url 'show process' pk=process.pk slug=process.slug %}">
+                                        {{ process.number }}. {{ process.name }}</a>
+                                    </div>
 
-                    <td><a class="table-link" href="{% url 'create flowchart' pk=process.pk %}">
-                    <i class="fa-sharp fa-solid fa-florin-sign"></i>Flowchart</a></td>
-                    <br>
-                    <td><a class="table-link" href="{% url 'create turtle' pk=process.pk %}">
-                    <i class="fa-sharp fa-solid fa-pizza-slice"></i>Turtle</a></td>
+                                    <a class="process-map-link" href="{% url 'create flowchart' pk=process.pk %}">
+                                    <i class="fa-solid fa-diagram-project"></i>Flowchart</a>
 
-                </div>
+                                    <a class="process-map-link" href="{% url 'create turtle' pk=process.pk %}">
+                                    <i class="fa-solid fa-diagram-project"></i>Turtle</a>
+                                </div>
+
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
                 {% endfor %}
 
             </div>
-
-            </div>
-
         </div>
     </section>
 {% endblock %}

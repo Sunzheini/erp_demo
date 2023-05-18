@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.hr_mng.forms import EmployeePositionForm
-from erp_demo.hr_mng.models import Employee
+from erp_demo.hr_mng.models import Employee, Trainings
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 
 
@@ -37,5 +37,12 @@ class HrMngViewsTrainings(PrototypeViews):
     @staticmethod
     @SupportFunctions.allow_groups()
     def training_matrix(request):
-        context = {}
+        all_objects = Trainings.objects.all()
+        number_of_trainings = all_objects.count()
+
+        context = {
+            'all_objects': all_objects,
+            'employees_w_their_trainings': DataManipulation.get_owned_trainings_list(Employee, Trainings),
+            'number_of_trainings': number_of_trainings,
+        }
         return render(request, 'hr_mng/training_matrix.html', context)

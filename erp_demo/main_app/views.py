@@ -39,9 +39,7 @@ class MainAppViews:
     @staticmethod
     @SupportFunctions.allow_groups()
     def organigramm(request):
-        context = {
-            'employees_w_owned_processes': DataManipulation.get_owned_processes_list(Employee, Process),
-        }
+        context = {}
         return render(request, 'core/organigramm.html', context)
 
     @staticmethod

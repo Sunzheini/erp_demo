@@ -3,7 +3,8 @@ from django.urls import path, include
 from erp_demo.process_mng.forms import ProcessForm, ProcessEditForm, ProcessDeleteForm, \
     ProcessStepForm, ProcessStepEditForm, ProcessStepDeleteForm
 from erp_demo.process_mng.models import Process, ProcessStep
-from erp_demo.process_mng.views import ProcessMngViewsGeneral, ProcessMngViewsProcess, ProcessMngViewsProcessStep
+from erp_demo.process_mng.views import ProcessMngViewsGeneral, \
+    ProcessMngViewsProcess, ProcessMngViewsProcessStep
 
 
 # Set-up
@@ -52,6 +53,8 @@ urlpatterns = [
     path('create-flowchart/<int:pk>/', ProcessMngViewsGeneral().create_flowchart, name='create flowchart'),
 
     path('create-turtle/<int:pk>/', ProcessMngViewsGeneral().create_turtle, name='create turtle'),
+
+    path('process-owners/', ProcessMngViewsGeneral().process_owners, name='process owners'),
 
 
 

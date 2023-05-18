@@ -213,6 +213,10 @@ class Employee(models.Model):
         return EmployeeToTrainings.objects.filter(employee_id=self.pk)
 
     @property
+    def name(self):
+        return f"{self.first_name} {self.middle_name} {self.last_name}"
+
+    @property
     def get_full_name(self):
         return f"{self.first_name} {self.middle_name} {self.last_name}"
 

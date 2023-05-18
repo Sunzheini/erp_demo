@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
+from erp_demo.hr_mng.models import Employee
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, ProcessNumberForm
 from erp_demo.process_mng.models import Process, ProcessStep
 
@@ -59,8 +60,10 @@ class ProcessMngViewsGeneral:
     @SupportFunctions.allow_groups()
     def create_process_map(request):
         template = 'process_mng/process_map.html'
+
         context = {
             'all_objects': Process.objects.all(),
+            'list_of_process_types': Process.objects.first().list_of_process_types,
         }
         return render(request, template, context)
 
@@ -85,6 +88,16 @@ class ProcessMngViewsGeneral:
         context = {
             'current_object': current_object,
             'process_steps': DataManipulation.get_process_step_list(current_object, ProcessStep)
+        }
+        return render(request, template, context)
+
+    @staticmethod
+    @SupportFunctions.allow_groups()
+    def process_owners(request):
+        template = 'process_mng/process_owners.html'
+
+        context = {
+            'employees_w_owned_processes': DataManipulation.get_owned_processes_list(Employee, Process),
         }
         return render(request, template, context)
 

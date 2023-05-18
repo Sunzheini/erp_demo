@@ -45,6 +45,10 @@ class Process(models.Model):
         editable=False,
     )
 
+    @property
+    def list_of_process_types(self):
+        return [x[0] for x in self._meta.get_field('type').choices]
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if not self.slug:
