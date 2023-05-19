@@ -650,10 +650,7 @@ a.table-link:hover {
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
 
-  /*max-width: 200px;*/
-  /*overflow: hidden;*/
-
-  max-width: 250px;
+  /*max-width: 250px;*/
   overflow: hidden;
 }
 
@@ -663,11 +660,7 @@ a.table-link:hover {
   color: var(--clr-display-text);
   padding: 0 0.6rem 0 0.5rem;
 
-  /*max-width: 200px;*/
-  /*overflow: hidden;*/
-  /*!*word-wrap: break-word;*!*/
-
-  max-width: 250px;
+  /*max-width: 250px;*/
   overflow: hidden;
   /*word-wrap: break-word;*/
 }

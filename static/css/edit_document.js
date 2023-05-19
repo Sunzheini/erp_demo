@@ -1,15 +1,17 @@
+function edit_document() {
+    let divCardDisplay = document.getElementsByClassName('card-display')[0]
+    let tableBody= document.getElementsByTagName('tbody')[0]
+    let tableRow = Array.from(tableBody.children)[8]
+    let tableD = Array.from(tableRow.children)[1]
 
-function solve() {
-    // Selections
-    let cardDisplayDiv = document.getElementsByClassName('card-display')[0]
+    tableD.style.display = 'none'
 
-    // Replacing input = file
     let buttonReplacement = customElements(
-        'button', cardDisplayDiv, null, ['button-replacement'], null,
-        {onclick: "document.getElementsByClassName('file-input')[0].click();" }
+        'button', divCardDisplay, null, ['button-replacement'], null,
+        {onclick: "document.getElementById('id_attachment').click();" }
     )
-    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери лого '
-    buttonReplacement.style.top = '103px'
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери '
+    buttonReplacement.style.top = '525px'
 
     function customElements(type, parentNode, content, classes, id, attributes, useInnerHtml) {
         const htmlElement = document.createElement(type)
@@ -43,4 +45,4 @@ function solve() {
     }
 }
 
-solve()
+edit_document()
