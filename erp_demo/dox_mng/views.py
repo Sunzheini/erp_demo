@@ -42,9 +42,11 @@ class DoxMngViews(PrototypeViews):
         # use different iframe based on document extension
         # ---------------------------------------------------------------------------------------
         form = self.view_form(instance=current_object)
-
+        file_extension = ''
         allowed_extensions = ['.doc', '.docx', '.xls', '.xlsx']
-        file_extension = os.path.splitext(current_object.attachment.url)[1].lower()
+
+        if current_object.attachment:
+            file_extension = os.path.splitext(current_object.attachment.url)[1].lower()
         if file_extension in allowed_extensions:
             self.context['is_file'] = True
 
