@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}P30-01-001. BPIC{% endblock %}
@@ -16,7 +17,7 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
-                <span class="card-btn-title">Back</span>
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the document list</span>
             </button>
 
@@ -37,7 +38,7 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Process map</h2>
+                <h2 class="card-display-title">{% trans "Process map" %}</h2>
 
                 {% for process_type in list_of_process_types %}
                     <div class="process-type-holder">
@@ -54,10 +55,10 @@
                                     </div>
 
                                     <a class="process-map-link" href="{% url 'create flowchart' pk=process.pk %}">
-                                    <i class="fa-solid fa-diagram-project"></i>Flowchart</a>
+                                    <i class="fa-solid fa-diagram-project"></i>{% trans "Flowchart" %}</a>
 
                                     <a class="process-map-link" href="{% url 'create turtle' pk=process.pk %}">
-                                    <i class="fa-solid fa-diagram-project"></i>Turtle</a>
+                                    <i class="fa-solid fa-diagram-project"></i>{% trans "Turtle" %}</a>
                                 </div>
 
                             {% endif %}

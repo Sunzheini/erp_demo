@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Edit user{% endblock %}
@@ -37,14 +38,14 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Edit user: {{ object.username }}</h2>
+                <h2 class="card-display-title">{% trans "Edit user:" %} {{ object.username }}</h2>
 
                 <form action="{% url 'edit user' pk=object.pk %}" method="post">
                     <table class="table-form">
                         {{ form }}
                     </table>
                     {% csrf_token %}
-                    <button class="form-button">Confirm changes</button>
+                    <button class="form-button">{% trans "Confirm changes" %}</button>
                 </form>
             </div>
         </div>

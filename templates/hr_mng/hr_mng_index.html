@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}HR Management{% endblock %}
@@ -21,17 +22,17 @@
 {#            </button>#}
 
             <button class="card-btn" onclick="location.href='{% url 'add employee' %}';">
-                <span class="card-btn-title">Add Employee</span>
+                <span class="card-btn-title">{% trans "Add Employee" %}</span>
                 <span class="card-btn-desc">Add a new employee and define their properties</span>
             </button>
 
             <button class="card-btn" onclick="location.href='{% url 'employee list' %}';">
-                <span class="card-btn-title">Employee List</span>
+                <span class="card-btn-title">{% trans "Employee List" %}</span>
                 <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
             </button>
 
             <button class="card-btn" onclick="location.href='{% url 'training index' %}';">
-                <span class="card-btn-title">Trainings</span>
+                <span class="card-btn-title">{% trans "Trainings" %}</span>
                 <span class="card-btn-desc">Manage all training activities. Add, edit, delete</span>
             </button>
 

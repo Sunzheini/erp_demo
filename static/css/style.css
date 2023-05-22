@@ -133,6 +133,36 @@ i {
   /*font-weight: bold;*/
 }
 
+.lang {
+}
+
+.lang-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.lang-form select {
+  font-size: 0.9rem;
+  /*background-color: #F3F3F3;*/
+  background-color: #e89238;
+
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.lang-button {
+  font-size: 0.9rem;
+  border: none;
+  background-color: #e89238;
+}
+
+.lang-button:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .user-container {
   width: 350px;
   display: flex;

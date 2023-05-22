@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Show Organization{% endblock %}
@@ -37,7 +38,7 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Покажи организация</h2>
+                <h2 class="card-display-title">{% trans "Show an organization" %}</h2>
 
                 <form action="{% url 'show org' pk=current_object.pk slug=current_object.slug %}" method="post">
 

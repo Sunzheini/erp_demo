@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Show Process{% endblock %}
@@ -16,7 +17,7 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
-                <span class="card-btn-title">Back</span>
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the document list</span>
             </button>
 
@@ -37,19 +38,19 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Show process</h2>
+                <h2 class="card-display-title">{% trans "Show process" %}</h2>
                 <div class="table-data-container">
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Type</th>
-                            <th>Number</th>
-                            <th>Name</th>
+                            <th>{% trans "Type" %}</th>
+                            <th>{% trans "Number" %}</th>
+                            <th>{% trans "Name" %}</th>
 
-                            <th>Owner</th>
+                            <th>{% trans "Owner" %}</th>
 
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>{% trans "Edit" %}</th>
+                            <th>{% trans "Delete" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,9 +63,9 @@
                                         <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.process_owner.get_full_name }}</a></td>
 
                             <td><a class="table-link" href="{% url 'edit proces' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                                    Edit</a></td>
+                                    {% trans "Edit" %}</a></td>
                             <td><a class="table-link" href="{% url 'delete process' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
-                                    Delete</a></td>
+                                    {% trans "Delete" %}</a></td>
                         </tr>
                     </tbody>
                     </table>

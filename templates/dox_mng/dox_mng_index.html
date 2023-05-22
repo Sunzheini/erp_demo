@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Documents and Records{% endblock %}
@@ -21,12 +22,12 @@
 {#            </button>#}
 
             <button class="card-btn" onclick="location.href='{% url 'add document' %}';">
-                <span class="card-btn-title">Add document</span>
+                <span class="card-btn-title">{% trans "Add document" %}</span>
                 <span class="card-btn-desc">Add a new document and define its properties</span>
             </button>
 
             <button class="card-btn" onclick="location.href='{% url 'document list' %}';">
-                <span class="card-btn-title">List of documents</span>
+                <span class="card-btn-title">{% trans "List of documents" %}</span>
                 <span class="card-btn-desc">Display a list of all documents. Edit or delete documents</span>
             </button>
 

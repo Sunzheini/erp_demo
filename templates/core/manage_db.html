@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Manage DB{% endblock %}
@@ -16,19 +17,19 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
-                <span class="card-btn-title">Back</span>
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the previous menu</span>
             </button>
 
             <button class="card-btn card-btn-hidden"></button>
 
             <button class="card-btn" onclick="location.href='{% url 'requirements matrix' %}';">
-                <span class="card-btn-title">Manage Requirements</span>
+                <span class="card-btn-title">{% trans "Manage Requirements" %}</span>
                 <span class="card-btn-desc">Manage the requirements to the management system</span>
             </button>
 
             <button class="card-btn" onclick="location.href='{% url 'manage db all' %}';">
-                <span class="card-btn-title">Manage DB All</span>
+                <span class="card-btn-title">{% trans "Manage DB All" %}</span>
                 <span class="card-btn-desc">Manage the whole database. Drop and upload again</span>
             </button>
 

@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
@@ -17,7 +18,7 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onclick="location.href='{% url 'sign up' %}';">
-                <span class="card-btn-title"><i class="fa-solid fa-user-pen"></i>Create a new account</span>
+                <span class="card-btn-title"><i class="fa-solid fa-user-pen"></i>{% trans "Create a new account" %}</span>
                 <span class="card-btn-desc">Display a list of all documents. Edit or delete documents</span>
             </button>
 
@@ -38,7 +39,7 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Log In</h2>
+                <h2 class="card-display-title">{% trans "Log In" %}</h2>
                 <form action="{% url 'login' %}" method="post">
 
                     <table class="table-form">
@@ -48,7 +49,7 @@
                     <input name="next" type="hidden" value="{{ next }}">
                     {% csrf_token %}
                     <br>
-                    <button class="form-button">Log in</button>
+                    <button class="form-button">{% trans "Log in" %}</button>
                 </form>
             </div>
         </div>

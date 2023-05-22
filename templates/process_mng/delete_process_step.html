@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Delete Process Step{% endblock %}
@@ -16,7 +17,7 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
-                <span class="card-btn-title">Back</span>
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the document list</span>
             </button>
 
@@ -37,14 +38,14 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Delete process step</h2>
+                <h2 class="card-display-title">{% trans "Delete process step" %}</h2>
 
                 <form action="{% url 'delete process step' pk=current_object.pk slug=current_object.slug %}" method="post">
                      <table class="table-form">
                         {{ form }}
                      </table>
                     {% csrf_token %}
-                    <button class="form-button">delete</button>
+                    <button class="form-button">{% trans "delete" %}</button>
                 </form>
             </div>
         </div>

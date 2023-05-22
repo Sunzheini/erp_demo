@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Requirements{% endblock %}
@@ -16,7 +17,7 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
-                <span class="card-btn-title">Back</span>
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the previous menu</span>
             </button>
 
@@ -25,8 +26,8 @@
             <button class="card-btn card-btn-hidden"></button>
 
             <button class="card-btn" onclick="fShowHideRequirementForm()">
-                <span class="card-btn-title">New Requirement</span>
-                <span class="card-btn-desc">Show / Hide Form</span>
+                <span class="card-btn-title">{% trans "New Requirement" %}</span>
+                <span class="card-btn-desc">{% trans "Show / Hide Form" %}</span>
             </button>
 
         </div>
@@ -40,16 +41,16 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Requirements matrix</h2>
+                <h2 class="card-display-title">{% trans "Requirements matrix" %}</h2>
 
                     <div style="display: none;" id="requirement_form" >
                         <form action="{% url 'requirements matrix' %}" method="post">
-                            <p class="card-display-content-bold">Requirement Creation Form:</p>
+                            <p class="card-display-content-bold">{% trans "Requirement Creation Form:" %}</p>
                             <table class="table-form">
                                  {{ requirement_form }}
                             </table>
                             {% csrf_token %}
-                            <button class="form-button" name="button1">add this requirement</button>
+                            <button class="form-button" name="button1">{% trans "add this requirement" %}</button>
                         </form>
                         <br><hr>
                     </div>
@@ -60,15 +61,15 @@
          <table class="table-data">
           <thead>
             <tr>
-              <th>Organization</th>
-              <th>External Document</th>
-              <th>Clause</th>
-              <th>Description</th>
-              <th>Covered by</th>
+              <th>{% trans "Organization" %}</th>
+              <th>{% trans "External Document" %}</th>
+              <th>{% trans "Clause" %}</th>
+              <th>{% trans "Description" %}</th>
+              <th>{% trans "Covered by" %}</th>
 
-              <th>Show</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th>{% trans "Show" %}</th>
+              <th>{% trans "Edit" %}</th>
+              <th>{% trans "Delete" %}</th>
             </tr>
           </thead>
 
@@ -92,13 +93,13 @@
 
                 <td><a class="table-link"
                        href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">
-                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                 <td><a class="table-link"
                        href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}">
-                    <i class="fa-solid fa-pen-to-square"></i>Edit</a></td>
+                    <i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}</a></td>
                 <td><a class="table-link"
                        href="{% url 'delete requirement' pk=requirement.pk slug=requirement.slug %}">
-                    <i class="fa-solid fa-trash"></i>Delete</a></td>
+                    <i class="fa-solid fa-trash"></i>{% trans "Delete" %}</a></td>
                 </tr>
             {% endfor %}
           </tbody>

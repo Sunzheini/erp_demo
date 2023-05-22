@@ -1,0 +1,2499 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-22 15:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\core\base.html:40
+msgid "Main Page"
+msgstr "Начало"
+
+#: .\templates\core\base.html:45
+msgid "Org chart"
+msgstr "Орг структура"
+
+#: .\templates\core\base.html:49
+msgid "Manage DB"
+msgstr "База Данни"
+
+#: .\templates\core\base.html:53 .\templates\core\logs.html:42
+msgid "Logs"
+msgstr "Логове"
+
+#: .\templates\core\base.html:57
+msgid "My Tasks"
+msgstr "Мои Задачи"
+
+#: .\templates\core\base.html:61 .\templates\core\favorites.html:42
+#: .\templates\hr_mng\training_matrix.html:47
+msgid "Favorites"
+msgstr "Любими"
+
+#: .\templates\core\base.html:91
+msgid "log out"
+msgstr "изход"
+
+#: .\templates\core\base.html:97
+msgid "Welcome"
+msgstr "Здравей"
+
+#: .\templates\core\base.html:110
+msgid "log in"
+msgstr "вход"
+
+#: .\templates\core\base.html:116
+msgid "guest"
+msgstr "гост"
+
+#: .\templates\core\base.html:148 .\templates\core\requirements_matrix.html:64
+#: .\templates\core\show_requirement.html:47
+msgid "Organization"
+msgstr "Организация"
+
+#: .\templates\core\base.html:152
+msgid "Customers"
+msgstr "Клиенти"
+
+#: .\templates\core\base.html:159
+msgid "Processes"
+msgstr "Процеси"
+
+#: .\templates\core\base.html:163
+#: .\templates\process_mng\blank_flowchart.html:63
+#: .\templates\process_mng\process_mng_index.html:111
+#: .\templates\process_mng\show_process_step.html:57
+msgid "Documents"
+msgstr "Документи"
+
+#: .\templates\core\base.html:167
+msgid "Personnel"
+msgstr "Персонал"
+
+#: .\templates\core\base.html:173
+msgid "Suppliers - test"
+msgstr "Доставчици - тест"
+
+#: .\templates\core\base.html:177
+msgid "API"
+msgstr "АПИ"
+
+#: .\templates\core\delete_requirement.html:41
+msgid "Delete Requirement"
+msgstr "Изтрий Изискване"
+
+#: .\templates\core\delete_requirement.html:49
+#: .\templates\core\favorites.html:60 .\templates\core\favorites.html:93
+#: .\templates\core\manage_db_all.html:54 .\templates\core\my_tasks.html:59
+#: .\templates\core\requirements_matrix.html:72
+#: .\templates\core\requirements_matrix.html:102
+#: .\templates\core\show_requirement.html:53
+#: .\templates\core\show_requirement.html:66
+#: .\templates\customer_mng\delete_customer.html:49
+#: .\templates\dox_mng\document_list.html:67
+#: .\templates\dox_mng\document_list.html:103
+#: .\templates\dox_mng\show_document.html:55
+#: .\templates\dox_mng\show_document.html:84
+#: .\templates\hr_mng\employee_list.html:65
+#: .\templates\hr_mng\employee_list.html:89
+#: .\templates\hr_mng\show_employee.html:54
+#: .\templates\hr_mng\show_employee.html:76
+#: .\templates\hr_mng\show_training.html:52
+#: .\templates\hr_mng\show_training.html:64
+#: .\templates\hr_mng\training_list.html:54
+#: .\templates\hr_mng\training_list.html:70
+#: .\templates\organization_mng\delete_org.html:49
+#: .\templates\process_mng\process_mng_index.html:114
+#: .\templates\process_mng\process_mng_index.html:153
+#: .\templates\process_mng\show_process.html:53
+#: .\templates\process_mng\show_process.html:68
+#: .\templates\process_mng\show_process_step.html:59
+#: .\templates\process_mng\show_process_step.html:88
+#: .\venv\Lib\site-packages\django\forms\formsets.py:499
+msgid "Delete"
+msgstr "Изтрий"
+
+#: .\templates\core\edit_requirement.html:41
+msgid "Edit Requirement"
+msgstr "Промени Изискване"
+
+#: .\templates\core\edit_requirement.html:49
+#: .\templates\hr_mng\edit_employee.html:49
+#: .\templates\hr_mng\edit_training.html:48
+#: .\templates\process_mng\edit_process.html:48
+#: .\templates\process_mng\edit_process_step.html:48
+msgid "submit"
+msgstr "потвърди"
+
+#: .\templates\core\favorites.html:51 .\templates\core\my_tasks.html:50
+#: .\templates\dox_mng\document_list.html:58
+#: .\templates\dox_mng\show_document.html:47
+#: .\templates\process_mng\process_mng_index.html:108
+#: .\templates\process_mng\show_process.html:46
+#: .\templates\process_mng\show_process_step.html:54
+msgid "Type"
+msgstr "Тип"
+
+#: .\templates\core\favorites.html:52 .\templates\core\my_tasks.html:51
+#: .\templates\dox_mng\document_list.html:59
+#: .\templates\dox_mng\show_document.html:48
+#: .\templates\process_mng\process_mng_index.html:107
+#: .\templates\process_mng\show_process.html:47
+#: .\templates\process_mng\show_process_step.html:53
+msgid "Number"
+msgstr "Номер"
+
+#: .\templates\core\favorites.html:53 .\templates\core\my_tasks.html:52
+#: .\templates\customer_mng\customer_list.html:48
+#: .\templates\dox_mng\document_list.html:60
+#: .\templates\dox_mng\show_document.html:49
+#: .\templates\hr_mng\show_training.html:48
+#: .\templates\hr_mng\training_list.html:49
+#: .\templates\hr_mng\training_matrix.html:51
+#: .\templates\organization_mng\org_list.html:48
+#: .\templates\process_mng\blank_turtle.html:40
+#: .\templates\process_mng\blank_turtle.html:46
+#: .\templates\process_mng\blank_turtle.html:50
+#: .\templates\process_mng\blank_turtle.html:54
+#: .\templates\process_mng\blank_turtle.html:67
+#: .\templates\process_mng\blank_turtle.html:73
+#: .\templates\process_mng\blank_turtle.html:77
+#: .\templates\process_mng\blank_turtle.html:81
+#: .\templates\process_mng\blank_turtle.html:85
+#: .\templates\process_mng\blank_turtle.html:89
+#: .\templates\process_mng\blank_turtle.html:93
+#: .\templates\process_mng\blank_turtle.html:97
+#: .\templates\process_mng\blank_turtle.html:101
+#: .\templates\process_mng\blank_turtle.html:105
+#: .\templates\process_mng\blank_turtle.html:109
+#: .\templates\process_mng\blank_turtle.html:113
+#: .\templates\process_mng\blank_turtle.html:117
+#: .\templates\process_mng\blank_turtle.html:121
+#: .\templates\process_mng\blank_turtle.html:134
+#: .\templates\process_mng\blank_turtle.html:140
+#: .\templates\process_mng\blank_turtle.html:144
+#: .\templates\process_mng\blank_turtle.html:148
+#: .\templates\process_mng\blank_turtle.html:202
+#: .\templates\process_mng\blank_turtle.html:208
+#: .\templates\process_mng\blank_turtle.html:212
+#: .\templates\process_mng\blank_turtle.html:216
+#: .\templates\process_mng\blank_turtle.html:229
+#: .\templates\process_mng\blank_turtle.html:235
+#: .\templates\process_mng\blank_turtle.html:239
+#: .\templates\process_mng\blank_turtle.html:243
+#: .\templates\process_mng\blank_turtle.html:247
+#: .\templates\process_mng\blank_turtle.html:251
+#: .\templates\process_mng\blank_turtle.html:255
+#: .\templates\process_mng\blank_turtle.html:259
+#: .\templates\process_mng\blank_turtle.html:263
+#: .\templates\process_mng\blank_turtle.html:267
+#: .\templates\process_mng\blank_turtle.html:271
+#: .\templates\process_mng\blank_turtle.html:275
+#: .\templates\process_mng\blank_turtle.html:279
+#: .\templates\process_mng\blank_turtle.html:283
+#: .\templates\process_mng\blank_turtle.html:296
+#: .\templates\process_mng\blank_turtle.html:302
+#: .\templates\process_mng\blank_turtle.html:306
+#: .\templates\process_mng\blank_turtle.html:310
+#: .\templates\process_mng\process_mng_index.html:104
+#: .\templates\process_mng\process_owners.html:47
+#: .\templates\process_mng\show_process.html:48
+#: .\templates\process_mng\show_process_step.html:52
+msgid "Name"
+msgstr "Име"
+
+#: .\templates\core\favorites.html:54 .\templates\core\my_tasks.html:53
+#: .\templates\dox_mng\document_list.html:61
+#: .\templates\dox_mng\show_document.html:50
+msgid "Revision"
+msgstr "Ревизия"
+
+#: .\templates\core\favorites.html:55
+#: .\templates\dox_mng\document_list.html:62
+#: .\templates\dox_mng\show_document.html:51
+msgid "Status"
+msgstr "Статус"
+
+#: .\templates\core\favorites.html:56 .\templates\core\my_tasks.html:56
+#: .\templates\dox_mng\document_list.html:63
+#: .\templates\dox_mng\show_document.html:52
+#: .\templates\process_mng\show_process.html:50
+msgid "Owner"
+msgstr "Собственик"
+
+#: .\templates\core\favorites.html:57 .\templates\core\favorites.html:76
+#: .\templates\core\manage_db_all.html:98
+#: .\templates\core\manage_db_all.html:111
+#: .\templates\core\requirements_matrix.html:70
+#: .\templates\core\requirements_matrix.html:96
+#: .\templates\dox_mng\document_list.html:64
+#: .\templates\dox_mng\document_list.html:86
+#: .\templates\hr_mng\employee_list.html:63
+#: .\templates\hr_mng\employee_list.html:85
+#: .\templates\hr_mng\training_list.html:52
+#: .\templates\hr_mng\training_list.html:66 .\templates\index.html:91
+#: .\templates\index.html:101 .\templates\index.html:118
+#: .\templates\index.html:128 .\templates\index.html:145
+#: .\templates\index.html:154 .\templates\index.html:171
+#: .\templates\index.html:180 .\templates\index.html:197
+#: .\templates\index.html:206 .\templates\index.html:223
+#: .\templates\index.html:232 .\templates\index.html:249
+#: .\templates\index.html:258
+#: .\templates\process_mng\process_mng_index.html:112
+#: .\templates\process_mng\process_mng_index.html:147
+msgid "Show"
+msgstr "Покажи"
+
+#: .\templates\core\favorites.html:58 .\templates\core\favorites.html:85
+#: .\templates\core\my_tasks.html:57 .\templates\core\my_tasks.html:82
+#: .\templates\dox_mng\document_list.html:65
+#: .\templates\dox_mng\document_list.html:95
+#: .\templates\dox_mng\show_document.html:53
+#: .\templates\dox_mng\show_document.html:76
+msgid "Link"
+msgstr "Линк"
+
+#: .\templates\core\favorites.html:59 .\templates\core\favorites.html:91
+#: .\templates\core\my_tasks.html:58
+#: .\templates\core\requirements_matrix.html:71
+#: .\templates\core\requirements_matrix.html:99
+#: .\templates\core\show_requirement.html:52
+#: .\templates\core\show_requirement.html:64
+#: .\templates\dox_mng\document_list.html:66
+#: .\templates\dox_mng\document_list.html:101
+#: .\templates\dox_mng\show_document.html:54
+#: .\templates\dox_mng\show_document.html:82
+#: .\templates\hr_mng\employee_list.html:64
+#: .\templates\hr_mng\employee_list.html:87
+#: .\templates\hr_mng\show_employee.html:53
+#: .\templates\hr_mng\show_employee.html:74
+#: .\templates\hr_mng\show_training.html:51
+#: .\templates\hr_mng\show_training.html:62
+#: .\templates\hr_mng\training_list.html:53
+#: .\templates\hr_mng\training_list.html:68
+#: .\templates\process_mng\process_mng_index.html:113
+#: .\templates\process_mng\process_mng_index.html:150
+#: .\templates\process_mng\show_process.html:52
+#: .\templates\process_mng\show_process.html:66
+#: .\templates\process_mng\show_process_step.html:58
+#: .\templates\process_mng\show_process_step.html:85
+msgid "Edit"
+msgstr "Промени"
+
+#: .\templates\core\favorites.html:61
+#: .\templates\dox_mng\document_list.html:68
+msgid "Fav"
+msgstr "Фав"
+
+#: .\templates\core\favorites.html:87 .\templates\core\my_tasks.html:84
+#: .\templates\dox_mng\document_list.html:97
+#: .\templates\dox_mng\show_document.html:78
+msgid "N/A"
+msgstr "Н/П"
+
+#: .\templates\core\logs.html:48
+#: .\templates\process_mng\blank_flowchart.html:59
+#: .\templates\process_mng\blank_turtle.html:174
+#: .\templates\process_mng\process_mng_index.html:103
+#: .\templates\process_mng\show_process_step.html:51
+msgid "Nr"
+msgstr "Nr"
+
+#: .\templates\core\logs.html:49
+msgid "Operation"
+msgstr "Организация"
+
+#: .\templates\core\logs.html:50
+msgid "@Time"
+msgstr "@Време"
+
+#: .\templates\core\logs.html:51
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1795
+msgid "Duration"
+msgstr "Продължителност"
+
+#: .\templates\core\manage_db.html:27
+msgid "Manage Requirements"
+msgstr "Управление Изисквания"
+
+#: .\templates\core\manage_db.html:32
+msgid "Manage DB All"
+msgstr "База Данни"
+
+#: .\templates\core\manage_db_all.html:42
+msgid "Delete / recreate whole database"
+msgstr "Изтрий / възстанови цялата база данни"
+
+#: .\templates\core\manage_db_all.html:44
+msgid "Delete whole database"
+msgstr "Изтрий цялата база данни"
+
+#: .\templates\core\manage_db_all.html:66
+msgid ""
+"Select an excel file to recreate database after deletion (requirements acc. "
+"to `DemoX.xlsx`):"
+msgstr ""
+"Избери excel файл за възстановяване на базата данни (изисквания според "
+"`DemoX.xlsx`):"
+
+#: .\templates\core\manage_db_all.html:78
+msgid "Add to database"
+msgstr "Добави към базата данни"
+
+#: .\templates\core\manage_db_all.html:94
+msgid "First Name"
+msgstr "Име"
+
+#: .\templates\core\manage_db_all.html:95
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\templates\core\manage_db_all.html:96
+msgid "Email"
+msgstr "Имейл"
+
+#: .\templates\core\manage_db_all.html:97
+msgid "Superuser"
+msgstr "Суперпотребител"
+
+#: .\templates\core\manage_db_all.html:115
+msgid "No users"
+msgstr "Няма потребители"
+
+#: .\templates\core\my_tasks.html:41
+msgid "Documents for approval:"
+msgstr "Документи за одобрение:"
+
+#: .\templates\core\my_tasks.html:54
+msgid "R. date"
+msgstr "Р. дата"
+
+#: .\templates\core\my_tasks.html:55
+msgid "R. details"
+msgstr "Р. детайли"
+
+#: .\templates\core\my_tasks.html:88
+msgid "Approve"
+msgstr "Одобри"
+
+#: .\templates\core\my_tasks.html:90
+msgid "Del Rev"
+msgstr "Изтрий Рев"
+
+#: .\templates\core\my_tasks.html:97
+msgid "Nothing currently"
+msgstr "Нищо към момента"
+
+#: .\templates\core\requirements_matrix.html:29
+msgid "New Requirement"
+msgstr "Ново Изискване"
+
+#: .\templates\core\requirements_matrix.html:30
+msgid "Show / Hide Form"
+msgstr "Покажи / Скрий Формата"
+
+#: .\templates\core\requirements_matrix.html:44
+msgid "Requirements matrix"
+msgstr "Матрица на изискванията"
+
+#: .\templates\core\requirements_matrix.html:48
+msgid "Requirement Creation Form:"
+msgstr "Форма за създаване на изискване:"
+
+#: .\templates\core\requirements_matrix.html:53
+msgid "add this requirement"
+msgstr "добави това изискване"
+
+#: .\templates\core\requirements_matrix.html:65
+#: .\templates\core\show_requirement.html:48
+msgid "External Document"
+msgstr "Външен Документ"
+
+#: .\templates\core\requirements_matrix.html:66
+#: .\templates\core\show_requirement.html:49
+msgid "Clause"
+msgstr "Клауза"
+
+#: .\templates\core\requirements_matrix.html:67
+#: .\templates\core\show_requirement.html:50
+#: .\templates\hr_mng\show_training.html:49
+#: .\templates\hr_mng\training_list.html:50
+msgid "Description"
+msgstr "Описание"
+
+#: .\templates\core\requirements_matrix.html:68
+msgid "Covered by"
+msgstr "Покрито от"
+
+#: .\templates\core\show_requirement.html:41
+msgid "Show requirement"
+msgstr "Покажи изискване"
+
+#: .\templates\customer_mng\add_customer.html:42
+#: .\templates\customer_mng\customer_mng_index.html:28
+msgid "Add a new customer"
+msgstr "Добави нов клиент"
+
+#: .\templates\customer_mng\add_customer.html:51
+#: .\templates\customer_mng\edit_customer.html:50
+#: .\templates\organization_mng\add_org.html:51
+#: .\templates\organization_mng\edit_org.html:50
+msgid "Save"
+msgstr "Запази"
+
+#: .\templates\customer_mng\customer_list.html:41
+msgid "Customers List"
+msgstr "Списък клиенти"
+
+#: .\templates\customer_mng\customer_list.html:49
+msgid "Location"
+msgstr "Адрес по регистрация"
+
+#: .\templates\customer_mng\customer_list.html:50
+msgid "Correspondence address"
+msgstr "Адрес за кореспонденция"
+
+#: .\templates\customer_mng\customer_list.html:51
+#: .\templates\organization_mng\org_list.html:49
+msgid "EIK"
+msgstr "ЕИК"
+
+#: .\templates\customer_mng\customer_list.html:52
+#: .\templates\organization_mng\org_list.html:50
+msgid "MOL"
+msgstr "МОЛ"
+
+#: .\templates\customer_mng\customer_list.html:53
+#: .\templates\organization_mng\org_list.html:56
+msgid "Actions"
+msgstr "Действия"
+
+#: .\templates\customer_mng\customer_list.html:87
+msgid "No customers available!"
+msgstr "Няма налични клиенти!"
+
+#: .\templates\customer_mng\customer_mng_index.html:33
+msgid "Customers list"
+msgstr "Списък клиенти"
+
+#: .\templates\customer_mng\delete_customer.html:41
+msgid "Delete customer"
+msgstr "Изтрий клиент"
+
+#: .\templates\customer_mng\edit_customer.html:42
+msgid "Change customer details"
+msgstr "Промени данни на клиент"
+
+#: .\templates\customer_mng\show_customer.html:42
+msgid "Show customer details"
+msgstr "Покажи данни на клиент"
+
+#: .\templates\dox_mng\add_document.html:42
+#: .\templates\dox_mng\dox_mng_index.html:25
+msgid "Add document"
+msgstr "Добави документ"
+
+#: .\templates\dox_mng\add_document.html:51
+msgid "add this document"
+msgstr "добави този документ"
+
+#: .\templates\dox_mng\delete_document.html:41
+msgid "Delete Document"
+msgstr "Изтрий Документ"
+
+#: .\templates\dox_mng\delete_document.html:49
+#: .\templates\hr_mng\delete_employee.html:49
+#: .\templates\hr_mng\delete_training.html:47
+#: .\templates\process_mng\delete_process.html:48
+#: .\templates\process_mng\delete_process_step.html:48
+msgid "delete"
+msgstr "изтрий"
+
+#: .\templates\dox_mng\document_list.html:41
+msgid "Document list"
+msgstr "Списък документи"
+
+#: .\templates\dox_mng\document_list.html:48
+#: .\templates\hr_mng\employee_list.html:48
+msgid "filter"
+msgstr "филтър"
+
+#: .\templates\dox_mng\dox_mng_index.html:30
+msgid "List of documents"
+msgstr "Списък документи"
+
+#: .\templates\dox_mng\edit_document.html:42
+msgid "Edit Document"
+msgstr "Промени Документ"
+
+#: .\templates\dox_mng\edit_document.html:50
+msgid "submit to owner for approval"
+msgstr "изпрати към собственика за одобрение"
+
+#: .\templates\dox_mng\show_document.html:41
+msgid "Show document"
+msgstr "Покажи документ"
+
+#: .\templates\hr_mng\add_employee.html:41
+msgid "Add employee"
+msgstr "Добави служител"
+
+#: .\templates\hr_mng\add_employee.html:48
+msgid "add this employee"
+msgstr "добави този служител"
+
+#: .\templates\hr_mng\add_training.html:41
+msgid "Add training"
+msgstr "Добави обучение"
+
+#: .\templates\hr_mng\add_training.html:49
+msgid "add this training"
+msgstr "добави това обучение"
+
+#: .\templates\hr_mng\delete_employee.html:41
+msgid "Delete employee"
+msgstr "Изтрий служител"
+
+#: .\templates\hr_mng\delete_training.html:41
+msgid "Delete training"
+msgstr "Изтрий обучение"
+
+#: .\templates\hr_mng\edit_employee.html:41
+msgid "Edit employee"
+msgstr "Промени служител"
+
+#: .\templates\hr_mng\edit_training.html:41
+msgid "Edit training"
+msgstr "Промени обучение"
+
+#: .\templates\hr_mng\employee_list.html:41
+msgid "Employees:"
+msgstr "Служители:"
+
+#: .\templates\hr_mng\employee_list.html:57
+#: .\templates\hr_mng\show_employee.html:47
+msgid "Full Name"
+msgstr "Име и Фамилия"
+
+#: .\templates\hr_mng\employee_list.html:58
+#: .\templates\hr_mng\show_employee.html:48
+#: .\templates\hr_mng\training_matrix.html:52
+#: .\templates\process_mng\process_owners.html:48
+msgid "Position"
+msgstr "Позиция"
+
+#: .\templates\hr_mng\employee_list.html:59
+#: .\templates\hr_mng\show_employee.html:49
+msgid "Contract Nr"
+msgstr "Номер договор"
+
+#: .\templates\hr_mng\employee_list.html:60
+#: .\templates\hr_mng\show_employee.html:50
+msgid "Starting Date"
+msgstr "Дата започване"
+
+#: .\templates\hr_mng\employee_list.html:61
+#: .\templates\hr_mng\hr_mng_index.html:35
+#: .\templates\hr_mng\show_employee.html:51
+#: .\templates\hr_mng\training_matrix.html:48
+msgid "Trainings"
+msgstr "Обучения"
+
+#: .\templates\hr_mng\hr_mng_index.html:25
+msgid "Add Employee"
+msgstr "Добави Служител"
+
+#: .\templates\hr_mng\hr_mng_index.html:30
+msgid "Employee List"
+msgstr "Списък Служители"
+
+#: .\templates\hr_mng\show_employee.html:41
+msgid "Show employee"
+msgstr "Покажи Служител"
+
+#: .\templates\hr_mng\show_training.html:41
+msgid "Show training"
+msgstr "Покажи обучение"
+
+#: .\templates\hr_mng\show_training.html:47
+#: .\templates\hr_mng\training_list.html:48
+msgid "Code"
+msgstr "Код"
+
+#: .\templates\hr_mng\training_index.html:25
+msgid "Add Training"
+msgstr "Добави Обучение"
+
+#: .\templates\hr_mng\training_index.html:30
+msgid "Trainings List"
+msgstr "Списък обучения"
+
+#: .\templates\hr_mng\training_index.html:35
+msgid "Trainings Matrix"
+msgstr "Матрица на обученията"
+
+#: .\templates\hr_mng\training_list.html:41
+msgid "Trainings:"
+msgstr "Обучения:"
+
+#: .\templates\hr_mng\training_matrix.html:41
+msgid "Training Matrix"
+msgstr "Матрица на обученията"
+
+#: .\templates\index.html:36 .\templates\index.html:64
+msgid "Search"
+msgstr "Търсене"
+
+#: .\templates\index.html:79
+msgid "search"
+msgstr "търсене"
+
+#: .\templates\index.html:90
+msgid "Process Name"
+msgstr "Име на Процес"
+
+#: .\templates\index.html:105 .\templates\index.html:132
+#: .\templates\index.html:158 .\templates\index.html:184
+#: .\templates\index.html:210 .\templates\index.html:236
+#: .\templates\index.html:262
+msgid "Nothing found"
+msgstr "Нищо не е открито"
+
+#: .\templates\index.html:117
+msgid "Process Step Name"
+msgstr "Име на Процесна Стъпка"
+
+#: .\templates\index.html:144
+msgid "Document Name"
+msgstr "Име на Документ"
+
+#: .\templates\index.html:170
+msgid "Employee Name"
+msgstr "Име на Служител"
+
+#: .\templates\index.html:196
+msgid "Training Name"
+msgstr "Име на Обучение"
+
+#: .\templates\index.html:222
+msgid "Organization Name"
+msgstr "Име на Организация"
+
+#: .\templates\index.html:248
+msgid "Customer Name"
+msgstr "Име на Клиент"
+
+#: .\templates\organization_mng\add_org.html:42
+msgid "Add an organization"
+msgstr "Добави Организация"
+
+#: .\templates\organization_mng\delete_org.html:41
+msgid "Delete an organization"
+msgstr "Изтрий Организация"
+
+#: .\templates\organization_mng\edit_org.html:42
+msgid "Edit an organization"
+msgstr "Промени Организация"
+
+#: .\templates\organization_mng\org_list.html:41
+msgid "List of organizations"
+msgstr "Списък на Организации"
+
+#: .\templates\organization_mng\org_list.html:51
+msgid "Management address"
+msgstr "Адрес на управление"
+
+#: .\templates\organization_mng\org_list.html:52
+msgid "Manager names"
+msgstr "Имена ръководител"
+
+#: .\templates\organization_mng\org_list.html:93
+msgid "No created organizations!"
+msgstr "Няма създадени организации!"
+
+#: .\templates\organization_mng\org_mng_index.html:26
+msgid "Create an organization"
+msgstr "Създай Организация"
+
+#: .\templates\organization_mng\org_mng_index.html:31
+msgid "Organizations list"
+msgstr "Списък на Организации"
+
+#: .\templates\organization_mng\show_org.html:41
+msgid "Show an organization"
+msgstr "Покажи Организация"
+
+#: .\templates\process_mng\blank_flowchart.html:37
+#: .\templates\process_mng\process_map.html:58
+msgid "Flowchart"
+msgstr "Флоучарт"
+
+#: .\templates\process_mng\blank_flowchart.html:45
+#: .\templates\process_mng\blank_turtle.html:165
+msgid "Managed by:"
+msgstr "Управляван от:"
+
+#: .\templates\process_mng\blank_flowchart.html:60
+msgid "Step"
+msgstr "Стъпка"
+
+#: .\templates\process_mng\blank_flowchart.html:61
+msgid "Step description"
+msgstr "Описание на стъпката"
+
+#: .\templates\process_mng\blank_flowchart.html:62
+msgid "Responsible"
+msgstr "Отговорен"
+
+#: .\templates\process_mng\blank_turtle.html:35
+msgid "Resources:"
+msgstr "Ресурси:"
+
+#: .\templates\process_mng\blank_turtle.html:41
+#: .\templates\process_mng\blank_turtle.html:47
+#: .\templates\process_mng\blank_turtle.html:51
+#: .\templates\process_mng\blank_turtle.html:55
+#: .\templates\process_mng\blank_turtle.html:68
+#: .\templates\process_mng\blank_turtle.html:74
+#: .\templates\process_mng\blank_turtle.html:78
+#: .\templates\process_mng\blank_turtle.html:82
+#: .\templates\process_mng\blank_turtle.html:86
+#: .\templates\process_mng\blank_turtle.html:90
+#: .\templates\process_mng\blank_turtle.html:94
+#: .\templates\process_mng\blank_turtle.html:98
+#: .\templates\process_mng\blank_turtle.html:102
+#: .\templates\process_mng\blank_turtle.html:106
+#: .\templates\process_mng\blank_turtle.html:110
+#: .\templates\process_mng\blank_turtle.html:114
+#: .\templates\process_mng\blank_turtle.html:118
+#: .\templates\process_mng\blank_turtle.html:122
+#: .\templates\process_mng\blank_turtle.html:135
+#: .\templates\process_mng\blank_turtle.html:141
+#: .\templates\process_mng\blank_turtle.html:145
+#: .\templates\process_mng\blank_turtle.html:149
+#: .\templates\process_mng\blank_turtle.html:175
+#: .\templates\process_mng\blank_turtle.html:203
+#: .\templates\process_mng\blank_turtle.html:209
+#: .\templates\process_mng\blank_turtle.html:213
+#: .\templates\process_mng\blank_turtle.html:217
+#: .\templates\process_mng\blank_turtle.html:230
+#: .\templates\process_mng\blank_turtle.html:236
+#: .\templates\process_mng\blank_turtle.html:240
+#: .\templates\process_mng\blank_turtle.html:244
+#: .\templates\process_mng\blank_turtle.html:248
+#: .\templates\process_mng\blank_turtle.html:252
+#: .\templates\process_mng\blank_turtle.html:256
+#: .\templates\process_mng\blank_turtle.html:260
+#: .\templates\process_mng\blank_turtle.html:264
+#: .\templates\process_mng\blank_turtle.html:268
+#: .\templates\process_mng\blank_turtle.html:272
+#: .\templates\process_mng\blank_turtle.html:276
+#: .\templates\process_mng\blank_turtle.html:280
+#: .\templates\process_mng\blank_turtle.html:284
+#: .\templates\process_mng\blank_turtle.html:297
+#: .\templates\process_mng\blank_turtle.html:303
+#: .\templates\process_mng\blank_turtle.html:307
+#: .\templates\process_mng\blank_turtle.html:311
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\templates\process_mng\blank_turtle.html:62
+msgid "Input elements:"
+msgstr "Входни елементи:"
+
+#: .\templates\process_mng\blank_turtle.html:129
+msgid "Risks:"
+msgstr "Рискове:"
+
+#: .\templates\process_mng\blank_turtle.html:160
+msgid "Turtle diagram"
+msgstr "Костенуркова диаграма"
+
+#: .\templates\process_mng\blank_turtle.html:169
+msgid "Steps:"
+msgstr "Стъпки:"
+
+#: .\templates\process_mng\blank_turtle.html:197
+msgid "KPIs:"
+msgstr "Показатели:"
+
+#: .\templates\process_mng\blank_turtle.html:224
+msgid "Output elements:"
+msgstr "Изходни елементи:"
+
+#: .\templates\process_mng\blank_turtle.html:291
+msgid "Opportunities for improvement:"
+msgstr "Възможности за подобрение:"
+
+#: .\templates\process_mng\delete_process.html:41
+msgid "Delete process"
+msgstr "Изтрий процес"
+
+#: .\templates\process_mng\delete_process_step.html:41
+msgid "Delete process step"
+msgstr "Изтрий процесна стъпка"
+
+#: .\templates\process_mng\edit_process.html:41
+msgid "Edit process"
+msgstr "Промени процес"
+
+#: .\templates\process_mng\edit_process_step.html:41
+msgid "Edit process step"
+msgstr "Промени процесна стъпка"
+
+#: .\templates\process_mng\process_map.html:41
+msgid "Process map"
+msgstr "Процесна карта"
+
+#: .\templates\process_mng\process_map.html:61
+msgid "Turtle"
+msgstr "Костенурка"
+
+#: .\templates\process_mng\process_mng_index.html:25
+msgid "Process Map"
+msgstr "Процесна Карта"
+
+#: .\templates\process_mng\process_mng_index.html:30
+msgid "New Process"
+msgstr "Нов Процес"
+
+#: .\templates\process_mng\process_mng_index.html:35
+msgid "New Process Step"
+msgstr "Нова Процесна Стъпка"
+
+#: .\templates\process_mng\process_mng_index.html:42
+msgid "Process Owners"
+msgstr "Процесни Собственици"
+
+#: .\templates\process_mng\process_mng_index.html:58
+msgid "Process management"
+msgstr "Управление на процесите"
+
+#: .\templates\process_mng\process_mng_index.html:72
+msgid "1) Process Creation Form"
+msgstr "1) Създаване на Процес"
+
+#: .\templates\process_mng\process_mng_index.html:77
+msgid "add this process"
+msgstr "добави този процес"
+
+#: .\templates\process_mng\process_mng_index.html:84
+msgid "2) Process Step Creation Form"
+msgstr "2) Създаване Процесна Стъпка"
+
+#: .\templates\process_mng\process_mng_index.html:89
+msgid "add this process step"
+msgstr "добави процесната стъпка"
+
+#: .\templates\process_mng\process_mng_index.html:99
+#: .\templates\process_mng\show_process_step.html:47
+msgid "Process"
+msgstr "Процес"
+
+#: .\templates\process_mng\process_mng_index.html:100
+#: .\templates\process_mng\show_process_step.html:48
+msgid "Process Step"
+msgstr "Процесна Стъпка"
+
+#: .\templates\process_mng\process_mng_index.html:109
+#: .\templates\process_mng\show_process_step.html:55
+msgid "Step Name"
+msgstr "Име на Стъпка"
+
+#: .\templates\process_mng\process_mng_index.html:110
+#: .\templates\process_mng\show_process_step.html:56
+msgid "Resp"
+msgstr "Отг"
+
+#: .\templates\process_mng\process_owners.html:41
+msgid "Process owners"
+msgstr "Собственици Процеси"
+
+#: .\templates\process_mng\process_owners.html:49
+msgid "Owned processes"
+msgstr "Притежавани процеси"
+
+#: .\templates\process_mng\process_owners.html:71
+msgid "none"
+msgstr "няма"
+
+#: .\templates\process_mng\show_process.html:41
+msgid "Show process"
+msgstr "Покажи процес"
+
+#: .\templates\process_mng\show_process_step.html:41
+msgid "Show process step"
+msgstr "Покажи процесна стъпка"
+
+#: .\templates\user_mng\delete_user.html:41
+msgid "Delete user:"
+msgstr "Изтрий потребител:"
+
+#: .\templates\user_mng\delete_user.html:45
+msgid "Confirm delete!"
+msgstr "Потвърди изтриване!"
+
+#: .\templates\user_mng\edit_user.html:41
+msgid "Edit user:"
+msgstr "Промени потребител:"
+
+#: .\templates\user_mng\edit_user.html:48
+msgid "Confirm changes"
+msgstr "Потвърди промените"
+
+#: .\templates\user_mng\login.html:21
+msgid "Create a new account"
+msgstr "Създай нов акаунт"
+
+#: .\templates\user_mng\login.html:42 .\templates\user_mng\sign_up.html:21
+msgid "Log In"
+msgstr "Вход"
+
+#: .\templates\user_mng\login.html:52
+msgid "Log in"
+msgstr "Вход"
+
+#: .\templates\user_mng\sign_up.html:42 .\templates\user_mng\sign_up.html:60
+msgid "Sign Up"
+msgstr "Създай Акаунт"
+
+#: .\templates\user_mng\user_details.html:41
+msgid "User Details:"
+msgstr "Детайли Потребител:"
+
+#: .\templates\user_mng\user_details.html:44
+msgid "Username:"
+msgstr "Потребителско име:"
+
+#: .\templates\user_mng\user_details.html:46
+msgid "Email:"
+msgstr "Имейл:"
+
+#: .\templates\user_mng\user_details.html:52
+msgid "Edit user"
+msgstr "Промени потребител"
+
+#: .\templates\user_mng\user_details.html:53
+msgid "Delete user"
+msgstr "Изтрий потребител"
+
+#: .\venv\Lib\site-packages\click\_termui_impl.py:496
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\_termui_impl.py:500
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1097
+msgid "Aborted!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1282
+#: .\venv\Lib\site-packages\click\decorators.py:495
+msgid "Show this message and exit."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1313
+#: .\venv\Lib\site-packages\click\core.py:1339
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1357
+msgid "Options"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1383
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\click\core.py:1399
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1605
+msgid "Commands"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1637
+msgid "Missing command."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:1715
+msgid "No such command {name!r}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2271
+msgid "Value must be an iterable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2291
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\click\core.py:2734
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2764
+msgid "(dynamic)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2777
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\core.py:2790
+msgid "required"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\decorators.py:400
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\decorators.py:464
+msgid "Show the version and exit."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:43
+#: .\venv\Lib\site-packages\click\exceptions.py:79
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:71
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:120
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:122
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:178
+msgid "Missing argument"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:180
+msgid "Missing option"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:182
+msgid "Missing parameter"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:184
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:191
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:211
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:223
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:261
+msgid "unknown error"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\exceptions.py:268
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\parser.py:231
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\parser.py:413
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\parser.py:474
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\click\shell_completion.py:316
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\shell_completion.py:322
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:160
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:176
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:178
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:189
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:245
+msgid "Error: invalid input"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\termui.py:776
+msgid "Press any key to continue..."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:265
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:297
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\click\types.py:387
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\click\types.py:409
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:465
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:606
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:630
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:811
+msgid "file"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:813
+msgid "directory"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:815
+msgid "path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:861
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:870
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:878
+#, python-brace-format
+msgid "{name} '{filename}' is a directory."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:887
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:896
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:905
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: .\venv\Lib\site-packages\click\types.py:972
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\cloudinary\forms.py:55
+#: .\venv\Lib\site-packages\cloudinary\forms.py:124
+msgid "No file selected!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:15
+msgid "Messages"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:50
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:52
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:54
+msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:104
+#: .\venv\Lib\site-packages\django\forms\fields.py:749
+msgid "Enter a valid URL."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:164
+msgid "Enter a valid integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:175
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:256
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:264
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:276
+#: .\venv\Lib\site-packages\django\core\validators.py:284
+#: .\venv\Lib\site-packages\django\core\validators.py:313
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:293
+#: .\venv\Lib\site-packages\django\core\validators.py:314
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:305
+#: .\venv\Lib\site-packages\django\core\validators.py:312
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:348
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:354
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:389
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:398
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:407
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:417
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:435
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:458
+#: .\venv\Lib\site-packages\django\forms\fields.py:347
+#: .\venv\Lib\site-packages\django\forms\fields.py:386
+msgid "Enter a number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:460
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:465
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:470
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:541
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:602
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1423
+#: .\venv\Lib\site-packages\django\forms\models.py:893
+msgid "and"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1425
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\constraints.py:17
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:128
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:129
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:130
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:131
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:135
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:173
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1094
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1095
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1097
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1147
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1149
+msgid "String (unlimited)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1253
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1354
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1358
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1493
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1362
+msgid "Date (without time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1489
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1497
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1502
+msgid "Date (with time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1626
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1628
+msgid "Decimal number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1791
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1847
+msgid "Email address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1872
+msgid "File path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1950
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1952
+msgid "Floating point number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1992
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1994
+msgid "Integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2090
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2107
+msgid "Small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2115
+msgid "IPv4 address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2146
+msgid "IP address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2239
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2240
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2242
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2293
+msgid "Positive big integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2308
+msgid "Positive integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2323
+msgid "Positive small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2339
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2375
+msgid "Text"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2450
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2454
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2458
+msgid "Time"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2566
+msgid "URL"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2590
+msgid "Raw binary data"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2655
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2657
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:232
+msgid "File"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:393
+msgid "Image"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:26
+msgid "A JSON object"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:28
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:919
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:921
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1212
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1269
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1271
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1319
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:184
+msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:91
+msgid "This field is required."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:298
+msgid "Enter a whole number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:467
+#: .\venv\Lib\site-packages\django\forms\fields.py:1238
+msgid "Enter a valid date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:490
+#: .\venv\Lib\site-packages\django\forms\fields.py:1239
+msgid "Enter a valid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:517
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:551
+msgid "Enter a valid duration."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:552
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:618
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:619
+msgid "No file was submitted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:620
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:622
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:627
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:691
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:854
+#: .\venv\Lib\site-packages\django\forms\fields.py:946
+#: .\venv\Lib\site-packages\django\forms\models.py:1566
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:948
+#: .\venv\Lib\site-packages\django\forms\fields.py:1067
+#: .\venv\Lib\site-packages\django\forms\models.py:1564
+msgid "Enter a list of values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1068
+msgid "Enter a complete value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1307
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1337
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: .\venv\Lib\site-packages\django\forms\forms.py:98
+msgid ":"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\forms.py:244
+#: .\venv\Lib\site-packages\django\forms\forms.py:328
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:63
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:67
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:72
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:484
+#: .\venv\Lib\site-packages\django\forms\formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:886
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:891
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:898
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:907
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1338
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1429
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1568
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\utils.py:226
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:463
+msgid "Clear"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:464
+msgid "Currently"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:465
+msgid "Change"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:794
+msgid "Unknown"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:795
+msgid "Yes"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:796
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:861
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:891
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:908
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:910
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:912
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:914
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:916
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:918
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:73
+msgid "p.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:74
+msgid "a.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:79
+msgid "PM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:80
+msgid "AM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:152
+msgid "midnight"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:154
+msgid "noon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:35
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:36
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
+msgid "jan"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
+msgid "feb"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
+msgid "mar"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
+msgid "apr"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
+msgid "may"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
+msgid "jun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
+msgid "jul"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
+msgid "aug"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
+msgid "sep"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
+msgid "oct"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:49
+msgid "nov"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:50
+msgid "dec"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:77
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:78
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:254
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: .\venv\Lib\site-packages\django\utils\text.py:273
+#: .\venv\Lib\site-packages\django\utils\timesince.py:135
+msgid ", "
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:111
+msgid "Forbidden"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:112
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:116
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:122
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:127
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:136
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:142
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:148
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:64
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:115
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:349
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:380
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:652
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:692
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:169
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:38
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:40
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:79
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:207
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:222
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:231
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:240
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\venv\Lib\site-packages\kombu\transport\qpid.py:1309
+#, python-format
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\kombu\transport\qpid.py:1314
+#, python-format
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\kombu\transport\qpid.py:1332
+#, python-format
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr ""
+
+#~ msgid "Back"
+#~ msgstr "Назад"
+
+#~ msgid "I am from Bulgaria"
+#~ msgstr "Аз съм от България"
+
+#~ msgid "ERP Demo"
+#~ msgstr "ЕРП демо"

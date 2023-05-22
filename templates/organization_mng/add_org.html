@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
@@ -38,7 +39,7 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Добавяне на организация</h2>
+                <h2 class="card-display-title">{% trans "Add an organization" %}</h2>
                 <form action="{% url 'add org' %}" method="post" enctype="multipart/form-data">
 
                     <table class="table-form">
@@ -47,7 +48,7 @@
 
                     {% csrf_token %}
                 <br>
-                    <button class="form-button">Запази</button>
+                    <button class="form-button">{% trans "Save" %}</button>
                 </form>
             </div>
         </div>

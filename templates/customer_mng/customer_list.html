@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Customer List{% endblock %}
@@ -37,51 +38,25 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Списък на клиентите</h2>
+                <h2 class="card-display-title">{% trans "Customers List" %}</h2>
 
                 {% if all_objects %}
                 <div class="table-data-container">
                     <table class="table-data">
                     <thead>
                         <tr>
-{#                            <th>Тип</th>#}
-{#                            <th>Име</th>#}
-{#                            <th>Адрес по регистрация</th>#}
-{#                            <th>Населено място</th>#}
-{#                            <th>ЕИК</th>#}
-{#                            <th>МОЛ</th>#}
-{#                            <th>Адрес за кореспонденц</th>#}
-{#                            <th>Лице за контакт</th>#}
-{#                            <th>Телефон</th>#}
-{#                            <th>Имейл</th>#}
-{#                            <th>Покажи</th>#}
-{#                            <th>Редактирай</th>#}
-{#                            <th>Изтрий</th>#}
-{#                            <th>Действия</th>#}
-
-                            <th>Име</th>
-                            <th>Населено място</th>
-                            <th>Адрес за кореспонденция</th>
-                            <th>ЕИК</th>
-                            <th>МОЛ</th>
-                            <th>Действия</th>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Location" %}</th>
+                            <th>{% trans "Correspondence address" %}</th>
+                            <th>{% trans "EIK" %}</th>
+                            <th>{% trans "MOL" %}</th>
+                            <th>{% trans "Actions" %}</th>
                         </tr>
                     </thead>
 
                     <tbody>
                             {% for customer in all_objects %}
                         <tr>
-{#                            <td>{{ customer.type }}</td>#}
-{#                            <td>{{ customer.name }}</td>#}
-{#                            <td>{{ customer.registration_address }}</td>#}
-{#                            <td>{{ customer.registration_city }}</td>#}
-{#                            <td>{{ customer.eik }}</td>#}
-{#                            <td>{{ customer.mol1 }}</td>#}
-{#                            <td>{{ customer.correspondence_address1 }}</td>#}
-{#                            <td>{{ customer.contact_person1 }}</td>#}
-{#                            <td>{{ customer.phone1 }}</td>#}
-{#                            <td>{{ customer.email1 }}</td>#}
-
                             <td>{{ customer.name }}</td>
                             <td>{{ customer.registration_city }}</td>
                             <td>{{ customer.correspondence_address1 }}</td>
@@ -109,7 +84,7 @@
                 </div>
                 {% else %}
                     <br><br>
-                    <p style="text-align: center">Няма налични клиенти!</p>
+                    <p style="text-align: center">{% trans "No customers available!" %}</p>
                 {% endif %}
             </div>
         </div>

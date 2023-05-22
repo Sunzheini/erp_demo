@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Customers{% endblock %}
@@ -24,12 +25,12 @@
 
             <button class="card-btn" onclick="location.href='{% url 'add customer' %}';">
 {#                <span class="card-btn-title">Добавяне на организация</span>#}
-                <span class="card-btn-title"><i class="fa-solid fa-plus"></i>Добави нов клиент</span>
+                <span class="card-btn-title"><i class="fa-solid fa-plus"></i>{% trans "Add a new customer" %}</span>
                 <span class="card-btn-desc">Add a new document and define its properties</span>
             </button>
 
             <button class="card-btn" onclick="location.href='{% url 'customer list' %}';">
-                <span class="card-btn-title"><i class="fa-solid fa-list-ul"></i>Списък на клиентите</span>
+                <span class="card-btn-title"><i class="fa-solid fa-list-ul"></i>{% trans "Customers list" %}</span>
                 <span class="card-btn-desc">Display a list of all documents. Edit or delete documents</span>
             </button>
 

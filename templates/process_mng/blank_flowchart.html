@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@
         <section class="flowchart-section flowchart-section-top">
             <div class="flowchart-box flowchart-box-type-0">
                 <i class="fa-solid fa-diagram-project"></i>
-                <h2 class="flowchart-box-title" id="main-title">Флоучарт</h2>
+                <h2 class="flowchart-box-title" id="main-title">{% trans "Flowchart" %}</h2>
             </div>
             <div class="flowchart-box flowchart-box-type-1">
                 <h2 class="flowchart-box-title" id="process-title">
@@ -41,7 +42,7 @@
                     {{ current_object.number }}.&nbsp{{ current_object.name }}</a>
                 </h2>
                 <p class="flowchart-box-text">
-                    Управлява:
+                    {% trans "Managed by:" %}
                     <a class="table-link"
                        href="{% url 'show employee' pk=current_object.process_owner.pk slug=current_object.process_owner.slug %}">
                                 {{ current_object.process_owner.name_and_position }}</a>
@@ -55,11 +56,11 @@
                     <table class="table-data">
                         <thead>
                         <tr>
-                            <th class="t-number">Nr</th>
-                            <th class="t-shape">Стъпка</th>
-                            <th class="t-step">Описание на стъпката</th>
-                            <th class="t-resp">Отговорник</th>
-                            <th class="t-dox">Документи</th>
+                            <th class="t-number">{% trans "Nr" %}</th>
+                            <th class="t-shape">{% trans "Step" %}</th>
+                            <th class="t-step">{% trans "Step description" %}</th>
+                            <th class="t-resp">{% trans "Responsible" %}</th>
+                            <th class="t-dox">{% trans "Documents" %}</th>
                         </tr>
                         </thead>
                         <tbody class="body-6">

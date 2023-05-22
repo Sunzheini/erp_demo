@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Delete user{% endblock %}
@@ -37,11 +38,11 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Delete user: {{ object.username }}</h2>
+                <h2 class="card-display-title">{% trans "Delete user:" %} {{ object.username }}</h2>
 
                 <form action="{% url 'delete user' pk=request.user.pk %}" method="post">
                     {% csrf_token %}
-                    <button class="form-button">Confirm delete!</button>
+                    <button class="form-button">{% trans "Confirm delete!" %}</button>
                 </form>
             </div>
         </div>

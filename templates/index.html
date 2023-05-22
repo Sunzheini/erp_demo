@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
 
+{% load i18n %}
+
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Welcome{% endblock %}
 {#-------------------------------------------------------------------------#}
@@ -31,7 +33,7 @@
 {#            </button>#}
 
             <button class="card-btn" onclick="fShowHideSearchForm()">
-                <span class="card-btn-title">Search</span>
+                <span class="card-btn-title">{% trans "Search" %}</span>
                 <span class="card-btn-desc">Show / Hide Form</span>
             </button>
 
@@ -59,14 +61,22 @@
             <div class="card-display" id="search_form_container">
 
                 <div style="display: block;" id="search_form" >
-                    <h2 class="card-display-title">Search</h2>
+                    <h2 class="card-display-title">{% trans "Search" %}</h2>
+
+{#                    {% trans "I am from Bulgaria" %}#}
+{#                    {% get_current_language as LANGUAGE_CODE %}#}
+{#                    <br>#}
+{#                    {{ LANGUAGE_CODE }}#}
+{#                    <br>#}
+{#                    {{ text1 }}#}
+{#                    <br>#}
 
                     <form action="{% url 'index' %}" method="post">
                         <table class="table-form">
                         {{ search_form }}
                     </table>
                     {% csrf_token %}
-                    <button class="form-button">search</button>
+                    <button class="form-button">{% trans "search" %}</button>
                     </form>
                 </div>
 
@@ -77,8 +87,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Process Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Process Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,11 +98,11 @@
                             <td>{{ process.number }}. {{ process.name }}</td>
                             <td><a class="table-link"
                                 href="{% url 'show process' pk=process.pk slug=process.slug %}">
-                                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>
@@ -104,8 +114,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Process Step Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Process Step Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,11 +125,11 @@
                             <td>{{ process_step.number }}. {{ process_step.name }}</td>
                             <td><a class="table-link"
                                        href="{% url 'show process step' pk=process_step.pk slug=process_step.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>
@@ -131,8 +141,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Document Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Document Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -141,11 +151,11 @@
                         <tr>
                             <td>{{ document.name }}</td>
                             <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
-                                <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>
@@ -157,8 +167,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Employee Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Employee Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -167,11 +177,11 @@
                         <tr>
                             <td>{{ employee.get_full_name }}</td>
                             <td><a class="table-link" href="{% url 'show employee' pk=employee.pk slug=employee.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                        <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>
@@ -183,8 +193,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Training Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Training Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -193,11 +203,11 @@
                         <tr>
                             <td>{{ training.name }}</td>
                             <td><a class="table-link" href="{% url 'show training' pk=training.pk slug=training.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>
@@ -209,8 +219,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Organization Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Organization Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -219,11 +229,11 @@
                         <tr>
                             <td>{{ organization.name }}</td>
                             <td><a class="table-link" href="{% url 'show org' pk=organization.pk slug=organization.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>
@@ -235,8 +245,8 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>Customer Name</th>
-                            <th>Show</th>
+                            <th>{% trans "Customer Name" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -245,11 +255,11 @@
                         <tr>
                             <td>{{ customer.name }}</td>
                             <td><a class="table-link" href="{% url 'show customer' pk=customer.pk slug=customer.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">Nothing found</td>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>

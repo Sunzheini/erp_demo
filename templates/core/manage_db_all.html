@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Manage DB All{% endblock %}
@@ -16,7 +17,7 @@
         <div class="all-card-buttons-container">
 
             <button class="card-btn" onClick="javascript:history.go(-1);">
-                <span class="card-btn-title">Back</span>
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the previous menu</span>
             </button>
 
@@ -38,9 +39,9 @@
 
             <div class="card-display">
 
-                <h2 class="card-display-title">Delete / recreate whole database</h2>
+                <h2 class="card-display-title">{% trans "Delete / recreate whole database" %}</h2>
 
-                <p class="card-display-content">Delete whole database</p>
+                <p class="card-display-content">{% trans "Delete whole database" %}</p>
 
                 <form action="{% url 'manage db all' %}" method="post">
 {#                    <table class="table-form">#}
@@ -50,7 +51,7 @@
                     {% csrf_token %}
 
                     <button class="form-button" name="button_delete_db">
-                        Delete
+                        {% trans "Delete" %}
                     </button>
                 </form>
 
@@ -62,7 +63,7 @@
                 <hr>
 
                 <p class="card-display-content">
-                    Select an excel file to recreate database after deletion (requirements acc. to `DemoX.xlsx`):
+                    {% trans "Select an excel file to recreate database after deletion (requirements acc. to `DemoX.xlsx`):" %}
                 </p>
 
                 <form action="{% url 'manage db all' %}" method="post" enctype="multipart/form-data">
@@ -74,7 +75,7 @@
                     {% csrf_token %}
 
                     <button class="form-button" name="button_manage_db_all">
-                        Add to database
+                        {% trans "Add to database" %}
                     </button>
                 </form>
 
@@ -90,11 +91,11 @@
                     <table class="table-data">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Superuser</th>
-                            <th>Show</th>
+                            <th>{% trans "First Name" %}</th>
+                            <th>{% trans "Last Name" %}</th>
+                            <th>{% trans "Email" %}</th>
+                            <th>{% trans "Superuser" %}</th>
+                            <th>{% trans "Show" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,11 +108,11 @@
                             <td>{{ user.is_superuser }}</td>
                             <td><a class="table-link"
                                    href="{% url 'user details' pk=user.pk %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}
                         <tr>
-                            <td colspan="2">No users</td>
+                            <td colspan="2">{% trans "No users" %}</td>
                         </tr>
                             {% endif %}
                     </tbody>

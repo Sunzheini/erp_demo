@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 {% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
@@ -38,7 +39,7 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Редактиране на данните за клиента</h2>
+                <h2 class="card-display-title">{% trans "Change customer details" %}</h2>
                 <form action="{% url 'edit customer' pk=current_object.pk slug=current_object.slug %}" method="post" enctype="multipart/form-data">
 
                     <table class="table-form">
@@ -46,7 +47,7 @@
                     </table>
 
                     {% csrf_token %}
-                    <button class="form-button">Запази</button>
+                    <button class="form-button">{% trans "Save" %}</button>
                 </form>
             </div>
 

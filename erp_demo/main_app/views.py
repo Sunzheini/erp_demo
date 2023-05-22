@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import gettext as _
 
 from erp_demo.custom_logic.db_manipulation import DatabaseManipulation
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
@@ -18,6 +19,23 @@ class MainAppViews:
     # @SupportFunctions.allow_groups(groups=['owners'])
     @SupportFunctions.allow_groups()
     def index(request):
+
+
+        # from django.utils import translation
+        #
+        # user_language = 'bg'
+        # translation.activate(user_language)
+        # request.session['django_language'] = user_language
+
+
+        # from django.utils import translation
+        # user_language = 'bg'
+        # translation.activate(user_language)
+
+
+        # text1 = _('ERP Demo')
+
+
         search_pattern = None
         info_to_display = None
         if request.method == 'GET':
@@ -33,6 +51,8 @@ class MainAppViews:
             'search_form': form,
             'info_to_display': info_to_display,
             'info': search_pattern,
+
+            # 'text1': text1,
         }
         return render(request, 'index.html', context)
 

@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Process Management{% endblock %}
@@ -21,24 +22,24 @@
 {#            </button>#}
 
             <button class="card-btn" onclick="location.href='{% url 'create process map' %}';">
-                <span class="card-btn-title">Process Map</span>
+                <span class="card-btn-title">{% trans "Process Map" %}</span>
                 <span class="card-btn-desc">P30-01-001. Business Processes Interaction Chart</span>
             </button>
 
             <button class="card-btn" onclick="fShowHideProcessForm()">
-                <span class="card-btn-title">New Process</span>
+                <span class="card-btn-title">{% trans "New Process" %}</span>
                 <span class="card-btn-desc">Show / Hide Form</span>
             </button>
 
             <button class="card-btn" onclick="fShowHideProcessStepForm()">
-                <span class="card-btn-title">New Process Step</span>
+                <span class="card-btn-title">{% trans "New Process Step" %}</span>
                 <span class="card-btn-desc">Show / Hide Form</span>
             </button>
 
 {#            <button class="card-btn card-btn-hidden"></button>#}
 
             <button class="card-btn" onclick="location.href='{% url 'process owners' %}';">
-                <span class="card-btn-title">Process Owners</span>
+                <span class="card-btn-title">{% trans "Process Owners" %}</span>
                 <span class="card-btn-desc">P30-01-001. Business Processes Interaction Chart</span>
             </button>
 
@@ -53,7 +54,9 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">Process management</h2>
+                <h2 class="card-display-title">
+                    {% trans "Process management" %}
+                </h2>
 
                 <form action="{% url 'process mng index' %}" method="post">
                     <table class="table-form">
@@ -66,24 +69,24 @@
                 <div style="display: none;" id="process_form" >
                     <br><hr>
                     <form action="{% url 'process mng index' %}" method="post">
-                        <p class="card-display-content-bold">1) Process Creation Form</p>
+                        <p class="card-display-content-bold">{% trans "1) Process Creation Form" %}</p>
                         <table class="table-form">
                              {{ process_form }}
                         </table>
                         {% csrf_token %}
-                        <button class="form-button" name="button1">add this process</button>
+                        <button class="form-button" name="button1">{% trans "add this process" %}</button>
                     </form>
                 </div>
 
                 <div style="display: none;" id="process_step_form" >
                     <br><hr>
                     <form action="{% url 'process mng index' %}" method="post">
-                        <p class="card-display-content-bold">2) Process Step Creation Form</p>
+                        <p class="card-display-content-bold">{% trans "2) Process Step Creation Form" %}</p>
                         <table class="table-form">
                              {{ process_step_form }}
                         </table>
                         {% csrf_token %}
-                        <button class="form-button" name="button2">add this process step</button>
+                        <button class="form-button" name="button2">{% trans "add this process step" %}</button>
                     </form>
                 </div>
 
@@ -93,22 +96,22 @@
                       <table class="table-data">
                       <thead>
                         <tr>
-                          <th colspan="2">Process</th>
-                          <th colspan="8">Process Step</th>
+                          <th colspan="2">{% trans "Process" %}</th>
+                          <th colspan="8">{% trans "Process Step" %}</th>
                         </tr>
                         <tr>
-                          <th>Nr</th>
-                          <th>Name</th>
+                          <th>{% trans "Nr" %}</th>
+                          <th>{% trans "Name" %}</th>
                 {#          <th>FC</th>#}
                 {#          <th>TL</th>#}
-                          <th>Number</th>
-                          <th>Type</th>
-                          <th>Step Name</th>
-                          <th>Resp</th>
-                          <th>Documents</th>
-                          <th>Show</th>
-                          <th>Edit</th>
-                          <th>Delete</th>
+                          <th>{% trans "Number" %}</th>
+                          <th>{% trans "Type" %}</th>
+                          <th>{% trans "Step Name" %}</th>
+                          <th>{% trans "Resp" %}</th>
+                          <th>{% trans "Documents" %}</th>
+                          <th>{% trans "Show" %}</th>
+                          <th>{% trans "Edit" %}</th>
+                          <th>{% trans "Delete" %}</th>
                         </tr>
                       </thead>
 
@@ -141,13 +144,13 @@
 
                                 <td><a class="table-link"
                                        href="{% url 'show process step' pk=i.pk slug=i.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>Show</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                                 <td><a class="table-link"
                                        href="{% url 'edit process step' pk=i.pk slug=i.slug %}">
-                                    <i class="fa-solid fa-pen-to-square"></i>Edit</a></td>
+                                    <i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}</a></td>
                                 <td><a class="table-link"
                                        href="{% url 'delete process step' pk=i.pk slug=i.slug %}">
-                                    <i class="fa-solid fa-trash"></i>Delete</a></td>
+                                    <i class="fa-solid fa-trash"></i>{% trans "Delete" %}</a></td>
 
                                 </tr>
                                 {% endfor %}

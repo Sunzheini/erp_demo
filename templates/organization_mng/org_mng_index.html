@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Organizations{% endblock %}
@@ -22,12 +23,12 @@
 
             <button class="card-btn" onclick="location.href='{% url 'add org' %}';">
 {#                <span class="card-btn-title">Добавяне на организация</span>#}
-                <span class="card-btn-title"><i class="fa-solid fa-plus"></i>Създай организация</span>
+                <span class="card-btn-title"><i class="fa-solid fa-plus"></i>{% trans "Create an organization" %}</span>
                 <span class="card-btn-desc">Add a new document and define its properties</span>
             </button>
 
             <button class="card-btn" onclick="location.href='{% url 'org list' %}';">
-                <span class="card-btn-title"><i class="fa-solid fa-list-ul"></i>Списък на организациите</span>
+                <span class="card-btn-title"><i class="fa-solid fa-list-ul"></i>{% trans "Organizations list" %}</span>
                 <span class="card-btn-desc">Display a list of all documents. Edit or delete documents</span>
             </button>
 
