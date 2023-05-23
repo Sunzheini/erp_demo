@@ -2,8 +2,7 @@ import os
 from django import forms
 from django.utils import translation
 
-from erp_demo.hr_mng.models import Employee, Trainings
-
+from erp_demo.hr_mng.models import Employee, Trainings, Positions
 
 EMPLOYEE_LABELS_EN = {
     'position': 'Position',
@@ -134,30 +133,26 @@ class EmployeeDeleteForm(forms.ModelForm, EmployeeModelAndExcludeMixin):
 # ----------------------------------------------------------------------
 
 class EmployeePositionForm(forms.Form):
-    EMPLOYEE_POSITIONS_EN = (
-        ('All', 'All'),
-        ('Quality Manager', 'Quality Manager'),
-        ('Quality Engineer', 'Quality Engineer'),
-        ('Quality Inspector', 'Quality Inspector'),
-    )
-
-    EMPLOYEE_POSITIONS_BG = (
-        ('All', 'Всички'),
-        ('Quality Manager', 'Мениджър качество'),
-        ('Quality Engineer', 'Инженер качество'),
-        ('Quality Inspector', 'Инспектор качество'),
-    )
-
     employee_position_dropdown = forms.ChoiceField(
         label='Select employee position',
-        choices=EMPLOYEE_POSITIONS_EN,
+        choices=(('All', 'All'),),
     )
+
+    # get a tuple suitable for 'choices' from a table
+    @staticmethod
+    def employee_positions():
+        all_positions = list(Positions.objects.all())
+        position_tuples = [(item.code, item.name) for item in all_positions]
+        result = tuple(position_tuples)
+        result = (('All', 'All'),) + result
+        return result
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if translation.get_language() == 'bg':
-            self.fields['employee_position_dropdown'].label = 'Избери длъжност'
-            self.fields['employee_position_dropdown'].choices = self.EMPLOYEE_POSITIONS_BG
+            self.fields['employee_position_dropdown'].label = 'Избери длъжност за търсене'
+
+        self.fields['employee_position_dropdown'].choices = self.employee_positions()
 
 
 # Trainings

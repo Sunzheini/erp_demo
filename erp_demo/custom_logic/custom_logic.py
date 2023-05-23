@@ -44,6 +44,7 @@ class DataManipulation:
         extracted_documents = table.objects.filter(**data)
         return extracted_documents
 
+# currently used in sorting employees by position
     @staticmethod
     def data_after_choice_form(table, column_name, choice):
         if choice == 'All':
@@ -240,10 +241,41 @@ class SupportFunctions:
 
     @staticmethod
     def approve_and_upload_revision(prototype: DocumentEditPurgatory):
-        # document_to_delete = Document.objects.filter(name=prototype.name)
-        # document_to_delete.delete()
-        #
-        # Document.objects.create(
+        document_to_delete = Document.objects.filter(name=prototype.name)
+
+        if document_to_delete.exists():
+            document_to_delete.update(
+                type=prototype.type,
+                number=prototype.number,
+                name=prototype.name,
+                revision=prototype.revision,
+                creation_date=prototype.creation_date,
+                revision_date=prototype.revision_date,
+                revision_details=prototype.revision_details,
+                status=prototype.status,
+                owner=prototype.owner,
+                attachment=prototype.attachment,
+                slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
+            )
+            prototype.delete()
+
+        else:
+            Document.objects.create(
+                type=prototype.type,
+                number=prototype.number,
+                name=prototype.name,
+                revision=1,
+                creation_date=prototype.creation_date,
+                revision_date=prototype.revision_date,
+                revision_details=prototype.revision_details,
+                status=prototype.status,
+                owner=prototype.owner,
+                attachment=prototype.attachment,
+                slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
+            )
+            prototype.delete()
+
+        # document_to_delete.update(
         #     type=prototype.type,
         #     number=prototype.number,
         #     name=prototype.name,
@@ -257,23 +289,6 @@ class SupportFunctions:
         #     slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
         # )
         # prototype.delete()
-
-        document_to_delete = Document.objects.filter(name=prototype.name)
-
-        document_to_delete.update(
-            type=prototype.type,
-            number=prototype.number,
-            name=prototype.name,
-            revision=prototype.revision,
-            creation_date=prototype.creation_date,
-            revision_date=prototype.revision_date,
-            revision_details=prototype.revision_details,
-            status=prototype.status,
-            owner=prototype.owner,
-            attachment=prototype.attachment,
-            slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
-        )
-        prototype.delete()
 
     # search results on the index page
     # -----------------------------------------------------------------------

@@ -9,6 +9,29 @@ from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 
 
 class DoxMngViews(PrototypeViews):
+
+    @SupportFunctions.login_check
+    @SupportFunctions.log_entry(True)
+    def create_view(self, request):
+        self._empty_context()
+        form = self._return_form_based_on_method(request, self.create_form)
+
+        if request.method == 'GET':
+            self._add_form_to_context(form)
+            return render(request, self.create_template, self.context)
+
+    # new logic for revisions
+    # ---------------------------------------------------------------------------------------
+
+        elif request.method == 'POST':
+            if form.is_valid():
+                output = SupportFunctions.new_revision(form)
+                SupportFunctions.log_info(f"Created a document `{output.name}`")
+
+        return redirect(self.redirect_url)
+
+    # ---------------------------------------------------------------------------------------
+
     @SupportFunctions.login_check
     def list_view(self, request):
         self._empty_context()
@@ -74,7 +97,7 @@ class DoxMngViews(PrototypeViews):
         self._empty_context()
         current_object = self._main_object_single(pk)
 
-        # new logic for the dropdown
+        # new logic for revisions
         # ---------------------------------------------------------------------------------------
         if request.method == 'GET':
             form = DocumentEditForm(instance=current_object)
