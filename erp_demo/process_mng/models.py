@@ -6,6 +6,19 @@ from erp_demo.hr_mng.models import Employee
 from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
+PROCESS_CHOICES_EN=(
+    ('Managerial', 'Managerial'),
+    ('Operational', 'Operational'),
+    ('Support', 'Support'),
+)
+
+PROCESS_STEP_CHOICES_EN=(
+    ('Terminator', 'Terminator'),
+    ('Process', 'Process'),
+    ('Decision', 'Decision'),
+)
+
+
 class Process(models.Model):
 
     class Meta:
@@ -13,11 +26,12 @@ class Process(models.Model):
 
     type = models.CharField(
         max_length=30,
-        choices=(
-            ('Managerial', 'Managerial'),
-            ('Operational', 'Operational'),
-            ('Support', 'Support'),
-        ),
+        # choices=(
+        #     ('Managerial', 'Managerial'),
+        #     ('Operational', 'Operational'),
+        #     ('Support', 'Support'),
+        # ),
+        choices=PROCESS_CHOICES_EN,
         blank=False, null=False,
     )
 
@@ -67,11 +81,12 @@ class ProcessStep(models.Model):
 
     type = models.CharField(
         max_length=30,
-        choices=(
-            ('Terminator', 'Terminator'),
-            ('Process', 'Process'),
-            ('Decision', 'Decision'),
-        ),
+        # choices=(
+        #     ('Terminator', 'Terminator'),
+        #     ('Process', 'Process'),
+        #     ('Decision', 'Decision'),
+        # ),
+        choices=PROCESS_STEP_CHOICES_EN,
         blank=False, null=False,
     )
 

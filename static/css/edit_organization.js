@@ -10,7 +10,7 @@ function edit_organization() {
         'button', divCardDisplay, null, ['button-replacement'], null,
         {onclick: "document.getElementById('id_attachment').click();" }
     )
-    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Ново лого '
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Logo '
     buttonReplacement.style.top = '103px'
 
     function customElements(type, parentNode, content, classes, id, attributes, useInnerHtml) {

@@ -77,7 +77,7 @@ function solve() {
         'button', cardDisplayDiv, null, ['button-replacement'], null,
         {onclick: "document.getElementsByClassName('file-input')[0].click();" }
     )
-    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери лого '
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Logo '
 
     // Adding the + buttons
     const divCardDisplay = document.getElementsByClassName('card-display')[0]

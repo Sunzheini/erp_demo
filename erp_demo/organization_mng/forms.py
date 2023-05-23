@@ -1,9 +1,19 @@
 from django import forms
+from django.utils import translation
 
 from erp_demo.organization_mng.models import Organization
 
 
-LABELS = {
+LABELS_EN = {
+    'name': 'Organization Name',
+    'attachment': 'Organization logo (Choose file)',
+    'eik': 'EIK',
+    'mol': 'MOL',
+    'address': 'Management full address',
+    'manager_name': 'Manager first and last name',
+}
+
+LABELS_BG = {
     'name': 'Наименование',
     'attachment': 'Лого на организацията',
     'eik': 'ЕИК',
@@ -12,12 +22,30 @@ LABELS = {
     'manager_name': 'Имена на ръководителя',
 }
 
-class OrgForm(forms.ModelForm):
+
+class OrgFormMixin:
+    def change_labels_to_bg(self):
+        language_code = translation.get_language()
+        if language_code == 'bg':
+            self.fields['name'].label = LABELS_BG['name']
+
+            try:
+                self.fields['attachment'].label = LABELS_BG['attachment']
+            except KeyError:
+                pass
+
+            self.fields['eik'].label = LABELS_BG['eik']
+            self.fields['mol'].label = LABELS_BG['mol']
+            self.fields['address'].label = LABELS_BG['address']
+            self.fields['manager_name'].label = LABELS_BG['manager_name']
+
+
+class OrgForm(forms.ModelForm, OrgFormMixin):
     class Meta:
         model = Organization
         exclude = ['slug']
 
-        labels = LABELS
+        labels = LABELS_EN
 
         widgets = {
             'attachment': forms.ClearableFileInput(
@@ -28,42 +56,33 @@ class OrgForm(forms.ModelForm):
             ),
         }
 
-    # changed only this yesterday
-    #  -----------------------------------------------------
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        # Get the selected language code
-        from django.utils import translation
-        language_code = translation.get_language()
-        if language_code == 'en':
-            # Update form labels based on the selected language
-            self.fields['name'].label = 'Organization Name'
-            self.fields['attachment'].label = 'Organization logo'
-            self.fields['eik'].label = 'EIK'
-            self.fields['mol'].label = 'MOL'
-            self.fields['address'].label = 'Management address'
-            self.fields['manager_name'].label = 'Manager full name'
-    #  -----------------------------------------------------
+        self.change_labels_to_bg()
 
 
-class OrgEditForm(forms.ModelForm):
+class OrgEditForm(forms.ModelForm, OrgFormMixin):
     class Meta:
         model = Organization
         exclude = ['slug']
 
-        labels = LABELS
+        labels = LABELS_EN
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.change_labels_to_bg()
 
 
-class OrgDeleteForm(forms.ModelForm):
+class OrgDeleteForm(forms.ModelForm, OrgFormMixin):
     class Meta:
         model = Organization
         exclude = ['slug', 'attachment']
 
-        labels = LABELS
+        labels = LABELS_EN
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.change_labels_to_bg()
         self.__disable_fields()
 
     def __disable_fields(self):
@@ -75,15 +94,16 @@ class OrgDeleteForm(forms.ModelForm):
         return self.instance
 
 
-class OrgViewForm(forms.ModelForm):
+class OrgViewForm(forms.ModelForm, OrgFormMixin):
     class Meta:
         model = Organization
         exclude = ['slug', 'attachment']
 
-        labels = LABELS
+        labels = LABELS_EN
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.change_labels_to_bg()
         self.__disable_fields()
 
     def __disable_fields(self):

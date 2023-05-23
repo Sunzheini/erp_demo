@@ -8,7 +8,7 @@ function solve() {
         'button', cardDisplayDiv, null, ['button-replacement'], null,
         {onclick: "document.getElementsByClassName('file-input')[0].click();" }
     )
-    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери лого '
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Logo '
     buttonReplacement.style.top = '103px'
 
     function customElements(type, parentNode, content, classes, id, attributes, useInnerHtml) {

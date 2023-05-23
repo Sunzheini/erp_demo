@@ -9,6 +9,18 @@ from erp_demo.custom_logic.translator import translate_to_maimunica
 
 UserModel = get_user_model()
 
+TYPE_CHOICES_EN = (
+    ('Manual', 'Manual'),
+    ('Procedure', 'Procedure'),
+    ('Instruction', 'Instruction'),
+    ('Form', 'Form'),
+)
+
+STATUS_CHOICES_EN = (
+    ('Latest rev', 'Latest rev'),
+    ('Under rev', 'Under rev'),
+)
+
 
 class Document(models.Model):
     class Meta:
@@ -16,12 +28,13 @@ class Document(models.Model):
 
     type = models.CharField(
         max_length=30,
-        choices=(
-            ('Manual', 'Manual'),
-            ('Procedure', 'Procedure'),
-            ('Instruction', 'Instruction'),
-            ('Form', 'Form'),
-        ),
+        # choices=(
+        #     ('Manual', 'Manual'),
+        #     ('Procedure', 'Procedure'),
+        #     ('Instruction', 'Instruction'),
+        #     ('Form', 'Form'),
+        # ),
+        choices=TYPE_CHOICES_EN,
         blank=False, null=False,
     )
 
@@ -59,10 +72,13 @@ class Document(models.Model):
         #     # ('Rejected', 'Rejected'),
         #     # ('Approved', 'Approved'),
         # ),
-        choices=(
-            ('Latest rev', 'Latest rev'),
-            ('Under rev', 'Under rev'),
-        ),
+
+        # choices=(
+        #     ('Latest rev', 'Latest rev'),
+        #     ('Under rev', 'Under rev'),
+        # ),
+
+        choices=STATUS_CHOICES_EN,
         blank=False, null=False,
     )
 
@@ -154,12 +170,13 @@ class DocumentEditPurgatory(models.Model):
 
     type = models.CharField(
         max_length=30,
-        choices=(
-            ('Manual', 'Manual'),
-            ('Procedure', 'Procedure'),
-            ('Instruction', 'Instruction'),
-            ('Form', 'Form'),
-        ),
+        # choices=(
+        #     ('Manual', 'Manual'),
+        #     ('Procedure', 'Procedure'),
+        #     ('Instruction', 'Instruction'),
+        #     ('Form', 'Form'),
+        # ),
+        choices=TYPE_CHOICES_EN,
         blank=False, null=False,
     )
 
@@ -193,10 +210,11 @@ class DocumentEditPurgatory(models.Model):
 
     status = models.CharField(
         max_length=30,
-        choices=(
-            ('Latest rev', 'Latest rev'),
-            ('Under rev', 'Under rev'),
-        ),
+        # choices=(
+        #     ('Latest rev', 'Latest rev'),
+        #     ('Under rev', 'Under rev'),
+        # ),
+        choices=STATUS_CHOICES_EN,
         blank=False, null=False,
     )
 

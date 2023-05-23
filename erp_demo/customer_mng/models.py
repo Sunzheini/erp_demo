@@ -1,8 +1,17 @@
 from django.db import models
 from django.utils.text import slugify
+
 from cloudinary import models as cloudinary_models
 
 from erp_demo.custom_logic.translator import translate_to_maimunica
+
+
+CHOICES_EN=(
+    ('', 'Empty'),
+    ('Физическо лице', 'Individual'),
+    ('Юридическо лице', 'Legal entity'),
+    ('Институция', 'Institution'),
+)
 
 
 class Customer(models.Model):
@@ -11,12 +20,7 @@ class Customer(models.Model):
 
     type = models.CharField(
         max_length=30,
-        choices=(
-            ('', 'Празно'),
-            ('Физическо лице', 'Физическо лице'),
-            ('Юридическо лице', 'Юридическо лице'),
-            ('Институция', 'Институция'),
-        ),
+        choices=CHOICES_EN,
         blank=False, null=False,
     )
 

@@ -9,7 +9,8 @@ function solve() {
     let nextRow = tableFormBodyElements[1]
     console.log(zeroInputRow)
     let zeroInput = document.getElementById('id_type')
-    let zeroInputValue = zeroInput.options[zeroInput.selectedIndex].value
+    // let zeroInputValue = zeroInput.options[zeroInput.selectedIndex].value
+    let zeroInputValue = zeroInput.options[zeroInput.selectedIndex].text
     zeroInputRow.style.display = 'none'
 
     // Replacing

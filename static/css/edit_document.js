@@ -10,7 +10,7 @@ function edit_document() {
         'button', divCardDisplay, null, ['button-replacement'], null,
         {onclick: "document.getElementById('id_attachment').click();" }
     )
-    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  Избери '
+    buttonReplacement.innerHTML += '<i class="fa-solid fa-arrow-up-from-bracket"></i>  File '
     buttonReplacement.style.top = '525px'
 
     function customElements(type, parentNode, content, classes, id, attributes, useInnerHtml) {

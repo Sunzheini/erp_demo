@@ -1,4 +1,4 @@
-document_types = (
+document_types_en = (
     ('All', 'All'),
     ('Manual', 'Manual'),
     ('Procedure', 'Procedure'),
@@ -6,7 +6,15 @@ document_types = (
     ('Form', 'Form'),
 )
 
-search_types = {
+document_types_bg = (
+    ('All', 'Всички'),
+    ('Manual', 'Ръководство'),
+    ('Procedure', 'Процедура'),
+    ('Instruction', 'Инструкция'),
+    ('Form', 'Формуляр'),
+)
+
+search_types_en = {
     ('All', 'All'),
     ('Process', 'Processes'),
     ('ProcessStep', 'Process steps'),
@@ -15,6 +23,17 @@ search_types = {
     ('Trainings', 'Trainings'),
     ('Organization', 'Organization'),
     ('Customer', 'Customer'),
+}
+
+search_types_bg = {
+    ('All', 'Всички'),
+    ('Process', 'Процеси'),
+    ('ProcessStep', 'Процесни стъпки'),
+    ('Document', 'Документи'),
+    ('Employee', 'Служители'),
+    ('Trainings', 'Обучения'),
+    ('Organization', 'Организации'),
+    ('Customer', 'Клиенти'),
 }
 
 process_numbers = (

@@ -173,8 +173,14 @@ LANGUAGES = [
 ]
 
 """
-python manage.py makemessages -l bg
-python manage.py compilemessages
+put {% load i18n %} in the template
+replace text with {% trans "text" %} in the template
+python manage.py makemessages -l bg     # get the messages with {%trans  %} in the .po file
+translate the messages in the .po file, remove the #fuzzy
+python manage.py compilemessages        # apply translations
+
+translate forms, upload button language, choices 
+    (like customers/models.py and customers/forms.py)
 """
 
 # Static files (CSS, JavaScript, Images)

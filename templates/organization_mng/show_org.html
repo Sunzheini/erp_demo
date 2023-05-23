@@ -50,7 +50,10 @@
 {#                    <button class="form-button">Запази</button>#}
                 </form>
 
+                {% if current_object.attachment %}
                 <img src="{{ current_object.attachment.url }}" class="logo-img" alt="org_photo">
+                {% endif %}
+
             </div>
         </div>
     </section>
