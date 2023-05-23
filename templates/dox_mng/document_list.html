@@ -61,10 +61,13 @@
                             <th>{% trans "Revision" %}</th>
                             <th>{% trans "Status" %}</th>
                             <th>{% trans "Owner" %}</th>
-                            <th>{% trans "Show" %}</th>
                             <th>{% trans "Link" %}</th>
-                            <th>{% trans "Edit" %}</th>
-                            <th>{% trans "Delete" %}</th>
+
+{#                            <th>{% trans "Show" %}</th>#}
+{#                            <th>{% trans "Edit" %}</th>#}
+{#                            <th>{% trans "Delete" %}</th>#}
+                            <th>{% trans "Actions" %}</th>
+
                             <th>{% trans "Fav" %}</th>
                         </tr>
                     </thead>
@@ -82,9 +85,6 @@
                             <td><a class="table-link" href="{% url 'show employee' pk=document.owner.pk slug=document.owner.slug %}">
                                         <i class="fa-solid fa-magnifying-glass"></i>{{ document.owner.get_full_name }}</a></td>
 
-                            <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
-                                <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
-
                             {#no cloudinary#}
                             {#            <td><a href="/media/{{ document.attachment }}">#}
                             {#                    "/media/{{ document.attachment }}"</a></td>#}
@@ -97,10 +97,21 @@
                                 <td>{% trans "N/A" %}</td>
                             {% endif %}
 
-                            <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                                    {% trans "Edit" %}</a></td>
-                            <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>
-                                    {% trans "Delete" %}</a></td>
+{#                            <td><a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">#}
+{#                                <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>#}
+{#                            <td><a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-pen-to-square"></i>#}
+{#                                    {% trans "Edit" %}</a></td>#}
+{#                            <td><a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}"><i class="fa-solid fa-trash"></i>#}
+{#                                    {% trans "Delete" %}</a></td>#}
+
+                            <td class="actions-td">
+                                <a class="table-link" href="{% url 'show document' pk=document.pk slug=document.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i></a>
+                                <a class="table-link" href="{% url 'edit document' pk=document.pk slug=document.slug %}">
+                                    <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="table-link" href="{% url 'delete document' pk=document.pk slug=document.slug %}">
+                                    <i class="fa-solid fa-trash"></i></a>
+                            </td>
 
                             {# Like Button #}
                             <td>

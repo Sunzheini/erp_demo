@@ -67,9 +67,10 @@
               <th>{% trans "Description" %}</th>
               <th>{% trans "Covered by" %}</th>
 
-              <th>{% trans "Show" %}</th>
-              <th>{% trans "Edit" %}</th>
-              <th>{% trans "Delete" %}</th>
+{#              <th>{% trans "Show" %}</th>#}
+{#              <th>{% trans "Edit" %}</th>#}
+{#              <th>{% trans "Delete" %}</th>#}
+              <th>{% trans "Actions" %}</th>
             </tr>
           </thead>
 
@@ -91,15 +92,27 @@
                     {% endfor %}
                 </td>
 
-                <td><a class="table-link"
+{#                <td><a class="table-link"#}
+{#                       href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">#}
+{#                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>#}
+{#                <td><a class="table-link"#}
+{#                       href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}">#}
+{#                    <i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}</a></td>#}
+{#                <td><a class="table-link"#}
+{#                       href="{% url 'delete requirement' pk=requirement.pk slug=requirement.slug %}">#}
+{#                    <i class="fa-solid fa-trash"></i>{% trans "Delete" %}</a></td>#}
+
+                <td class="actions-td">
+                    <a class="table-link"
                        href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">
-                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
-                <td><a class="table-link"
+                        <i class="fa-solid fa-magnifying-glass"></i></a>
+                    <a class="table-link"
                        href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}">
-                    <i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}</a></td>
-                <td><a class="table-link"
+                        <i class="fa-solid fa-pen-to-square"></i></a>
+                    <a class="table-link"
                        href="{% url 'delete requirement' pk=requirement.pk slug=requirement.slug %}">
-                    <i class="fa-solid fa-trash"></i>{% trans "Delete" %}</a></td>
+                        <i class="fa-solid fa-trash"></i></a>
+                </td>
                 </tr>
             {% endfor %}
           </tbody>

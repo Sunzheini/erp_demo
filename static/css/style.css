@@ -695,6 +695,10 @@ a.table-link:hover {
   /*word-wrap: break-word;*/
 }
 
+.actions-td {
+  min-width: 90px;
+}
+
 .display-content-section .all-display-content-container .card-display .table-data tbody tr:nth-child(even) {
   /*background-color: var(--clr-table-data-odd-bg);*/
   background-color: #F3F3F3;

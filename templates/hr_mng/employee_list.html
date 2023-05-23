@@ -60,9 +60,10 @@
                                 <th>{% trans "Starting Date" %}</th>
                                 <th>{% trans "Trainings" %}</th>
 
-                                <th>{% trans "Show" %}</th>
-                                <th>{% trans "Edit" %}</th>
-                                <th>{% trans "Delete" %}</th>
+{#                                <th>{% trans "Show" %}</th>#}
+{#                                <th>{% trans "Edit" %}</th>#}
+{#                                <th>{% trans "Delete" %}</th>#}
+                                <th>{% trans "Actions" %}</th>
                             </tr>
                         </thead>
 
@@ -81,12 +82,21 @@
                                         {% endfor %}
                                     </td>
 
-                                    <td><a class="table-link" href="{% url 'show employee' pk=employee.pk slug=employee.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
-                                    <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                                        {% trans "Edit" %}</a></td>
-                                    <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>
-                                        {% trans "Delete" %}</a></td>
+{#                                    <td><a class="table-link" href="{% url 'show employee' pk=employee.pk slug=employee.slug %}">#}
+{#                                        <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>#}
+{#                                    <td><a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-pen-to-square"></i>#}
+{#                                        {% trans "Edit" %}</a></td>#}
+{#                                    <td><a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}"><i class="fa-solid fa-trash"></i>#}
+{#                                        {% trans "Delete" %}</a></td>#}
+
+                                    <td class="actions-td">
+                                        <a class="table-link" href="{% url 'show employee' pk=employee.pk slug=employee.slug %}">
+                                            <i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a class="table-link" href="{% url 'edit employee' pk=employee.pk slug=employee.slug %}">
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a class="table-link" href="{% url 'delete employee' pk=employee.pk slug=employee.slug %}">
+                                            <i class="fa-solid fa-trash"></i></a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

@@ -49,9 +49,10 @@
                             <th>{% trans "Name" %}</th>
                             <th>{% trans "Description" %}</th>
 
-                            <th>{% trans "Show" %}</th>
-                            <th>{% trans "Edit" %}</th>
-                            <th>{% trans "Delete" %}</th>
+{#                            <th>{% trans "Show" %}</th>#}
+{#                            <th>{% trans "Edit" %}</th>#}
+{#                            <th>{% trans "Delete" %}</th>#}
+                            <th>{% trans "Actions" %}</th>
                         </tr>
                     </thead>
 
@@ -62,12 +63,21 @@
                                 <td>{{ training.name }}</td>
                                 <td>{{ training.description }}</td>
 
-                                <td><a class="table-link" href="{% url 'show training' pk=training.pk slug=training.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
-                                <td><a class="table-link" href="{% url 'edit training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                                    {% trans "Edit" %}</a></td>
-                                <td><a class="table-link" href="{% url 'delete training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-trash"></i>
-                                    {% trans "Delete" %}</a></td>
+{#                                <td><a class="table-link" href="{% url 'show training' pk=training.pk slug=training.slug %}">#}
+{#                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>#}
+{#                                <td><a class="table-link" href="{% url 'edit training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-pen-to-square"></i>#}
+{#                                    {% trans "Edit" %}</a></td>#}
+{#                                <td><a class="table-link" href="{% url 'delete training' pk=training.pk slug=training.slug %}"><i class="fa-solid fa-trash"></i>#}
+{#                                    {% trans "Delete" %}</a></td>#}
+
+                                <td class="actions-td">
+                                    <a class="table-link" href="{% url 'show training' pk=training.pk slug=training.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i></a>
+                                <a class="table-link" href="{% url 'edit training' pk=training.pk slug=training.slug %}">
+                                    <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="table-link" href="{% url 'delete training' pk=training.pk slug=training.slug %}">
+                                    <i class="fa-solid fa-trash"></i></a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

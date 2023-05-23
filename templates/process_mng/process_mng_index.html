@@ -109,9 +109,10 @@
                           <th>{% trans "Step Name" %}</th>
                           <th>{% trans "Resp" %}</th>
                           <th>{% trans "Documents" %}</th>
-                          <th>{% trans "Show" %}</th>
-                          <th>{% trans "Edit" %}</th>
-                          <th>{% trans "Delete" %}</th>
+{#                          <th>{% trans "Show" %}</th>#}
+{#                          <th>{% trans "Edit" %}</th>#}
+{#                          <th>{% trans "Delete" %}</th>#}
+                          <th>{% trans "Actions" %}</th>
                         </tr>
                       </thead>
 
@@ -142,15 +143,27 @@
                                     {% endfor %}
                                 </td>
 
-                                <td><a class="table-link"
+{#                                <td><a class="table-link"#}
+{#                                       href="{% url 'show process step' pk=i.pk slug=i.slug %}">#}
+{#                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>#}
+{#                                <td><a class="table-link"#}
+{#                                       href="{% url 'edit process step' pk=i.pk slug=i.slug %}">#}
+{#                                    <i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}</a></td>#}
+{#                                <td><a class="table-link"#}
+{#                                       href="{% url 'delete process step' pk=i.pk slug=i.slug %}">#}
+{#                                    <i class="fa-solid fa-trash"></i>{% trans "Delete" %}</a></td>#}
+
+                                <td class="actions-td">
+                                    <a class="table-link"
                                        href="{% url 'show process step' pk=i.pk slug=i.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
-                                <td><a class="table-link"
+                                        <i class="fa-solid fa-magnifying-glass"></i></a>
+                                    <a class="table-link"
                                        href="{% url 'edit process step' pk=i.pk slug=i.slug %}">
-                                    <i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}</a></td>
-                                <td><a class="table-link"
+                                        <i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="table-link"
                                        href="{% url 'delete process step' pk=i.pk slug=i.slug %}">
-                                    <i class="fa-solid fa-trash"></i>{% trans "Delete" %}</a></td>
+                                        <i class="fa-solid fa-trash"></i></a>
+                                </td>
 
                                 </tr>
                                 {% endfor %}
