@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-22 15:32+0300\n"
+"POT-Creation-Date: 2023-05-24 14:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,8 +69,8 @@ msgid "Customers"
 msgstr "Клиенти"
 
 #: .\templates\core\base.html:159
-msgid "Processes"
-msgstr "Процеси"
+msgid "Business Processes"
+msgstr "Бизнес Процеси"
 
 #: .\templates\core\base.html:163
 #: .\templates\process_mng\blank_flowchart.html:63
@@ -98,26 +98,16 @@ msgstr "Изтрий Изискване"
 #: .\templates\core\delete_requirement.html:49
 #: .\templates\core\favorites.html:60 .\templates\core\favorites.html:93
 #: .\templates\core\manage_db_all.html:54 .\templates\core\my_tasks.html:59
-#: .\templates\core\requirements_matrix.html:72
-#: .\templates\core\requirements_matrix.html:102
 #: .\templates\core\show_requirement.html:53
 #: .\templates\core\show_requirement.html:66
 #: .\templates\customer_mng\delete_customer.html:49
-#: .\templates\dox_mng\document_list.html:67
-#: .\templates\dox_mng\document_list.html:103
 #: .\templates\dox_mng\show_document.html:55
 #: .\templates\dox_mng\show_document.html:84
-#: .\templates\hr_mng\employee_list.html:65
-#: .\templates\hr_mng\employee_list.html:89
 #: .\templates\hr_mng\show_employee.html:54
 #: .\templates\hr_mng\show_employee.html:76
 #: .\templates\hr_mng\show_training.html:52
 #: .\templates\hr_mng\show_training.html:64
-#: .\templates\hr_mng\training_list.html:54
-#: .\templates\hr_mng\training_list.html:70
 #: .\templates\organization_mng\delete_org.html:49
-#: .\templates\process_mng\process_mng_index.html:114
-#: .\templates\process_mng\process_mng_index.html:153
 #: .\templates\process_mng\show_process.html:53
 #: .\templates\process_mng\show_process.html:68
 #: .\templates\process_mng\show_process_step.html:59
@@ -236,15 +226,7 @@ msgstr "Собственик"
 
 #: .\templates\core\favorites.html:57 .\templates\core\favorites.html:76
 #: .\templates\core\manage_db_all.html:98
-#: .\templates\core\manage_db_all.html:111
-#: .\templates\core\requirements_matrix.html:70
-#: .\templates\core\requirements_matrix.html:96
-#: .\templates\dox_mng\document_list.html:64
-#: .\templates\dox_mng\document_list.html:86
-#: .\templates\hr_mng\employee_list.html:63
-#: .\templates\hr_mng\employee_list.html:85
-#: .\templates\hr_mng\training_list.html:52
-#: .\templates\hr_mng\training_list.html:66 .\templates\index.html:91
+#: .\templates\core\manage_db_all.html:111 .\templates\index.html:91
 #: .\templates\index.html:101 .\templates\index.html:118
 #: .\templates\index.html:128 .\templates\index.html:145
 #: .\templates\index.html:154 .\templates\index.html:171
@@ -252,14 +234,12 @@ msgstr "Собственик"
 #: .\templates\index.html:206 .\templates\index.html:223
 #: .\templates\index.html:232 .\templates\index.html:249
 #: .\templates\index.html:258
-#: .\templates\process_mng\process_mng_index.html:112
-#: .\templates\process_mng\process_mng_index.html:147
 msgid "Show"
 msgstr "Покажи"
 
 #: .\templates\core\favorites.html:58 .\templates\core\favorites.html:85
 #: .\templates\core\my_tasks.html:57 .\templates\core\my_tasks.html:82
-#: .\templates\dox_mng\document_list.html:65
+#: .\templates\dox_mng\document_list.html:64
 #: .\templates\dox_mng\document_list.html:95
 #: .\templates\dox_mng\show_document.html:53
 #: .\templates\dox_mng\show_document.html:76
@@ -267,25 +247,14 @@ msgid "Link"
 msgstr "Линк"
 
 #: .\templates\core\favorites.html:59 .\templates\core\favorites.html:91
-#: .\templates\core\my_tasks.html:58
-#: .\templates\core\requirements_matrix.html:71
-#: .\templates\core\requirements_matrix.html:99
-#: .\templates\core\show_requirement.html:52
+#: .\templates\core\my_tasks.html:58 .\templates\core\show_requirement.html:52
 #: .\templates\core\show_requirement.html:64
-#: .\templates\dox_mng\document_list.html:66
-#: .\templates\dox_mng\document_list.html:101
 #: .\templates\dox_mng\show_document.html:54
 #: .\templates\dox_mng\show_document.html:82
-#: .\templates\hr_mng\employee_list.html:64
-#: .\templates\hr_mng\employee_list.html:87
 #: .\templates\hr_mng\show_employee.html:53
 #: .\templates\hr_mng\show_employee.html:74
 #: .\templates\hr_mng\show_training.html:51
 #: .\templates\hr_mng\show_training.html:62
-#: .\templates\hr_mng\training_list.html:53
-#: .\templates\hr_mng\training_list.html:68
-#: .\templates\process_mng\process_mng_index.html:113
-#: .\templates\process_mng\process_mng_index.html:150
 #: .\templates\process_mng\show_process.html:52
 #: .\templates\process_mng\show_process.html:66
 #: .\templates\process_mng\show_process_step.html:58
@@ -294,7 +263,7 @@ msgid "Edit"
 msgstr "Промени"
 
 #: .\templates\core\favorites.html:61
-#: .\templates\dox_mng\document_list.html:68
+#: .\templates\dox_mng\document_list.html:71
 msgid "Fav"
 msgstr "Фав"
 
@@ -438,6 +407,16 @@ msgstr "Описание"
 msgid "Covered by"
 msgstr "Покрито от"
 
+#: .\templates\core\requirements_matrix.html:73
+#: .\templates\customer_mng\customer_list.html:53
+#: .\templates\dox_mng\document_list.html:69
+#: .\templates\hr_mng\employee_list.html:66
+#: .\templates\hr_mng\training_list.html:55
+#: .\templates\organization_mng\org_list.html:56
+#: .\templates\process_mng\process_mng_index.html:115
+msgid "Actions"
+msgstr "Действия"
+
 #: .\templates\core\show_requirement.html:41
 msgid "Show requirement"
 msgstr "Покажи изискване"
@@ -475,11 +454,6 @@ msgstr "ЕИК"
 #: .\templates\organization_mng\org_list.html:50
 msgid "MOL"
 msgstr "МОЛ"
-
-#: .\templates\customer_mng\customer_list.html:53
-#: .\templates\organization_mng\org_list.html:56
-msgid "Actions"
-msgstr "Действия"
 
 #: .\templates\customer_mng\customer_list.html:87
 msgid "No customers available!"

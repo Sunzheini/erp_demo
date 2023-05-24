@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'erp_demo.customer_mng',
     'erp_demo.user_mng',
     'erp_demo.supplier_mng',
+    'erp_demo.tools',
     'erp_demo.api',
 
     'cloudinary',
@@ -95,28 +96,28 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # heroku
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ddsler5bi6q2rj',
-        'USER': 'owyzqvwzcaziev',
-        'PASSWORD': 'c1bc14cac80920f3bdb3878eb5ff3da483616b035ec8edf6693355dc450a2469',
-        'HOST': 'ec2-63-35-80-199.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    }
-}
-
-# without heroku
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'erp_demo_db',         # same name as the DB created
-#         'USER': 'postgres-user',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+#         'NAME': 'ddsler5bi6q2rj',
+#         'USER': 'owyzqvwzcaziev',
+#         'PASSWORD': 'c1bc14cac80920f3bdb3878eb5ff3da483616b035ec8edf6693355dc450a2469',
+#         'HOST': 'ec2-63-35-80-199.eu-west-1.compute.amazonaws.com',
 #         'PORT': '5432',
 #     }
 # }
+
+# without heroku
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'erp_demo_db',         # same name as the DB created
+        'USER': 'postgres-user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+        'PORT': '5432',
+    }
+}
 
 # heroku
 # not connected
