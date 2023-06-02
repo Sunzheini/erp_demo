@@ -29,6 +29,8 @@ LABELS_BG = {
 }
 
 TYPE_CHOICES_BG = (
+    ('External', 'Външен'),
+    ('Policy', 'Политика'),
     ('Manual', 'Ръководство'),
     ('Procedure', 'Процедура'),
     ('Instruction', 'Инструкция'),

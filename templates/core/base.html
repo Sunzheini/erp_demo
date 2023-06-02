@@ -147,9 +147,13 @@
             <i class="fa-solid fa-landmark-flag"></i>
             <span class="menu-item-title">{% trans "Organization" %}</span>
         </button>
-        <button class="menu-item" onclick="location.href='{% url 'customer mng index' %}';">
-            <i class="fa-solid fa-business-time"></i>
-            <span class="menu-item-title">{% trans "Customers" %}</span>
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'hr mng index' %}';">
+            <i class="fa-solid fa-people-group"></i>
+            <span class="menu-item-title">{% trans "Personnel and Trainings" %}</span>
+        </button>
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'dox mng index' %}';">
+            <i class="fa-regular fa-folder-open"></i>
+            <span class="menu-item-title">{% trans "Documented Information" %}</span>
         </button>
 
         <hr class="horizontal">
@@ -158,13 +162,25 @@
             <i class="fa-solid fa-chalkboard-user"></i>
             <span class="menu-item-title">{% trans "Business Processes" %}</span>
         </button>
-        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'dox mng index' %}';">
-            <i class="fa-regular fa-folder-open"></i>
-            <span class="menu-item-title">{% trans "Documents" %}</span>
+
+        <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'risk mng index' %}';">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <span class="menu-item-title">{% trans "Risks" %}</span>
         </button>
-        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'hr mng index' %}';">
-            <i class="fa-solid fa-people-group"></i>
-            <span class="menu-item-title">{% trans "Personnel" %}</span>
+        <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'opportunity mng index' %}';">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <span class="menu-item-title">{% trans "Improvements" %}</span>
+        </button>
+        <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'kpi mng index' %}';">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <span class="menu-item-title">{% trans "KPIs" %}</span>
+        </button>
+
+        <hr class="horizontal">
+
+        <button class="menu-item" onclick="location.href='{% url 'customer mng index' %}';">
+            <i class="fa-solid fa-business-time"></i>
+            <span class="menu-item-title">{% trans "Customers" %}</span>
         </button>
 
 {# ---#}

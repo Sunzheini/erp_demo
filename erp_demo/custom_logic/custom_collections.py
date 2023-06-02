@@ -1,5 +1,7 @@
 document_types_en = (
     ('All', 'All'),
+    ('External', 'External'),
+    ('Policy', 'Policy'),
     ('Manual', 'Manual'),
     ('Procedure', 'Procedure'),
     ('Instruction', 'Instruction'),
@@ -8,6 +10,8 @@ document_types_en = (
 
 document_types_bg = (
     ('All', 'Всички'),
+    ('External', 'External'),
+    ('Policy', 'Policy'),
     ('Manual', 'Ръководство'),
     ('Procedure', 'Процедура'),
     ('Instruction', 'Инструкция'),
@@ -76,6 +80,9 @@ list_of_keys = {
     'Requirements': [],
     'Organization': [],
     'Customer': [],
+    'Kpi': [],
+    'Opportunity': [],
+    'Risk': [],
 }
 
 coordinates = {
@@ -140,6 +147,24 @@ coordinates = {
         'end_column': None,
     },
     'Customer': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Kpi': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Opportunity': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Risk': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

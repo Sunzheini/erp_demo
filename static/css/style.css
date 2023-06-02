@@ -298,6 +298,11 @@ i {
   color: var(--clr-title-text);
 }
 
+.menu-item-minor {
+  width: 80%;
+  margin: 0 auto 10px 50px;
+}
+
 /* Styles for the return-to-top button */
 #return-to-top {
   position: fixed;

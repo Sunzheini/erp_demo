@@ -4,7 +4,9 @@ from django.utils.text import slugify
 from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee
 from erp_demo.custom_logic.translator import translate_to_maimunica
-
+from erp_demo.kpi_mng.models import Kpi
+from erp_demo.opportunity_mng.models import Opportunity
+from erp_demo.risk_mng.models import Risk
 
 PROCESS_CHOICES_EN=(
     ('Managerial', 'Managerial'),
@@ -54,10 +56,46 @@ class Process(models.Model):
         on_delete=models.CASCADE,
     )
 
+    # many-to-many
+    kpis = models.ManyToManyField(
+        Kpi,
+        blank=True,
+        through='ProcessToKpis',
+        # doesn't auto create a table but uses the one specified
+    )
+
+    opportunities = models.ManyToManyField(
+        Opportunity,
+        blank=True,
+        through='ProcessToOpportunities',
+    )
+
+    risks = models.ManyToManyField(
+        Risk,
+        blank=True,
+        through='ProcessToRisks',
+    )
+
     slug = models.SlugField(
         blank=True, null=True,
         editable=False,
     )
+
+    @property
+    def get_related_kpis(self):
+        return ProcessToKpis.objects.filter(process_id=self.pk)
+
+    @property
+    def get_related_opportunities(self):
+        return ProcessToOpportunities.objects.filter(process_id=self.pk)
+
+    @property
+    def get_related_risks(self):
+        return ProcessToRisks.objects.filter(process_id=self.pk)
+
+    @property
+    def count_related_kpis(self):
+        return self.get_related_kpis.count()
 
     @property
     def list_of_process_types(self):
@@ -166,3 +204,45 @@ class ProcessStepToDocuments(models.Model):
 
     def __str__(self):
         return f"{self.document_id}"
+
+
+class ProcessToKpis(models.Model):
+    process_id = models.ForeignKey(
+        Process,
+        on_delete=models.CASCADE,
+    )
+    kpi_id = models.ForeignKey(
+        Kpi,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.kpi_id}"
+
+
+class ProcessToOpportunities(models.Model):
+    process_id = models.ForeignKey(
+        Process,
+        on_delete=models.CASCADE,
+    )
+    opportunity_id = models.ForeignKey(
+        Opportunity,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.opportunity_id}"
+
+
+class ProcessToRisks(models.Model):
+    process_id = models.ForeignKey(
+        Process,
+        on_delete=models.CASCADE,
+    )
+    risk_id = models.ForeignKey(
+        Risk,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.risk_id}"

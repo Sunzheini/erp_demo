@@ -7,11 +7,14 @@ from erp_demo.dox_mng.models import Document, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.custom_logic import custom_collections
+from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
-    ProcessStep, Process
+    ProcessStep, Process, ProcessToKpis, ProcessToOpportunities, ProcessToRisks
+from erp_demo.risk_mng.models import Risk
 
 
 class DatabaseManipulation:
@@ -27,6 +30,10 @@ class DatabaseManipulation:
         EmployeeToTrainings.objects.all().delete()
         DocumentLikesToUsers.objects.all().delete()
 
+        ProcessToKpis.objects.all().delete()
+        ProcessToOpportunities.objects.all().delete()
+        ProcessToRisks.objects.all().delete()
+
         # tables with no dependencies to other tables
         AccessLevels.objects.all().delete()
         AccessRights.objects.all().delete()
@@ -35,8 +42,12 @@ class DatabaseManipulation:
         # tables with dependencies from other tables
         Positions.objects.all().delete()
         Employee.objects.all().delete()
+
         ProcessStep.objects.all().delete()
         Document.objects.all().delete()
+        Kpi.objects.all().delete()
+        Opportunity.objects.all().delete()
+        Risk.objects.all().delete()
 
         Process.objects.all().delete()
 
@@ -275,6 +286,38 @@ class DatabaseManipulation:
                     email3=info_to_update[obj]['email3'],
                     email4=info_to_update[obj]['email4'],
                     email5=info_to_update[obj]['email5'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Kpi':
+                Kpi.objects.bulk_create([Kpi(
+                    name=info_to_update[obj]['name'],
+                    description=info_to_update[obj]['description'],
+                    target=info_to_update[obj]['target'],
+                    actual_01_23=info_to_update[obj]['actual_01_23'],
+                    actual_02_23=info_to_update[obj]['actual_02_23'],
+                    actual_03_23=info_to_update[obj]['actual_03_23'],
+                    actual_04_23=info_to_update[obj]['actual_04_23'],
+                    actual_05_23=info_to_update[obj]['actual_05_23'],
+                    actual_06_23=info_to_update[obj]['actual_06_23'],
+                    actual_07_23=info_to_update[obj]['actual_07_23'],
+                    actual_08_23=info_to_update[obj]['actual_08_23'],
+                    actual_09_23=info_to_update[obj]['actual_09_23'],
+                    actual_10_23=info_to_update[obj]['actual_10_23'],
+                    actual_11_23=info_to_update[obj]['actual_11_23'],
+                    actual_12_23=info_to_update[obj]['actual_12_23'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Opportunity':
+                Opportunity.objects.bulk_create([Opportunity(
+                    name=info_to_update[obj]['name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Risk':
+                Risk.objects.bulk_create([Risk(
+                    name=info_to_update[obj]['name'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
                 ) for obj in info_to_update.keys()])
 

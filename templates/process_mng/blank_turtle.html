@@ -132,22 +132,22 @@
                     <thead>
                         <tr>
                             <th>{% trans "Name" %}</th>
-                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "Nothing" %}</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for risk in current_object.get_related_risks %}
                         <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
+                            <td>
+                                <a class="table-link"
+                                href="{% url 'show risk' pk=risk.risk_id.pk slug=risk.risk_id.slug %}">
+                                {{ risk.risk_id.name }}</a>
+                            </td>
+                            <td>
+                                blank
+                            </td>
                         </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -200,22 +200,22 @@
                     <thead>
                         <tr>
                             <th>{% trans "Name" %}</th>
-                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "Target" %}</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for kpi in current_object.get_related_kpis %}
                         <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
+                            <td>
+                                <a class="table-link"
+                                href="{% url 'show kpi' pk=kpi.kpi_id.pk slug=kpi.kpi_id.slug %}">
+                                {{ kpi.kpi_id.name }}</a>
+                            </td>
+                            <td>
+                                blank
+                            </td>
                         </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -294,22 +294,22 @@
                     <thead>
                         <tr>
                             <th>{% trans "Name" %}</th>
-                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "Nothing" %}</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for opp in current_object.get_related_opportunities %}
                         <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
+                            <td>
+                                <a class="table-link"
+                                href="{% url 'show opportunity' pk=opp.opportunity_id.pk slug=opp.opportunity_id.slug %}">
+                                {{ opp.opportunity_id.name }}</a>
+                            </td>
+                            <td>
+                                blank
+                            </td>
                         </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

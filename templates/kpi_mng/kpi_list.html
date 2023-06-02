@@ -1,0 +1,172 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}KPI List{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">KPI List</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "KPIs:" %}</h2>
+
+                {% if all_objects %}
+                    <div class="table-data-container">
+                        <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th colspan="4">{% trans "General" %}</th>
+                                <th colspan="12">{% trans "Performance 2023" %}</th>
+                            </tr>
+
+                            <tr>
+                                <th>{% trans "KPI Name" %}</th>
+                                <th>{% trans "Description" %}</th>
+                                <th>{% trans "Target" %}</th>
+
+                                <th>{% trans "Actions" %}</th>
+
+                                <th>{% trans "Jan" %}</th>
+                                <th>{% trans "Feb" %}</th>
+                                <th>{% trans "Mar" %}</th>
+                                <th>{% trans "Apr" %}</th>
+                                <th>{% trans "May" %}</th>
+                                <th>{% trans "Jun" %}</th>
+                                <th>{% trans "Jul" %}</th>
+                                <th>{% trans "Aug" %}</th>
+                                <th>{% trans "Sep" %}</th>
+                                <th>{% trans "Oct" %}</th>
+                                <th>{% trans "Nov" %}</th>
+                                <th>{% trans "Dec" %}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for kpi in all_objects %}
+                                <tr>
+                                    <td>{{ kpi.name }}</td>
+                                    <td>{{ kpi.description }}</td>
+                                    <td>{{ kpi.target }}</td>
+
+                                    <td class="actions-td">
+                                        <a class="table-link" href="{% url 'show kpi' pk=kpi.pk slug=kpi.slug %}">
+                                            <i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a class="table-link" href="{% url 'edit kpi' pk=kpi.pk slug=kpi.slug %}">
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a class="table-link" href="{% url 'delete kpi' pk=kpi.pk slug=kpi.slug %}">
+                                            <i class="fa-solid fa-trash"></i></a>
+                                    </td>
+
+                                    <td>
+                                        {% if kpi.actual_01_23 %}
+                                            {{ kpi.actual_01_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_02_23 %}
+                                            {{ kpi.actual_02_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_03_23 %}
+                                            {{ kpi.actual_03_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_04_23 %}
+                                            {{ kpi.actual_04_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_05_23 %}
+                                            {{ kpi.actual_05_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_06_23 %}
+                                            {{ kpi.actual_06_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_07_23 %}
+                                            {{ kpi.actual_07_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_08_23 %}
+                                            {{ kpi.actual_08_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_09_23 %}
+                                            {{ kpi.actual_09_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_10_23 %}
+                                            {{ kpi.actual_10_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_11_23 %}
+                                            {{ kpi.actual_11_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if kpi.actual_12_23 %}
+                                            {{ kpi.actual_12_23 }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

@@ -10,6 +10,8 @@ from erp_demo.custom_logic.translator import translate_to_maimunica
 UserModel = get_user_model()
 
 TYPE_CHOICES_EN = (
+    ('External', 'External'),
+    ('Policy', 'Policy'),
     ('Manual', 'Manual'),
     ('Procedure', 'Procedure'),
     ('Instruction', 'Instruction'),
