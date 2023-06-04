@@ -13,6 +13,10 @@ class Opportunity(models.Model):
         blank=False, null=False,
     )
 
+    description = models.TextField(
+        blank=True, null=True,
+    )
+
     slug = models.SlugField(
         blank=True, null=True,
         editable=False,

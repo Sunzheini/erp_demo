@@ -6,10 +6,12 @@ from erp_demo.opportunity_mng.models import Opportunity
 
 LABELS_EN = {
     'name': 'Opportunity for improvement name',
+    'description': 'Description',
 }
 
 LABELS_BG = {
     'name': 'Име на възможност за подобрение',
+    'description': 'Описание',
 }
 
 class OpportunityFormMixin:
@@ -17,6 +19,7 @@ class OpportunityFormMixin:
         language_code = translation.get_language()
         if language_code == 'bg':
             self.fields['name'].label = LABELS_BG['name']
+            self.fields['description'].label = LABELS_BG['description']
 
 
 class OpportunityForm(forms.ModelForm, OpportunityFormMixin):

@@ -98,6 +98,14 @@ class Process(models.Model):
         return self.get_related_kpis.count()
 
     @property
+    def count_related_opportunities(self):
+        return self.get_related_opportunities.count()
+
+    @property
+    def count_related_risks(self):
+        return self.get_related_risks.count()
+
+    @property
     def list_of_process_types(self):
         return [x[0] for x in self._meta.get_field('type').choices]
 
@@ -187,9 +195,9 @@ class ProcessStep(models.Model):
 
     def __str__(self):
         # return f"step {self.number} {self.name}, Type: {self.type}, Dox: {self.get_related_documents}"
-        return f"{self.parent_process.number},  " \
-               f"step: {self.number} {self.name[0:70]}"
-
+        # return f"{self.parent_process.number},  " \
+        #        f"step: {self.number} {self.name[0:70]}"
+        return f"{self.parent_process.number}, {self.number}. {self.name[0:70]}..."
 
 class ProcessStepToDocuments(models.Model):
     process_step_id = models.ForeignKey(

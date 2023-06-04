@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Opportunity Matrix{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Opportunity Matrix</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Opportunities for Imrovement Matrix" %}</h2>
+
+                {% if all_objects %}
+                    <div class="table-data-container">
+                        <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Nr" %}</th>
+                                <th>{% trans "Process Name" %}</th>
+                                <th>{% trans "Owner" %}</th>
+
+                                <th>{% trans "Opportunity Name" %}</th>
+                                <th>{% trans "Opportunity Description" %}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for process in all_objects %}
+                                {% for opp in process.get_related_opportunities %}
+                                    <tr>
+
+                                    {% if forloop.first %}
+                                        <td rowspan="{{ process.count_related_opportunities }}">{{ process.number }}</td>
+                                        <td rowspan="{{ process.count_related_opportunities }}">
+                                            <a class="table-link" href="{% url 'show process' pk=process.pk slug=process.slug %}">
+                                                {{ process.name }}</a>
+                                        </td>
+                                        <td rowspan="{{ process.count_related_opportunities }}">
+                                            <a class="table-link" href="{% url 'show employee' pk=process.process_owner.pk slug=process.process_owner.slug %}">
+                                                {{ process.process_owner.get_full_name }}</a>
+                                        </td>
+                                    {% endif %}
+
+                                        <td><a class="table-link" href="{% url 'show opportunity' pk=opp.opportunity_id.pk slug=opp.opportunity_id.slug %}">
+                                            {{ opp.opportunity_id.name }}</a>
+                                        </td>
+                                        <td>{% if opp.opportunity_id.description %}
+                                                {{ opp.opportunity_id.description }}
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

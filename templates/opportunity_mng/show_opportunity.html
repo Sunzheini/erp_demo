@@ -45,6 +45,7 @@
                     <thead>
                         <tr>
                             <th>{% trans "Opportunity Name" %}</th>
+                            <th>{% trans "Description" %}</th>
 
                             <th>{% trans "Edit" %}</th>
                             <th>{% trans "Delete" %}</th>
@@ -54,6 +55,7 @@
                     <tbody>
                             <tr>
                                 <td>{{ current_object.name }}</td>
+                                <td>{{ current_object.description }}</td>
 
                                 <td><a class="table-link" href="{% url 'edit opportunity' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     {% trans "Edit" %}</a></td>

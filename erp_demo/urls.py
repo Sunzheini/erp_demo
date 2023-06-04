@@ -18,6 +18,8 @@ urlpatterns = [
     path('m7/', include('erp_demo.kpi_mng.urls')),
     path('m8/', include('erp_demo.risk_mng.urls')),
     path('m9/', include('erp_demo.opportunity_mng.urls')),
+    path('m10/', include('erp_demo.interaction_mng.urls')),
+    path('m11/', include('erp_demo.resource_mng.urls')),
 
     path('users/', include('erp_demo.user_mng.urls')),
 

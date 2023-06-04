@@ -266,6 +266,131 @@
                     </table>
                 </div>
 
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Interaction Name" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.interactions %}
+                            {% for interaction in info_to_display.interactions %}
+                        <tr>
+                            <td>{{ interaction.name }}</td>
+                            <td><a class="table-link" href="{% url 'show interaction' pk=interaction.pk slug=interaction.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Risk Name" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.risks %}
+                            {% for risk in info_to_display.risks %}
+                        <tr>
+                            <td>{{ risk.name }}</td>
+                            <td><a class="table-link" href="{% url 'show risk' pk=risk.pk slug=risk.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Opportunity Name" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.opportunities %}
+                            {% for opp in info_to_display.opportunities %}
+                        <tr>
+                            <td>{{ opp.name }}</td>
+                            <td><a class="table-link" href="{% url 'show opportunity' pk=opp.pk slug=opp.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "KPI Name" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.kpis %}
+                            {% for kpi in info_to_display.kpis %}
+                        <tr>
+                            <td>{{ kpi.name }}</td>
+                            <td><a class="table-link" href="{% url 'show kpi' pk=kpi.pk slug=kpi.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Resource Name" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.resources %}
+                            {% for resource in info_to_display.resources %}
+                        <tr>
+                            <td>{{ resource.name }}</td>
+                            <td><a class="table-link" href="{% url 'show resource' pk=resource.pk slug=resource.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
                 {% else %}
                 {% endif %}
             </div>

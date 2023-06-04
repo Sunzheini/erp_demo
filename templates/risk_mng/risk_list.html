@@ -46,6 +46,11 @@
                         <thead>
                             <tr>
                                 <th>{% trans "Risk Name" %}</th>
+                                <th>{% trans "Description" %}</th>
+                                <th>{% trans "Probability" %}</th>
+                                <th>{% trans "Impact" %}</th>
+                                <th>{% trans "Value" %}</th>
+                                <th>{% trans "Immediate Action" %}</th>
 
                                 <th>{% trans "Actions" %}</th>
                             </tr>
@@ -55,6 +60,11 @@
                             {% for risk in all_objects %}
                                 <tr>
                                     <td>{{ risk.name }}</td>
+                                    <td>{{ risk.description }}</td>
+                                    <td>{{ risk.probability }}</td>
+                                    <td>{{ risk.impact }}</td>
+                                    <td>{{ risk.value }}</td>
+                                    <td>{{ risk.immediate_action }}</td>
 
                                     <td class="actions-td">
                                         <a class="table-link" href="{% url 'show risk' pk=risk.pk slug=risk.slug %}">

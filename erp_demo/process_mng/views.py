@@ -3,6 +3,7 @@ from django.shortcuts import render
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 from erp_demo.hr_mng.models import Employee
+from erp_demo.interaction_mng.models import Interaction
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, ProcessNumberForm
 from erp_demo.process_mng.models import Process, ProcessStep
 
@@ -79,15 +80,34 @@ class ProcessMngViewsGeneral:
         }
         return render(request, template, context)
 
+    # @staticmethod
+    # @SupportFunctions.allow_groups()
+    # def create_turtle(request, pk):
+    #     # template = 'process_mng/create_turtle.html'
+    #     template = 'process_mng/blank_turtle.html'
+    #     current_object = Process.objects.filter(pk=pk).get()
+    #     context = {
+    #         'current_object': current_object,
+    #         'process_steps': DataManipulation.get_process_step_list(current_object, ProcessStep),
+    #     }
+    #     return render(request, template, context)
+
     @staticmethod
     @SupportFunctions.allow_groups()
     def create_turtle(request, pk):
         # template = 'process_mng/create_turtle.html'
         template = 'process_mng/blank_turtle.html'
         current_object = Process.objects.filter(pk=pk).get()
+
+        process_steps = DataManipulation.get_process_step_list(current_object, ProcessStep)
+        from_interactions = DataManipulation.get_from_interactions_list(current_object)
+        to_interactions = DataManipulation.get_to_interactions_list(current_object)
+
         context = {
             'current_object': current_object,
-            'process_steps': DataManipulation.get_process_step_list(current_object, ProcessStep)
+            'process_steps': process_steps,
+            'from_interactions': from_interactions,
+            'to_interactions': to_interactions,
         }
         return render(request, template, context)
 

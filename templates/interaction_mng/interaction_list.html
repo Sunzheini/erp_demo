@@ -1,0 +1,102 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Interaction List{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Interaction List</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Interactions:" %}</h2>
+
+                {% if all_objects %}
+                    <div class="table-data-container">
+                        <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Interaction Name" %}</th>
+                                <th>{% trans "From Process Step" %}</th>
+                                <th>{% trans "To Process Step" %}</th>
+                                <th>{% trans "Documents" %}</th>
+
+                                <th>{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for interaction in all_objects %}
+                                <tr>
+                                    <td>{{ interaction.name }}</td>
+                                    <td>
+                                        {% if interaction.from_process_step %}
+                                        <a class="table-link" href="{% url 'show process step' pk=interaction.from_process_step.pk slug=interaction.from_process_step.slug %}">
+                                        {{ interaction.from_process_step }}
+                                        </a>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if interaction.to_process_step %}
+                                        <a class="table-link" href="{% url 'show process step' pk=interaction.to_process_step.pk slug=interaction.to_process_step.slug %}">
+                                        {{ interaction.to_process_step }}
+                                        </a>
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                       {% for doc in interaction.get_related_documents %}
+                                           <a class="table-link" href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
+                                               <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}</a>
+                                           <br>
+                                        {% endfor %}
+                                    </td>
+
+                                    <td class="actions-td">
+                                        <a class="table-link" href="{% url 'show interaction' pk=interaction.pk slug=interaction.slug %}">
+                                            <i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a class="table-link" href="{% url 'edit interaction' pk=interaction.pk slug=interaction.slug %}">
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a class="table-link" href="{% url 'delete interaction' pk=interaction.pk slug=interaction.slug %}">
+                                            <i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

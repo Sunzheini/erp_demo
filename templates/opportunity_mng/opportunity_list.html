@@ -46,6 +46,7 @@
                         <thead>
                             <tr>
                                 <th>{% trans "Opportunity Name" %}</th>
+                                <th>{% trans "Description" %}</th>
 
                                 <th>{% trans "Actions" %}</th>
                             </tr>
@@ -55,6 +56,7 @@
                             {% for opportunity in all_objects %}
                                 <tr>
                                     <td>{{ opportunity.name }}</td>
+                                    <td>{{ opportunity.description }}</td>
 
                                     <td class="actions-td">
                                         <a class="table-link" href="{% url 'show opportunity' pk=opportunity.pk slug=opportunity.slug %}">

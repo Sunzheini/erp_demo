@@ -45,6 +45,11 @@
                     <thead>
                         <tr>
                             <th>{% trans "Risk Name" %}</th>
+                            <th>{% trans "Description" %}</th>
+                            <th>{% trans "Probability" %}</th>
+                            <th>{% trans "Impact" %}</th>
+                            <th>{% trans "Value" %}</th>
+                            <th>{% trans "Immediate Action" %}</th>
 
                             <th>{% trans "Edit" %}</th>
                             <th>{% trans "Delete" %}</th>
@@ -54,6 +59,11 @@
                     <tbody>
                             <tr>
                                 <td>{{ current_object.name }}</td>
+                                <td>{{ current_object.description }}</td>
+                                <td>{{ current_object.probability }}</td>
+                                <td>{{ current_object.impact }}</td>
+                                <td>{{ current_object.value }}</td>
+                                <td>{{ current_object.immediate_action }}</td>
 
                                 <td><a class="table-link" href="{% url 'edit risk' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     {% trans "Edit" %}</a></td>

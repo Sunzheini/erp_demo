@@ -163,6 +163,14 @@
             <span class="menu-item-title">{% trans "Business Processes" %}</span>
         </button>
 
+        <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'interaction mng index' %}';">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <span class="menu-item-title">{% trans "Interactions" %}</span>
+        </button>
+        <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'resource mng index' %}';">
+            <i class="fa-solid fa-arrow-right-long"></i>
+            <span class="menu-item-title">{% trans "Resources" %}</span>
+        </button>
         <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'risk mng index' %}';">
             <i class="fa-solid fa-arrow-right-long"></i>
             <span class="menu-item-title">{% trans "Risks" %}</span>

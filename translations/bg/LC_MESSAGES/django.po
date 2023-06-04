@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-24 14:35+0300\n"
+"POT-Creation-Date: 2023-06-04 15:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,31 +65,36 @@ msgid "Organization"
 msgstr "Организация"
 
 #: .\templates\core\base.html:152
-msgid "Customers"
-msgstr "Клиенти"
+msgid "Personnel and Trainings"
+msgstr "Персонал и Обучения"
 
-#: .\templates\core\base.html:159
+#: .\templates\core\base.html:156
+msgid "Documented Information"
+msgstr "Документи"
+
+#: .\templates\core\base.html:163
 msgid "Business Processes"
 msgstr "Бизнес Процеси"
 
-#: .\templates\core\base.html:163
-#: .\templates\process_mng\blank_flowchart.html:63
-#: .\templates\process_mng\process_mng_index.html:111
-#: .\templates\process_mng\show_process_step.html:57
-msgid "Documents"
-msgstr "Документи"
+#: .\templates\core\base.html:168
+msgid "Interactions"
+msgstr "Взаимодействия"
 
-#: .\templates\core\base.html:167
-msgid "Personnel"
-msgstr "Персонал"
+#: .\templates\core\base.html:172
+msgid "Risks"
+msgstr "Рискове"
 
-#: .\templates\core\base.html:173
-msgid "Suppliers - test"
-msgstr "Доставчици - тест"
+#: .\templates\core\base.html:176
+msgid "Improvements"
+msgstr "Подобрения"
 
-#: .\templates\core\base.html:177
-msgid "API"
-msgstr "АПИ"
+#: .\templates\core\base.html:180
+msgid "KPIs"
+msgstr "KPI"
+
+#: .\templates\core\base.html:187
+msgid "Customers"
+msgstr "Клиенти"
 
 #: .\templates\core\delete_requirement.html:41
 msgid "Delete Requirement"
@@ -107,11 +112,18 @@ msgstr "Изтрий Изискване"
 #: .\templates\hr_mng\show_employee.html:76
 #: .\templates\hr_mng\show_training.html:52
 #: .\templates\hr_mng\show_training.html:64
+#: .\templates\interaction_mng\show_interaction.html:54
+#: .\templates\interaction_mng\show_interaction.html:86
+#: .\templates\kpi_mng\show_kpi.html:58 .\templates\kpi_mng\show_kpi.html:83
+#: .\templates\opportunity_mng\show_opportunity.html:51
+#: .\templates\opportunity_mng\show_opportunity.html:63
 #: .\templates\organization_mng\delete_org.html:49
 #: .\templates\process_mng\show_process.html:53
 #: .\templates\process_mng\show_process.html:68
 #: .\templates\process_mng\show_process_step.html:59
 #: .\templates\process_mng\show_process_step.html:88
+#: .\templates\risk_mng\show_risk.html:55
+#: .\templates\risk_mng\show_risk.html:71
 #: .\venv\Lib\site-packages\django\forms\formsets.py:499
 msgid "Delete"
 msgstr "Изтрий"
@@ -123,8 +135,12 @@ msgstr "Промени Изискване"
 #: .\templates\core\edit_requirement.html:49
 #: .\templates\hr_mng\edit_employee.html:49
 #: .\templates\hr_mng\edit_training.html:48
-#: .\templates\process_mng\edit_process.html:48
+#: .\templates\interaction_mng\edit_interaction.html:49
+#: .\templates\kpi_mng\edit_kpi.html:49
+#: .\templates\opportunity_mng\edit_opportunity.html:49
+#: .\templates\process_mng\edit_process.html:49
 #: .\templates\process_mng\edit_process_step.html:48
+#: .\templates\risk_mng\edit_risk.html:49
 msgid "submit"
 msgstr "потвърди"
 
@@ -158,46 +174,9 @@ msgstr "Номер"
 #: .\templates\process_mng\blank_turtle.html:46
 #: .\templates\process_mng\blank_turtle.html:50
 #: .\templates\process_mng\blank_turtle.html:54
-#: .\templates\process_mng\blank_turtle.html:67
-#: .\templates\process_mng\blank_turtle.html:73
-#: .\templates\process_mng\blank_turtle.html:77
-#: .\templates\process_mng\blank_turtle.html:81
-#: .\templates\process_mng\blank_turtle.html:85
-#: .\templates\process_mng\blank_turtle.html:89
-#: .\templates\process_mng\blank_turtle.html:93
-#: .\templates\process_mng\blank_turtle.html:97
-#: .\templates\process_mng\blank_turtle.html:101
-#: .\templates\process_mng\blank_turtle.html:105
-#: .\templates\process_mng\blank_turtle.html:109
-#: .\templates\process_mng\blank_turtle.html:113
-#: .\templates\process_mng\blank_turtle.html:117
-#: .\templates\process_mng\blank_turtle.html:121
-#: .\templates\process_mng\blank_turtle.html:134
-#: .\templates\process_mng\blank_turtle.html:140
-#: .\templates\process_mng\blank_turtle.html:144
-#: .\templates\process_mng\blank_turtle.html:148
-#: .\templates\process_mng\blank_turtle.html:202
-#: .\templates\process_mng\blank_turtle.html:208
-#: .\templates\process_mng\blank_turtle.html:212
-#: .\templates\process_mng\blank_turtle.html:216
-#: .\templates\process_mng\blank_turtle.html:229
-#: .\templates\process_mng\blank_turtle.html:235
-#: .\templates\process_mng\blank_turtle.html:239
-#: .\templates\process_mng\blank_turtle.html:243
-#: .\templates\process_mng\blank_turtle.html:247
-#: .\templates\process_mng\blank_turtle.html:251
-#: .\templates\process_mng\blank_turtle.html:255
-#: .\templates\process_mng\blank_turtle.html:259
-#: .\templates\process_mng\blank_turtle.html:263
-#: .\templates\process_mng\blank_turtle.html:267
-#: .\templates\process_mng\blank_turtle.html:271
-#: .\templates\process_mng\blank_turtle.html:275
-#: .\templates\process_mng\blank_turtle.html:279
-#: .\templates\process_mng\blank_turtle.html:283
-#: .\templates\process_mng\blank_turtle.html:296
-#: .\templates\process_mng\blank_turtle.html:302
-#: .\templates\process_mng\blank_turtle.html:306
-#: .\templates\process_mng\blank_turtle.html:310
+#: .\templates\process_mng\blank_turtle.html:99
+#: .\templates\process_mng\blank_turtle.html:167
+#: .\templates\process_mng\blank_turtle.html:226
 #: .\templates\process_mng\process_mng_index.html:104
 #: .\templates\process_mng\process_owners.html:47
 #: .\templates\process_mng\show_process.html:48
@@ -220,6 +199,8 @@ msgstr "Статус"
 #: .\templates\core\favorites.html:56 .\templates\core\my_tasks.html:56
 #: .\templates\dox_mng\document_list.html:63
 #: .\templates\dox_mng\show_document.html:52
+#: .\templates\kpi_mng\kpi_matrix.html:50
+#: .\templates\opportunity_mng\opportunity_matrix.html:50
 #: .\templates\process_mng\show_process.html:50
 msgid "Owner"
 msgstr "Собственик"
@@ -255,10 +236,17 @@ msgstr "Линк"
 #: .\templates\hr_mng\show_employee.html:74
 #: .\templates\hr_mng\show_training.html:51
 #: .\templates\hr_mng\show_training.html:62
+#: .\templates\interaction_mng\show_interaction.html:53
+#: .\templates\interaction_mng\show_interaction.html:84
+#: .\templates\kpi_mng\show_kpi.html:57 .\templates\kpi_mng\show_kpi.html:81
+#: .\templates\opportunity_mng\show_opportunity.html:50
+#: .\templates\opportunity_mng\show_opportunity.html:61
 #: .\templates\process_mng\show_process.html:52
 #: .\templates\process_mng\show_process.html:66
 #: .\templates\process_mng\show_process_step.html:58
 #: .\templates\process_mng\show_process_step.html:85
+#: .\templates\risk_mng\show_risk.html:54
+#: .\templates\risk_mng\show_risk.html:69
 msgid "Edit"
 msgstr "Промени"
 
@@ -273,11 +261,13 @@ msgstr "Фав"
 msgid "N/A"
 msgstr "Н/П"
 
-#: .\templates\core\logs.html:48
+#: .\templates\core\logs.html:48 .\templates\kpi_mng\kpi_matrix.html:48
+#: .\templates\opportunity_mng\opportunity_matrix.html:48
 #: .\templates\process_mng\blank_flowchart.html:59
-#: .\templates\process_mng\blank_turtle.html:174
+#: .\templates\process_mng\blank_turtle.html:139
 #: .\templates\process_mng\process_mng_index.html:103
 #: .\templates\process_mng\show_process_step.html:51
+#: .\templates\risk_mng\contingency_plan.html:57
 msgid "Nr"
 msgstr "Nr"
 
@@ -400,6 +390,12 @@ msgstr "Клауза"
 #: .\templates\core\show_requirement.html:50
 #: .\templates\hr_mng\show_training.html:49
 #: .\templates\hr_mng\training_list.html:50
+#: .\templates\kpi_mng\kpi_list.html:54 .\templates\kpi_mng\show_kpi.html:54
+#: .\templates\opportunity_mng\opportunity_list.html:49
+#: .\templates\opportunity_mng\show_opportunity.html:48
+#: .\templates\risk_mng\contingency_plan.html:61
+#: .\templates\risk_mng\risk_list.html:49
+#: .\templates\risk_mng\show_risk.html:48
 msgid "Description"
 msgstr "Описание"
 
@@ -412,8 +408,12 @@ msgstr "Покрито от"
 #: .\templates\dox_mng\document_list.html:69
 #: .\templates\hr_mng\employee_list.html:66
 #: .\templates\hr_mng\training_list.html:55
+#: .\templates\interaction_mng\interaction_list.html:53
+#: .\templates\kpi_mng\kpi_list.html:57
+#: .\templates\opportunity_mng\opportunity_list.html:51
 #: .\templates\organization_mng\org_list.html:56
 #: .\templates\process_mng\process_mng_index.html:115
+#: .\templates\risk_mng\risk_list.html:55
 msgid "Actions"
 msgstr "Действия"
 
@@ -491,8 +491,12 @@ msgstr "Изтрий Документ"
 #: .\templates\dox_mng\delete_document.html:49
 #: .\templates\hr_mng\delete_employee.html:49
 #: .\templates\hr_mng\delete_training.html:47
+#: .\templates\interaction_mng\delete_interaction.html:49
+#: .\templates\kpi_mng\delete_kpi.html:49
+#: .\templates\opportunity_mng\delete_opportunity.html:49
 #: .\templates\process_mng\delete_process.html:48
 #: .\templates\process_mng\delete_process_step.html:48
+#: .\templates\risk_mng\delete_risk.html:49
 msgid "delete"
 msgstr "изтрий"
 
@@ -635,7 +639,9 @@ msgstr "Търсене"
 msgid "search"
 msgstr "търсене"
 
-#: .\templates\index.html:90
+#: .\templates\index.html:90 .\templates\kpi_mng\kpi_matrix.html:49
+#: .\templates\opportunity_mng\opportunity_matrix.html:49
+#: .\templates\risk_mng\contingency_plan.html:58
 msgid "Process Name"
 msgstr "Име на Процес"
 
@@ -669,6 +675,228 @@ msgstr "Име на Организация"
 #: .\templates\index.html:248
 msgid "Customer Name"
 msgstr "Име на Клиент"
+
+#: .\templates\interaction_mng\add_interaction.html:41
+#: .\templates\interaction_mng\interaction_mng_index.html:25
+msgid "Add Interaction"
+msgstr "Добави взаимодействие"
+
+#: .\templates\interaction_mng\add_interaction.html:48
+msgid "add this interaction"
+msgstr "добави взаимодействие"
+
+#: .\templates\interaction_mng\delete_interaction.html:41
+msgid "Delete Interaction"
+msgstr "Изтрий Взаимодействие"
+
+#: .\templates\interaction_mng\edit_interaction.html:41
+msgid "Edit Interaction"
+msgstr "Промени Взаимодействие"
+
+#: .\templates\interaction_mng\interaction_list.html:41
+msgid "Interactions:"
+msgstr "Взаимодействия:"
+
+#: .\templates\interaction_mng\interaction_list.html:48
+#: .\templates\interaction_mng\show_interaction.html:48
+#: .\templates\process_mng\blank_turtle.html:68
+#: .\templates\process_mng\blank_turtle.html:195
+msgid "Interaction Name"
+msgstr "Взаимодействие"
+
+#: .\templates\interaction_mng\interaction_list.html:49
+#: .\templates\interaction_mng\show_interaction.html:49
+#: .\templates\process_mng\blank_turtle.html:67
+msgid "From Process Step"
+msgstr "От Процесна Стъпка"
+
+#: .\templates\interaction_mng\interaction_list.html:50
+#: .\templates\interaction_mng\show_interaction.html:50
+#: .\templates\process_mng\blank_turtle.html:194
+msgid "To Process Step"
+msgstr "Към Проц. Стъпка"
+
+#: .\templates\interaction_mng\interaction_list.html:51
+#: .\templates\interaction_mng\show_interaction.html:51
+#: .\templates\process_mng\blank_flowchart.html:63
+#: .\templates\process_mng\process_mng_index.html:111
+#: .\templates\process_mng\show_process_step.html:57
+msgid "Documents"
+msgstr "Документи"
+
+#: .\templates\interaction_mng\interaction_mng_index.html:30
+msgid "Interaction List"
+msgstr "Списък Взаимодействия"
+
+#: .\templates\interaction_mng\show_interaction.html:42
+msgid "Show Interaction"
+msgstr "Покажи Взаимодействие"
+
+#: .\templates\kpi_mng\add_kpi.html:41
+#: .\templates\kpi_mng\kpi_mng_index.html:25
+msgid "Add KPI"
+msgstr "Добави KPI"
+
+#: .\templates\kpi_mng\add_kpi.html:48
+msgid "add this kpi"
+msgstr "добави този kpi"
+
+#: .\templates\kpi_mng\delete_kpi.html:41
+msgid "Delete KPI"
+msgstr "Изтрий KPI"
+
+#: .\templates\kpi_mng\edit_kpi.html:41
+msgid "Edit KPI"
+msgstr "Промени KPI"
+
+#: .\templates\kpi_mng\kpi_list.html:41
+#: .\templates\process_mng\blank_turtle.html:162
+msgid "KPIs:"
+msgstr "Показатели:"
+
+#: .\templates\kpi_mng\kpi_list.html:48 .\templates\kpi_mng\show_kpi.html:48
+msgid "General"
+msgstr "Общи"
+
+#: .\templates\kpi_mng\kpi_list.html:49 .\templates\kpi_mng\show_kpi.html:49
+msgid "Performance 2023"
+msgstr "Резултати 2023"
+
+#: .\templates\kpi_mng\kpi_list.html:53 .\templates\kpi_mng\kpi_matrix.html:52
+#: .\templates\kpi_mng\show_kpi.html:53
+msgid "KPI Name"
+msgstr "KPI Име"
+
+#: .\templates\kpi_mng\kpi_list.html:55 .\templates\kpi_mng\kpi_matrix.html:53
+#: .\templates\kpi_mng\show_kpi.html:55
+#: .\templates\process_mng\blank_turtle.html:168
+msgid "Target"
+msgstr "Цел"
+
+#: .\templates\kpi_mng\kpi_list.html:59 .\templates\kpi_mng\kpi_matrix.html:55
+#: .\templates\kpi_mng\show_kpi.html:60
+msgid "Jan"
+msgstr "Яну"
+
+#: .\templates\kpi_mng\kpi_list.html:60 .\templates\kpi_mng\kpi_matrix.html:56
+#: .\templates\kpi_mng\show_kpi.html:61
+msgid "Feb"
+msgstr "Фев"
+
+#: .\templates\kpi_mng\kpi_list.html:61 .\templates\kpi_mng\kpi_matrix.html:57
+#: .\templates\kpi_mng\show_kpi.html:62
+msgid "Mar"
+msgstr "Мар"
+
+#: .\templates\kpi_mng\kpi_list.html:62 .\templates\kpi_mng\kpi_matrix.html:58
+#: .\templates\kpi_mng\show_kpi.html:63
+msgid "Apr"
+msgstr "Апр"
+
+#: .\templates\kpi_mng\kpi_list.html:63 .\templates\kpi_mng\kpi_matrix.html:59
+#: .\templates\kpi_mng\show_kpi.html:64
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgid "May"
+msgstr "Май"
+
+#: .\templates\kpi_mng\kpi_list.html:64 .\templates\kpi_mng\kpi_matrix.html:60
+#: .\templates\kpi_mng\show_kpi.html:65
+msgid "Jun"
+msgstr "Юни"
+
+#: .\templates\kpi_mng\kpi_list.html:65 .\templates\kpi_mng\kpi_matrix.html:61
+#: .\templates\kpi_mng\show_kpi.html:66
+msgid "Jul"
+msgstr "Юли"
+
+#: .\templates\kpi_mng\kpi_list.html:66 .\templates\kpi_mng\kpi_matrix.html:62
+#: .\templates\kpi_mng\show_kpi.html:67
+msgid "Aug"
+msgstr "Авг"
+
+#: .\templates\kpi_mng\kpi_list.html:67 .\templates\kpi_mng\kpi_matrix.html:63
+#: .\templates\kpi_mng\show_kpi.html:68
+msgid "Sep"
+msgstr "Сеп"
+
+#: .\templates\kpi_mng\kpi_list.html:68 .\templates\kpi_mng\kpi_matrix.html:64
+#: .\templates\kpi_mng\show_kpi.html:69
+msgid "Oct"
+msgstr "Окт"
+
+#: .\templates\kpi_mng\kpi_list.html:69 .\templates\kpi_mng\kpi_matrix.html:65
+#: .\templates\kpi_mng\show_kpi.html:70
+msgid "Nov"
+msgstr "Ное"
+
+#: .\templates\kpi_mng\kpi_list.html:70 .\templates\kpi_mng\kpi_matrix.html:66
+#: .\templates\kpi_mng\show_kpi.html:71
+msgid "Dec"
+msgstr "Дек"
+
+#: .\templates\kpi_mng\kpi_matrix.html:41
+#: .\templates\kpi_mng\kpi_mng_index.html:37
+msgid "KPI Matrix"
+msgstr "Матрица KPI"
+
+#: .\templates\kpi_mng\kpi_mng_index.html:30
+msgid "KPI List"
+msgstr "Списък KPI"
+
+#: .\templates\kpi_mng\show_kpi.html:42
+msgid "Show KPI"
+msgstr "Покажи KPI"
+
+#: .\templates\opportunity_mng\add_opportunity.html:41
+msgid "Add Opportunity for improvement"
+msgstr "Добави Възможност за подобрение:"
+
+#: .\templates\opportunity_mng\add_opportunity.html:48
+msgid "add this opportunity"
+msgstr "добави тази възможност"
+
+#: .\templates\opportunity_mng\delete_opportunity.html:41
+msgid "Delete Opportunity"
+msgstr "Изтрий Възможност"
+
+#: .\templates\opportunity_mng\edit_opportunity.html:41
+msgid "Edit Opportunity"
+msgstr "Промени Възможност"
+
+#: .\templates\opportunity_mng\opportunity_list.html:41
+#: .\templates\process_mng\blank_turtle.html:221
+msgid "Opportunities for improvement:"
+msgstr "Възможности за подобрение:"
+
+#: .\templates\opportunity_mng\opportunity_list.html:48
+#: .\templates\opportunity_mng\opportunity_matrix.html:52
+#: .\templates\opportunity_mng\show_opportunity.html:47
+msgid "Opportunity Name"
+msgstr "Възможност"
+
+#: .\templates\opportunity_mng\opportunity_matrix.html:41
+msgid "Opportunities for Imrovement Matrix"
+msgstr "Матрица Възможности за подобрение"
+
+#: .\templates\opportunity_mng\opportunity_matrix.html:53
+msgid "Opportunity Description"
+msgstr "Описание на Възможност"
+
+#: .\templates\opportunity_mng\opportunity_mng_index.html:25
+msgid "Add Opportunity"
+msgstr "Доб. Възможност"
+
+#: .\templates\opportunity_mng\opportunity_mng_index.html:30
+msgid "Opportunity List"
+msgstr "Списък Възможности"
+
+#: .\templates\opportunity_mng\opportunity_mng_index.html:37
+msgid "Opportunity Matrix"
+msgstr "Матрица на Възможностите"
+
+#: .\templates\opportunity_mng\show_opportunity.html:41
+msgid "Show Opportunity"
+msgstr "Покажи Възможност"
 
 #: .\templates\organization_mng\add_org.html:42
 msgid "Add an organization"
@@ -716,7 +944,7 @@ msgid "Flowchart"
 msgstr "Флоучарт"
 
 #: .\templates\process_mng\blank_flowchart.html:45
-#: .\templates\process_mng\blank_turtle.html:165
+#: .\templates\process_mng\blank_turtle.html:130
 msgid "Managed by:"
 msgstr "Управляван от:"
 
@@ -740,47 +968,7 @@ msgstr "Ресурси:"
 #: .\templates\process_mng\blank_turtle.html:47
 #: .\templates\process_mng\blank_turtle.html:51
 #: .\templates\process_mng\blank_turtle.html:55
-#: .\templates\process_mng\blank_turtle.html:68
-#: .\templates\process_mng\blank_turtle.html:74
-#: .\templates\process_mng\blank_turtle.html:78
-#: .\templates\process_mng\blank_turtle.html:82
-#: .\templates\process_mng\blank_turtle.html:86
-#: .\templates\process_mng\blank_turtle.html:90
-#: .\templates\process_mng\blank_turtle.html:94
-#: .\templates\process_mng\blank_turtle.html:98
-#: .\templates\process_mng\blank_turtle.html:102
-#: .\templates\process_mng\blank_turtle.html:106
-#: .\templates\process_mng\blank_turtle.html:110
-#: .\templates\process_mng\blank_turtle.html:114
-#: .\templates\process_mng\blank_turtle.html:118
-#: .\templates\process_mng\blank_turtle.html:122
-#: .\templates\process_mng\blank_turtle.html:135
-#: .\templates\process_mng\blank_turtle.html:141
-#: .\templates\process_mng\blank_turtle.html:145
-#: .\templates\process_mng\blank_turtle.html:149
-#: .\templates\process_mng\blank_turtle.html:175
-#: .\templates\process_mng\blank_turtle.html:203
-#: .\templates\process_mng\blank_turtle.html:209
-#: .\templates\process_mng\blank_turtle.html:213
-#: .\templates\process_mng\blank_turtle.html:217
-#: .\templates\process_mng\blank_turtle.html:230
-#: .\templates\process_mng\blank_turtle.html:236
-#: .\templates\process_mng\blank_turtle.html:240
-#: .\templates\process_mng\blank_turtle.html:244
-#: .\templates\process_mng\blank_turtle.html:248
-#: .\templates\process_mng\blank_turtle.html:252
-#: .\templates\process_mng\blank_turtle.html:256
-#: .\templates\process_mng\blank_turtle.html:260
-#: .\templates\process_mng\blank_turtle.html:264
-#: .\templates\process_mng\blank_turtle.html:268
-#: .\templates\process_mng\blank_turtle.html:272
-#: .\templates\process_mng\blank_turtle.html:276
-#: .\templates\process_mng\blank_turtle.html:280
-#: .\templates\process_mng\blank_turtle.html:284
-#: .\templates\process_mng\blank_turtle.html:297
-#: .\templates\process_mng\blank_turtle.html:303
-#: .\templates\process_mng\blank_turtle.html:307
-#: .\templates\process_mng\blank_turtle.html:311
+#: .\templates\process_mng\blank_turtle.html:140
 msgid "Quantity"
 msgstr "Количество"
 
@@ -788,29 +976,28 @@ msgstr "Количество"
 msgid "Input elements:"
 msgstr "Входни елементи:"
 
-#: .\templates\process_mng\blank_turtle.html:129
+#: .\templates\process_mng\blank_turtle.html:94
+#: .\templates\risk_mng\risk_list.html:41
 msgid "Risks:"
 msgstr "Рискове:"
 
-#: .\templates\process_mng\blank_turtle.html:160
+#: .\templates\process_mng\blank_turtle.html:100
+#: .\templates\risk_mng\risk_list.html:52
+#: .\templates\risk_mng\show_risk.html:51
+msgid "Value"
+msgstr "Стойност"
+
+#: .\templates\process_mng\blank_turtle.html:125
 msgid "Turtle diagram"
 msgstr "Костенуркова диаграма"
 
-#: .\templates\process_mng\blank_turtle.html:169
+#: .\templates\process_mng\blank_turtle.html:134
 msgid "Steps:"
 msgstr "Стъпки:"
 
-#: .\templates\process_mng\blank_turtle.html:197
-msgid "KPIs:"
-msgstr "Показатели:"
-
-#: .\templates\process_mng\blank_turtle.html:224
+#: .\templates\process_mng\blank_turtle.html:189
 msgid "Output elements:"
 msgstr "Изходни елементи:"
-
-#: .\templates\process_mng\blank_turtle.html:291
-msgid "Opportunities for improvement:"
-msgstr "Възможности за подобрение:"
 
 #: .\templates\process_mng\delete_process.html:41
 msgid "Delete process"
@@ -911,6 +1098,105 @@ msgstr "Покажи процес"
 #: .\templates\process_mng\show_process_step.html:41
 msgid "Show process step"
 msgstr "Покажи процесна стъпка"
+
+#: .\templates\risk_mng\add_risk.html:41
+#: .\templates\risk_mng\risk_mng_index.html:25
+msgid "Add Risk"
+msgstr "Добави Риск"
+
+#: .\templates\risk_mng\add_risk.html:48
+msgid "add this risk"
+msgstr "добави този риск"
+
+#: .\templates\risk_mng\contingency_plan.html:38
+msgid "Business Contingency Plan"
+msgstr "План за Непрекъсваемост"
+
+#: .\templates\risk_mng\contingency_plan.html:42
+msgid "Legend:"
+msgstr "Легенда:"
+
+#: .\templates\risk_mng\contingency_plan.html:45
+msgid "Probability and Impact: 1 - low, 2 - medium, 3 - high"
+msgstr "Вероятност и Сила: 1 - ниска, 2 - средна, 3 - висока"
+
+#: .\templates\risk_mng\contingency_plan.html:46
+msgid "Priority: 1 to 3 - low, 4 to 6 - medium, 7+ - high"
+msgstr "Приоритет: 1 до 3 - нисък, 4 до 6 - среден, 7+ - висок"
+
+#: .\templates\risk_mng\contingency_plan.html:60
+#: .\templates\risk_mng\risk_list.html:48
+#: .\templates\risk_mng\show_risk.html:47
+msgid "Risk Name"
+msgstr "Име на Риск"
+
+#: .\templates\risk_mng\contingency_plan.html:62
+msgid "Prob"
+msgstr "Вер"
+
+#: .\templates\risk_mng\contingency_plan.html:63
+msgid "Imp"
+msgstr "Сила"
+
+#: .\templates\risk_mng\contingency_plan.html:64
+msgid "Val"
+msgstr "Стн"
+
+#: .\templates\risk_mng\contingency_plan.html:65
+#: .\templates\risk_mng\risk_list.html:53
+#: .\templates\risk_mng\show_risk.html:52
+msgid "Immediate Action"
+msgstr "Незабавни Действия"
+
+#: .\templates\risk_mng\contingency_plan.html:66
+msgid "Test Period"
+msgstr "Период на Пров"
+
+#: .\templates\risk_mng\contingency_plan.html:68
+msgid "Long Term Action"
+msgstr "Дългосрочно Действие"
+
+#: .\templates\risk_mng\contingency_plan.html:69
+msgid "New Prob"
+msgstr "Нова Вер"
+
+#: .\templates\risk_mng\contingency_plan.html:70
+msgid "New Imp"
+msgstr "Нова Сила"
+
+#: .\templates\risk_mng\contingency_plan.html:71
+msgid "New Val"
+msgstr "Нова Стн"
+
+#: .\templates\risk_mng\delete_risk.html:41
+msgid "Delete Risk"
+msgstr "Изтрий Риск"
+
+#: .\templates\risk_mng\edit_risk.html:41
+msgid "Edit Risk"
+msgstr "Промени Риск"
+
+#: .\templates\risk_mng\risk_list.html:50
+#: .\templates\risk_mng\show_risk.html:49
+msgid "Probability"
+msgstr "Вероятност"
+
+#: .\templates\risk_mng\risk_list.html:51
+#: .\templates\risk_mng\show_risk.html:50
+msgid "Impact"
+msgstr "Сила"
+
+#: .\templates\risk_mng\risk_mng_index.html:30
+msgid "Risk List"
+msgstr "Списък Рискове"
+
+#: .\templates\risk_mng\risk_mng_index.html:37
+msgid "Contingency Plan"
+msgstr "План за Непрекъсваемост"
+
+#: .\templates\risk_mng\show_risk.html:41
+msgid "Show Risk"
+msgstr "Покажи Риск"
 
 #: .\templates\user_mng\delete_user.html:41
 msgid "Delete user:"
@@ -2019,10 +2305,6 @@ msgstr ""
 msgid "April"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\utils\dates.py:29
-msgid "May"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\utils\dates.py:30
 msgid "June"
 msgstr ""
@@ -2462,6 +2744,15 @@ msgstr ""
 #, python-format
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
+
+#~ msgid "Personnel"
+#~ msgstr "Персонал"
+
+#~ msgid "Suppliers - test"
+#~ msgstr "Доставчици - тест"
+
+#~ msgid "API"
+#~ msgstr "АПИ"
 
 #~ msgid "Back"
 #~ msgstr "Назад"

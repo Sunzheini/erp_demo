@@ -493,10 +493,12 @@ a.table-link {
   color: var(--clr-display-text);
   transition: color 100ms linear;
   font-size: 15px;
+  text-decoration: none;
 }
 
 a.table-link:hover {
   color: var(--clr-display-message);
+  text-decoration: underline;
 }
 /*-------------------------------------------------------------------------*/
 

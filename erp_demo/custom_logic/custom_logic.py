@@ -9,10 +9,15 @@ from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee, Trainings
 from erp_demo.custom_logic import custom_collections
+from erp_demo.interaction_mng.models import Interaction
+from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStep, Process
+from erp_demo.resource_mng.models import Resource
+from erp_demo.risk_mng.models import Risk
 
 
 class DataManipulation:
@@ -179,6 +184,19 @@ class DataManipulation:
         print(owned_trainings_dict)
         return owned_trainings_dict
 
+    # A list with all from interactions of a specific process
+    # -----------------------------------------------------------------------
+    @staticmethod
+    def get_from_interactions_list(current_process):
+        process_step_object_list = ProcessStep.objects.filter(parent_process=current_process)
+        from_interactions = Interaction.objects.filter(to_process_step__in=process_step_object_list)
+        return from_interactions
+
+    @staticmethod
+    def get_to_interactions_list(current_process):
+        process_step_object_list = ProcessStep.objects.filter(parent_process=current_process)
+        to_interactions = Interaction.objects.filter(from_process_step__in=process_step_object_list)
+        return to_interactions
 
 class SupportFunctions:
 
@@ -310,6 +328,11 @@ class SupportFunctions:
             trainings = Trainings.objects.filter(name__icontains=search_pattern)
             organizations = Organization.objects.filter(name__icontains=search_pattern)
             customers = Customer.objects.filter(name__icontains=search_pattern)
+            interactions = Interaction.objects.filter(name__icontains=search_pattern)
+            risks = Risk.objects.filter(name__icontains=search_pattern)
+            opportunities = Opportunity.objects.filter(name__icontains=search_pattern)
+            kpis = Kpi.objects.filter(name__icontains=search_pattern)
+            resources = Resource.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
@@ -318,6 +341,11 @@ class SupportFunctions:
             result['trainings'] = trainings
             result['organizations'] = organizations
             result['customers'] = customers
+            result['interactions'] = interactions
+            result['risks'] = risks
+            result['opportunities'] = opportunities
+            result['kpis'] = kpis
+            result['resources'] = resources
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -351,6 +379,26 @@ class SupportFunctions:
         elif choice == 'Customer':
             customers = Customer.objects.filter(name__icontains=search_pattern)
             result['customers'] = customers
+
+        elif choice == 'Interaction':
+            interactions = Interaction.objects.filter(name__icontains=search_pattern)
+            result['interactions'] = interactions
+
+        elif choice == 'Risk':
+            risks = Risk.objects.filter(name__icontains=search_pattern)
+            result['risks'] = risks
+
+        elif choice == 'Opportunity':
+            opportunities = Opportunity.objects.filter(name__icontains=search_pattern)
+            result['opportunities'] = opportunities
+
+        elif choice == 'Kpi':
+            kpis = Kpi.objects.filter(name__icontains=search_pattern)
+            result['kpis'] = kpis
+
+        elif choice == 'Resource':
+            resources = Resource.objects.filter(name__icontains=search_pattern)
+            result['resources'] = resources
 
         return result
 

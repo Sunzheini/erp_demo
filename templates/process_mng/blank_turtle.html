@@ -64,63 +64,28 @@
                 <table class="table-data">
                     <thead>
                         <tr>
-                            <th>{% trans "Name" %}</th>
-                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "From Process Step" %}</th>
+                            <th>{% trans "Interaction Name" %}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
+                        {% for interaction in from_interactions %}
+                            <tr>
+                                <td>
+                                    <a class="table-link" href="{% url 'show process' pk=interaction.from_process_step.parent_process.pk slug=interaction.from_process_step.parent_process.slug %}">
+                                        {{ interaction.from_process_step.parent_process.number }},
+                                    </a>
+                                    <a class="table-link" href="{% url 'show process step' pk=interaction.from_process_step.pk slug=interaction.from_process_step.slug %}">
+                                        {{ interaction.from_process_step.number }}.&nbsp{{ interaction.from_process_step.name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="table-link" href="{% url 'show interaction' pk=interaction.pk slug=interaction.slug %}">
+                                        {{ interaction.name }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -132,7 +97,7 @@
                     <thead>
                         <tr>
                             <th>{% trans "Name" %}</th>
-                            <th>{% trans "Nothing" %}</th>
+                            <th>{% trans "Value" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -144,7 +109,7 @@
                                 {{ risk.risk_id.name }}</a>
                             </td>
                             <td>
-                                blank
+                                {{ risk.risk_id.value }}
                             </td>
                         </tr>
                         {% endfor %}
@@ -212,7 +177,7 @@
                                 {{ kpi.kpi_id.name }}</a>
                             </td>
                             <td>
-                                blank
+                                {{ kpi.kpi_id.target }}
                             </td>
                         </tr>
                         {% endfor %}
@@ -226,63 +191,28 @@
                 <table class="table-data">
                     <thead>
                         <tr>
-                            <th>{% trans "Name" %}</th>
-                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "To Process Step" %}</th>
+                            <th>{% trans "Interaction Name" %}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
+                        {% for interaction in to_interactions %}
+                            <tr>
+                                <td>
+                                    <a class="table-link" href="{% url 'show process' pk=interaction.to_process_step.parent_process.pk slug=interaction.to_process_step.parent_process.slug %}">
+                                        {{ interaction.to_process_step.parent_process.number }},
+                                    </a>
+                                    <a class="table-link" href="{% url 'show process step' pk=interaction.to_process_step.pk slug=interaction.to_process_step.slug %}">
+                                        {{ interaction.to_process_step.number }}.&nbsp{{ interaction.to_process_step.name }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="table-link" href="{% url 'show interaction' pk=interaction.pk slug=interaction.slug %}">
+                                        {{ interaction.name }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -294,7 +224,6 @@
                     <thead>
                         <tr>
                             <th>{% trans "Name" %}</th>
-                            <th>{% trans "Nothing" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -304,9 +233,6 @@
                                 <a class="table-link"
                                 href="{% url 'show opportunity' pk=opp.opportunity_id.pk slug=opp.opportunity_id.slug %}">
                                 {{ opp.opportunity_id.name }}</a>
-                            </td>
-                            <td>
-                                blank
                             </td>
                         </tr>
                         {% endfor %}

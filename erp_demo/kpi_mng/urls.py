@@ -52,6 +52,7 @@ urlpatterns = [
         template_list, redirect_url, form_list, Kpi, files_are_used
     ).delete_view, name='delete kpi'),
 
+
     path('kpi-matrix/', KpiMngViews(
         template_list, redirect_url, form_list, Kpi, files_are_used
     ).kpi_matrix, name='kpi matrix'),

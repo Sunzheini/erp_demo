@@ -13,6 +13,49 @@ class Risk(models.Model):
         blank=False, null=False,
     )
 
+    description = models.TextField(
+        blank=True, null=True,
+    )
+
+    probability = models.IntegerField(
+        blank=False, null=False,
+    )
+
+    impact = models.IntegerField(
+        blank=False, null=False,
+    )
+
+    immediate_action = models.TextField(
+        blank=True, null=True,
+    )
+
+    ia_test_period = models.CharField(
+        max_length=99,
+        blank=True, null=True,
+    )
+
+    long_term_action = models.TextField(
+        blank=True, null=True,
+    )
+
+    new_probability = models.IntegerField(
+        blank=True, null=True,
+    )
+
+    new_impact = models.IntegerField(
+        blank=True, null=True,
+    )
+
+    @property
+    def value(self):
+        return self.probability * self.impact
+
+    @property
+    def new_value(self):
+        if self.new_probability is None or self.new_impact is None:
+            return None
+        return self.new_probability * self.new_impact
+
     slug = models.SlugField(
         blank=True, null=True,
         editable=False,

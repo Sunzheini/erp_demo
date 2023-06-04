@@ -51,4 +51,9 @@ urlpatterns = [
     path('delete-opportunity/<int:pk>/<slug:slug>/', OpportunityMngViews(
         template_list, redirect_url, form_list, Opportunity, files_are_used
     ).delete_view, name='delete opportunity'),
+
+
+    path('opportunity-matrix/', OpportunityMngViews(
+        template_list, redirect_url, form_list, Opportunity, files_are_used
+    ).opportunity_matrix, name='opportunity matrix'),
 ]

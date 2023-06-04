@@ -60,7 +60,8 @@
                         {% for key, value in employees_w_their_trainings.items %}
                         <tr>
                           <td>
-                             <a class="table-link" href="{% url 'show employee' pk=key.pk slug=key.slug %}">{{ key.get_full_name }}</a>
+                             <a class="table-link" href="{% url 'show employee' pk=key.pk slug=key.slug %}">
+                                  <i class="fa-solid fa-magnifying-glass"></i>{{ key.get_full_name }}</a>
                           </td>
 
                           <td>

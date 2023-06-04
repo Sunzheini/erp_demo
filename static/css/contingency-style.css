@@ -1,0 +1,30 @@
+/*overwriting the values*/
+.flowchart-section-top {
+  height: 8%;
+}
+
+.flowchart-box-type-0 {
+    width: 400px;
+}
+
+.flowchart-box-type-1 {
+    width: 800px;
+}
+
+.table-data .t-number {
+  width: 3%;
+}
+
+.table-data .t-shape {
+  width: 4%;
+}
+
+.table-data .t-shape-red {
+  width: 4%;
+  background-color: #a81717;
+}
+
+.flowchart-box-text {
+  font-size: 0.8rem;
+  margin-bottom: 1px;
+}

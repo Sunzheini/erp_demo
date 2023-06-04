@@ -1,0 +1,138 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contingency Plan</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/flowchart-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contingency-style.css' %}">
+
+    <script>
+        function expandDiv(div) {
+            if (div.classList.contains('expanded')) {
+                div.classList.remove('expanded');
+            } else {
+                div.classList.add('expanded');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header class="header">
+
+    </header>
+<main>
+    <div class="flowchart-container">
+        <section class="flowchart-section flowchart-section-top">
+            <div class="flowchart-box flowchart-box-type-0">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h2 class="flowchart-box-title" id="main-title">{% trans "Business Contingency Plan" %}</h2>
+            </div>
+            <div class="flowchart-box flowchart-box-type-1">
+                <h2 class="flowchart-box-title" id="process-title">
+                    {% trans "Legend:" %}
+                </h2>
+                <p class="flowchart-box-text">
+                    {% trans "Probability and Impact: 1 - low, 2 - medium, 3 - high" %}<br>
+                    {% trans "Priority: 1 to 3 - low, 4 to 6 - medium, 7+ - high" %}
+                </p>
+            </div>
+        </section>
+
+        <section class="flowchart-section flowchart-section-bottom">
+            <div class="flowchart-box flowchart-box-type-2">
+                <div class="table-data-container">
+                    <table class="table-data">
+                        <thead>
+                        <tr>
+                            <th class="t-number">{% trans "Nr" %}</th>
+                            <th>{% trans "Process Name" %}</th>
+
+                            <th>{% trans "Risk Name" %}</th>
+                            <th>{% trans "Description" %}</th>
+                            <th class="t-shape">{% trans "Prob" %}</th>
+                            <th class="t-shape">{% trans "Imp" %}</th>
+                            <th class="t-shape">{% trans "Val" %}</th>
+                            <th>{% trans "Immediate Action" %}</th>
+                            <th>{% trans "Test Period" %}</th>
+
+                            <th>{% trans "Long Term Action" %}</th>
+                            <th class="t-shape">{% trans "New Prob" %}</th>
+                            <th class="t-shape">{% trans "New Imp" %}</th>
+                            <th class="t-shape">{% trans "New Val" %}</th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="body-6">
+                        {% for process in all_objects %}
+                            {% for risk in process.get_related_risks %}
+                                <tr>
+                                {% if forloop.first %}
+                                    <td class="t-number" rowspan="{{ process.count_related_risks }}">{{ process.number }}</td>
+                                    <td rowspan="{{ process.count_related_risks }}">
+                                    <a class="table-link" href="{% url 'show process' pk=process.pk slug=process.slug %}">
+                                    {{ process.name }}</a>
+                                    </td>
+                                {% endif %}
+
+                                    <td><a class="table-link" href="{% url 'show risk' pk=risk.risk_id.pk slug=risk.risk_id.slug %}">
+                                    {{ risk.risk_id.name }}</a></td>
+                                    <td>{{ risk.risk_id.description }}</td>
+                                    <td class="t-shape">{{ risk.risk_id.probability }}</td>
+                                    <td class="t-shape">{{ risk.risk_id.impact }}</td>
+
+                                    {% if risk.risk_id.value > 7 %}
+                                        <td class="t-shape-red">{{ risk.risk_id.value }}</td>
+                                    {% else %}
+                                        <td class="t-shape">{{ risk.risk_id.value }}</td>
+                                    {% endif %}
+
+                                    <td>{{ risk.risk_id.immediate_action }}</td>
+                                    <td>{{ risk.risk_id.ia_test_period }}</td>
+
+                                    <td>
+                                        {% if risk.risk_id.long_term_action %}
+                                        {{ risk.risk_id.long_term_action }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td class="t-shape">
+                                        {% if risk.risk_id.new_probability %}
+                                        {{ risk.risk_id.new_probability }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td class="t-shape">
+                                        {% if risk.risk_id.new_impact %}
+                                        {{ risk.risk_id.new_impact }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                    <td class="t-shape">
+                                        {% if risk.risk_id.new_value %}
+                                        {{ risk.risk_id.new_value }}
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+</body>
+</html>

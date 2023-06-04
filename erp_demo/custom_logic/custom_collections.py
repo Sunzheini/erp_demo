@@ -27,6 +27,11 @@ search_types_en = {
     ('Trainings', 'Trainings'),
     ('Organization', 'Organization'),
     ('Customer', 'Customer'),
+    ('Interaction', 'Interaction'),
+    ('Risk', 'Risk'),
+    ('Opportunity', 'Opportunity'),
+    ('Kpi', 'Kpi'),
+    ('Resource', 'Resource'),
 }
 
 search_types_bg = {
@@ -38,6 +43,11 @@ search_types_bg = {
     ('Trainings', 'Обучения'),
     ('Organization', 'Организации'),
     ('Customer', 'Клиенти'),
+    ('Interaction', 'Взаимодействия'),
+    ('Risk', 'Рискове'),
+    ('Opportunity', 'Възможности'),
+    ('Kpi', 'Kpi'),
+    ('Resource', 'Ресурси'),
 }
 
 process_numbers = (
@@ -83,6 +93,8 @@ list_of_keys = {
     'Kpi': [],
     'Opportunity': [],
     'Risk': [],
+    'Interaction': [],
+    'Resource': [],
 }
 
 coordinates = {
@@ -165,6 +177,18 @@ coordinates = {
         'end_column': None,
     },
     'Risk': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Interaction': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Resource': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

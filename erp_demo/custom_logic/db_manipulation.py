@@ -7,6 +7,7 @@ from erp_demo.dox_mng.models import Document, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
 from erp_demo.custom_logic import custom_collections
+from erp_demo.interaction_mng.models import InteractionToDocuments, Interaction
 from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
@@ -14,6 +15,7 @@ from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process, ProcessToKpis, ProcessToOpportunities, ProcessToRisks
+from erp_demo.resource_mng.models import Resource
 from erp_demo.risk_mng.models import Risk
 
 
@@ -33,11 +35,14 @@ class DatabaseManipulation:
         ProcessToKpis.objects.all().delete()
         ProcessToOpportunities.objects.all().delete()
         ProcessToRisks.objects.all().delete()
+        InteractionToDocuments.objects.all().delete()
 
         # tables with no dependencies to other tables
         AccessLevels.objects.all().delete()
         AccessRights.objects.all().delete()
         Trainings.objects.all().delete()
+        Interaction.objects.all().delete()
+        Resource.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()
@@ -312,12 +317,32 @@ class DatabaseManipulation:
             elif table == 'Opportunity':
                 Opportunity.objects.bulk_create([Opportunity(
                     name=info_to_update[obj]['name'],
+                    description=info_to_update[obj]['description'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
                 ) for obj in info_to_update.keys()])
 
             elif table == 'Risk':
                 Risk.objects.bulk_create([Risk(
                     name=info_to_update[obj]['name'],
+                    description=info_to_update[obj]['description'],
+                    probability=info_to_update[obj]['probability'],
+                    impact=info_to_update[obj]['impact'],
+                    immediate_action=info_to_update[obj]['immediate_action'],
+                    ia_test_period=info_to_update[obj]['ia_test_period'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Interaction':
+                Interaction.objects.bulk_create([Interaction(
+                    name=info_to_update[obj]['name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Resource':
+                Resource.objects.bulk_create([Resource(
+                    name=info_to_update[obj]['name'],
+                    description=info_to_update[obj]['description'],
+                    quantity=info_to_update[obj]['quantity'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
                 ) for obj in info_to_update.keys()])
 

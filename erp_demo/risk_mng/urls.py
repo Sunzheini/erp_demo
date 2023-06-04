@@ -51,4 +51,9 @@ urlpatterns = [
     path('delete-risk/<int:pk>/<slug:slug>/', RiskMngViews(
         template_list, redirect_url, form_list, Risk, files_are_used
     ).delete_view, name='delete risk'),
+
+
+    path('contingency-plan/', RiskMngViews(
+        template_list, redirect_url, form_list, Risk, files_are_used
+    ).contingency_plan, name='contingency plan'),
 ]

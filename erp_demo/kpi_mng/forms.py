@@ -13,6 +13,13 @@ LABELS_EN = {
     'actual_03_23': 'Actual 03/23',
     'actual_04_23': 'Actual 04/23',
     'actual_05_23': 'Actual 05/23',
+    'actual_06_23': 'Actual 06/23',
+    'actual_07_23': 'Actual 07/23',
+    'actual_08_23': 'Actual 08/23',
+    'actual_09_23': 'Actual 09/23',
+    'actual_10_23': 'Actual 10/23',
+    'actual_11_23': 'Actual 11/23',
+    'actual_12_23': 'Actual 12/23',
 }
 
 LABELS_BG = {
@@ -24,6 +31,13 @@ LABELS_BG = {
     'actual_03_23': 'Актуално 03/23',
     'actual_04_23': 'Актуално 04/23',
     'actual_05_23': 'Актуално 05/23',
+    'actual_06_23': 'Актуално 06/23',
+    'actual_07_23': 'Актуално 07/23',
+    'actual_08_23': 'Актуално 08/23',
+    'actual_09_23': 'Актуално 09/23',
+    'actual_10_23': 'Актуално 10/23',
+    'actual_11_23': 'Актуално 11/23',
+    'actual_12_23': 'Актуално 12/23',
 }
 
 class KpiFormMixin:
@@ -38,6 +52,13 @@ class KpiFormMixin:
             self.fields['actual_03_23'].label = LABELS_BG['actual_03_23']
             self.fields['actual_04_23'].label = LABELS_BG['actual_04_23']
             self.fields['actual_05_23'].label = LABELS_BG['actual_05_23']
+            self.fields['actual_06_23'].label = LABELS_BG['actual_06_23']
+            self.fields['actual_07_23'].label = LABELS_BG['actual_07_23']
+            self.fields['actual_08_23'].label = LABELS_BG['actual_08_23']
+            self.fields['actual_09_23'].label = LABELS_BG['actual_09_23']
+            self.fields['actual_10_23'].label = LABELS_BG['actual_10_23']
+            self.fields['actual_11_23'].label = LABELS_BG['actual_11_23']
+            self.fields['actual_12_23'].label = LABELS_BG['actual_12_23']
 
 
 class KpiForm(forms.ModelForm, KpiFormMixin):

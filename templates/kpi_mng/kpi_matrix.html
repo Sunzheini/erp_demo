@@ -74,11 +74,19 @@
 
                                     {% if forloop.first %}
                                         <td rowspan="{{ process.count_related_kpis }}">{{ process.number }}</td>
-                                        <td rowspan="{{ process.count_related_kpis }}">{{ process.name }}</td>
-                                        <td rowspan="{{ process.count_related_kpis }}">{{ process.process_owner }}</td>
+                                        <td rowspan="{{ process.count_related_kpis }}">
+                                            <a class="table-link" href="{% url 'show process' pk=process.pk slug=process.slug %}">
+                                                {{ process.name }}</a>
+                                        </td>
+                                        <td rowspan="{{ process.count_related_kpis }}">
+                                            <a class="table-link" href="{% url 'show employee' pk=process.process_owner.pk slug=process.process_owner.slug %}">
+                                                {{ process.process_owner.get_full_name }}</a>
+                                        </td>
                                     {% endif %}
 
-                                        <td>{{ kpi.kpi_id.name }}</td>
+                                        <td><a class="table-link" href="{% url 'show kpi' pk=kpi.kpi_id.pk slug=kpi.kpi_id.slug %}">
+                                            {{ kpi.kpi_id.name }}</a>
+                                        </td>
                                         <td>{{ kpi.kpi_id.target }}</td>
 
                                         <td>

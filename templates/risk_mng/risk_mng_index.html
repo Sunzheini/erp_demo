@@ -33,8 +33,10 @@
 
             <button class="card-btn card-btn-hidden"></button>
 
-            <button class="card-btn card-btn-hidden"></button>
-
+            <button class="card-btn" onclick="location.href='{% url 'contingency plan' %}';">
+                <span class="card-btn-title">{% trans "Contingency Plan" %}</span>
+                <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
+            </button>
         </div>
     </section>
 {% endblock %}
