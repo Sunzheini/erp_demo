@@ -44,6 +44,13 @@ body {
 
 /* Icons -----------------------------------------------------------------*/
 
+#id_new_quantity {
+  width: 80px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  height: 22px;
+}
+
 i {
   width: 1.14em;
   padding-right: 0.28em;
@@ -298,9 +305,40 @@ i {
   color: var(--clr-title-text);
 }
 
+#control-button {
+  width: 80%;
+  height: 20px;
+
+  padding-left: 14px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 25px;
+  margin-bottom: 10px;
+
+  background-color: var(--clr-dark-grey);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
+}
+
+#control-button:hover {
+  /*background-color: var(--clr-card-bg-hover);*/
+  background-color: var(--clr-nav-bg);
+}
+
+#control-button i {
+  color: var(--clr-title-text);
+  font-size: 1rem;
+}
+
+#dynamic-buttons {
+}
+
 .menu-item-minor {
   width: 80%;
-  margin: 0 auto 10px 50px;
+  margin: 0 auto 10px auto;
+}
+
+.menu-item-minor:last-child {
+  margin-bottom: 0;
 }
 
 /* Styles for the return-to-top button */

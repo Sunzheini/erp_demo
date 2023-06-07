@@ -1,0 +1,177 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Assign Resources{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Assign Resources</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn" onclick="fShowHideAssignmentForm()">
+                <span class="card-btn-title">{% trans "Assign to Person" %}</span>
+                <span class="card-btn-desc">Show / Hide Form</span>
+            </button>
+
+            <button class="card-btn" onclick="fShowHideAssignmentForm2()">
+                <span class="card-btn-title">{% trans "Assign to Process" %}</span>
+                <span class="card-btn-desc">Show / Hide Form</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Assign Resources" %}</h2>
+
+                <div style="display: none;" id="assignment-form" >
+                    <br><hr>
+                    <form action="{% url 'assign resources' %}" method="post">
+                        <table class="table-form">
+                            {{ form }}
+                        </table>
+
+                        {% csrf_token %}
+                        <button name="buttonx" class="form-button">{% trans "assign" %}</button>
+                    </form>
+                </div>
+
+                <div style="display: none;" id="assignment-form2" >
+                    <br><hr>
+                    <form action="{% url 'assign resources' %}" method="post">
+                        <table class="table-form">
+                            {{ form2 }}
+                        </table>
+
+                        {% csrf_token %}
+                        <button name="buttony" class="form-button">{% trans "assign" %}</button>
+                    </form>
+                </div>
+
+                {% if all_objects %}
+                <br><hr>
+                <div class="table-data-container">
+                    <table class="table-data">
+                        <thead>
+                        <tr>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Description" %}</th>
+                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "Of Total" %}</th>
+                            <th>{% trans "Assigned To Person" %}</th>
+
+                            <th>{% trans "Actions" %}</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for current_object in all_objects %}
+                        <tr>
+                            <td>
+                                {{ current_object.resource.name }}
+                            </td>
+                            <td>
+                                {{ current_object.resource.description }}
+                            </td>
+                            <td id="quantity-{{ current_object.id }}">
+                                {{ current_object.quantity }}
+                            </td>
+                            <td>
+                                {{ current_object.resource.quantity }}
+                            </td>
+                            <td>
+                                {{ current_object.employee.get_full_name }}
+                            </td>
+                            <td>
+                                <form action="{% url 'assign resources' %}" method="post">
+                                        {{ change_form.new_quantity }}
+                                    <input type="hidden" name="current_object_id" id="current_object_id" value="{{ current_object.id }}">
+
+                                    {% csrf_token %}
+                                    <button  name="buttonz1" class="form-button"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+
+            {% if all_objects2 %}
+                <br><hr>
+                <div class="table-data-container">
+                    <table class="table-data">
+                        <thead>
+                        <tr>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Description" %}</th>
+                            <th>{% trans "Quantity" %}</th>
+                            <th>{% trans "Of Total" %}</th>
+                            <th>{% trans "Assigned To Process" %}</th>
+
+                            <th>{% trans "Actions" %}</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for current_object in all_objects2 %}
+                        <tr>
+                            <td>
+                                {{ current_object.resource.name }}
+                            </td>
+                            <td>
+                                {{ current_object.resource.description }}
+                            </td>
+                            <td id="quantity-{{ current_object.id }}">
+                                {{ current_object.quantity }}
+                            </td>
+                            <td>
+                                {{ current_object.resource.quantity }}
+                            </td>
+                            <td>
+                                {{ current_object.process.name }}
+                            </td>
+                            <td>
+                                <form action="{% url 'assign resources' %}" method="post">
+                                        {{ change_form.new_quantity }}
+                                    <input type="hidden" name="current_object_id" id="current_object_id" value="{{ current_object.id }}">
+
+                                    {% csrf_token %}
+{#                                    <button  name="buttonz{{ current_object.id }}" class="form-button"><i class="fa-solid fa-arrows-rotate"></i></button>#}
+                                    <button  name="buttonz2" class="form-button"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

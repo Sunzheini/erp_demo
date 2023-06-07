@@ -42,18 +42,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                    {% for resource in resources %}
                         <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
+                            <td>{{ resource.resource.name }}</td>
+                            <td>{{ resource.quantity }}</td>
                         </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
-                        <tr>
-                            <td>{% trans "Name" %}</td>
-                            <td>{% trans "Quantity" %}</td>
-                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

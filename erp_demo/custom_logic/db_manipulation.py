@@ -15,7 +15,7 @@ from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process, ProcessToKpis, ProcessToOpportunities, ProcessToRisks
-from erp_demo.resource_mng.models import Resource
+from erp_demo.resource_mng.models import Resource, ResourcesAssignedToEmployees, ResourcesAssignedToProcess
 from erp_demo.risk_mng.models import Risk
 
 
@@ -36,6 +36,9 @@ class DatabaseManipulation:
         ProcessToOpportunities.objects.all().delete()
         ProcessToRisks.objects.all().delete()
         InteractionToDocuments.objects.all().delete()
+
+        ResourcesAssignedToEmployees.objects.all().delete()
+        ResourcesAssignedToProcess.objects.all().delete()
 
         # tables with no dependencies to other tables
         AccessLevels.objects.all().delete()

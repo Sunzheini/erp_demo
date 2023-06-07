@@ -45,3 +45,33 @@
                 x.style.display = "none";
             }
         }
+
+        function fShowHideProcessMenu() {
+            let x = document.getElementById('dynamic-buttons')
+            let y = document.getElementById('second-hr')
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+                y.style.marginTop = '15px';
+            } else {
+                x.style.display = 'none';
+                y.style.marginTop = '4px';
+            }
+        }
+
+        function fShowHideAssignmentForm() {
+            let x = document.getElementById("assignment-form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function fShowHideAssignmentForm2() {
+            let x = document.getElementById("assignment-form2");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }

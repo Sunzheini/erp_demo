@@ -26,7 +26,7 @@ form_list = [
     InteractionForm, InteractionViewForm, InteractionEditForm, InteractionDeleteForm,
 ]
 
-files_are_used = True
+files_are_used = False
 
 # ----------------------------------------------------------------------------------
 
@@ -55,6 +55,3 @@ urlpatterns = [
         template_list, redirect_url, form_list, Interaction, files_are_used
     ).delete_view, name='delete interaction'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -39,7 +39,7 @@
 
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Add Interaction" %}</h2>
-                <form action="{% url 'add interaction' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'add interaction' %}" method="post">
                     <table class="table-form">
                         {{ form }}
                     </table>

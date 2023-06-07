@@ -6,6 +6,7 @@ from erp_demo.hr_mng.models import Employee
 from erp_demo.interaction_mng.models import Interaction
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, ProcessNumberForm
 from erp_demo.process_mng.models import Process, ProcessStep
+from erp_demo.resource_mng.models import ResourcesAssignedToProcess
 
 
 class ProcessMngViewsGeneral:
@@ -108,6 +109,7 @@ class ProcessMngViewsGeneral:
             'process_steps': process_steps,
             'from_interactions': from_interactions,
             'to_interactions': to_interactions,
+            'resources': ResourcesAssignedToProcess.objects.filter(process=current_object),
         }
         return render(request, template, context)
 

@@ -48,6 +48,8 @@
                                 <th>{% trans "Resource Name" %}</th>
                                 <th>{% trans "Description" %}</th>
                                 <th>{% trans "Quantity" %}</th>
+                                <th>{% trans "Assigned" %}</th>
+                                <th>{% trans "Available" %}</th>
 
                                 <th>{% trans "Actions" %}</th>
                             </tr>
@@ -59,6 +61,8 @@
                                     <td>{{ resource.name }}</td>
                                     <td>{{ resource.description }}</td>
                                     <td>{{ resource.quantity }}</td>
+                                    <td>{{ resource.assigned_quantity }}</td>
+                                    <td>{{ resource.available_quantity }}</td>
 
                                     <td class="actions-td">
                                         <a class="table-link" href="{% url 'show resource' pk=resource.pk slug=resource.slug %}">

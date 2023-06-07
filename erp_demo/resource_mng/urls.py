@@ -51,4 +51,8 @@ urlpatterns = [
     path('delete-resource/<int:pk>/<slug:slug>/', ResourceMngViews(
         template_list, redirect_url, form_list, Resource, files_are_used
     ).delete_view, name='delete resource'),
+
+    path('assign-resources/', ResourceMngViews(
+        template_list, redirect_url, form_list, Resource, files_are_used
+    ).assign_resources, name='assign resources'),
 ]
