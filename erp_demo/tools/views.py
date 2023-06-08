@@ -320,3 +320,13 @@ def ai_scanner(request):
 
     context = {}
     return render(request, 'tools/tools_index.html', context)
+
+
+"""
+Note: If you're using opencv-python-headless instead of opencv-python, 
+you might not face this issue as the headless version is designed for 
+server environments without a GUI, and doesn't include GUI-related 
+dependencies like libGL.so.1. If you don't need any GUI functionality 
+from OpenCV, you might want to consider switching to the headless 
+version.
+"""
