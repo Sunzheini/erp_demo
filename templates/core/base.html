@@ -23,6 +23,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+{#Additional css--------------------------------------------------------- #}
+    {% block extra_css %}{% endblock %}
+
 {#JS Functions-------------------------------------------------------------#}
     <script type="text/javascript" src="{% static 'css/custom_functions.js' %}"></script>
 </head>

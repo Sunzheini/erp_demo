@@ -11,6 +11,7 @@ from erp_demo.interaction_mng.models import InteractionToDocuments, Interaction
 from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.nonconformity_mng.models import Nonconformity
 from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
@@ -65,6 +66,8 @@ class DatabaseManipulation:
 
         Organization.objects.all().delete()
         Customer.objects.all().delete()
+
+        Nonconformity.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -348,6 +351,12 @@ class DatabaseManipulation:
                     description=info_to_update[obj]['description'],
                     quantity=info_to_update[obj]['quantity'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Nonconformity':
+                Nonconformity.objects.bulk_create([Nonconformity(
+                    name=info_to_update[obj]['name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
                 ) for obj in info_to_update.keys()])
 
             info_to_update = {}

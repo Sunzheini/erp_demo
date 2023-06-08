@@ -32,6 +32,8 @@ search_types_en = {
     ('Opportunity', 'Opportunity'),
     ('Kpi', 'Kpi'),
     ('Resource', 'Resource'),
+    ('Requirements', 'Requirements'),
+    ('Nonconformity', 'Nonconformity'),
 }
 
 search_types_bg = {
@@ -48,6 +50,8 @@ search_types_bg = {
     ('Opportunity', 'Възможности'),
     ('Kpi', 'Kpi'),
     ('Resource', 'Ресурси'),
+    ('Requirements', 'Изисквания'),
+    ('Nonconformity', 'Несъответствия'),
 }
 
 process_numbers = (
@@ -95,6 +99,7 @@ list_of_keys = {
     'Risk': [],
     'Interaction': [],
     'Resource': [],
+    'Nonconformity': [],
 }
 
 coordinates = {
@@ -189,6 +194,12 @@ coordinates = {
         'end_column': None,
     },
     'Resource': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Nonconformity': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

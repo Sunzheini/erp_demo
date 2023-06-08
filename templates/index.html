@@ -391,6 +391,56 @@
                     </table>
                 </div>
 
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Requirement Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.requirements %}
+                            {% for requirement in info_to_display.requirements %}
+                        <tr>
+                            <td>{{ requirement.description }}</td>
+                            <td><a class="table-link" href="{% url 'show requirement' pk=requirement.pk slug=requirement.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Nonconformity Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.nonconformities %}
+                            {% for nonconformity in info_to_display.nonconformities %}
+                        <tr>
+                            <td>{{ nonconformity.name }}</td>
+                            <td><a class="table-link" href="{% url 'show nonconformity' pk=nonconformity.pk slug=nonconformity.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
                 {% else %}
                 {% endif %}
             </div>

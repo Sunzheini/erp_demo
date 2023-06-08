@@ -11,8 +11,9 @@ from erp_demo.hr_mng.models import Employee, Trainings
 from erp_demo.custom_logic import custom_collections
 from erp_demo.interaction_mng.models import Interaction
 from erp_demo.kpi_mng.models import Kpi
-from erp_demo.main_app.models import CaptainsLog
+from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.nonconformity_mng.models import Nonconformity
 from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStep, Process
@@ -333,6 +334,8 @@ class SupportFunctions:
             opportunities = Opportunity.objects.filter(name__icontains=search_pattern)
             kpis = Kpi.objects.filter(name__icontains=search_pattern)
             resources = Resource.objects.filter(name__icontains=search_pattern)
+            requirements = Requirements.objects.filter(description__icontains=search_pattern)
+            nonconformities = Nonconformity.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
@@ -346,6 +349,8 @@ class SupportFunctions:
             result['opportunities'] = opportunities
             result['kpis'] = kpis
             result['resources'] = resources
+            result['requirements'] = requirements
+            result['nonconformities'] = nonconformities
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -399,6 +404,14 @@ class SupportFunctions:
         elif choice == 'Resource':
             resources = Resource.objects.filter(name__icontains=search_pattern)
             result['resources'] = resources
+
+        elif choice == 'Requirements':
+            requirements = Requirements.objects.filter(description__icontains=search_pattern)
+            result['requirements'] = requirements
+
+        elif choice == 'Nonconformity':
+            nonconformities = Nonconformity.objects.filter(name__icontains=search_pattern)
+            result['nonconformities'] = nonconformities
 
         return result
 

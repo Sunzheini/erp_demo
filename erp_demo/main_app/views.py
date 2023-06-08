@@ -152,7 +152,7 @@ class MainAppViews:
         if choice is not None and choice != 'All':
             requirements = Requirements.objects.filter(external_document=choice)
         else:
-            requirements = Requirements.objects.all().order_by('organization')
+            requirements = Requirements.objects.all().order_by('organization', 'clause')
 
         context = {
             'requirement_form': requirement_form,

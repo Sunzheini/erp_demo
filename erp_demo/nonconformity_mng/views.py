@@ -1,9 +1,5 @@
-from django.shortcuts import render
+from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 
 
-class NonconformityMngViews:
-    def __init__(self):
-        self.context = {}
-
-    def index(self, request):
-        return render(request, 'nonconformity_mng/nonconformity_mng_index.html', self.context)
+class NonconformityMngViews(PrototypeViews):
+    pass
