@@ -692,6 +692,29 @@ a.table-link:hover {
   color: black;
 }
 
+.ai-button {
+  display: inline;
+    font-size: 0.9rem;
+    color: var(--clr-nav-bg);
+    border: 1px solid black;
+    background: lightgray;
+  padding: 3px;
+}
+
+.ai-button a {
+    text-decoration: none;
+    color: black;
+}
+
+.ai-button:hover {
+  color: var(--clr-nav-bg);
+  background: #888888;
+}
+
+.ai-button:hover a {
+  color: white;
+}
+
 /*-------------------------------------------------------------------------*/
 
 /* Tables for data---------------------------------------------------------*/

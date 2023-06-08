@@ -43,27 +43,36 @@
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Requirements matrix" %}</h2>
 
-                    <div style="display: none;" id="requirement_form" >
-                        <form action="{% url 'requirements matrix' %}" method="post">
-                            <p class="card-display-content-bold">{% trans "Requirement Creation Form:" %}</p>
-                            <table class="table-form">
-                                 {{ requirement_form }}
-                            </table>
-                            {% csrf_token %}
-                            <button class="form-button" name="button1">{% trans "add this requirement" %}</button>
-                        </form>
-                        <br><hr>
-                    </div>
+                <form action="{% url 'requirements matrix' %}" method="post">
+                    <table class="table-form">
+                        {{ choice_form }}
+                    </table>
+                    {% csrf_token %}
+                    <button name="req_choice" class="form-button">{% trans "filter" %}</button>
+                </form>
+                                <hr>
 
-                    {% if requirements %}
+                <div style="display: none;" id="requirement_form" >
+                    <form action="{% url 'requirements matrix' %}" method="post">
+                        <p class="card-display-content-bold">{% trans "Requirement Creation Form:" %}</p>
+                        <table class="table-form">
+                            {{ requirement_form }}
+                        </table>
+                        {% csrf_token %}
+                        <button class="form-button" name="button1">{% trans "add this requirement" %}</button>
+                    </form>
+                    <br><hr>
+                </div>
+
+                {% if requirements %}
                     <div class="table-data-container">
-
          <table class="table-data">
           <thead>
             <tr>
               <th>{% trans "Organization" %}</th>
               <th>{% trans "External Document" %}</th>
               <th>{% trans "Clause" %}</th>
+              <th>{% trans "Clause Name" %}</th>
               <th>{% trans "Description" %}</th>
               <th>{% trans "Covered by" %}</th>
 
@@ -80,6 +89,7 @@
                 <td>{{ requirement.organization }}</td>
                 <td>{{ requirement.external_document }}</td>
                 <td>{{ requirement.clause }}</td>
+                <td>{{ requirement.clause_name }}</td>
                 <td>{{ requirement.description }}</td>
 
                 <td>

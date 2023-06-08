@@ -9,6 +9,7 @@ LABELS_EN = {
     'organization': 'Organization',
     'external_document': 'External document',
     'clause': 'Clause',
+    'clause_name': 'Clause name',
     'description': 'Description',
     'covered_by_process_step': 'Covered by process step',
 }
@@ -17,6 +18,7 @@ LABELS_BG = {
     'organization': 'Организация',
     'external_document': 'Външен документ',
     'clause': 'Клауза',
+    'clause_name': 'Име клауза',
     'description': 'Описание',
     'covered_by_process_step': 'Покритo от процесна стъпка',
 }
@@ -47,6 +49,7 @@ class RequirementsMixin:
             self.fields['organization'].label = LABELS_BG['organization']
             self.fields['external_document'].label = LABELS_BG['external_document']
             self.fields['clause'].label = LABELS_BG['clause']
+            self.fields['clause_name'].label = LABELS_BG['clause_name']
             self.fields['description'].label = LABELS_BG['description']
             self.fields['covered_by_process_step'].label = LABELS_BG['covered_by_process_step']
 
@@ -116,3 +119,28 @@ class SearchForm(forms.Form):
             self.fields['form_keyword'].label = 'Kлючова дума'
             self.fields['search_type_dropdown'].label = 'Категории'
             self.fields['search_type_dropdown'].choices = search_types_bg
+
+# ----------------------------------------------------------------------
+
+class RequirementsDocumentForm(forms.Form):
+    requirements_document_dropdown = forms.ChoiceField(
+        label='Requirements document',
+        choices=(('All', 'All'),),
+    )
+
+    # get a tuple suitable for 'choices' from a table
+    @staticmethod
+    def requirements_documents():
+        all_ext_documents = Requirements.objects.values_list('external_document', flat=True)
+        all_ext_documents = list(set(all_ext_documents))
+        ext_documents_tuples = [(item, item) for item in all_ext_documents]
+        result = tuple(ext_documents_tuples)
+        result = (('All', 'All'),) + result
+        return result
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if translation.get_language() == 'bg':
+            self.fields['requirements_document_dropdown'].label = 'Документ с изисквания'
+
+        self.fields['requirements_document_dropdown'].choices = self.requirements_documents()

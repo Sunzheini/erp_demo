@@ -58,6 +58,11 @@ class Requirements(models.Model):
         blank=False, null=False,
     )
 
+    clause_name = models.CharField(
+        max_length=99,
+        blank=False, null=False,
+    )
+
     description = models.TextField(
         blank=True, null=True,
     )

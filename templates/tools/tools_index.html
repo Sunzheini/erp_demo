@@ -1,13 +1,60 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-Tools
-</body>
-</html>
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}AI Tools{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">AI Tools</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "AI Tools" %}</h2>
+
+                <br>
+                <div class="ai-button">
+                    <a href="{% url 'ai scanner' %}">
+                        {% trans "Start AI Scanner" %}
+                    </a>
+                </div>
+                <br>
+
+                {% if message %}
+                    {{ message }}
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

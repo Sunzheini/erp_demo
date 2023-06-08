@@ -14,8 +14,8 @@ urlpatterns = [
     path('logs/', MainAppViews().logs, name='logs'),
     path('favorites/', MainAppViews().favorites, name='favorites'),
     path('my-tasks/', MainAppViews().my_tasks, name='my tasks'),
-    path('requirements-matrix/', MainAppViews().requirements_matrix, name='requirements matrix'),
 
+    path('requirements-matrix/', MainAppViews().requirements_matrix, name='requirements matrix'),
     path('show-requirement/<int:pk>/<slug:slug>/', MainAppViews().show_requirement, name='show requirement'),
     path('edit-requirement/<int:pk>/<slug:slug>/', MainAppViews().edit_requirement, name='edit requirement'),
     path('delete-requirement/<int:pk>/<slug:slug>/', MainAppViews().delete_requirement, name='delete requirement'),

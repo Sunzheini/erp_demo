@@ -190,9 +190,33 @@
 
         <hr class="horizontal" id="second-hr" style="margin-top: 4px">
 
+        <button class="menu-item card-btn-hidden" onclick="location.href='{% url 'operations mng index' %}';">
+            <i class="fa-solid fa-gears"></i>
+            <span class="menu-item-title">{% trans "Operational Processes" %}</span>
+        </button>
+
+        <button id="control-button" ><i class="fa-solid fa-caret-down"></i></button>
+
+        <hr class="horizontal" id="second-hr" style="margin-top: 4px">
+
         <button class="menu-item" onclick="location.href='{% url 'customer mng index' %}';">
             <i class="fa-solid fa-business-time"></i>
             <span class="menu-item-title">{% trans "Customers" %}</span>
+        </button>
+
+        <button class="menu-item" onclick="location.href='{% url 'requirements matrix' %}';">
+            <i class="fa-solid fa-code-pull-request"></i>
+            <span class="menu-item-title">{% trans "Requirements Matrix" %}</span>
+        </button>
+
+        <button class="menu-item" onclick="location.href='{% url 'nonconformity mng index' %}';">
+            <i class="fa-solid fa-fire"></i>
+            <span class="menu-item-title">{% trans "Nonconformities" %}</span>
+        </button>
+
+        <button class="menu-item" onclick="location.href='{% url 'actions_mng_index' %}';">
+            <i class="fa-solid fa-person-walking"></i>
+            <span class="menu-item-title">{% trans "Actions" %}</span>
         </button>
 
 {# ---#}
@@ -205,12 +229,12 @@
 {#            <span class="menu-item-title">{% trans "API" %}</span>#}
 {#        </button>#}
 {# ---#}
-{#        <hr class="horizontal">#}
-{##}
-{#        <button class="menu-item" onclick="location.href='{% url 'tools index' %}';">#}
-{#            <i class="fa-solid fa-robot"></i>#}
-{#            <span class="menu-item-title">{% trans "Tools" %}</span>#}
-{#        </button>#}
+        <hr class="horizontal">
+
+        <button class="menu-item" onclick="location.href='{% url 'tools index' %}';">
+            <i class="fa-solid fa-robot"></i>
+            <span class="menu-item-title">{% trans "AI Tools" %}</span>
+        </button>
 
     </ul>
 </div>

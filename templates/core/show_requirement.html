@@ -47,7 +47,9 @@
                             <th>{% trans "Organization" %}</th>
                             <th>{% trans "External Document" %}</th>
                             <th>{% trans "Clause" %}</th>
+                            <th>{% trans "Clause Name" %}</th>
                             <th>{% trans "Description" %}</th>
+                            <th>{% trans "Covered by" %}</th>
 
                             <th>{% trans "Edit" %}</th>
                             <th>{% trans "Delete" %}</th>
@@ -58,7 +60,18 @@
                             <td>{{ requirement.organization }}</td>
                             <td>{{ requirement.external_document }}</td>
                             <td>{{ requirement.clause }}</td>
+                            <td>{{ requirement.clause_name }}</td>
                             <td>{{ requirement.description }}</td>
+
+                            <td>
+                                {% for process_step in requirement.get_related_process_steps %}
+                                    <a class="table-link"
+                                       href="{% url 'show process step' pk=process_step.process_step_id.pk slug=process_step.process_step_id.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass">
+
+                                        </i>{{ process_step.process_step_id.name }}</a><br>
+                                {% endfor %}
+                            </td>
 
                             <td><a class="table-link" href="{% url 'edit requirement' pk=requirement.pk slug=requirement.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     {% trans "Edit" %}</a></td>

@@ -4,7 +4,7 @@ from erp_demo.custom_logic.db_manipulation import DatabaseManipulation
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.main_app.forms import ManageDbAllForm, DeleteDatabaseForm, \
     RequirementsForm, RequirementsEditForm, RequirementsDeleteForm, \
-    SearchForm
+    SearchForm, RequirementsDocumentForm
 
 from erp_demo.custom_logic.custom_logic import SupportFunctions
 from erp_demo.main_app.models import CaptainsLog, Requirements
@@ -126,20 +126,38 @@ class MainAppViews:
         current_revision.delete()
         return redirect('my tasks')
 
+# -------------------------------------------------------------------------------------
+
     @staticmethod
     @SupportFunctions.allow_groups()
     def requirements_matrix(request):
+        choice_form = RequirementsDocumentForm()
+        choice = None
+
         if 'button1' in request.POST:
             requirement_form = RequirementsForm(request.POST)
             if requirement_form.is_valid():
                 requirement_form.save()
                 requirement_form = RequirementsForm()
-        else:
+                choice_form = RequirementsDocumentForm()
+        elif 'req_choice' in request.POST:
+                choice_form = RequirementsDocumentForm(request.POST)
+                if choice_form.is_valid():
+                    choice = choice_form.cleaned_data['requirements_document_dropdown']
+                requirement_form = RequirementsForm()
+        else:   # GET
             requirement_form = RequirementsForm()
+            choice_form = RequirementsDocumentForm()
+
+        if choice is not None and choice != 'All':
+            requirements = Requirements.objects.filter(external_document=choice)
+        else:
+            requirements = Requirements.objects.all().order_by('organization')
 
         context = {
             'requirement_form': requirement_form,
-            'requirements': Requirements.objects.all(),
+            'choice_form': choice_form,
+            'requirements': requirements,
         }
         return render(request, 'core/requirements_matrix.html', context)
 

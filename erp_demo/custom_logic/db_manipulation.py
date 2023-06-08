@@ -246,6 +246,7 @@ class DatabaseManipulation:
                     organization=info_to_update[obj]['organization'],
                     external_document=info_to_update[obj]['external_document'],
                     clause=info_to_update[obj]['clause'],
+                    clause_name=info_to_update[obj]['clause_name'],
                     description=info_to_update[obj]['description'],
                     slug=slugify(f"{info_to_update[obj]['organization']}-"
                                  f"{info_to_update[obj]['clause']}-"

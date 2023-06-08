@@ -20,6 +20,9 @@ urlpatterns = [
     path('m9/', include('erp_demo.opportunity_mng.urls')),
     path('m10/', include('erp_demo.interaction_mng.urls')),
     path('m11/', include('erp_demo.resource_mng.urls')),
+    path('m12/', include('erp_demo.operations_mng.urls')),
+    path('m13/', include('erp_demo.nonconformity_mng.urls')),
+    path('m14/', include('erp_demo.actions_mng.urls')),
 
     path('users/', include('erp_demo.user_mng.urls')),
 
