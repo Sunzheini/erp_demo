@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Add Action{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Add Action</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Add Action" %}</h2>
+                <form action="{% url 'add action' %}" method="post">
+                    <table class="table-form">
+                        {{ form }}
+                    </table>
+
+                    {% csrf_token %}
+                    <button class="form-button">{% trans "add this action" %}</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#id_content_type").change(function () {
+        var url = "{% url 'get_related_objects' 1234 %}";  // placeholder url
+        var selected_model = $(this).val();
+
+        // If no model has been selected yet, exit the function early
+        if (!selected_model) {
+            return;
+        }
+
+        // Replace the placeholder content_type_id with the actual one
+        url = url.replace('1234', selected_model);
+
+        $.ajax({
+            url: url,
+            success: function (data) {
+                var select = $("#id_object_id");
+                select.empty();
+                $.each(data, function(index, item) {
+                    select.append(new Option(item.name, item.id));
+                });
+            }
+        });
+    });
+
+    // Trigger change event to update the related objects dropdown when the page loads
+    $("#id_content_type").trigger("change");
+});
+</script>
+
+{% endblock %}
+{#-------------------------------------------------------------------------#}
