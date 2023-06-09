@@ -51,4 +51,9 @@ urlpatterns = [
     path('delete-nonconformity/<int:pk>/<slug:slug>/', NonconformityMngViews(
         template_list, redirect_url, form_list, Nonconformity, files_are_used
     ).delete_view, name='delete nonconformity'),
+
+
+    path('write-to-excel/<int:pk>/<slug:slug>/', NonconformityMngViews(
+        template_list, redirect_url, form_list, Nonconformity, files_are_used
+    ).write_to_excel, name='write to excel'),
 ]

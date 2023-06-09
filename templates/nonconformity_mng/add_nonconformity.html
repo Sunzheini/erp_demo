@@ -8,7 +8,7 @@
 
 {##---#}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/nonconformity.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom_form.css' %}">
 {% endblock %}
 {##---#}
 
@@ -33,7 +33,6 @@
             <button class="card-btn card-btn-hidden"></button>
 
             <button class="card-btn card-btn-hidden"></button>
-
         </div>
     </section>
 {% endblock %}
@@ -45,16 +44,11 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">{% trans "Add Nonconformity" %}</h2>
+                <h2 class="card-display-title">{% trans "Add Nonconformity - 8D Form" %}</h2>
                 <form action="{% url 'add nonconformity' %}" method="post">
-{#                    <table class="table-form">#}
-{#                        {{ form }}#}
-{#                    </table>#}
 
-{#                    also can use form.something, then when finished put in external file #}
-                    <div class="div-8d-form">
-                        {{ form }}
-                    </div>
+                    {% include 'custom_forms/custom_nonconformity_form.html' %}
+
                     {% csrf_token %}
                     <button class="form-button">{% trans "add this nonconformity" %}</button>
                 </form>

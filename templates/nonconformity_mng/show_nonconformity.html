@@ -1,9 +1,16 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Show Nonconformity{% endblock %}
 {#-------------------------------------------------------------------------#}
+
+{##---#}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom_form.css' %}">
+{% endblock %}
+{##---#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
@@ -36,37 +43,15 @@
 {% block display_content %}
     <section class="display-content-section">
         <div class="all-display-content-container">
-
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Show Nonconformity" %}</h2>
 
-                <div class="table-data-container">
-                    <table class="table-data">
-                    <thead>
-                        <tr>
-                            <th>{% trans "Customer" %}</th>
-                            <th>{% trans "Nonc Owner" %}</th>
-                            <th>{% trans "Permanent Corrective Actions" %}</th>
+                 <form action="{% url 'show nonconformity' pk=current_object.pk slug=current_object.slug %}" method="post">
 
-                            <th>{% trans "Edit" %}</th>
-                            <th>{% trans "Delete" %}</th>
-                        </tr>
-                    </thead>
+                    {% include 'custom_forms/custom_nonconformity_form.html' %}
 
-                    <tbody>
-                            <tr>
-                                <td>{{ current_object.customer }}</td>
-                                <td>{{ current_object.nonconformity_owner }}</td>
-                                <td>{{ current_object.permanent_corrective_actions }}</td>
-
-                                <td><a class="table-link" href="{% url 'edit nonconformity' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                                    {% trans "Edit" %}</a></td>
-                                <td><a class="table-link" href="{% url 'delete nonconformity' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
-                                    {% trans "Delete" %}</a></td>
-                            </tr>
-                    </tbody>
-                </table>
-                </div>
+                    {% csrf_token %}
+                </form>
             </div>
         </div>
     </section>

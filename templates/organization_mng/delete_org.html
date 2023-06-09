@@ -39,6 +39,7 @@
 
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Delete an organization" %}</h2>
+
                 <form action="{% url 'delete org' pk=current_object.pk slug=current_object.slug %}" method="post">
 
                     <table class="table-form">
@@ -49,7 +50,6 @@
                     <button class="form-button">{% trans "Delete" %}</button>
                 </form>
             </div>
-
         </div>
     </section>
 {% endblock %}

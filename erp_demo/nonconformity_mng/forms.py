@@ -67,10 +67,10 @@ LABELS_EN = {
 
 LABELS_BG = {
     'customer': 'Клиент',
-    'customer_claim_number': 'Номер на рекламацията на клиента',
-    'customer_claim_date': 'Дата на рекламацията на клиента',
-    'internal_claim_number': 'Вътрешен номер на рекламацията',
-    'nonconformity_start_date': 'Дата на стартиране на рекламацията',
+    'customer_claim_number': 'Номер рекламация клиент',
+    'customer_claim_date': 'Дата рекламацията клиент',
+    'internal_claim_number': 'Вътрешен номер',
+    'nonconformity_start_date': 'Дата стартиране',
     'part_number': 'Номер на изделието',
     'part_revision': 'Ревизия на изделието',
     'part_name': 'Име на изделието',
@@ -142,6 +142,27 @@ class NonconformityForm(NonconformityFormMixin, forms.ModelForm):
 
         labels = LABELS_EN
 
+        widgets = {
+            'customer_claim_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',  # taka veshe izkarva kalendara
+                }
+            ),
+            'nonconformity_start_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+            'breakpoint_at_customer_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.change_labels_to_bg()
@@ -153,6 +174,27 @@ class NonconformityEditForm(NonconformityFormMixin, forms.ModelForm):
         exclude = ['slug']
 
         labels = LABELS_EN
+
+        widgets = {
+            'customer_claim_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',  # taka veshe izkarva kalendara
+                }
+            ),
+            'nonconformity_start_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+            'breakpoint_at_customer_date': forms.DateInput(
+                attrs={
+                    'placeholder': 'dd-mmm-yyyy',
+                    'type': 'date',
+                }
+            ),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

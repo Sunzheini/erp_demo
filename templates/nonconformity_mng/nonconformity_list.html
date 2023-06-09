@@ -46,19 +46,74 @@
                         <thead>
                             <tr>
                                 <th>{% trans "Customer" %}</th>
-                                <th>{% trans "Nonc Owner" %}</th>
-                                <th>{% trans "Permanent Corrective Actions" %}</th>
+                                <th>{% trans "Customer Nr" %}</th>
+                                <th>{% trans "Customer Date" %}</th>
+
+                                <th>{% trans "Internal Nr" %}</th>
+                                <th>{% trans "Start Date" %}</th>
+                                <th>{% trans "Part Nr" %}</th>
+
+                                <th>{% trans "Customer Definition" %}</th>
+                                <th>{% trans "Internal Definition" %}</th>
+
+                                <th>{% trans "BP Date" %}</th>
 
                                 <th>{% trans "Actions" %}</th>
+                                <th>{% trans ".xlsx" %}</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             {% for nonconformity in all_objects %}
                                 <tr>
-                                    <td>{{ nonconformity.customer }}</td>
-                                    <td>{{ nonconformity.nonconformity_owner }}</td>
-                                    <td>{{ nonconformity.permanent_corrective_actions }}</td>
+                                    <td>
+                                        {% if nonconformity.customer %}
+                                            {{ nonconformity.customer }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if nonconformity.customer_claim_number %}
+                                            {{ nonconformity.customer_claim_number }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if nonconformity.customer_claim_date %}
+                                            {{ nonconformity.customer_claim_date }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if nonconformity.internal_claim_number %}
+                                            {{ nonconformity.internal_claim_number }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if nonconformity.nonconformity_start_date %}
+                                            {{ nonconformity.nonconformity_start_date }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if nonconformity.part_number %}
+                                            {{ nonconformity.part_number }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if nonconformity.name %}
+                                            {{ nonconformity.name }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if nonconformity.internal_definition %}
+                                            {{ nonconformity.internal_definition }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if nonconformity.breakpoint_at_customer_date %}
+                                            {{ nonconformity.breakpoint_at_customer_date }}
+                                        {% endif %}
+                                    </td>
 
                                     <td class="actions-td">
                                         <a class="table-link" href="{% url 'show nonconformity' pk=nonconformity.pk slug=nonconformity.slug %}">
@@ -67,6 +122,11 @@
                                             <i class="fa-solid fa-pen-to-square"></i></a>
                                         <a class="table-link" href="{% url 'delete nonconformity' pk=nonconformity.pk slug=nonconformity.slug %}">
                                             <i class="fa-solid fa-trash"></i></a>
+                                    </td>
+
+                                    <td>
+                                        <a class="table-link" href="{% url 'write to excel' pk=nonconformity.pk slug=nonconformity.slug %}">
+                                            <i class="fa-solid fa-file-excel"></i></a>
                                     </td>
                                 </tr>
                             {% endfor %}

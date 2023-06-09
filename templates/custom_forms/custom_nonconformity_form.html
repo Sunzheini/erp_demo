@@ -1,0 +1,205 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# D0 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "D0. general Information" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-3">{{ form.customer.label_tag }}</th>
+            <td class="when-3">{{ form.customer }}</td>
+            <th class="when-3">{{ form.internal_claim_number.label_tag }}</th>
+            <td class="when-3">{{ form.internal_claim_number }}</td>
+            <th class="when-3">{{ form.part_number.label_tag }}</th>
+            <td class="when-3">{{ form.part_number }}</td>
+        </tr>
+        <tr>
+            <th class="when-3">{{ form.customer_claim_number.label_tag }}</th>
+            <td class="when-3">{{ form.customer_claim_number }}</td>
+            <th class="when-3">{{ form.nonconformity_start_date.label_tag }}</th>
+            <td class="when-3">{{ form.nonconformity_start_date }}</td>
+            <th class="when-3">{{ form.part_revision.label_tag }}</th>
+            <td class="when-3">{{ form.part_revision }}</td>
+        </tr>
+        <tr>
+            <th class="when-3">{{ form.customer_claim_date.label_tag }}</th>
+            <td class="when-3">{{ form.customer_claim_date }}</td>
+            <th class="when-3"></th>
+            <td class="when-3"></td>
+            <th class="when-3">{{ form.part_name.label_tag }}</th>
+            <td class="when-3">{{ form.part_name }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D1 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D1. Problem Definition" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.name.label_tag }}&nbsp<span class="required">(*)</span></th>
+            <td class="when-1">{{ form.name }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.internal_definition.label_tag }}</th>
+            <td class="when-1">{{ form.internal_definition }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D2 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D2. Form a Team" %}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Nonconformity Owner" %}</th>
+            <th>{% trans "Additional Team Members" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ form.nonconformity_owner }}</td>
+            <td>{{ form.team_members }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D3 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D3. Short Term (Containment and Correction) Actions" %}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Containment Actions" %}</th>
+            <th>{% trans "Corrections" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ form.containment_actions }}</td>
+            <td>{{ form.correction_actions }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D4 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "D4. Root Cause Analysis" %}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{% trans "Root Cause 1" %}</th>
+            <th>{% trans "Root Cause 2" %}</th>
+            <th>{% trans "Root Cause 3" %}</th>
+            <th>{% trans "Root Cause 4" %}</th>
+            <th>{% trans "Root Cause 5" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Possible Root Cause" %}</th>
+            <td class="when-1">{{ form.possible_root_cause1 }}</td>
+            <td class="when-1">{{ form.possible_root_cause2 }}</td>
+            <td class="when-1">{{ form.possible_root_cause3 }}</td>
+            <td class="when-1">{{ form.possible_root_cause4 }}</td>
+            <td class="when-1">{{ form.possible_root_cause5 }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 1" %}</th>
+            <td class="when-1">{{ form.cause1_ask_why1 }}</td>
+            <td class="when-1">{{ form.cause2_ask_why1 }}</td>
+            <td class="when-1">{{ form.cause3_ask_why1 }}</td>
+            <td class="when-1">{{ form.cause4_ask_why1 }}</td>
+            <td class="when-1">{{ form.cause5_ask_why1 }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 2" %}</th>
+            <td class="when-1">{{ form.cause1_ask_why2 }}</td>
+            <td class="when-1">{{ form.cause2_ask_why2 }}</td>
+            <td class="when-1">{{ form.cause3_ask_why2 }}</td>
+            <td class="when-1">{{ form.cause4_ask_why2 }}</td>
+            <td class="when-1">{{ form.cause5_ask_why2 }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 3" %}</th>
+            <td class="when-1">{{ form.cause1_ask_why3 }}</td>
+            <td class="when-1">{{ form.cause2_ask_why3 }}</td>
+            <td class="when-1">{{ form.cause3_ask_why3 }}</td>
+            <td class="when-1">{{ form.cause4_ask_why3 }}</td>
+            <td class="when-1">{{ form.cause5_ask_why3 }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 4" %}</th>
+            <td class="when-1">{{ form.cause1_ask_why4 }}</td>
+            <td class="when-1">{{ form.cause2_ask_why4 }}</td>
+            <td class="when-1">{{ form.cause3_ask_why4 }}</td>
+            <td class="when-1">{{ form.cause4_ask_why4 }}</td>
+            <td class="when-1">{{ form.cause5_ask_why4 }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 5" %}</th>
+            <td class="when-1">{{ form.cause1_ask_why5 }}</td>
+            <td class="when-1">{{ form.cause2_ask_why5 }}</td>
+            <td class="when-1">{{ form.cause3_ask_why5 }}</td>
+            <td class="when-1">{{ form.cause4_ask_why5 }}</td>
+            <td class="when-1">{{ form.cause5_ask_why5 }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D5 - D7 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="4">
+                {% trans "D5 - D7. Define, Implement and Verify the effectiveness of Permanent Corrective Actions" %}
+            </th>
+        </tr>
+        <tr>
+            <th colspan="4">{% trans "Long Term Corrective Actions" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="4">{{ form.permanent_corrective_actions }}</td>
+        </tr>
+
+        <tr>
+            <th class="when-1">{% trans "BreakPoint Batch Nr" %}</th>
+            <td class="when-1">{{ form.breakpoint_batch_number }}</td>
+            <th class="when-1">{% trans "BreakPoint Date at Customer" %}</th>
+            <td class="when-1">{{ form.breakpoint_at_customer_date }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D8 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D8. Systematic actions to prevent reoccurence" %}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Systematic Actions" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ form.systematic_actions }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
