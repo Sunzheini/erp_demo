@@ -13,7 +13,7 @@ TYPE_CHOICES_EN = (
     ('Corrective Action', 'Corrective Action'),
     ('Systematic Action', 'Systematic Action'),
     ('Improvement', 'Improvement'),
-    ('Task', 'task'),
+    ('Task', 'Task'),
 )
 
 STATUS_CHOICES_EN = (

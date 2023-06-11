@@ -63,10 +63,29 @@
                             <tr>
                                 <td>{{ current_object.type }}</td>
                                 <td>{{ current_object.scope }}</td>
-                                <td>{{ current_object.content_type }}</td>
-                                <td>{{ current_object.object_id }}</td>
+
+                                {% if current_object.content_type %}
+                                    <td>{{ current_object.content_type.name | capfirst }}</td>
+                                {% else %}
+                                    <td>Task</td>
+                                {% endif %}
+
+                                {% if current_object.content_object %}
+                                    <td>
+                                        <a class="table-link" href="{% url 'distribute show links' pk=current_object.content_object.pk slug=current_object.content_object.slug %}">
+                                            {{ current_object.content_object.name }}</a>
+                                    </td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+
                                 <td>{{ current_object.name }}</td>
-                                <td>{{ current_object.responsible }}</td>
+
+                                <td>
+                                    <a class="table-link" href="{% url 'show employee' pk=current_object.responsible.pk slug=current_object.responsible.slug %}">
+                                        {{ current_object.responsible.get_full_name }}</a>
+                                </td>
+
                                 <td>{{ current_object.target_date }}</td>
                                 <td>{{ current_object.comments }}</td>
                                 <td>{{ current_object.status }}</td>

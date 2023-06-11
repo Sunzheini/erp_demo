@@ -11,7 +11,7 @@ document_types_en = (
 document_types_bg = (
     ('All', 'Всички'),
     ('External', 'External'),
-    ('Policy', 'Policy'),
+    ('Policy', 'Политика'),
     ('Manual', 'Ръководство'),
     ('Procedure', 'Процедура'),
     ('Instruction', 'Инструкция'),

@@ -15,25 +15,18 @@
 {% block card_buttons %}
     <section class="card-buttons-section">
         <div class="all-card-buttons-container">
+
             <button class="card-btn" onClick="javascript:history.go(-1);">
                 <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
                 <span class="card-btn-desc">Go back to the document list</span>
             </button>
 
-            <button class="card-btn" onclick="location.href='{% url 'add action nonconformity' %}';">
-                <span class="card-btn-title">{% trans "Nonconformity Action" %}</span>
-                <span class="card-btn-desc">Add a new employee and define their properties</span>
-            </button>
+            <button class="card-btn card-btn-hidden"></button>
 
-            <button class="card-btn" onclick="location.href='{% url 'add action risk' %}';">
-                <span class="card-btn-title">{% trans "Risk Action" %}</span>
-                <span class="card-btn-desc">Add a new employee and define their properties</span>
-            </button>
+            <button class="card-btn card-btn-hidden"></button>
 
-            <button class="card-btn" onclick="location.href='{% url 'add action opportunity' %}';">
-                <span class="card-btn-title">{% trans "Opportunity Action" %}</span>
-                <span class="card-btn-desc">Add a new employee and define their properties</span>
-            </button>
+            <button class="card-btn card-btn-hidden"></button>
+
         </div>
     </section>
 {% endblock %}
@@ -45,7 +38,15 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">{% trans "Choose Action" %}</h2>
+                <h2 class="card-display-title">{% trans "Add Action to Reduce a Risk Value" %}</h2>
+                <form action="{% url 'add action risk' %}" method="post">
+                    <table class="table-form">
+                        {{ form }}
+                    </table>
+
+                    {% csrf_token %}
+                    <button class="form-button">{% trans "add this action" %}</button>
+                </form>
             </div>
 
         </div>

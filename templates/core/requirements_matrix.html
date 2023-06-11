@@ -50,7 +50,7 @@
                     {% csrf_token %}
                     <button name="req_choice" class="form-button">{% trans "filter" %}</button>
                 </form>
-                                <hr>
+                <hr>
 
                 <div style="display: none;" id="requirement_form" >
                     <form action="{% url 'requirements matrix' %}" method="post">

@@ -40,6 +40,15 @@
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "All Actions:" %}</h2>
 
+                <form action="{% url 'actions list' %}" method="post">
+                    <table class="table-form">
+                        {{ choice_form }}
+                    </table>
+                    {% csrf_token %}
+                    <button name="action_choice" class="form-button">{% trans "filter" %}</button>
+                </form>
+                <hr>
+
                 {% if all_objects %}
                     <div class="table-data-container">
                         <table class="table-data">
@@ -64,10 +73,29 @@
                                 <tr>
                                     <td>{{ action.type }}</td>
                                     <td>{{ action.scope }}</td>
-                                    <td>{{ action.content_type }}</td>
-                                    <td>{{ action.object_id }}</td>
+
+                                    {% if action.content_type %}
+                                        <td>{{ action.content_type.name | capfirst }}</td>
+                                    {% else %}
+                                        <td>Task</td>
+                                    {% endif %}
+
+                                    {% if action.content_object %}
+                                        <td>
+                                            <a class="table-link" href="{% url 'distribute show links' pk=action.content_object.pk slug=action.content_object.slug %}">
+                                                {{ action.content_object.name }}</a>
+                                        </td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+
                                     <td>{{ action.name }}</td>
-                                    <td>{{ action.responsible }}</td>
+
+                                    <td>
+                                        <a class="table-link" href="{% url 'show employee' pk=action.responsible.pk slug=action.responsible.slug %}">
+                                                {{ action.responsible.get_full_name }}</a>
+                                    </td>
+
                                     <td>{{ action.target_date }}</td>
                                     <td>{{ action.comments }}</td>
                                     <td>{{ action.status }}</td>

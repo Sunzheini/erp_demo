@@ -20,14 +20,17 @@
                 <span class="card-btn-desc">Add a new employee and define their properties</span>
             </button>
 
-            <button class="card-btn" onclick="location.href='{% url 'actions list' %}';">
-                <span class="card-btn-title">{% trans "Actions List" %}</span>
-                <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
+            <button class="card-btn" onclick="location.href='{% url 'add action task' %}';">
+                <span class="card-btn-title">{% trans "Add Task" %}</span>
+                <span class="card-btn-desc">Add a new employee and define their properties</span>
             </button>
 
             <button class="card-btn card-btn-hidden"></button>
 
-            <button class="card-btn card-btn-hidden"></button>
+            <button class="card-btn" onclick="location.href='{% url 'actions list' %}';">
+                <span class="card-btn-title">{% trans "Actions List" %}</span>
+                <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
+            </button>
         </div>
     </section>
 {% endblock %}

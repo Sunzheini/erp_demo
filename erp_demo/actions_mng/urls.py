@@ -53,7 +53,26 @@ urlpatterns = [
     ).delete_view, name='delete action'),
 
 
-    path('get_related_objects/<int:content_type_id>/', ActionsMngViews(
+
+    path('add-action-nonconformity/', ActionsMngViews(
         template_list, redirect_url, form_list, Action, files_are_used
-    ).get_related_objects_view, name='get_related_objects'),
+    ).create_view_nonconformity, name='add action nonconformity'),
+
+    path('add-action-risk/', ActionsMngViews(
+        template_list, redirect_url, form_list, Action, files_are_used
+    ).create_view_risk, name='add action risk'),
+
+    path('add-action-opportunity/', ActionsMngViews(
+        template_list, redirect_url, form_list, Action, files_are_used
+    ).create_view_opportunity, name='add action opportunity'),
+
+    path('add-action-task/', ActionsMngViews(
+        template_list, redirect_url, form_list, Action, files_are_used
+    ).create_view_task, name='add action task'),
+
+
+
+    path('distribute-show-links/<int:pk>/<slug:slug>/', ActionsMngViews(
+        template_list, redirect_url, form_list, Action, files_are_used
+    ).distribute_show_links, name='distribute show links'),
 ]
