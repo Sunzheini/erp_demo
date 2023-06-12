@@ -11,6 +11,7 @@ from erp_demo.interaction_mng.models import InteractionToDocuments, Interaction
 from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.newactions_mng.models import NewAction
 from erp_demo.nonconformity_mng.models import Nonconformity
 from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
@@ -47,6 +48,8 @@ class DatabaseManipulation:
         Trainings.objects.all().delete()
         Interaction.objects.all().delete()
         Resource.objects.all().delete()
+
+        NewAction.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()

@@ -87,6 +87,11 @@
   height: 24px;
 }
 
+.display-content-section .all-display-content-container .card-display .table-form td.multiple-select > select {
+  width: 100%;
+  height: 55px;
+}
+
 .display-content-section .all-display-content-container .card-display .table-form td > textarea {
   width: 100%;
   height: 48px;

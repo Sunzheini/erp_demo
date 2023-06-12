@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from erp_demo.custom_logic.translator import translate_to_maimunica
 from erp_demo.customer_mng.models import Customer
 from erp_demo.hr_mng.models import Employee
+from erp_demo.newactions_mng.models import NewAction
 
 
 class Nonconformity(models.Model):
@@ -86,12 +87,18 @@ class Nonconformity(models.Model):
 # D3 - Short Term (Containment and Correction) Actions
 # -----------------------------------------------------------------------------
 
-    containment_actions = models.TextField(
-        blank=True, null=True,
+    containment_actions = models.ManyToManyField(
+        NewAction,
+        related_name='containment_actions',
+        blank=True,
+        through='ContainmentToActions',
     )
 
-    correction_actions = models.TextField(
-        blank=True, null=True,
+    correction_actions = models.ManyToManyField(
+        NewAction,
+        related_name='correction_actions',
+        blank=True,
+        through='CorrectionToActions',
     )
 
 # D4 - Root Cause Analysis
@@ -250,8 +257,11 @@ class Nonconformity(models.Model):
 # D5 - D7 - Define, Implement and Verify the effectiveness of Permanent Corrective Actions
 # -----------------------------------------------------------------------------
 
-    permanent_corrective_actions = models.TextField(
-        blank=True, null=True,
+    permanent_corrective_actions = models.ManyToManyField(
+        NewAction,
+        related_name='permanent_corrective_actions',
+        blank=True,
+        through='PermanentToActions',
     )
 
     breakpoint_batch_number = models.CharField(
@@ -266,8 +276,11 @@ class Nonconformity(models.Model):
 # D8 - Systematic actions to prevent recurrence
 # -----------------------------------------------------------------------------
 
-    systematic_actions = models.TextField(
-        blank=True, null=True,
+    systematic_actions = models.ManyToManyField(
+        NewAction,
+        related_name='systematic_actions',
+        blank=True,
+        through='SystematicToActions',
     )
 
 # -----------------------------------------------------------------------------
@@ -277,6 +290,22 @@ class Nonconformity(models.Model):
         editable=False,
     )
 
+    @property
+    def get_related_containment(self):
+        return ContainmentToActions.objects.filter(nonconformity_id=self)
+
+    @property
+    def get_related_corrections(self):
+        return ContainmentToActions.objects.filter(nonconformity_id=self)
+
+    @property
+    def get_related_permanent(self):
+        return ContainmentToActions.objects.filter(nonconformity_id=self)
+
+    @property
+    def get_related_systematic(self):
+        return ContainmentToActions.objects.filter(nonconformity_id=self)
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
@@ -284,3 +313,59 @@ class Nonconformity(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class ContainmentToActions(models.Model):
+    nonconformity_id = models.ForeignKey(
+        Nonconformity,
+        on_delete=models.CASCADE,
+    )
+    action_id = models.ForeignKey(
+        NewAction,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.action_id}"
+
+
+class CorrectionToActions(models.Model):
+    nonconformity_id = models.ForeignKey(
+        Nonconformity,
+        on_delete=models.CASCADE,
+    )
+    action_id = models.ForeignKey(
+        NewAction,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.action_id}"
+
+
+class PermanentToActions(models.Model):
+    nonconformity_id = models.ForeignKey(
+        Nonconformity,
+        on_delete=models.CASCADE,
+    )
+    action_id = models.ForeignKey(
+        NewAction,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.action_id}"
+
+
+class SystematicToActions(models.Model):
+    nonconformity_id = models.ForeignKey(
+        Nonconformity,
+        on_delete=models.CASCADE,
+    )
+    action_id = models.ForeignKey(
+        NewAction,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.action_id}"

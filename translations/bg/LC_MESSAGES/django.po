@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 11:14+0300\n"
+"POT-Creation-Date: 2023-06-12 15:11+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,172 +18,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\core\base.html:40
-msgid "Main Page"
-msgstr "Начало"
+#: .\erp_demo\actions_mng\forms.py:84 .\erp_demo\actions_mng\forms.py:133
+#: .\erp_demo\actions_mng\forms.py:182 .\erp_demo\actions_mng\forms.py:302
+#: .\erp_demo\actions_mng\forms.py:351 .\erp_demo\actions_mng\forms.py:400
+msgid "Object ID"
+msgstr ""
 
-#: .\templates\core\base.html:45
-msgid "Org chart"
-msgstr "Орг структура"
+#: .\erp_demo\actions_mng\forms.py:87 .\erp_demo\actions_mng\forms.py:136
+#: .\erp_demo\actions_mng\forms.py:185 .\erp_demo\actions_mng\forms.py:305
+#: .\erp_demo\actions_mng\forms.py:354 .\erp_demo\actions_mng\forms.py:403
+msgid "Select a valid object ID"
+msgstr ""
 
-#: .\templates\core\base.html:49
-msgid "Manage DB"
-msgstr "База Данни"
+#: .\erp_demo\actions_mng\forms.py:92 .\erp_demo\actions_mng\forms.py:141
+#: .\erp_demo\actions_mng\forms.py:190 .\erp_demo\actions_mng\forms.py:310
+#: .\erp_demo\actions_mng\forms.py:359 .\erp_demo\actions_mng\forms.py:408
+#: .\templates\actions_mng\actions_list.html:59
+#: .\templates\actions_mng\show_action.html:49
+msgid "Content Type"
+msgstr ""
 
-#: .\templates\core\base.html:53 .\templates\core\logs.html:42
-msgid "Logs"
-msgstr "Логове"
+#: .\erp_demo\actions_mng\forms.py:95 .\erp_demo\actions_mng\forms.py:144
+#: .\erp_demo\actions_mng\forms.py:193 .\erp_demo\actions_mng\forms.py:313
+#: .\erp_demo\actions_mng\forms.py:362 .\erp_demo\actions_mng\forms.py:411
+msgid "Select a valid content type"
+msgstr ""
 
-#: .\templates\core\base.html:57
-msgid "My Tasks"
-msgstr "Мои Задачи"
+#: .\templates\actions_mng\actions_list.html:41
+#: .\templates\newactions_mng\newactions_list.html:41
+msgid "All Actions:"
+msgstr "Всички Действия:"
 
-#: .\templates\core\base.html:61 .\templates\core\favorites.html:42
-#: .\templates\hr_mng\training_matrix.html:47
-msgid "Favorites"
-msgstr "Любими"
+#: .\templates\actions_mng\actions_list.html:48
+#: .\templates\core\requirements_matrix.html:51
+#: .\templates\dox_mng\document_list.html:48
+#: .\templates\hr_mng\employee_list.html:48
+msgid "filter"
+msgstr "филтър"
 
-#: .\templates\core\base.html:91
-msgid "log out"
-msgstr "изход"
-
-#: .\templates\core\base.html:97
-msgid "Welcome"
-msgstr "Здравей"
-
-#: .\templates\core\base.html:110
-msgid "log in"
-msgstr "вход"
-
-#: .\templates\core\base.html:116
-msgid "guest"
-msgstr "гост"
-
-#: .\templates\core\base.html:148 .\templates\core\requirements_matrix.html:72
-#: .\templates\core\show_requirement.html:47
-msgid "Organization"
-msgstr "Организация"
-
-#: .\templates\core\base.html:152
-msgid "Personnel and Trainings"
-msgstr "Персонал и Обучения"
-
-#: .\templates\core\base.html:156
-msgid "Documented Information"
-msgstr "Документи"
-
-#: .\templates\core\base.html:163
-msgid "Business Processes"
-msgstr "Бизнес Процеси"
-
-#: .\templates\core\base.html:171
-msgid "Interactions"
-msgstr "Взаимодействия"
-
-#: .\templates\core\base.html:175
-msgid "Resources"
-msgstr "Ресурси"
-
-#: .\templates\core\base.html:179
-msgid "Risks"
-msgstr "Рискове"
-
-#: .\templates\core\base.html:183
-msgid "Improvements"
-msgstr "Подобрения"
-
-#: .\templates\core\base.html:187
-msgid "KPIs"
-msgstr "KPI"
-
-#: .\templates\core\base.html:195
-msgid "Operational Processes"
-msgstr "Оперативни Процеси"
-
-#: .\templates\core\base.html:204
-msgid "Customers"
-msgstr "Клиенти"
-
-#: .\templates\core\base.html:209
-msgid "Requirements Matrix"
-msgstr "Матрица Изисквания"
-
-#: .\templates\core\base.html:214
-msgid "Nonconformities"
-msgstr "Несъответствия"
-
-#: .\templates\core\base.html:219 .\templates\core\requirements_matrix.html:82
-#: .\templates\customer_mng\customer_list.html:53
-#: .\templates\dox_mng\document_list.html:69
-#: .\templates\hr_mng\employee_list.html:66
-#: .\templates\hr_mng\training_list.html:55
-#: .\templates\interaction_mng\interaction_list.html:53
-#: .\templates\kpi_mng\kpi_list.html:57
-#: .\templates\opportunity_mng\opportunity_list.html:51
-#: .\templates\organization_mng\org_list.html:56
-#: .\templates\process_mng\process_mng_index.html:115
-#: .\templates\resource_mng\assign_resources.html:85
-#: .\templates\resource_mng\assign_resources.html:135
-#: .\templates\resource_mng\resource_list.html:54
-#: .\templates\risk_mng\risk_list.html:55
-msgid "Actions"
-msgstr "Действия"
-
-#: .\templates\core\base.html:236 .\templates\tools\tools_index.html:42
-msgid "AI Tools"
-msgstr "AI Инструменти"
-
-#: .\templates\core\delete_requirement.html:41
-msgid "Delete Requirement"
-msgstr "Изтрий Изискване"
-
-#: .\templates\core\delete_requirement.html:49
-#: .\templates\core\favorites.html:60 .\templates\core\favorites.html:93
-#: .\templates\core\manage_db_all.html:54 .\templates\core\my_tasks.html:59
-#: .\templates\core\show_requirement.html:55
-#: .\templates\core\show_requirement.html:79
-#: .\templates\customer_mng\delete_customer.html:49
-#: .\templates\dox_mng\show_document.html:55
-#: .\templates\dox_mng\show_document.html:84
-#: .\templates\hr_mng\show_employee.html:54
-#: .\templates\hr_mng\show_employee.html:76
-#: .\templates\hr_mng\show_training.html:52
-#: .\templates\hr_mng\show_training.html:64
-#: .\templates\interaction_mng\show_interaction.html:54
-#: .\templates\interaction_mng\show_interaction.html:86
-#: .\templates\kpi_mng\show_kpi.html:58 .\templates\kpi_mng\show_kpi.html:83
-#: .\templates\opportunity_mng\show_opportunity.html:51
-#: .\templates\opportunity_mng\show_opportunity.html:63
-#: .\templates\organization_mng\delete_org.html:49
-#: .\templates\process_mng\show_process.html:53
-#: .\templates\process_mng\show_process.html:68
-#: .\templates\process_mng\show_process_step.html:59
-#: .\templates\process_mng\show_process_step.html:88
-#: .\templates\resource_mng\show_resource.html:53
-#: .\templates\resource_mng\show_resource.html:65
-#: .\templates\risk_mng\show_risk.html:55
-#: .\templates\risk_mng\show_risk.html:71
-#: .\venv\Lib\site-packages\django\forms\formsets.py:499
-msgid "Delete"
-msgstr "Изтрий"
-
-#: .\templates\core\edit_requirement.html:41
-msgid "Edit Requirement"
-msgstr "Промени Изискване"
-
-#: .\templates\core\edit_requirement.html:49
-#: .\templates\hr_mng\edit_employee.html:49
-#: .\templates\hr_mng\edit_training.html:48
-#: .\templates\interaction_mng\edit_interaction.html:49
-#: .\templates\kpi_mng\edit_kpi.html:49
-#: .\templates\opportunity_mng\edit_opportunity.html:49
-#: .\templates\process_mng\edit_process.html:49
-#: .\templates\process_mng\edit_process_step.html:48
-#: .\templates\resource_mng\edit_resource.html:49
-#: .\templates\risk_mng\edit_risk.html:49
-msgid "submit"
-msgstr "потвърди"
-
+#: .\templates\actions_mng\actions_list.html:57
+#: .\templates\actions_mng\show_action.html:47
 #: .\templates\core\favorites.html:51 .\templates\core\my_tasks.html:50
 #: .\templates\dox_mng\document_list.html:58
 #: .\templates\dox_mng\show_document.html:47
@@ -193,15 +67,20 @@ msgstr "потвърди"
 msgid "Type"
 msgstr "Тип"
 
-#: .\templates\core\favorites.html:52 .\templates\core\my_tasks.html:51
-#: .\templates\dox_mng\document_list.html:59
-#: .\templates\dox_mng\show_document.html:48
-#: .\templates\process_mng\process_mng_index.html:107
-#: .\templates\process_mng\show_process.html:47
-#: .\templates\process_mng\show_process_step.html:53
-msgid "Number"
-msgstr "Номер"
+#: .\templates\actions_mng\actions_list.html:58
+#: .\templates\actions_mng\show_action.html:48
+#: .\templates\newactions_mng\newactions_list.html:48
+#: .\templates\newactions_mng\show_newaction.html:47
+msgid "Scope"
+msgstr "Обхват"
 
+#: .\templates\actions_mng\actions_list.html:60
+#: .\templates\actions_mng\show_action.html:50
+msgid "Object Id"
+msgstr "Обект Id"
+
+#: .\templates\actions_mng\actions_list.html:61
+#: .\templates\actions_mng\show_action.html:51
 #: .\templates\core\favorites.html:53 .\templates\core\my_tasks.html:52
 #: .\templates\customer_mng\customer_list.html:48
 #: .\templates\dox_mng\document_list.html:60
@@ -209,6 +88,8 @@ msgstr "Номер"
 #: .\templates\hr_mng\show_training.html:48
 #: .\templates\hr_mng\training_list.html:49
 #: .\templates\hr_mng\training_matrix.html:51
+#: .\templates\newactions_mng\newactions_list.html:49
+#: .\templates\newactions_mng\show_newaction.html:48
 #: .\templates\organization_mng\org_list.html:48
 #: .\templates\process_mng\blank_turtle.html:40
 #: .\templates\process_mng\blank_turtle.html:93
@@ -223,17 +104,340 @@ msgstr "Номер"
 msgid "Name"
 msgstr "Име"
 
+#: .\templates\actions_mng\actions_list.html:62
+#: .\templates\actions_mng\show_action.html:52
+#: .\templates\newactions_mng\newactions_list.html:50
+#: .\templates\newactions_mng\show_newaction.html:49
+#: .\templates\process_mng\blank_flowchart.html:62
+msgid "Responsible"
+msgstr "Отговорен"
+
+#: .\templates\actions_mng\actions_list.html:63
+#: .\templates\actions_mng\show_action.html:53
+#: .\templates\newactions_mng\newactions_list.html:51
+#: .\templates\newactions_mng\show_newaction.html:50
+msgid "Target Date"
+msgstr "Целeва Дата"
+
+#: .\templates\actions_mng\actions_list.html:64
+#: .\templates\actions_mng\show_action.html:54
+#: .\templates\newactions_mng\newactions_list.html:52
+#: .\templates\newactions_mng\show_newaction.html:51
+msgid "Comments"
+msgstr "Коментари"
+
+#: .\templates\actions_mng\actions_list.html:65
+#: .\templates\actions_mng\show_action.html:55
+#: .\templates\core\favorites.html:55
+#: .\templates\dox_mng\document_list.html:62
+#: .\templates\dox_mng\show_document.html:51
+#: .\templates\newactions_mng\newactions_list.html:53
+#: .\templates\newactions_mng\show_newaction.html:52
+msgid "Status"
+msgstr "Статус"
+
+#: .\templates\actions_mng\actions_list.html:67 .\templates\core\base.html:222
+#: .\templates\core\requirements_matrix.html:82
+#: .\templates\customer_mng\customer_list.html:53
+#: .\templates\dox_mng\document_list.html:69
+#: .\templates\hr_mng\employee_list.html:66
+#: .\templates\hr_mng\show_employee.html:52
+#: .\templates\hr_mng\training_list.html:55
+#: .\templates\interaction_mng\interaction_list.html:53
+#: .\templates\kpi_mng\kpi_list.html:57
+#: .\templates\newactions_mng\newactions_list.html:55
+#: .\templates\nonconformity_mng\nonconformity_list.html:61
+#: .\templates\opportunity_mng\opportunity_list.html:52
+#: .\templates\organization_mng\org_list.html:56
+#: .\templates\process_mng\process_mng_index.html:115
+#: .\templates\resource_mng\assign_resources.html:85
+#: .\templates\resource_mng\assign_resources.html:135
+#: .\templates\resource_mng\resource_list.html:54
+#: .\templates\risk_mng\risk_list.html:56
+msgid "Actions"
+msgstr "Действия"
+
+#: .\templates\actions_mng\actions_mng_index.html:19
+#: .\templates\newactions_mng\add_newaction.html:39
+#: .\templates\newactions_mng\newactions_mng_index.html:19
+msgid "Add Action"
+msgstr "Добави Действие"
+
+#: .\templates\actions_mng\actions_mng_index.html:24
+#: .\templates\actions_mng\add_action_task.html:41
+msgid "Add Task"
+msgstr "Добави Задача"
+
+#: .\templates\actions_mng\actions_mng_index.html:31
+#: .\templates\newactions_mng\newactions_mng_index.html:24
+msgid "Actions List"
+msgstr "Списък Действия"
+
+#: .\templates\actions_mng\add_action.html:24
+msgid "Nonconformity Action"
+msgstr "Действие за Несъответствие"
+
+#: .\templates\actions_mng\add_action.html:29
+msgid "Risk Action"
+msgstr "Действие за Риск"
+
+#: .\templates\actions_mng\add_action.html:34
+msgid "Opportunity Action"
+msgstr "Действие за Възможност"
+
+#: .\templates\actions_mng\add_action.html:48
+msgid "Choose Action"
+msgstr "Избери Действие"
+
+#: .\templates\actions_mng\add_action_nonconformity.html:41
+msgid "Add Action for a Nonconformity"
+msgstr "Добави Действие за Несъответствие"
+
+#: .\templates\actions_mng\add_action_nonconformity.html:48
+#: .\templates\actions_mng\add_action_opportunity.html:48
+#: .\templates\actions_mng\add_action_risk.html:48
+#: .\templates\newactions_mng\add_newaction.html:46
+msgid "add this action"
+msgstr "добави това действие"
+
+#: .\templates\actions_mng\add_action_opportunity.html:41
+msgid "Add Action to Take Advantage of an Opportunity for Improvement"
+msgstr "Добави Действие за Постигане на Възможност за Подобрение"
+
+#: .\templates\actions_mng\add_action_risk.html:41
+msgid "Add Action to Reduce a Risk Value"
+msgstr "Добави Действие за Понижаване на Риск"
+
+#: .\templates\actions_mng\add_action_task.html:48
+msgid "add this task"
+msgstr "добави тази задача"
+
+#: .\templates\actions_mng\delete_action.html:41
+#: .\templates\newactions_mng\delete_newaction.html:41
+msgid "Delete Action"
+msgstr "Изтрий Действие"
+
+#: .\templates\actions_mng\delete_action.html:49
+#: .\templates\dox_mng\delete_document.html:49
+#: .\templates\hr_mng\delete_employee.html:49
+#: .\templates\hr_mng\delete_training.html:47
+#: .\templates\interaction_mng\delete_interaction.html:49
+#: .\templates\kpi_mng\delete_kpi.html:49
+#: .\templates\newactions_mng\delete_newaction.html:49
+#: .\templates\nonconformity_mng\delete_nonconformity.html:55
+#: .\templates\opportunity_mng\delete_opportunity.html:49
+#: .\templates\process_mng\delete_process.html:48
+#: .\templates\process_mng\delete_process_step.html:48
+#: .\templates\resource_mng\delete_resource.html:49
+#: .\templates\risk_mng\delete_risk.html:49
+msgid "delete"
+msgstr "изтрий"
+
+#: .\templates\actions_mng\edit_action.html:41
+#: .\templates\newactions_mng\edit_newaction.html:41
+msgid "Edit Action"
+msgstr "Промени Действие"
+
+#: .\templates\actions_mng\edit_action.html:49
+#: .\templates\core\edit_requirement.html:49
+#: .\templates\hr_mng\edit_employee.html:49
+#: .\templates\hr_mng\edit_training.html:48
+#: .\templates\interaction_mng\edit_interaction.html:49
+#: .\templates\kpi_mng\edit_kpi.html:49
+#: .\templates\newactions_mng\edit_newaction.html:49
+#: .\templates\nonconformity_mng\edit_nonconformity.html:55
+#: .\templates\opportunity_mng\edit_opportunity.html:49
+#: .\templates\process_mng\edit_process.html:49
+#: .\templates\process_mng\edit_process_step.html:48
+#: .\templates\resource_mng\edit_resource.html:49
+#: .\templates\risk_mng\edit_risk.html:49
+msgid "submit"
+msgstr "потвърди"
+
+#: .\templates\actions_mng\show_action.html:41
+#: .\templates\newactions_mng\show_newaction.html:41
+msgid "Show Action"
+msgstr "Покажи Действие"
+
+#: .\templates\actions_mng\show_action.html:57
+#: .\templates\actions_mng\show_action.html:94
+#: .\templates\core\favorites.html:59 .\templates\core\favorites.html:91
+#: .\templates\core\my_tasks.html:58 .\templates\core\show_requirement.html:54
+#: .\templates\core\show_requirement.html:77
+#: .\templates\dox_mng\show_document.html:54
+#: .\templates\dox_mng\show_document.html:82
+#: .\templates\hr_mng\show_employee.html:54
+#: .\templates\hr_mng\show_employee.html:84
+#: .\templates\hr_mng\show_training.html:51
+#: .\templates\hr_mng\show_training.html:62
+#: .\templates\interaction_mng\show_interaction.html:53
+#: .\templates\interaction_mng\show_interaction.html:84
+#: .\templates\kpi_mng\show_kpi.html:57 .\templates\kpi_mng\show_kpi.html:81
+#: .\templates\newactions_mng\show_newaction.html:54
+#: .\templates\newactions_mng\show_newaction.html:74
+#: .\templates\opportunity_mng\show_opportunity.html:50
+#: .\templates\opportunity_mng\show_opportunity.html:61
+#: .\templates\process_mng\show_process.html:52
+#: .\templates\process_mng\show_process.html:66
+#: .\templates\process_mng\show_process_step.html:58
+#: .\templates\process_mng\show_process_step.html:85
+#: .\templates\resource_mng\show_resource.html:52
+#: .\templates\resource_mng\show_resource.html:63
+#: .\templates\risk_mng\show_risk.html:54
+#: .\templates\risk_mng\show_risk.html:69
+msgid "Edit"
+msgstr "Промени"
+
+#: .\templates\actions_mng\show_action.html:58
+#: .\templates\actions_mng\show_action.html:96
+#: .\templates\core\delete_requirement.html:49
+#: .\templates\core\favorites.html:60 .\templates\core\favorites.html:93
+#: .\templates\core\manage_db_all.html:54 .\templates\core\my_tasks.html:59
+#: .\templates\core\show_requirement.html:55
+#: .\templates\core\show_requirement.html:79
+#: .\templates\customer_mng\delete_customer.html:49
+#: .\templates\dox_mng\show_document.html:55
+#: .\templates\dox_mng\show_document.html:84
+#: .\templates\hr_mng\show_employee.html:55
+#: .\templates\hr_mng\show_employee.html:86
+#: .\templates\hr_mng\show_training.html:52
+#: .\templates\hr_mng\show_training.html:64
+#: .\templates\interaction_mng\show_interaction.html:54
+#: .\templates\interaction_mng\show_interaction.html:86
+#: .\templates\kpi_mng\show_kpi.html:58 .\templates\kpi_mng\show_kpi.html:83
+#: .\templates\newactions_mng\show_newaction.html:55
+#: .\templates\newactions_mng\show_newaction.html:76
+#: .\templates\opportunity_mng\show_opportunity.html:51
+#: .\templates\opportunity_mng\show_opportunity.html:63
+#: .\templates\organization_mng\delete_org.html:50
+#: .\templates\process_mng\show_process.html:53
+#: .\templates\process_mng\show_process.html:68
+#: .\templates\process_mng\show_process_step.html:59
+#: .\templates\process_mng\show_process_step.html:88
+#: .\templates\resource_mng\show_resource.html:53
+#: .\templates\resource_mng\show_resource.html:65
+#: .\templates\risk_mng\show_risk.html:55
+#: .\templates\risk_mng\show_risk.html:71
+#: .\venv\Lib\site-packages\django\forms\formsets.py:499
+msgid "Delete"
+msgstr "Изтрий"
+
+#: .\templates\core\base.html:43
+msgid "Main Page"
+msgstr "Начало"
+
+#: .\templates\core\base.html:48
+msgid "Org chart"
+msgstr "Орг структура"
+
+#: .\templates\core\base.html:52
+msgid "Manage DB"
+msgstr "База Данни"
+
+#: .\templates\core\base.html:56 .\templates\core\logs.html:42
+msgid "Logs"
+msgstr "Логове"
+
+#: .\templates\core\base.html:60
+msgid "Approval"
+msgstr "Одобрение"
+
+#: .\templates\core\base.html:64 .\templates\core\favorites.html:42
+#: .\templates\hr_mng\training_matrix.html:47
+msgid "Favorites"
+msgstr "Любими"
+
+#: .\templates\core\base.html:94
+msgid "log out"
+msgstr "изход"
+
+#: .\templates\core\base.html:100
+msgid "Welcome"
+msgstr "Здравей"
+
+#: .\templates\core\base.html:113
+msgid "log in"
+msgstr "вход"
+
+#: .\templates\core\base.html:119
+msgid "guest"
+msgstr "гост"
+
+#: .\templates\core\base.html:151 .\templates\core\requirements_matrix.html:72
+#: .\templates\core\show_requirement.html:47
+msgid "Organization"
+msgstr "Организация"
+
+#: .\templates\core\base.html:155
+msgid "Personnel and Trainings"
+msgstr "Персонал и Обучения"
+
+#: .\templates\core\base.html:159
+msgid "Documented Information"
+msgstr "Документи"
+
+#: .\templates\core\base.html:166
+msgid "Business Processes"
+msgstr "Бизнес Процеси"
+
+#: .\templates\core\base.html:174
+msgid "Interactions"
+msgstr "Взаимодействия"
+
+#: .\templates\core\base.html:178
+msgid "Resources"
+msgstr "Ресурси"
+
+#: .\templates\core\base.html:182
+msgid "Risks"
+msgstr "Рискове"
+
+#: .\templates\core\base.html:186
+msgid "Improvements"
+msgstr "Подобрения"
+
+#: .\templates\core\base.html:190
+msgid "KPIs"
+msgstr "KPI"
+
+#: .\templates\core\base.html:198
+msgid "Operational Processes"
+msgstr "Оперативни Процеси"
+
+#: .\templates\core\base.html:207
+msgid "Customers"
+msgstr "Клиенти"
+
+#: .\templates\core\base.html:212
+msgid "Requirements Matrix"
+msgstr "Матрица Изисквания"
+
+#: .\templates\core\base.html:217
+msgid "Nonconformities"
+msgstr "Несъответствия"
+
+#: .\templates\core\delete_requirement.html:41
+msgid "Delete Requirement"
+msgstr "Изтрий Изискване"
+
+#: .\templates\core\edit_requirement.html:41
+msgid "Edit Requirement"
+msgstr "Промени Изискване"
+
+#: .\templates\core\favorites.html:52 .\templates\core\my_tasks.html:51
+#: .\templates\dox_mng\document_list.html:59
+#: .\templates\dox_mng\show_document.html:48
+#: .\templates\process_mng\process_mng_index.html:107
+#: .\templates\process_mng\show_process.html:47
+#: .\templates\process_mng\show_process_step.html:53
+msgid "Number"
+msgstr "Номер"
+
 #: .\templates\core\favorites.html:54 .\templates\core\my_tasks.html:53
 #: .\templates\dox_mng\document_list.html:61
 #: .\templates\dox_mng\show_document.html:50
 msgid "Revision"
 msgstr "Ревизия"
-
-#: .\templates\core\favorites.html:55
-#: .\templates\dox_mng\document_list.html:62
-#: .\templates\dox_mng\show_document.html:51
-msgid "Status"
-msgstr "Статус"
 
 #: .\templates\core\favorites.html:56 .\templates\core\my_tasks.html:56
 #: .\templates\dox_mng\document_list.html:63
@@ -258,7 +462,10 @@ msgstr "Собственик"
 #: .\templates\index.html:308 .\templates\index.html:324
 #: .\templates\index.html:333 .\templates\index.html:349
 #: .\templates\index.html:358 .\templates\index.html:374
-#: .\templates\index.html:383
+#: .\templates\index.html:383 .\templates\index.html:399
+#: .\templates\index.html:408 .\templates\index.html:424
+#: .\templates\index.html:433 .\templates\index.html:449
+#: .\templates\index.html:458
 msgid "Show"
 msgstr "Покажи"
 
@@ -270,31 +477,6 @@ msgstr "Покажи"
 #: .\templates\dox_mng\show_document.html:76
 msgid "Link"
 msgstr "Линк"
-
-#: .\templates\core\favorites.html:59 .\templates\core\favorites.html:91
-#: .\templates\core\my_tasks.html:58 .\templates\core\show_requirement.html:54
-#: .\templates\core\show_requirement.html:77
-#: .\templates\dox_mng\show_document.html:54
-#: .\templates\dox_mng\show_document.html:82
-#: .\templates\hr_mng\show_employee.html:53
-#: .\templates\hr_mng\show_employee.html:74
-#: .\templates\hr_mng\show_training.html:51
-#: .\templates\hr_mng\show_training.html:62
-#: .\templates\interaction_mng\show_interaction.html:53
-#: .\templates\interaction_mng\show_interaction.html:84
-#: .\templates\kpi_mng\show_kpi.html:57 .\templates\kpi_mng\show_kpi.html:81
-#: .\templates\opportunity_mng\show_opportunity.html:50
-#: .\templates\opportunity_mng\show_opportunity.html:61
-#: .\templates\process_mng\show_process.html:52
-#: .\templates\process_mng\show_process.html:66
-#: .\templates\process_mng\show_process_step.html:58
-#: .\templates\process_mng\show_process_step.html:85
-#: .\templates\resource_mng\show_resource.html:52
-#: .\templates\resource_mng\show_resource.html:63
-#: .\templates\risk_mng\show_risk.html:54
-#: .\templates\risk_mng\show_risk.html:69
-msgid "Edit"
-msgstr "Промени"
 
 #: .\templates\core\favorites.html:61
 #: .\templates\dox_mng\document_list.html:71
@@ -410,12 +592,6 @@ msgstr "Покажи / Скрий Формата"
 msgid "Requirements matrix"
 msgstr "Матрица на изискванията"
 
-#: .\templates\core\requirements_matrix.html:51
-#: .\templates\dox_mng\document_list.html:48
-#: .\templates\hr_mng\employee_list.html:48
-msgid "filter"
-msgstr "филтър"
-
 #: .\templates\core\requirements_matrix.html:57
 msgid "Requirement Creation Form:"
 msgstr "Форма за създаване на изискване:"
@@ -465,6 +641,112 @@ msgstr "Покрито от"
 msgid "Show requirement"
 msgstr "Покажи изискване"
 
+#: .\templates\custom_forms\custom_nonconformity_form.html:8
+msgid "D0. general Information"
+msgstr "D0. Обща информация"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:43
+msgid "D1. Problem Definition"
+msgstr "D1. Дефиниция на проблема"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:62
+msgid "D2. Form a Team"
+msgstr "D2. Формиране на екип"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:65
+msgid "Nonconformity Owner"
+msgstr "Отг. Несъответствие"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:66
+msgid "Additional Team Members"
+msgstr "Членове на екипа"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:81
+msgid "D3. Short Term (Containment and Correction) Actions"
+msgstr "D3. Краткосрочни (Задържащи и Корекции) Действия"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:84
+msgid "Containment Actions"
+msgstr "Задържащи действия"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:85
+msgid "Corrections"
+msgstr "Корекции"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:100
+msgid "D4. Root Cause Analysis"
+msgstr "D4. Анализ на Първопричините"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:104
+msgid "Root Cause 1"
+msgstr "Първопричина 1"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:105
+msgid "Root Cause 2"
+msgstr "Първопричина 2"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:106
+msgid "Root Cause 3"
+msgstr "Първопричина 3"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:107
+msgid "Root Cause 4"
+msgstr "Първопричина 4"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:108
+msgid "Root Cause 5"
+msgstr "Първопричина 5"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:113
+msgid "Possible Root Cause"
+msgstr "Възможна Първопричина"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:121
+msgid "Ask Why 1"
+msgstr "Защо 1"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:129
+msgid "Ask Why 2"
+msgstr "Защо 2"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:137
+msgid "Ask Why 3"
+msgstr "Защо 3"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:145
+msgid "Ask Why 4"
+msgstr "Защо 4"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:153
+msgid "Ask Why 5"
+msgstr "Защо 5"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:168
+msgid ""
+"D5 - D7. Define, Implement and Verify the effectiveness of Permanent "
+"Corrective Actions"
+msgstr "D5 - D7. Дефиниране, Изпълнение и Проверка на ефективността на Коригиращите Действия"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:172
+msgid "Long Term Corrective Actions"
+msgstr "Дългосрочни Кориг. Действия"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:181
+msgid "BreakPoint Batch Nr"
+msgstr "BreakPoint Nr Партида"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:183
+msgid "BreakPoint Date at Customer"
+msgstr "BreakPoint Дата при Клиент"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:193
+msgid "D8. Systematic actions to prevent reoccurence"
+msgstr "D8. Систематични действия за предотвратяване"
+
+#: .\templates\custom_forms\custom_nonconformity_form.html:196
+msgid "Systematic Actions"
+msgstr "Систематични Действия"
+
 #: .\templates\customer_mng\add_customer.html:42
 #: .\templates\customer_mng\customer_mng_index.html:28
 msgid "Add a new customer"
@@ -473,7 +755,7 @@ msgstr "Добави нов клиент"
 #: .\templates\customer_mng\add_customer.html:51
 #: .\templates\customer_mng\edit_customer.html:50
 #: .\templates\organization_mng\add_org.html:51
-#: .\templates\organization_mng\edit_org.html:50
+#: .\templates\organization_mng\edit_org.html:51
 msgid "Save"
 msgstr "Запази"
 
@@ -531,19 +813,6 @@ msgstr "добави този документ"
 #: .\templates\dox_mng\delete_document.html:41
 msgid "Delete Document"
 msgstr "Изтрий Документ"
-
-#: .\templates\dox_mng\delete_document.html:49
-#: .\templates\hr_mng\delete_employee.html:49
-#: .\templates\hr_mng\delete_training.html:47
-#: .\templates\interaction_mng\delete_interaction.html:49
-#: .\templates\kpi_mng\delete_kpi.html:49
-#: .\templates\opportunity_mng\delete_opportunity.html:49
-#: .\templates\process_mng\delete_process.html:48
-#: .\templates\process_mng\delete_process_step.html:48
-#: .\templates\resource_mng\delete_resource.html:49
-#: .\templates\risk_mng\delete_risk.html:49
-msgid "delete"
-msgstr "изтрий"
 
 #: .\templates\dox_mng\document_list.html:41
 msgid "Document list"
@@ -691,6 +960,8 @@ msgstr "Име на Процес"
 #: .\templates\index.html:262 .\templates\index.html:287
 #: .\templates\index.html:312 .\templates\index.html:337
 #: .\templates\index.html:362 .\templates\index.html:387
+#: .\templates\index.html:412 .\templates\index.html:437
+#: .\templates\index.html:462
 msgid "Nothing found"
 msgstr "Нищо не е открито"
 
@@ -748,6 +1019,18 @@ msgstr "KPI Име"
 #: .\templates\resource_mng\show_resource.html:48
 msgid "Resource Name"
 msgstr "Име на Ресурс"
+
+#: .\templates\index.html:398
+msgid "Requirement Description"
+msgstr "Описание на Изискване"
+
+#: .\templates\index.html:423
+msgid "Nonconformity Description"
+msgstr "Описание на Несъответствие"
+
+#: .\templates\index.html:448
+msgid "Action Description"
+msgstr "Описание на Действие"
 
 #: .\templates\interaction_mng\add_interaction.html:41
 #: .\templates\interaction_mng\interaction_mng_index.html:25
@@ -908,6 +1191,78 @@ msgstr "Списък KPI"
 msgid "Show KPI"
 msgstr "Покажи KPI"
 
+#: .\templates\nonconformity_mng\add_nonconformity.html:47
+msgid "Add Nonconformity - 8D Form"
+msgstr "Добави Несъответствие - 8D Форма"
+
+#: .\templates\nonconformity_mng\add_nonconformity.html:53
+msgid "add this nonconformity"
+msgstr "добави това несъответствие"
+
+#: .\templates\nonconformity_mng\delete_nonconformity.html:48
+msgid "Delete Nonconformity"
+msgstr "Изтрий Несъответствие"
+
+#: .\templates\nonconformity_mng\edit_nonconformity.html:48
+msgid "Edit Nonconformity"
+msgstr "Промени Несъответствие"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:41
+msgid "Nonconformities:"
+msgstr "Несъответствия:"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:48
+msgid "Customer"
+msgstr "Клиент"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:49
+msgid "Customer Nr"
+msgstr "Nr Клиент"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:50
+msgid "Customer Date"
+msgstr "Дата Клиент"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:52
+msgid "Internal Nr"
+msgstr "Вътрешен Nr"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:53
+msgid "Start Date"
+msgstr "Дата Започване"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:54
+msgid "Part Nr"
+msgstr "Парт Nr"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:56
+msgid "Customer Definition"
+msgstr "Дефиниция Клиент"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:57
+msgid "Internal Definition"
+msgstr "Вътрешна Дефиниция"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:59
+msgid "BP Date"
+msgstr "BP Дата"
+
+#: .\templates\nonconformity_mng\nonconformity_list.html:62
+msgid ".xlsx"
+msgstr ".xlsx"
+
+#: .\templates\nonconformity_mng\nonconformity_mng_index.html:25
+msgid "Add Nonconformity"
+msgstr "Добави Несъответствие"
+
+#: .\templates\nonconformity_mng\nonconformity_mng_index.html:30
+msgid "Nonconformity List"
+msgstr "Списък Несъответствия"
+
+#: .\templates\nonconformity_mng\show_nonconformity.html:47
+msgid "Show Nonconformity"
+msgstr "Покажи Несъответствие"
+
 #: .\templates\operations_mng\operations_mng_index.html:40
 msgid "Operations management"
 msgstr "Оперативно управление"
@@ -933,6 +1288,10 @@ msgstr "Промени Възможност"
 msgid "Opportunities for improvement:"
 msgstr "Възможности за подобрение:"
 
+#: .\templates\opportunity_mng\opportunity_list.html:50
+msgid "Long Term Actions"
+msgstr "Дългосрочно Действие"
+
 #: .\templates\opportunity_mng\opportunity_matrix.html:41
 msgid "Opportunities for Imrovement Matrix"
 msgstr "Матрица Възможности за подобрение"
@@ -940,6 +1299,12 @@ msgstr "Матрица Възможности за подобрение"
 #: .\templates\opportunity_mng\opportunity_matrix.html:53
 msgid "Opportunity Description"
 msgstr "Описание на Възможност"
+
+#: .\templates\opportunity_mng\opportunity_matrix.html:54
+#: .\templates\risk_mng\contingency_plan.html:68
+#: .\templates\risk_mng\risk_list.html:54
+msgid "Long Term Action"
+msgstr "Дългосрочно Действие"
 
 #: .\templates\opportunity_mng\opportunity_mng_index.html:25
 msgid "Add Opportunity"
@@ -1014,10 +1379,6 @@ msgstr "Стъпка"
 #: .\templates\process_mng\blank_flowchart.html:61
 msgid "Step description"
 msgstr "Описание на стъпката"
-
-#: .\templates\process_mng\blank_flowchart.html:62
-msgid "Responsible"
-msgstr "Отговорен"
 
 #: .\templates\process_mng\blank_turtle.html:35
 #: .\templates\resource_mng\resource_list.html:41
@@ -1274,10 +1635,6 @@ msgstr "Незабавни Действия"
 msgid "Test Period"
 msgstr "Период на Пров"
 
-#: .\templates\risk_mng\contingency_plan.html:68
-msgid "Long Term Action"
-msgstr "Дългосрочно Действие"
-
 #: .\templates\risk_mng\contingency_plan.html:69
 msgid "New Prob"
 msgstr "Нова Вер"
@@ -1319,6 +1676,10 @@ msgstr "План за Непрекъсваемост"
 #: .\templates\risk_mng\show_risk.html:41
 msgid "Show Risk"
 msgstr "Покажи Риск"
+
+#: .\templates\tools\tools_index.html:42
+msgid "AI Tools"
+msgstr "AI Инструменти"
 
 #: .\templates\tools\tools_index.html:47
 msgid "Start AI Scanner"
@@ -2870,6 +3231,9 @@ msgstr ""
 #, python-format
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
+
+#~ msgid "My Tasks"
+#~ msgstr "Мои Задачи"
 
 #~ msgid "Manage Requirements"
 #~ msgstr "Управление Изисквания"

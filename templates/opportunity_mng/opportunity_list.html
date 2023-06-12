@@ -47,6 +47,7 @@
                             <tr>
                                 <th>{% trans "Opportunity Name" %}</th>
                                 <th>{% trans "Description" %}</th>
+                                <th>{% trans "Long Term Actions" %}</th>
 
                                 <th>{% trans "Actions" %}</th>
                             </tr>
@@ -57,6 +58,14 @@
                                 <tr>
                                     <td>{{ opportunity.name }}</td>
                                     <td>{{ opportunity.description }}</td>
+
+                                    <td>{% if opportunity.get_related_actions %}
+                                        {% for action in opportunity.get_related_actions %}
+                                            <a class="table-link" href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                            {{ action.action_id.name }}</a><br>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </td>
 
                                     <td class="actions-td">
                                         <a class="table-link" href="{% url 'show opportunity' pk=opportunity.pk slug=opportunity.slug %}">

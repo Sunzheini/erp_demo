@@ -49,6 +49,7 @@
                             <th>{% trans "Contract Nr" %}</th>
                             <th>{% trans "Starting Date" %}</th>
                             <th>{% trans "Trainings" %}</th>
+                            <th>{% trans "Actions" %}</th>
 
                             <th>{% trans "Edit" %}</th>
                             <th>{% trans "Delete" %}</th>
@@ -67,6 +68,15 @@
                                    {% for training in current_object.get_related_trainings %}
                                        <a class="table-link" href="{% url 'show training' pk=training.training_id.pk slug=training.training_id.slug %}">
                                            <i class="fa-solid fa-magnifying-glass"></i>{{ training.training_id.name }}</a>
+                                    {% endfor %}
+                                </td>
+
+                                <td>
+                                    {% for action in current_object.responsible.all %}
+                                        <a class="table-link"
+                                           href="{% url 'show newaction' pk=action.pk slug=action.slug %}">
+                                            {{ action.name }}</a><br>
+                                    {% empty %}
                                     {% endfor %}
                                 </td>
 

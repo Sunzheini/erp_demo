@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
 
+
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.newactions_mng.models import NewAction
 
 
 class Risk(models.Model):
@@ -34,8 +36,10 @@ class Risk(models.Model):
         blank=True, null=True,
     )
 
-    long_term_action = models.TextField(
-        blank=True, null=True,
+    long_term_action = models.ManyToManyField(
+        NewAction,
+        blank=True,
+        through='RisksToActions',
     )
 
     new_probability = models.IntegerField(
@@ -49,6 +53,10 @@ class Risk(models.Model):
     @property
     def value(self):
         return self.probability * self.impact
+
+    @property
+    def get_related_actions(self):
+        return RisksToActions.objects.filter(risk_id=self.id)
 
     @property
     def new_value(self):
@@ -69,3 +77,17 @@ class Risk(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class RisksToActions(models.Model):
+    risk_id = models.ForeignKey(
+        Risk,
+        on_delete=models.CASCADE,
+    )
+    action_id = models.ForeignKey(
+        NewAction,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.action_id}"

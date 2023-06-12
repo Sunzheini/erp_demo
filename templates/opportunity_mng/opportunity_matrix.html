@@ -51,6 +51,7 @@
 
                                 <th>{% trans "Opportunity Name" %}</th>
                                 <th>{% trans "Opportunity Description" %}</th>
+                                <th>{% trans "Long Term Action" %}</th>
                             </tr>
                         </thead>
 
@@ -79,6 +80,15 @@
                                             {% else %}
                                             {% endif %}
                                         </td>
+
+                                        <td>{% if opp.opportunity_id.get_related_actions %}
+                                            {% for action in opp.opportunity_id.get_related_actions %}
+                                                <a class="table-link" href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                                    {{ action.action_id.name }}</a><br>
+                                            {% endfor %}
+                                        {% endif %}
+                                        </td>
+
                                     </tr>
                                 {% endfor %}
                             {% endfor %}

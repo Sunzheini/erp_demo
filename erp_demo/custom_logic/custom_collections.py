@@ -34,6 +34,7 @@ search_types_en = {
     ('Resource', 'Resource'),
     ('Requirements', 'Requirements'),
     ('Nonconformity', 'Nonconformity'),
+    ('NewAction', 'Action'),
 }
 
 search_types_bg = {
@@ -52,6 +53,7 @@ search_types_bg = {
     ('Resource', 'Ресурси'),
     ('Requirements', 'Изисквания'),
     ('Nonconformity', 'Несъответствия'),
+    ('NewAction', 'Действия'),
 }
 
 process_numbers = (

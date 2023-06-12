@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Show Action{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Show Action</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Show Action" %}</h2>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Scope" %}</th>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Responsible" %}</th>
+                            <th>{% trans "Target Date" %}</th>
+                            <th>{% trans "Comments" %}</th>
+                            <th>{% trans "Status" %}</th>
+
+                            <th>{% trans "Edit" %}</th>
+                            <th>{% trans "Delete" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            <tr>
+                                <td>{{ current_object.scope }}</td>
+                                <td>{{ current_object.name }}</td>
+
+                                <td>
+                                    <a class="table-link" href="{% url 'show employee' pk=current_object.responsible.pk slug=current_object.responsible.slug %}">
+                                        {{ current_object.responsible.get_full_name }}</a>
+                                </td>
+
+                                <td>{{ current_object.target_date }}</td>
+                                <td>{{ current_object.comments }}</td>
+                                <td>{{ current_object.status }}</td>
+
+                                <td><a class="table-link" href="{% url 'edit newaction' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                    {% trans "Edit" %}</a></td>
+                                <td><a class="table-link" href="{% url 'delete newaction' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
+                                    {% trans "Delete" %}</a></td>
+                            </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

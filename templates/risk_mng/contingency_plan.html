@@ -99,12 +99,14 @@
                                     <td>{{ risk.risk_id.immediate_action }}</td>
                                     <td>{{ risk.risk_id.ia_test_period }}</td>
 
-                                    <td>
-                                        {% if risk.risk_id.long_term_action %}
-                                        {{ risk.risk_id.long_term_action }}
-                                        {% else %}
+                                    <td>{% if risk.risk_id.get_related_actions %}
+                                        {% for action in risk.risk_id.get_related_actions %}
+                                            <a class="table-link" href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                            {{ action.action_id.name }}</a><br>
+                                        {% endfor %}
                                         {% endif %}
                                     </td>
+
                                     <td class="t-shape">
                                         {% if risk.risk_id.new_probability %}
                                         {{ risk.risk_id.new_probability }}
