@@ -466,6 +466,81 @@
                     </table>
                 </div>
 
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Action Plan Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.action_plans %}
+                            {% for actions_plan in info_to_display.action_plans %}
+                        <tr>
+                            <td>{{ actions_plan.name }}</td>
+                            <td><a class="table-link" href="{% url 'show action plan' pk=actions_plan.pk slug=actions_plan.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Action Plan Step Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.actions_plan_steps %}
+                            {% for step in info_to_display.actions_plan_steps %}
+                        <tr>
+                            <td>{{ step.name }}</td>
+                            <td><a class="table-link" href="{% url 'show action plan step' pk=step.pk slug=step.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Supplier Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.suppliers %}
+                            {% for supplier in info_to_display.suppliers %}
+                        <tr>
+                            <td>{{ supplier.name }}</td>
+                            <td><a class="table-link" href="{% url 'show supplier' pk=supplier.pk slug=supplier.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
                 {% else %}
                 {% endif %}
             </div>

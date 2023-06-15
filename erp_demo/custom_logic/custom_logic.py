@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.utils.text import slugify
 
+from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
 from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee, Trainings
@@ -20,6 +21,7 @@ from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStep, Process
 from erp_demo.resource_mng.models import Resource
 from erp_demo.risk_mng.models import Risk
+from erp_demo.supplier_mng.models import Supplier
 
 
 class DataManipulation:
@@ -337,6 +339,9 @@ class SupportFunctions:
             requirements = Requirements.objects.filter(description__icontains=search_pattern)
             nonconformities = Nonconformity.objects.filter(name__icontains=search_pattern)
             actions = NewAction.objects.filter(name__icontains=search_pattern)
+            action_plans = ActionPlan.objects.filter(name__icontains=search_pattern)
+            action_plan_steps = ActionPlanStep.objects.filter(name__icontains=search_pattern)
+            suppliers = Supplier.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
@@ -353,6 +358,9 @@ class SupportFunctions:
             result['requirements'] = requirements
             result['nonconformities'] = nonconformities
             result['actions'] = actions
+            result['action_plans'] = action_plans
+            result['action_plan_steps'] = action_plan_steps
+            result['suppliers'] = suppliers
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -418,6 +426,18 @@ class SupportFunctions:
         elif choice == 'NewAction':
             actions = NewAction.objects.filter(name__icontains=search_pattern)
             result['actions'] = actions
+
+        elif choice == 'ActionPlan':
+            action_plans = ActionPlan.objects.filter(name__icontains=search_pattern)
+            result['action_plans'] = action_plans
+
+        elif choice == 'ActionPlanStep':
+            action_plan_steps = ActionPlanStep.objects.filter(name__icontains=search_pattern)
+            result['action_plan_steps'] = action_plan_steps
+
+        elif choice == 'Supplier':
+            suppliers = Supplier.objects.filter(name__icontains=search_pattern)
+            result['suppliers'] = suppliers
 
         return result
 

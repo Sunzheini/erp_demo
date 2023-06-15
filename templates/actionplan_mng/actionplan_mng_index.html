@@ -1,0 +1,160 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Process Management{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Process Management</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onclick="fShowHideActionPlanForm()">
+                <span class="card-btn-title">{% trans "New Action Plan" %}</span>
+                <span class="card-btn-desc">Show / Hide Form</span>
+            </button>
+
+            <button class="card-btn" onclick="fShowHideActionPlanStepForm()">
+                <span class="card-btn-title">{% trans "New Action Plan Step" %}</span>
+                <span class="card-btn-desc">Show / Hide Form</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">
+                    {% trans "Action Plan Management" %}
+                </h2>
+
+                <div style="display: none;" id="action_plan_form" >
+                    <br><hr>
+                    <form action="{% url 'action plan mng index' %}" method="post">
+                        <p class="card-display-content-bold">{% trans "1) Action Plan Creation Form" %}</p>
+                        <table class="table-form">
+                             {{ action_plan_form }}
+                        </table>
+                        {% csrf_token %}
+                        <button class="form-button" name="button1">{% trans "add this action plan" %}</button>
+                    </form>
+                </div>
+
+                <div style="display: none;" id="action_plan_step_form" >
+                    <br><hr>
+                    <form action="{% url 'action plan mng index' %}" method="post">
+                        <p class="card-display-content-bold">{% trans "2) Action Plan Step Creation Form" %}</p>
+                        <table class="table-form">
+                             {{ action_plan_step_form }}
+                        </table>
+                        {% csrf_token %}
+                        <button class="form-button" name="button2">{% trans "add this action plan step" %}</button>
+                    </form>
+                </div>
+
+                {% if all_objects %}
+                                    <br><hr>
+                    <div class="table-data-container">
+                      <table class="table-data">
+                      <thead>
+                      <tr>
+                          <th colspan="2">{% trans "Action Plan" %}</th>
+                          <th colspan="7">{% trans "Action Plan Step" %}</th>
+                      </tr>
+                      <tr>
+                          <th>{% trans "Name" %}</th>
+                          <th>{% trans "Owner" %}</th>
+
+                          <th>{% trans "Number" %}</th>
+                          <th>{% trans "Scope" %}</th>
+                          <th>{% trans "Name" %}</th>
+
+                          <th>{% trans "Actions" %}</th>
+
+                          <th>{% trans "Manage" %}</th>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      {% for current_object in all_objects %}
+
+                          {% for i in current_object.get_all_steps %}
+                          <tr>
+
+                          {% if forloop.first %}
+                          <td rowspan="{{ current_object.count_all_steps }}"><a class="table-link"
+                             href="{% url 'show action plan' pk=current_object.pk slug=current_object.slug %}">
+                          <span style="
+                                color: blue;
+                                font-weight: bold;
+                          ">{{ current_object.name }}</span>
+                          </a></td>
+
+                          <td rowspan="{{ current_object.count_all_steps }}"><a class="table-link"
+                             href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                          {{ current_object.owner.get_full_name }}</a></td>
+                          {% endif %}
+
+                              <td>{{ i.number }}</td>
+                              <td>{{ i.scope }}</td>
+
+                              <td>
+                              <a class="table-link"
+                                href="{% url 'show action plan step' pk=i.pk slug=i.slug %}">
+                                <i class="fa-solid fa-magnifying-glass"></i>{{ i.name }}</a>
+                              </td>
+
+                              <td>
+                                  {% if i.get_related_actions %}
+                                  {% for action in i.get_related_actions %}
+
+                                      <a class="table-link"
+                                     href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                      {{ action.action_id.name }}</a><br>
+
+                                  {% endfor %}
+                                  {% endif %}
+                              </td>
+
+                          {% if forloop.first %}
+                              <td rowspan="{{ current_object.count_all_steps }} class="actions-td">
+                                  <a class="table-link"
+                                     href="{% url 'show action plan' pk=current_object.pk slug=current_object.slug %}">
+                                      <i class="fa-solid fa-magnifying-glass"></i></a>
+                                  <a class="table-link"
+                                     href="{% url 'edit action plan' pk=current_object.pk slug=current_object.slug %}">
+                                      <i class="fa-solid fa-pen-to-square"></i></a>
+                                  <a class="table-link"
+                                     href="{% url 'delete action plan' pk=current_object.pk slug=current_object.slug %}">
+                                      <i class="fa-solid fa-trash"></i></a>
+                              </td>
+                            {% endif %}
+
+                          </tr>
+                        {% endfor %}
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

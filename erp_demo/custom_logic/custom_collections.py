@@ -35,6 +35,9 @@ search_types_en = {
     ('Requirements', 'Requirements'),
     ('Nonconformity', 'Nonconformity'),
     ('NewAction', 'Action'),
+    ('ActionPlan', 'Action plan'),
+    ('ActionPlanStep', 'ActionPlanStep'),
+    ('Supplier', 'Supplier'),
 }
 
 search_types_bg = {
@@ -54,6 +57,9 @@ search_types_bg = {
     ('Requirements', 'Изисквания'),
     ('Nonconformity', 'Несъответствия'),
     ('NewAction', 'Действия'),
+    ('ActionPlan', 'План за действие'),
+    ('ActionPlanStep', 'Стъпка от план за действие'),
+    ('Supplier', 'Доставчици'),
 }
 
 process_numbers = (
@@ -102,6 +108,7 @@ list_of_keys = {
     'Interaction': [],
     'Resource': [],
     'Nonconformity': [],
+    'Supplier': [],
 }
 
 coordinates = {
@@ -202,6 +209,12 @@ coordinates = {
         'end_column': None,
     },
     'Nonconformity': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Supplier': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

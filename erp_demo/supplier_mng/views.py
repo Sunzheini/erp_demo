@@ -1,24 +1,12 @@
-import random
-
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.decorators.cache import cache_page
-from django.views.generic import ListView
 
-from erp_demo.dox_mng.models import Document
-
-
-class TestListView(LoginRequiredMixin, ListView):
-    model = Document
-    template_name = 'supplier_mng/supplier_mng_index.html'
+from erp_demo.custom_logic.custom_prototypes import PrototypeViews
+from erp_demo.supplier_mng.models import Supplier
 
 
-# 0.018s
-@cache_page(1 * 60) # 1 minute
-def another_view(request):
-    value = random.randint(1, 1024)
-
-    return render(request, 'supplier_mng/supplier_mng_index.html', {
-        'document_list': Document.objects.all(),
-        'value': value,
-    })
+class SupplierMngViews(PrototypeViews):
+    def supplier_scores(self, request):
+        context = {
+            'all_objects': Supplier.objects.all(),
+        }
+        return render(request, 'supplier_mng/supplier_scores.html', context)

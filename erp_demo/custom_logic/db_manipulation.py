@@ -2,6 +2,7 @@ from django.utils.text import slugify
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
+from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
 from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
@@ -19,6 +20,7 @@ from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process, ProcessToKpis, ProcessToOpportunities, ProcessToRisks
 from erp_demo.resource_mng.models import Resource, ResourcesAssignedToEmployees, ResourcesAssignedToProcess
 from erp_demo.risk_mng.models import Risk
+from erp_demo.supplier_mng.models import Supplier
 
 
 class DatabaseManipulation:
@@ -71,6 +73,11 @@ class DatabaseManipulation:
         Customer.objects.all().delete()
 
         Nonconformity.objects.all().delete()
+
+        ActionPlanStep.objects.all().delete()
+        ActionPlan.objects.all().delete()
+
+        Supplier.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -359,6 +366,14 @@ class DatabaseManipulation:
             elif table == 'Nonconformity':
                 Nonconformity.objects.bulk_create([Nonconformity(
                     name=info_to_update[obj]['name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Supplier':
+                Supplier.objects.bulk_create([Supplier(
+                    name=info_to_update[obj]['name'],
+                    description=info_to_update[obj]['description'],
+                    score=info_to_update[obj]['score'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
                 ) for obj in info_to_update.keys()])
 

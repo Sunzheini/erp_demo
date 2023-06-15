@@ -75,3 +75,21 @@
                 x.style.display = "none";
             }
         }
+
+        function fShowHideActionPlanForm() {
+            let x = document.getElementById("action_plan_form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function fShowHideActionPlanStepForm() {
+            let x = document.getElementById("action_plan_step_form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }

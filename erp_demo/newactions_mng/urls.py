@@ -51,4 +51,9 @@ urlpatterns = [
     path('delete-action/<int:pk>/<slug:slug>/', NewActionsMngViews(
         template_list, redirect_url, form_list, NewAction, files_are_used
     ).delete_view, name='delete newaction'),
+
+
+    path('actions-matrix/', NewActionsMngViews(
+        template_list, redirect_url, form_list, NewAction, files_are_used
+    ).actions_matrix, name='newactions matrix'),
 ]
