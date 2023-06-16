@@ -5,6 +5,10 @@
     {% block page_title %}Show Action Plan{% endblock %}
 {#-------------------------------------------------------------------------#}
 
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
         <h1 class="page-title">Show Action Plan</h1>
@@ -38,11 +42,22 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">{% trans "Show Action Plan" %}</h2>
+{#                <h2 class="card-display-title">{% trans "Show Action Plan" %}</h2>#}
+                <h2 class="card-display-title">{{ current_object.name }}</h2>
 
-                <h4>{{ current_object.name }}</h4>
-                <h4>{{ current_object.description }}</h4>
-                <h4>{{ current_object.owner }}</h4>
+{# additional formatting for the pdca #}
+{#-------------------------------------------------------------------------#}
+
+                <div class="block-above-table">
+                    <p class="card-display-content">Description: {{ current_object.description }}</p>
+                    <p class="card-display-content">Owner:
+                        <a class="table-link"
+                            href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                            {{ current_object.owner }}</a>
+                    </p>
+                </div>
+
+{#-------------------------------------------------------------------------#}
 
                 <div class="table-data-container">
                     <table class="table-data">
@@ -87,17 +102,46 @@
                              href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
                              {{ action.action_id.responsible.get_full_name }}</a></td>
                         <td>{{ action.action_id.target_date }}</td>
-                        <td>{{ action.action_id.status }}</td>
 
-                        </tr>
+                         {% if action.action_id.status == 'Ongoing' %}
+                            <td style="background: #f5e751;">{{ action.action_id.status }}</td>
+                        {% elif action.action_id.status == 'Completed' %}
+                            <td style="background: #2e8b57;">{{ action.action_id.status }}</td>
+                        {% elif action.action_id.status == 'Not Started' %}
+                            <td style="background: #808080;">{{ action.action_id.status }}</td>
+                        {% endif %}
+
                         {% endfor %}
                     {% endfor %}
 
                     </tbody>
                     </table>
                 </div>
+
+                {# canvas for the graph #}
+                <br>
+                <div>
+                    <canvas id="actionStatusChart"></canvas>
+                </div>
+
             </div>
         </div>
     </section>
+
+    {# script for the graph #}
+<script>
+    var ctx = document.getElementById('actionStatusChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {{ chart_data|safe }},
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 4,  // Change this to control the size of the pie chart.
+        },
+    });
+</script>
+
+
 {% endblock %}
 {#-------------------------------------------------------------------------#}

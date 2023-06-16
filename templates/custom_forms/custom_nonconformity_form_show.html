@@ -1,0 +1,503 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# D0 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "D0. general Information" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-3">{{ form.customer.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.customer.name %}
+                    {{ current_object.customer.name }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.internal_claim_number.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.internal_claim_number %}
+                    {{ current_object.internal_claim_number }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.part_number.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.part_number %}
+                    {{ current_object.part_number }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-3">{{ form.customer_claim_number.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.customer_claim_number %}
+                    {{ current_object.customer_claim_number }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.nonconformity_start_date.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.nonconformity_start_date %}
+                    {{ current_object.nonconformity_start_date }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.part_revision.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.part_revision %}
+                    {{ current_object.part_revision }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-3">{{ form.customer_claim_date.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.customer_claim_date %}
+                    {{ current_object.customer_claim_date }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3"></th>
+            <td class="when-3"></td>
+            <th class="when-3">{{ form.part_name.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.part_name %}
+                    {{ current_object.part_name }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D1 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D1. Problem Definition" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.name.label_tag }}&nbsp<span class="required">(*)</span></th>
+            <td class="when-1 showing">
+                {% if current_object.name %}
+                    {{ current_object.name }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.internal_definition.label_tag }}</th>
+            <td class="when-1 showing">
+                {% if current_object.internal_definition %}
+                    {{ current_object.internal_definition }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D2 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D2. Form a Team" %}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Nonconformity Owner" %}</th>
+            <th>{% trans "Additional Team Members" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="showing">
+                {% if current_object.nonconformity_owner %}
+                    {{ current_object.nonconformity_owner }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="showing">
+                {% if current_object.team_members %}
+                    {{ current_object.team_members }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D3 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D3. Short Term (Containment and Correction) Actions" %}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Containment Actions" %}</th>
+            <th>{% trans "Corrections" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Responsible</td>
+                        <td>Date</td>
+                        <td>Status</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for action in current_object.get_related_containment %}
+                        <tr>
+                            <td>{{ action.action_id.name }}</td>
+                            <td class="td-centered">{{ action.action_id.responsible }}</td>
+                            <td class="td-centered">{{ action.action_id.target_date }}</td>
+                            <td class="td-centered">{{ action.action_id.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Responsible</td>
+                        <td>Date</td>
+                        <td>Status</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for action in current_object.get_related_corrections %}
+                        <tr>
+                            <td>{{ action.action_id.name }}</td>
+                            <td class="td-centered">{{ action.action_id.responsible }}</td>
+                            <td class="td-centered">{{ action.action_id.target_date }}</td>
+                            <td class="td-centered">{{ action.action_id.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D4 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "D4. Root Cause Analysis" %}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{% trans "Root Cause 1" %}</th>
+            <th>{% trans "Root Cause 2" %}</th>
+            <th>{% trans "Root Cause 3" %}</th>
+            <th>{% trans "Root Cause 4" %}</th>
+            <th>{% trans "Root Cause 5" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Possible Root Cause" %}</th>
+            <td class="when-1 showing">
+                {% if current_object.possible_root_cause1 %}
+                    {{ current_object.possible_root_cause1 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.possible_root_cause2 %}
+                    {{ current_object.possible_root_cause2 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.possible_root_cause3 %}
+                    {{ current_object.possible_root_cause3 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.possible_root_cause4 %}
+                    {{ current_object.possible_root_cause4 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.possible_root_cause5 %}
+                    {{ current_object.possible_root_cause5 }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 1" %}</th>
+            <td class="when-1 showing">
+                {% if current_object.cause1_ask_why1 %}
+                    {{ current_object.cause1_ask_why1 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause2_ask_why1 %}
+                    {{ current_object.cause2_ask_why1 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause3_ask_why1 %}
+                    {{ current_object.cause3_ask_why1 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause4_ask_why1 %}
+                    {{ current_object.cause4_ask_why1 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause5_ask_why1 %}
+                    {{ current_object.cause5_ask_why1 }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 2" %}</th>
+            <td class="when-1 showing">
+                {% if current_object.cause1_ask_why2 %}
+                    {{ current_object.cause1_ask_why2 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause2_ask_why2 %}
+                    {{ current_object.cause2_ask_why2 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause3_ask_why2 %}
+                    {{ current_object.cause3_ask_why2 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause4_ask_why2 %}
+                    {{ current_object.cause4_ask_why2 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause5_ask_why2 %}
+                    {{ current_object.cause5_ask_why2 }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 3" %}</th>
+            <td class="when-1 showing">
+                {% if current_object.cause1_ask_why3 %}
+                    {{ current_object.cause1_ask_why3 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause2_ask_why3 %}
+                    {{ current_object.cause2_ask_why3 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause3_ask_why3 %}
+                    {{ current_object.cause3_ask_why3 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause4_ask_why3 %}
+                    {{ current_object.cause4_ask_why3 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause5_ask_why3 %}
+                    {{ current_object.cause5_ask_why3 }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 4" %}</th>
+            <td class="when-1 showing">
+                {% if current_object.cause1_ask_why4 %}
+                    {{ current_object.cause1_ask_why4 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause2_ask_why4 %}
+                    {{ current_object.cause2_ask_why4 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause3_ask_why4 %}
+                    {{ current_object.cause3_ask_why4 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause4_ask_why4 %}
+                    {{ current_object.cause4_ask_why4 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause5_ask_why4 %}
+                    {{ current_object.cause5_ask_why4 }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Ask Why 5" %}</th>
+            <td class="when-1 showing">
+                {% if current_object.cause1_ask_why5 %}
+                    {{ current_object.cause1_ask_why5 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause2_ask_why5 %}
+                    {{ current_object.cause2_ask_why5 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause3_ask_why5 %}
+                    {{ current_object.cause3_ask_why5 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause4_ask_why5 %}
+                    {{ current_object.cause4_ask_why5 }}
+                {% else %}
+                {% endif %}
+            </td>
+            <td class="when-1 showing">
+                {% if current_object.cause5_ask_why5 %}
+                    {{ current_object.cause5_ask_why5 }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D5 - D7 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="4">
+                {% trans "D5 - D7. Define, Implement and Verify the effectiveness of Permanent Corrective Actions" %}
+            </th>
+        </tr>
+        <tr>
+            <th colspan="4">{% trans "Long Term Corrective Actions" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+              <td colspan="4" class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Responsible</td>
+                        <td>Date</td>
+                        <td>Status</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for action in current_object.get_related_permanent %}
+                        <tr>
+                            <td>{{ action.action_id.name }}</td>
+                            <td class="td-centered">{{ action.action_id.responsible }}</td>
+                            <td class="td-centered">{{ action.action_id.target_date }}</td>
+                            <td class="td-centered">{{ action.action_id.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="when-1">{% trans "BreakPoint Batch Nr" %}</th>
+            <td class="when-1 showing">{{ current_object.breakpoint_batch_number }}</td>
+            <th class="when-1">{% trans "BreakPoint Date at Customer" %}</th>
+            <td class="when-1 showing">{{ current_object.breakpoint_at_customer_date }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# D8 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="2">{% trans "D8. Systematic actions to prevent reoccurence" %}</th>
+        </tr>
+        <tr>
+            <th>{% trans "Systematic Actions" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Responsible</td>
+                        <td>Date</td>
+                        <td>Status</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for action in current_object.get_related_systematic %}
+                        <tr>
+                            <td>{{ action.action_id.name }}</td>
+                            <td class="td-centered">{{ action.action_id.responsible }}</td>
+                            <td class="td-centered">{{ action.action_id.target_date }}</td>
+                            <td class="td-centered">{{ action.action_id.status }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

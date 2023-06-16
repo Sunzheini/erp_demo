@@ -46,12 +46,14 @@
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Show Nonconformity" %}</h2>
 
-                 <form action="{% url 'show nonconformity' pk=current_object.pk slug=current_object.slug %}" method="post">
+                    {% include 'custom_forms/custom_nonconformity_form_show.html' %}
 
-                    {% include 'custom_forms/custom_nonconformity_form.html' %}
-
-                    {% csrf_token %}
-                </form>
+{#                 <form action="{% url 'show nonconformity' pk=current_object.pk slug=current_object.slug %}" method="post">#}
+{##}
+{#                    {% include 'custom_forms/custom_nonconformity_form_show.html' %}#}
+{##}
+{#                    {% csrf_token %}#}
+{#                </form>#}
             </div>
         </div>
     </section>

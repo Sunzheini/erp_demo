@@ -506,6 +506,16 @@ i {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
 }
 
+.block-above-table {
+  margin-bottom: 0.5rem;
+  border: solid 1px var(--clr-nav-bg);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+
+
 .display-content-section .all-display-content-container .card-display .card-display-content {
   font-size: 15px;
   color: var(--clr-display-text);

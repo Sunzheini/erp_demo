@@ -21,11 +21,19 @@ class ToolsMngViews:
                 choice = process_number_form.cleaned_data['process_number_dropdown']
                 my_object = Process.objects.filter(number=choice).get()
 
+                list_of_process_steps = my_object.processstep_set.all()
+                additional_fields = ['number', 'name']
+
                 # Get username of the currently logged in OS user
                 username = getpass.getuser()
 
                 path = f'C:\\Users\\{username}\\Desktop\\Audit_Checklist_' + my_object.number + '.xlsx'
-                extractor = ExtractToExcel(path, my_object)
+                extractor = ExtractToExcel(
+                    path,
+                    my_object,
+                    additional_object_list=list_of_process_steps,
+                    fields=additional_fields,
+                )
 
                 try:
                     extractor.run()

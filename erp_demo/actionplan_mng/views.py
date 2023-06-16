@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from collections import Counter
+
 from erp_demo.actionplan_mng.models import ActionPlan
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 from erp_demo.actionplan_mng.forms import ActionPlanForm, ActionPlanStepForm
@@ -37,7 +39,36 @@ class ActionPlanMngViewsGeneral:
 
 
 class ActionPlanMngViewsActionPlan(PrototypeViews):
-    pass
+    def show_view(self, request, pk, slug):
+        self._empty_context()
+        current_object = self._main_object_single(pk)
+
+        # updated for the graph
+        # ---------------------------------------------------------------------------------------
+
+        # Prepare pie chart data
+        action_statuses = [action.action_id.status for step in current_object.get_all_steps for action in step.get_related_actions]
+
+        action_status_distribution = dict(Counter(action_statuses))
+
+        # Prepare chart data
+        chart_data = {
+            'labels': list(action_status_distribution.keys()),
+            'datasets': [{
+                'data': list(action_status_distribution.values()),
+                'backgroundColor': ['rgb(245, 229, 81)', 'rgb(46, 139, 87)', 'rgb(128, 128, 128)'],  # adjust colors according to your status labels
+            }]
+        }
+
+        self.context['chart_data'] = chart_data
+
+        form = self.view_form(instance=current_object)
+
+        # ---------------------------------------------------------------------------------------
+
+        self._add_form_to_context(form)
+        self._add_current_object_to_context(current_object)
+        return render(request, self.show_template, self.context)
 
 
 class ActionPlanMngViewsActionPlanStep(PrototypeViews):

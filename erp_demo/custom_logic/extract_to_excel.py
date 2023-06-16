@@ -2,15 +2,18 @@ from openpyxl.utils import get_column_letter
 from openpyxl.workbook import Workbook
 
 from django.db.models.fields.related import ForeignKey, ManyToManyField
+from django.db.models import Field
 
 
 class ExtractToExcel:
-    def __init__(self, file_path, object_to_extract):
+    def __init__(self, file_path, object_to_extract, additional_object_list=None, fields=None):
         self.file_path = file_path
         self.object_to_extract = object_to_extract
-        self.all_fields = [f for f in self.object_to_extract._meta.get_fields()]
+        self.all_fields = [f for f in self.object_to_extract._meta.get_fields() if isinstance(f, Field)]
         self.workbook = Workbook()
         self.worksheet = self.workbook.active
+        self.additional = additional_object_list
+        self.fields = fields
 
     @staticmethod
     def _get_column_letter(column_number):
@@ -34,3 +37,9 @@ class ExtractToExcel:
 
             self.write_to_cell(current_row, 1, field.name)
             self.write_to_cell(current_row, 2, str(value) if value else None)
+
+        if self.additional:
+            for obj in self.additional:
+                current_row += 1
+                for field in self.fields:
+                    self.write_to_cell(current_row, self.fields.index(field) + 1, getattr(obj, field))

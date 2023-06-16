@@ -296,15 +296,15 @@ class Nonconformity(models.Model):
 
     @property
     def get_related_corrections(self):
-        return ContainmentToActions.objects.filter(nonconformity_id=self)
+        return CorrectionToActions.objects.filter(nonconformity_id=self)
 
     @property
     def get_related_permanent(self):
-        return ContainmentToActions.objects.filter(nonconformity_id=self)
+        return PermanentToActions.objects.filter(nonconformity_id=self)
 
     @property
     def get_related_systematic(self):
-        return ContainmentToActions.objects.filter(nonconformity_id=self)
+        return SystematicToActions.objects.filter(nonconformity_id=self)
 
     def save(self, *args, **kwargs):
         if not self.slug:

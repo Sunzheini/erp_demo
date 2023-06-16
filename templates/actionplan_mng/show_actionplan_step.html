@@ -2,13 +2,13 @@
 {% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
-    {% block page_title %}Show Action Plan Step{% endblock %}
+{% block page_title %}Show Action Plan Step{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#3. Page Name-------------------------------------------------------------#}
-    {% block page_name %}
-        <h1 class="page-title">Show Action Plan Step</h1>
-    {% endblock %}
+{% block page_name %}
+    <h1 class="page-title">Show Action Plan Step</h1>
+{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#4. Section1--------------------------------------------------------------#}
@@ -41,71 +41,96 @@
                 <h2 class="card-display-title">{% trans "Show Action Plan Step" %}</h2>
 
                 <div class="table-data-container">
-                  <table class="table-data">
-                  <thead>
-                    <tr>
-                      <th colspan="2">{% trans "Action Plan" %}</th>
-                      <th colspan="9">{% trans "Action Plan Step" %}</th>
-                    </tr>
-                    <tr>
-                      <th>{% trans "Name" %}</th>
-                      <th>{% trans "Owner" %}</th>
+                    <table class="table-data">
+                        <thead>
+                        <tr>
+                            <th colspan="2">{% trans "Action Plan" %}</th>
+                            <th colspan="9">{% trans "Action Plan Step" %}</th>
+                        </tr>
+                        <tr>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Owner" %}</th>
 
-                      <th>{% trans "Number" %}</th>
-                      <th>{% trans "Scope" %}</th>
-                      <th>{% trans "Name" %}</th>
+                            <th>{% trans "Number" %}</th>
+                            <th>{% trans "Scope" %}</th>
+                            <th>{% trans "Name" %}</th>
 
-                      <th>{% trans "Action" %}</th>
-                      <th>{% trans "Responsible" %}</th>
-                      <th>{% trans "Target Date" %}</th>
-                      <th>{% trans "Status" %}</th>
+                            <th>{% trans "Action" %}</th>
+                            <th>{% trans "Responsible" %}</th>
+                            <th>{% trans "Target Date" %}</th>
+                            <th>{% trans "Status" %}</th>
 
-                      <th>{% trans "Edit" %}</th>
-                      <th>{% trans "Delete" %}</th>
-                    </tr>
-                  </thead>
+                            <th>{% trans "Edit" %}</th>
+                            <th>{% trans "Delete" %}</th>
+                        </tr>
+                        </thead>
 
-                  <tbody>
+                        <tbody>
 
-                  {% for action in current_object.get_related_actions %}
+                        {% if not current_object.get_related_actions %}
 
-                  <tr>
-                  {% if forloop.first %}
-                      <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.parent_action_plan.name }}</td>
-                      <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
-                             href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
-                          {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
+                            <tr>
+                                <td>{{ current_object.parent_action_plan.name }}</td>
+                                <td><a class="table-link" href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
+                                    {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
 
-                      <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.number }}</td>
-                      <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.scope }}</td>
-                      <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.name }}</td>
-                  {% endif %}
+                                <td>{{ current_object.number }}</td>
+                                <td>{{ current_object.scope }}</td>
+                                <td>{{ current_object.name }}</td>
 
-                      <td>
-                          <a class="table-link"
-                             href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
-                              <i class="fa-solid fa-magnifying-glass"></i>{{ action.action_id.name }}</a>
-                      </td>
-                      <td ><a class="table-link"
-                             href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
-                          {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
-                      <td>{{ action.action_id.target_date }}</td>
-                      <td>{{ action.action_id.status }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
 
-                      {% if forloop.first %}
-                      <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
-                             href="{% url 'edit action plan step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
-                          {% trans "Edit" %}</a></td>
-                      <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
-                             href="{% url 'delete action plan step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
-                          {% trans "Delete" %}</a></td>
-                      {% endif %}
+                                <td><a class="table-link" href="{% url 'edit action plan step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                    {% trans "Edit" %}</a></td>
+                                <td><a class="table-link" href="{% url 'delete action plan step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
+                                    {% trans "Delete" %}</a></td>
 
-                  </tr>
-                  {% endfor %}
+                            </tr>
 
-                  </tbody>
-                </table>
+                        {% else %}
+
+                            {% for action in current_object.get_related_actions %}
+                                <tr>
+                                    {% if forloop.first %}
+                                        <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.parent_action_plan.name }}</td>
+                                        <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
+                                                                                                         href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
+                                            {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
+
+                                        <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.number }}</td>
+                                        <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.scope }}</td>
+                                        <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.name }}</td>
+                                    {% endif %}
+
+                                    <td>
+                                        <a class="table-link"
+                                           href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                            <i class="fa-solid fa-magnifying-glass"></i>{{ action.action_id.name }}</a>
+                                    </td>
+                                    <td ><a class="table-link"
+                                            href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
+                                        {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
+                                    <td>{{ action.action_id.target_date }}</td>
+                                    <td>{{ action.action_id.status }}</td>
+
+                                    {% if forloop.first %}
+                                        <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
+                                                                                                         href="{% url 'edit action plan step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
+                                            {% trans "Edit" %}</a></td>
+                                        <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
+                                                                                                         href="{% url 'delete action plan step' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>
+                                            {% trans "Delete" %}</a></td>
+                                    {% endif %}
+
+                                </tr>
+
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
