@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.utils.text import slugify
 
 from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
+from erp_demo.calibration_mng.models import MeasuringEquipment
 from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee, Trainings
@@ -14,6 +15,7 @@ from erp_demo.interaction_mng.models import Interaction
 from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.maintenance_mng.models import Machine
 from erp_demo.newactions_mng.models import NewAction
 from erp_demo.nonconformity_mng.models import Nonconformity
 from erp_demo.opportunity_mng.models import Opportunity
@@ -342,6 +344,8 @@ class SupportFunctions:
             action_plans = ActionPlan.objects.filter(name__icontains=search_pattern)
             action_plan_steps = ActionPlanStep.objects.filter(name__icontains=search_pattern)
             suppliers = Supplier.objects.filter(name__icontains=search_pattern)
+            measuring_equipments = MeasuringEquipment.objects.filter(name__icontains=search_pattern)
+            machines = Machine.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
@@ -361,6 +365,8 @@ class SupportFunctions:
             result['action_plans'] = action_plans
             result['action_plan_steps'] = action_plan_steps
             result['suppliers'] = suppliers
+            result['measuring_equipments'] = measuring_equipments
+            result['machines'] = machines
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -438,6 +444,14 @@ class SupportFunctions:
         elif choice == 'Supplier':
             suppliers = Supplier.objects.filter(name__icontains=search_pattern)
             result['suppliers'] = suppliers
+
+        elif choice == 'MeasuringEquipment':
+            measuring_equipments = MeasuringEquipment.objects.filter(name__icontains=search_pattern)
+            result['measuring_equipments'] = measuring_equipments
+
+        elif choice == 'Machine':
+            machines = Machine.objects.filter(name__icontains=search_pattern)
+            result['machines'] = machines
 
         return result
 

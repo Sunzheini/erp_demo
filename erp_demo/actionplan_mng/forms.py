@@ -3,6 +3,7 @@ from django.utils import translation
 
 from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
 
+
 ACTION_PLAN_LABELS_EN = {
     'name': 'Name',
     'description': 'Description',

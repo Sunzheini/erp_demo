@@ -1,0 +1,153 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Meas. Equipment List{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Meas. Equipment List</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Measuring Equipment:" %}</h2>
+
+                {% if all_objects %}
+                    <div class="table-data-container">
+                        <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Meas.Equipment Name" %}</th>
+                                <th>{% trans "Inv. Number" %}</th>
+                                <th>{% trans "Characteristics" %}</th>
+                                <th>{% trans "Installation Date" %}</th>
+                                <th>{% trans "Cal. Interval in Days" %}</th>
+                                <th>{% trans "To Next Calibration" %}</th>
+
+                                <th>{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for calibration in all_objects %}
+                                <tr>
+                                    <td>{{ calibration.name }}</td>
+
+                                    <td>
+                                        {% if calibration.inventory_number %}
+                                        {{ calibration.inventory_number }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if calibration.characteristics %}
+                                        {{ calibration.characteristics }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if calibration.installation_date %}
+                                        {{ calibration.installation_date }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if calibration.calibration_interval_in_days %}
+                                        {{ calibration.calibration_interval_in_days }}
+                                        {% endif %}
+                                    </td>
+
+                                    {% if calibration.distance_to_calibration_deadline %}
+                                        {% if calibration.distance_to_calibration_deadline > green_limit %}
+                                        <td style="background: #2e8b57;">{{ calibration.distance_to_calibration_deadline }}</td>
+
+                                        {% elif calibration.distance_to_maintenance_deadline > yellow_limit %}
+                                        <td style="background: #f5e751;">{{ calibration.distance_to_calibration_deadline }}</td>
+
+                                        {% else %}
+                                        <td style="background: #bd1515;">{{ calibration.distance_to_calibration_deadline }}</td>
+                                        {% endif %}
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+
+                                    <td class="actions-td">
+                                        <a class="table-link" href="{% url 'show calibration' pk=calibration.pk slug=calibration.slug %}">
+                                            <i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a class="table-link" href="{% url 'edit calibration' pk=calibration.pk slug=calibration.slug %}">
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a class="table-link" href="{% url 'delete calibration' pk=calibration.pk slug=calibration.slug %}">
+                                            <i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+
+                <br>
+                {# canvas for the graph #}
+                <div style="width:50%; margin: auto;">
+                    <canvas id="calibrationGraph"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {# script for the graph #}
+    {% block extra_head %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% endblock %}
+    <script>
+        var ctx = document.getElementById('calibrationGraph').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {{ chart_data|safe }},
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            max: {{ max_value|add:5 }}  // or whatever number you want to add
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+{% endblock %}
+{#-------------------------------------------------------------------------#}

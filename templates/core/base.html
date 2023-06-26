@@ -209,9 +209,20 @@
             <span class="menu-item-title">{% trans "Operational Processes" %}</span>
         </button>
 
-        <button id="control-button" ><i class="fa-solid fa-caret-down"></i></button>
+        <button id="control-button2" onclick="fShowHideOperationsMenu()"><i class="fa-solid fa-caret-down"></i></button>
 
-        <hr class="horizontal" id="second-hr" style="margin-top: 4px">
+        <div class="dynamic-buttons2" id="dynamic-buttons2" style="display: none">
+            <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'maintenance mng index' %}';">
+                <i class="fa-solid fa-school"></i>
+                <span class="menu-item-title">{% trans "Maintenance" %}</span>
+            </button>
+            <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'calibration mng index' %}';">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span class="menu-item-title">{% trans "Calibration" %}</span>
+            </button>
+        </div>
+
+        <hr class="horizontal" id="second-hr2" style="margin-top: 4px">
 
         <button class="menu-item" onclick="location.href='{% url 'customer mng index' %}';">
             <i class="fa-solid fa-business-time"></i>

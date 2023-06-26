@@ -3,6 +3,7 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
 from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
+from erp_demo.calibration_mng.models import MeasuringEquipment
 from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
@@ -12,6 +13,7 @@ from erp_demo.interaction_mng.models import InteractionToDocuments, Interaction
 from erp_demo.kpi_mng.models import Kpi
 from erp_demo.main_app.models import CaptainsLog, Requirements
 from erp_demo.custom_logic.translator import translate_to_maimunica
+from erp_demo.maintenance_mng.models import Machine
 from erp_demo.newactions_mng.models import NewAction
 from erp_demo.nonconformity_mng.models import Nonconformity
 from erp_demo.opportunity_mng.models import Opportunity
@@ -52,6 +54,8 @@ class DatabaseManipulation:
         Resource.objects.all().delete()
 
         NewAction.objects.all().delete()
+        MeasuringEquipment.objects.all().delete()
+        Machine.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()
@@ -374,6 +378,18 @@ class DatabaseManipulation:
                     name=info_to_update[obj]['name'],
                     description=info_to_update[obj]['description'],
                     score=info_to_update[obj]['score'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'MeasuringEquipment':
+                MeasuringEquipment.objects.bulk_create([MeasuringEquipment(
+                    name=info_to_update[obj]['name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Machine':
+                Machine.objects.bulk_create([Machine(
+                    name=info_to_update[obj]['name'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
                 ) for obj in info_to_update.keys()])
 

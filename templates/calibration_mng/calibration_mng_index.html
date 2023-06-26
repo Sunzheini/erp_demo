@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Calibration Management{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Calibration Management</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+{#            <button class="card-btn" onClick="javascript:history.go(-1);">#}
+{#                <span class="card-btn-title">Back</span>#}
+{#                <span class="card-btn-desc">Go back to the document list</span>#}
+{#            </button>#}
+
+            <button class="card-btn" onclick="location.href='{% url 'add calibration' %}';">
+                <span class="card-btn-title">{% trans "Add Meas. Equipment" %}</span>
+                <span class="card-btn-desc">Add a new employee and define their properties</span>
+            </button>
+
+            <button class="card-btn" onclick="location.href='{% url 'calibration list' %}';">
+                <span class="card-btn-title">{% trans "Meas. Equipment List" %}</span>
+                <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+{% endblock %}
+{#-------------------------------------------------------------------------#}

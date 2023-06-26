@@ -58,6 +58,18 @@
             }
         }
 
+        function fShowHideOperationsMenu() {
+            let x = document.getElementById('dynamic-buttons2')
+            let y = document.getElementById('second-hr2')
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+                y.style.marginTop = '15px';
+            } else {
+                x.style.display = 'none';
+                y.style.marginTop = '4px';
+            }
+        }
+
         function fShowHideAssignmentForm() {
             let x = document.getElementById("assignment-form");
             if (x.style.display === "none") {

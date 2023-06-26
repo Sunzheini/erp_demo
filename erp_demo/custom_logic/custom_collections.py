@@ -38,6 +38,8 @@ search_types_en = {
     ('ActionPlan', 'Action plan'),
     ('ActionPlanStep', 'ActionPlanStep'),
     ('Supplier', 'Supplier'),
+    ('MeasuringEquipment', 'Measuring equipment'),
+    ('Machine', 'Machine'),
 }
 
 search_types_bg = {
@@ -60,6 +62,8 @@ search_types_bg = {
     ('ActionPlan', 'План за действие'),
     ('ActionPlanStep', 'Стъпка от план за действие'),
     ('Supplier', 'Доставчици'),
+    ('MeasuringEquipment', 'Измерв. оборудване'),
+    ('Machine', 'Машина'),
 }
 
 process_numbers = (
@@ -109,6 +113,8 @@ list_of_keys = {
     'Resource': [],
     'Nonconformity': [],
     'Supplier': [],
+    'MeasuringEquipment': [],
+    'Machine': [],
 }
 
 coordinates = {
@@ -215,6 +221,18 @@ coordinates = {
         'end_column': None,
     },
     'Supplier': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'MeasuringEquipment': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Machine': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

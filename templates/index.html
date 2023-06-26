@@ -541,6 +541,56 @@
                     </table>
                 </div>
 
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Meas. Eqpmt Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.measuring_equipments %}
+                            {% for meq in info_to_display.measuring_equipments %}
+                        <tr>
+                            <td>{{ meq.name }}</td>
+                            <td><a class="table-link" href="{% url 'show calibration' pk=meq.pk slug=meq.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                \<div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Machine Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.machines %}
+                            {% for machine in info_to_display.machines %}
+                        <tr>
+                            <td>{{ machine.name }}</td>
+                            <td><a class="table-link" href="{% url 'show maintenance' pk=machine.pk slug=machine.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
                 {% else %}
                 {% endif %}
             </div>
