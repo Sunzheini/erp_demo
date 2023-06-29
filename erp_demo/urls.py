@@ -27,6 +27,8 @@ urlpatterns = [
     path('m16/', include('erp_demo.actionplan_mng.urls')),
     path('m17/', include('erp_demo.maintenance_mng.urls')),
     path('m18/', include('erp_demo.calibration_mng.urls')),
+    path('m19/', include('erp_demo.control_plan_mng.urls')),
+    path('m20/', include('erp_demo.characteristics_mng.urls')),
 
     path('users/', include('erp_demo.user_mng.urls')),
 
