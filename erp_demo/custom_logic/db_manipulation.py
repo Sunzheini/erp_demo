@@ -4,6 +4,8 @@ from openpyxl.utils import get_column_letter
 
 from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
 from erp_demo.calibration_mng.models import MeasuringEquipment
+from erp_demo.characteristics_mng.models import Characteristic
+from erp_demo.control_plan_mng.models import ProcessControlPlan, ProcessControlPlanStep
 from erp_demo.customer_mng.models import Customer
 from erp_demo.dox_mng.models import Document, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
@@ -56,6 +58,7 @@ class DatabaseManipulation:
         NewAction.objects.all().delete()
         MeasuringEquipment.objects.all().delete()
         Machine.objects.all().delete()
+        Characteristic.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()
@@ -82,6 +85,9 @@ class DatabaseManipulation:
         ActionPlan.objects.all().delete()
 
         Supplier.objects.all().delete()
+
+        ProcessControlPlanStep.objects.all().delete()
+        ProcessControlPlan.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -390,6 +396,35 @@ class DatabaseManipulation:
             elif table == 'Machine':
                 Machine.objects.bulk_create([Machine(
                     name=info_to_update[obj]['name'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'Characteristic':
+                Characteristic.objects.bulk_create([Characteristic(
+                    name=info_to_update[obj]['name'],
+                    code=info_to_update[obj]['code'],
+                    type=info_to_update[obj]['type'],
+                    requirement=info_to_update[obj]['requirement'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'ProcessControlPlan':
+                ProcessControlPlan.objects.bulk_create([ProcessControlPlan(
+                    name=info_to_update[obj]['name'],
+                    type=info_to_update[obj]['type'],
+                    number=info_to_update[obj]['number'],
+                    revision=info_to_update[obj]['revision'],
+                    product=info_to_update[obj]['product'],
+                    team=info_to_update[obj]['team'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'ProcessControlPlanStep':
+                ProcessControlPlanStep.objects.bulk_create([ProcessControlPlanStep(
+                    name=info_to_update[obj]['name'],
+                    sample_size=info_to_update[obj]['sample_size'],
+                    frequency=info_to_update[obj]['frequency'],
+                    reaction_plan=info_to_update[obj]['reaction_plan'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
                 ) for obj in info_to_update.keys()])
 

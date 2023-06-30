@@ -40,6 +40,9 @@ search_types_en = {
     ('Supplier', 'Supplier'),
     ('MeasuringEquipment', 'Measuring equipment'),
     ('Machine', 'Machine'),
+    ('Characteristic', 'Characteristic'),
+    ('ProcessControlPlan', 'Control Plan'),
+    ('ProcessControlPlanStep', 'Control Plan Step'),
 }
 
 search_types_bg = {
@@ -64,6 +67,9 @@ search_types_bg = {
     ('Supplier', 'Доставчици'),
     ('MeasuringEquipment', 'Измерв. оборудване'),
     ('Machine', 'Машина'),
+    ('Characteristic', 'Характеристика'),
+    ('ProcessControlPlan', 'Контролен План'),
+    ('ProcessControlPlanStep', 'Стъпка от Контролен План'),
 }
 
 process_numbers = (
@@ -115,6 +121,9 @@ list_of_keys = {
     'Supplier': [],
     'MeasuringEquipment': [],
     'Machine': [],
+    'Characteristic': [],
+    'ProcessControlPlan': [],
+    'ProcessControlPlanStep': [],
 }
 
 coordinates = {
@@ -233,6 +242,24 @@ coordinates = {
         'end_column': None,
     },
     'Machine': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Characteristic': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'ProcessControlPlan': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'ProcessControlPlanStep': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

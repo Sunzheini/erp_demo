@@ -1,0 +1,153 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+{% block page_title %}Show Control Plan{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+{% block page_name %}
+    <h1 class="page-title">Show Control Plan</h1>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Show Control Plan" %}</h2>
+                <div class="table-data-container">
+                    <table class="table-data">
+                        <thead>
+                        <tr>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Type" %}</th>
+                            <th>{% trans "Number" %}</th>
+                            <th>{% trans "Rev Date" %}</th>
+                            <th>{% trans "Rev" %}</th>
+                            <th>{% trans "Product" %}</th>
+                            <th>{% trans "Owner" %}</th>
+                            <th>{% trans "Team" %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ current_object.name }}</td>
+                            <td>{{ current_object.type }}</td>
+                            <td>{{ current_object.number }}</td>
+                            <td>{{ current_object.update_date }}</td>
+                            <td>{{ current_object.revision }}</td>
+                            <td>{{ current_object.product }}</td>
+
+                            {% if current_object.owner %}
+                            <td><a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                                {{ current_object.owner.get_full_name }}</a></td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+
+                            <td>{{ current_object.team }}</td>
+                        </tr>
+                        </tbody>
+
+                        {% if steps %}
+                            <thead>
+                            <tr>
+                                <th style="background: #CCCCCCFF">{% trans "Name" %}</th>
+
+                                <th style="background: #CCCCCCFF">{% trans "Machines" %}</th>
+                                <th style="background: #CCCCCCFF">{% trans "Characteristics" %}</th>
+                                <th style="background: #CCCCCCFF">{% trans "Meas. Equipment" %}</th>
+
+                                <th style="background: #CCCCCCFF">{% trans "Sample Size" %}</th>
+                                <th style="background: #CCCCCCFF">{% trans "Freq" %}</th>
+
+                                <th style="background: #CCCCCCFF">{% trans "Documents" %}</th>
+
+                                <th style="background: #CCCCCCFF">{% trans "React. Plan" %}</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for step in steps %}
+                                <tr>
+                                    <td>{{ step.name }}</td>
+
+                                    <td>
+                                        {% for i in step.get_related_machines %}
+                                            <a class="table-link"
+                                               href="{% url 'show maintenance' pk=i.machine_id.pk slug=i.machine_id.slug %}">
+                                                {{ i.machine_id.name }}</a>
+                                            <br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in step.get_related_characteristics %}
+                                            <a class="table-link"
+                                               href="{% url 'show characteristic' pk=i.characteristic_id.pk slug=i.characteristic_id.slug %}">
+                                                {{ i.characteristic_id.name }}</a>
+                                            <br>
+                                        {% endfor %}
+                                    </td>
+                                    <td>
+                                        {% for i in step.get_related_measuring_equipment %}
+                                            <a class="table-link"
+                                               href="{% url 'show calibration' pk=i.measuring_equipment_id.pk slug=i.measuring_equipment_id.slug %}">
+                                                {{ i.measuring_equipment_id.name }}</a>
+                                            <br>
+                                        {% endfor %}
+                                    </td>
+
+                                    <td>{{ step.sample_size }}</td>
+                                    <td>{{ step.frequency }}</td>
+
+                                    <td>
+                                        {% for doc in step.get_related_documents %}
+                                            <a class="table-link"
+                                               href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
+                                                {{ doc.document_id.name }}</a>
+                                            <br>
+                                        {% endfor %}
+                                    </td>
+
+                                    <td>{{ step.reaction_plan }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        {% endif %}
+
+                    </table>
+                </div>
+
+                <br>
+
+
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

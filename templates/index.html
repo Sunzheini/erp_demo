@@ -566,7 +566,7 @@
                     </table>
                 </div>
 
-                \<div class="table-data-container">
+                <div class="table-data-container">
                     <table class="table-data">
                     <thead>
                         <tr>
@@ -580,6 +580,81 @@
                         <tr>
                             <td>{{ machine.name }}</td>
                             <td><a class="table-link" href="{% url 'show maintenance' pk=machine.pk slug=machine.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Characteristic Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.characteristics %}
+                            {% for characteristic in info_to_display.characteristics %}
+                        <tr>
+                            <td>{{ characteristic.name }}</td>
+                            <td><a class="table-link" href="{% url 'show characteristic' pk=characteristic.pk slug=characteristic.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Control Plan Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.control_plans %}
+                            {% for cp in info_to_display.control_plans %}
+                        <tr>
+                            <td>{{ cp.name }}</td>
+                            <td><a class="table-link" href="{% url 'show control plan' pk=cp.pk slug=cp.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Control Plan Step Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.control_plan_steps %}
+                            {% for cps in info_to_display.control_plan_steps %}
+                        <tr>
+                            <td>{{ cps.name }}</td>
+                            <td><a class="table-link" href="{% url 'show control plan step' pk=cps.pk slug=cps.slug %}">
                                     <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
                             {% endfor %}
                             {% else %}

@@ -105,3 +105,21 @@
                 x.style.display = "none";
             }
         }
+
+        function fShowHideControlPlanForm() {
+            let x = document.getElementById("control_plan_form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        function fShowHideControlPlanStepForm() {
+            let x = document.getElementById("control_plan_step_form");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }

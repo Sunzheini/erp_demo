@@ -1,14 +1,13 @@
 {% extends 'core/base.html' %}
 {% load i18n %}
-{% load static %}
 
 {#1. Page Title------------------------------------------------------------#}
-    {% block page_title %}Show Characteristic{% endblock %}
+    {% block page_title %}Edit Control Plan Step{% endblock %}
 {#-------------------------------------------------------------------------#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
-        <h1 class="page-title">Show Characteristic</h1>
+        <h1 class="page-title">Edit Control Plan Step</h1>
     {% endblock %}
 {#-------------------------------------------------------------------------#}
 
@@ -39,21 +38,15 @@
         <div class="all-display-content-container">
 
             <div class="card-display">
-                <h2 class="card-display-title">{% trans "Show characteristic" %}</h2>
+                <h2 class="card-display-title">{% trans "Edit Control Plan Step" %}</h2>
 
-                <form action="{% url 'show characteristic' pk=current_object.pk slug=current_object.slug %}" method="post">
-
+                <form action="{% url 'edit control plan step' pk=current_object.pk slug=current_object.slug %}" method="post">
                     <table class="table-form">
                         {{ form }}
                     </table>
-
                     {% csrf_token %}
-{#                    <button class="form-button">Запази</button>#}
+                    <button class="form-button">{% trans "submit" %}</button>
                 </form>
-
-                {% if current_object.attachment %}
-                    <img src="{{ current_object.attachment.url }}" class="characteristic-img" alt="ch_photo">
-                {% endif %}
             </div>
         </div>
     </section>

@@ -125,7 +125,6 @@ class ProcessControlPlan(models.Model):
         blank=False,
         null=False,
         unique=True,
-        default=f'Process Control Plan {id}',
     )
 
     type = models.CharField(
@@ -167,6 +166,8 @@ class ProcessControlPlan(models.Model):
 
     owner = models.ForeignKey(
         Employee,
+        blank=True,
+        null=True,
         to_field='id',
         db_column="employee_id",
         on_delete=models.CASCADE,
@@ -177,10 +178,20 @@ class ProcessControlPlan(models.Model):
         null=True,
     )
 
+    steps = models.ManyToManyField(
+        ProcessControlPlanStep,
+        blank=True,
+        through='ProcessControlPlanToProcessControlPlanStep',
+    )
+
     slug = models.SlugField(
         blank=True, null=True,
         editable=False,
     )
+
+    @property
+    def list_of_characteristic_types(self):
+        return [x[0] for x in self._meta.get_field('type').choices]
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -249,3 +260,15 @@ class ProcessControlPlanStepToDocuments(models.Model):
 
     def __str__(self):
         return f"{self.document_id}"
+
+
+class ProcessControlPlanToProcessControlPlanStep(models.Model):
+    process_control_plan_id = models.ForeignKey(
+        ProcessControlPlan,
+        on_delete=models.CASCADE,
+    )
+
+    process_control_plan_step_id = models.ForeignKey(
+        ProcessControlPlanStep,
+        on_delete=models.CASCADE,
+    )
