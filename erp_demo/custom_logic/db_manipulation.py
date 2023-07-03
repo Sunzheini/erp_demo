@@ -7,6 +7,7 @@ from erp_demo.calibration_mng.models import MeasuringEquipment
 from erp_demo.characteristics_mng.models import Characteristic
 from erp_demo.control_plan_mng.models import ProcessControlPlan, ProcessControlPlanStep
 from erp_demo.customer_mng.models import Customer
+from erp_demo.defect_cat_mng.models import DefectCatalogue
 from erp_demo.dox_mng.models import Document, DocumentLikesToUsers
 from erp_demo.hr_mng.models import Employee, Positions, AccessLevels, \
     AccessRights, PositionsToAccessLevels, Trainings, EmployeeToTrainings
@@ -88,6 +89,8 @@ class DatabaseManipulation:
 
         ProcessControlPlanStep.objects.all().delete()
         ProcessControlPlan.objects.all().delete()
+
+        DefectCatalogue.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -425,6 +428,14 @@ class DatabaseManipulation:
                     sample_size=info_to_update[obj]['sample_size'],
                     frequency=info_to_update[obj]['frequency'],
                     reaction_plan=info_to_update[obj]['reaction_plan'],
+                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'DefectCatalogue':
+                DefectCatalogue.objects.bulk_create([DefectCatalogue(
+                    name=info_to_update[obj]['name'],
+                    number=info_to_update[obj]['number'],
+                    description=info_to_update[obj]['description'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
                 ) for obj in info_to_update.keys()])
 

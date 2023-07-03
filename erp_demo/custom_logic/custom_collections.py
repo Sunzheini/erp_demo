@@ -43,6 +43,7 @@ search_types_en = {
     ('Characteristic', 'Characteristic'),
     ('ProcessControlPlan', 'Control Plan'),
     ('ProcessControlPlanStep', 'Control Plan Step'),
+    ('DefectCatalogue', 'Defect Catalogue'),
 }
 
 search_types_bg = {
@@ -70,6 +71,7 @@ search_types_bg = {
     ('Characteristic', 'Характеристика'),
     ('ProcessControlPlan', 'Контролен План'),
     ('ProcessControlPlanStep', 'Стъпка от Контролен План'),
+    ('DefectCatalogue', 'Дефект каталог'),
 }
 
 process_numbers = (
@@ -124,6 +126,7 @@ list_of_keys = {
     'Characteristic': [],
     'ProcessControlPlan': [],
     'ProcessControlPlanStep': [],
+    'DefectCatalogue': [],
 }
 
 coordinates = {
@@ -260,6 +263,12 @@ coordinates = {
         'end_column': None,
     },
     'ProcessControlPlanStep': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'DefectCatalogue': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

@@ -224,9 +224,17 @@
                 <i class="fa-solid fa-atom"></i>
                 <span class="menu-item-title">{% trans "Characteristics" %}</span>
             </button>
+            <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'defect cat mng index' %}';">
+                <i class="fa-solid fa-book"></i>
+                <span class="menu-item-title">{% trans "Defect Catalogues" %}</span>
+            </button>
             <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'control plan mng index' %}';">
                 <i class="fa-regular fa-map"></i>
                 <span class="menu-item-title">{% trans "Control Plans" %}</span>
+            </button>
+            <button class="menu-item menu-item-minor card-btn-hidden" onclick="location.href='{% url 'generate process checklist' %}';">
+                <i class="fa-solid fa-check-double"></i>
+                <span class="menu-item-title">{% trans "Audit Cheklist" %}</span>
             </button>
         </div>
 

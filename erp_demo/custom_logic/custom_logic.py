@@ -10,6 +10,7 @@ from erp_demo.calibration_mng.models import MeasuringEquipment
 from erp_demo.characteristics_mng.models import Characteristic
 from erp_demo.control_plan_mng.models import ProcessControlPlan, ProcessControlPlanStep
 from erp_demo.customer_mng.models import Customer
+from erp_demo.defect_cat_mng.models import DefectCatalogue
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.hr_mng.models import Employee, Trainings
 from erp_demo.custom_logic import custom_collections
@@ -351,6 +352,7 @@ class SupportFunctions:
             characteristics = Characteristic.objects.filter(name__icontains=search_pattern)
             control_plans = ProcessControlPlan.objects.filter(name__icontains=search_pattern)
             control_plan_steps = ProcessControlPlanStep.objects.filter(name__icontains=search_pattern)
+            defect_catalogues = DefectCatalogue.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
@@ -375,6 +377,7 @@ class SupportFunctions:
             result['characteristics'] = characteristics
             result['control_plans'] = control_plans
             result['control_plan_steps'] = control_plan_steps
+            result['defect_catalogues'] = defect_catalogues
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -472,6 +475,10 @@ class SupportFunctions:
         elif choice == 'ProcessControlPlanStep':
             control_plan_steps = ProcessControlPlanStep.objects.filter(name__icontains=search_pattern)
             result['control_plan_steps'] = control_plan_steps
+
+        elif choice == 'DefectCatalogue':
+            defect_catalogues = DefectCatalogue.objects.filter(name__icontains=search_pattern)
+            result['defect_catalogues'] = defect_catalogues
 
         return result
 
