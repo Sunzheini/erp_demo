@@ -27,6 +27,17 @@ LABELS_BG = {
 }
 
 
+# for uploading excels
+# --------------------------------------------------------------------
+class StatModel1UploadForm(forms.Form):
+
+    select_file = forms.FileField(
+        label='',
+    )
+
+
+# --------------------------------------------------------------------
+
 class StatModel1FormMixin:
     def change_labels_to_bg(self):
         language_code = translation.get_language()

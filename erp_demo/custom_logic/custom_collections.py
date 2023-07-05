@@ -127,6 +127,8 @@ list_of_keys = {
     'ProcessControlPlan': [],
     'ProcessControlPlanStep': [],
     'DefectCatalogue': [],
+
+    'StatModel1': [],
 }
 
 coordinates = {
@@ -269,6 +271,13 @@ coordinates = {
         'end_column': None,
     },
     'DefectCatalogue': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+
+    'StatModel1': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

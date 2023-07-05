@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-16 15:33+0300\n"
+"POT-Creation-Date: 2023-07-05 15:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,8 +89,16 @@ msgstr "Стъпка от Плана"
 #: .\templates\actionplan_mng\show_actionplan_step.html:56
 #: .\templates\actions_mng\actions_list.html:61
 #: .\templates\actions_mng\show_action.html:51
+#: .\templates\control_plan_mng\control_plan_mng_index.html:89
+#: .\templates\control_plan_mng\control_plan_step_list.html:48
+#: .\templates\control_plan_mng\show_control_plan.html:46
+#: .\templates\control_plan_mng\show_control_plan.html:79
+#: .\templates\control_plan_mng\show_control_plan_step.html:47
 #: .\templates\core\favorites.html:53 .\templates\core\my_tasks.html:52
 #: .\templates\customer_mng\customer_list.html:48
+#: .\templates\defect_cat_mng\defect_cat_list.html:48
+#: .\templates\defect_cat_mng\show_defect_cat.html:46
+#: .\templates\defect_cat_mng\show_defect_cat.html:62
 #: .\templates\dox_mng\document_list.html:60
 #: .\templates\dox_mng\show_document.html:49
 #: .\templates\hr_mng\show_training.html:48
@@ -115,6 +123,8 @@ msgstr "Име"
 
 #: .\templates\actionplan_mng\actionplan_mng_index.html:82
 #: .\templates\actionplan_mng\show_actionplan_step.html:52
+#: .\templates\control_plan_mng\control_plan_mng_index.html:95
+#: .\templates\control_plan_mng\show_control_plan.html:52
 #: .\templates\core\favorites.html:56 .\templates\core\my_tasks.html:56
 #: .\templates\dox_mng\document_list.html:63
 #: .\templates\dox_mng\show_document.html:52
@@ -127,7 +137,11 @@ msgstr "Собственик"
 #: .\templates\actionplan_mng\actionplan_mng_index.html:84
 #: .\templates\actionplan_mng\show_actionplan.html:66
 #: .\templates\actionplan_mng\show_actionplan_step.html:54
+#: .\templates\control_plan_mng\control_plan_mng_index.html:91
+#: .\templates\control_plan_mng\show_control_plan.html:48
 #: .\templates\core\favorites.html:52 .\templates\core\my_tasks.html:51
+#: .\templates\defect_cat_mng\defect_cat_list.html:49
+#: .\templates\defect_cat_mng\show_defect_cat.html:47
 #: .\templates\dox_mng\document_list.html:59
 #: .\templates\dox_mng\show_document.html:48
 #: .\templates\process_mng\process_mng_index.html:107
@@ -148,15 +162,21 @@ msgid "Scope"
 msgstr "Обхват"
 
 #: .\templates\actionplan_mng\actionplan_mng_index.html:88
-#: .\templates\actions_mng\actions_list.html:67 .\templates\core\base.html:233
-#: .\templates\core\requirements_matrix.html:82
+#: .\templates\actions_mng\actions_list.html:67
+#: .\templates\calibration_mng\calibration_list.html:55
+#: .\templates\characteristics_mng\characteristics_list.html:54
+#: .\templates\control_plan_mng\control_plan_mng_index.html:97
+#: .\templates\control_plan_mng\control_plan_step_list.html:61
+#: .\templates\core\base.html:265 .\templates\core\requirements_matrix.html:82
 #: .\templates\customer_mng\customer_list.html:53
+#: .\templates\defect_cat_mng\defect_cat_list.html:53
 #: .\templates\dox_mng\document_list.html:69
 #: .\templates\hr_mng\employee_list.html:66
 #: .\templates\hr_mng\show_employee.html:52
 #: .\templates\hr_mng\training_list.html:55
 #: .\templates\interaction_mng\interaction_list.html:53
 #: .\templates\kpi_mng\kpi_list.html:57
+#: .\templates\maintenance_mng\maintenance_list.html:55
 #: .\templates\newactions_mng\newactions_list.html:55
 #: .\templates\newactions_mng\newactions_matrix.html:58
 #: .\templates\nonconformity_mng\nonconformity_list.html:61
@@ -167,6 +187,7 @@ msgstr "Обхват"
 #: .\templates\resource_mng\assign_resources.html:135
 #: .\templates\resource_mng\resource_list.html:54
 #: .\templates\risk_mng\risk_list.html:56
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:57
 #: .\templates\supplier_mng\supplier_list.html:53
 #: .\templates\supplier_mng\supplier_scores.html:53
 msgid "Actions"
@@ -183,11 +204,16 @@ msgstr "Изтрий План-Действие"
 #: .\templates\actionplan_mng\delete_actionplan.html:48
 #: .\templates\actionplan_mng\delete_actionplan_step.html:48
 #: .\templates\actions_mng\delete_action.html:49
+#: .\templates\calibration_mng\delete_calibration.html:49
+#: .\templates\control_plan_mng\delete_control_plan.html:48
+#: .\templates\control_plan_mng\delete_control_plan_step.html:48
+#: .\templates\defect_cat_mng\delete_defect_cat.html:49
 #: .\templates\dox_mng\delete_document.html:49
 #: .\templates\hr_mng\delete_employee.html:49
 #: .\templates\hr_mng\delete_training.html:47
 #: .\templates\interaction_mng\delete_interaction.html:49
 #: .\templates\kpi_mng\delete_kpi.html:49
+#: .\templates\maintenance_mng\delete_maintenance.html:49
 #: .\templates\newactions_mng\delete_newaction.html:49
 #: .\templates\nonconformity_mng\delete_nonconformity.html:55
 #: .\templates\opportunity_mng\delete_opportunity.html:49
@@ -195,6 +221,7 @@ msgstr "Изтрий План-Действие"
 #: .\templates\process_mng\delete_process_step.html:48
 #: .\templates\resource_mng\delete_resource.html:49
 #: .\templates\risk_mng\delete_risk.html:49
+#: .\templates\statistics_mng\stat_model1\delete_stat_model1.html:55
 #: .\templates\supplier_mng\delete_supplier.html:49
 msgid "delete"
 msgstr "изтрий"
@@ -210,11 +237,16 @@ msgstr "Промени План-Действие"
 #: .\templates\actionplan_mng\edit_actionplan.html:49
 #: .\templates\actionplan_mng\edit_actionplan_step.html:48
 #: .\templates\actions_mng\edit_action.html:49
+#: .\templates\calibration_mng\edit_calibration.html:49
+#: .\templates\control_plan_mng\edit_control_plan.html:49
+#: .\templates\control_plan_mng\edit_control_plan_step.html:48
 #: .\templates\core\edit_requirement.html:49
+#: .\templates\defect_cat_mng\edit_defect_cat.html:49
 #: .\templates\hr_mng\edit_employee.html:49
 #: .\templates\hr_mng\edit_training.html:48
 #: .\templates\interaction_mng\edit_interaction.html:49
 #: .\templates\kpi_mng\edit_kpi.html:49
+#: .\templates\maintenance_mng\edit_maintenance.html:49
 #: .\templates\newactions_mng\edit_newaction.html:49
 #: .\templates\nonconformity_mng\edit_nonconformity.html:55
 #: .\templates\opportunity_mng\edit_opportunity.html:49
@@ -222,6 +254,7 @@ msgstr "Промени План-Действие"
 #: .\templates\process_mng\edit_process_step.html:48
 #: .\templates\resource_mng\edit_resource.html:49
 #: .\templates\risk_mng\edit_risk.html:49
+#: .\templates\statistics_mng\stat_model1\edit_stat_model1.html:55
 #: .\templates\supplier_mng\edit_supplier.html:49
 msgid "submit"
 msgstr "потвърди"
@@ -278,6 +311,10 @@ msgstr "Покажи Стъпка от Плана"
 #: .\templates\actionplan_mng\show_actionplan_step.html:122
 #: .\templates\actions_mng\show_action.html:57
 #: .\templates\actions_mng\show_action.html:94
+#: .\templates\calibration_mng\show_calibration.html:54
+#: .\templates\calibration_mng\show_calibration.html:98
+#: .\templates\control_plan_mng\show_control_plan_step.html:60
+#: .\templates\control_plan_mng\show_control_plan_step.html:109
 #: .\templates\core\favorites.html:59 .\templates\core\favorites.html:91
 #: .\templates\core\my_tasks.html:58 .\templates\core\show_requirement.html:54
 #: .\templates\core\show_requirement.html:77
@@ -290,6 +327,8 @@ msgstr "Покажи Стъпка от Плана"
 #: .\templates\interaction_mng\show_interaction.html:53
 #: .\templates\interaction_mng\show_interaction.html:84
 #: .\templates\kpi_mng\show_kpi.html:57 .\templates\kpi_mng\show_kpi.html:81
+#: .\templates\maintenance_mng\show_maintenance.html:54
+#: .\templates\maintenance_mng\show_maintenance.html:98
 #: .\templates\newactions_mng\show_newaction.html:54
 #: .\templates\newactions_mng\show_newaction.html:74
 #: .\templates\opportunity_mng\show_opportunity.html:50
@@ -312,6 +351,11 @@ msgstr "Промени"
 #: .\templates\actionplan_mng\show_actionplan_step.html:125
 #: .\templates\actions_mng\show_action.html:58
 #: .\templates\actions_mng\show_action.html:96
+#: .\templates\calibration_mng\show_calibration.html:55
+#: .\templates\calibration_mng\show_calibration.html:100
+#: .\templates\characteristics_mng\delete_characteristic.html:49
+#: .\templates\control_plan_mng\show_control_plan_step.html:61
+#: .\templates\control_plan_mng\show_control_plan_step.html:112
 #: .\templates\core\delete_requirement.html:49
 #: .\templates\core\favorites.html:60 .\templates\core\favorites.html:93
 #: .\templates\core\manage_db_all.html:54 .\templates\core\my_tasks.html:59
@@ -327,6 +371,8 @@ msgstr "Промени"
 #: .\templates\interaction_mng\show_interaction.html:54
 #: .\templates\interaction_mng\show_interaction.html:86
 #: .\templates\kpi_mng\show_kpi.html:58 .\templates\kpi_mng\show_kpi.html:83
+#: .\templates\maintenance_mng\show_maintenance.html:55
+#: .\templates\maintenance_mng\show_maintenance.html:100
 #: .\templates\newactions_mng\show_newaction.html:55
 #: .\templates\newactions_mng\show_newaction.html:76
 #: .\templates\opportunity_mng\show_opportunity.html:51
@@ -360,6 +406,9 @@ msgstr "филтър"
 
 #: .\templates\actions_mng\actions_list.html:57
 #: .\templates\actions_mng\show_action.html:47
+#: .\templates\characteristics_mng\characteristics_list.html:50
+#: .\templates\control_plan_mng\control_plan_mng_index.html:90
+#: .\templates\control_plan_mng\show_control_plan.html:47
 #: .\templates\core\favorites.html:51 .\templates\core\my_tasks.html:50
 #: .\templates\dox_mng\document_list.html:58
 #: .\templates\dox_mng\show_document.html:47
@@ -438,6 +487,7 @@ msgid "add this task"
 msgstr "добави тази задача"
 
 #: .\templates\actions_mng\delete_action.html:41
+#: .\templates\defect_cat_mng\delete_defect_cat.html:41
 #: .\templates\newactions_mng\delete_newaction.html:41
 msgid "Delete Action"
 msgstr "Изтрий Действие"
@@ -451,6 +501,275 @@ msgstr "Промени Действие"
 #: .\templates\newactions_mng\show_newaction.html:41
 msgid "Show Action"
 msgstr "Покажи Действие"
+
+#: .\templates\calibration_mng\add_calibration.html:41
+msgid "Add Measuring Equipment"
+msgstr "Добави Изм. Оборудване"
+
+#: .\templates\calibration_mng\add_calibration.html:48
+msgid "add this meas. equipment"
+msgstr "добави това изм. оборудване"
+
+#: .\templates\calibration_mng\calibration_list.html:41
+msgid "Measuring Equipment:"
+msgstr "Измервателно Оборудване:"
+
+#: .\templates\calibration_mng\calibration_list.html:48
+#: .\templates\calibration_mng\show_calibration.html:47
+msgid "Meas.Equipment Name"
+msgstr "Име на Изм. Оборудв."
+
+#: .\templates\calibration_mng\calibration_list.html:49
+#: .\templates\calibration_mng\show_calibration.html:48
+#: .\templates\maintenance_mng\maintenance_list.html:49
+#: .\templates\maintenance_mng\show_maintenance.html:48
+msgid "Inv. Number"
+msgstr "Инв. Номер"
+
+#: .\templates\calibration_mng\calibration_list.html:50
+#: .\templates\calibration_mng\show_calibration.html:49
+#: .\templates\control_plan_mng\control_plan_step_list.html:51
+#: .\templates\control_plan_mng\show_control_plan.html:82
+#: .\templates\control_plan_mng\show_control_plan_step.html:50
+#: .\templates\core\base.html:225
+#: .\templates\maintenance_mng\maintenance_list.html:50
+#: .\templates\maintenance_mng\show_maintenance.html:49
+#: .\templates\operations_mng\operations_mng_index.html:29
+msgid "Characteristics"
+msgstr "Характеристики"
+
+#: .\templates\calibration_mng\calibration_list.html:51
+#: .\templates\calibration_mng\show_calibration.html:50
+#: .\templates\maintenance_mng\maintenance_list.html:51
+#: .\templates\maintenance_mng\show_maintenance.html:50
+msgid "Installation Date"
+msgstr "Дата Въвеждане"
+
+#: .\templates\calibration_mng\calibration_list.html:52
+#: .\templates\calibration_mng\show_calibration.html:51
+msgid "Cal. Interval in Days"
+msgstr "Интервал Калибр. в Дни"
+
+#: .\templates\calibration_mng\calibration_list.html:53
+#: .\templates\calibration_mng\show_calibration.html:52
+msgid "To Next Calibration"
+msgstr "До Следв. Калибр."
+
+#: .\templates\calibration_mng\calibration_mng_index.html:25
+msgid "Add Meas. Equipment"
+msgstr "Добави Изм. Оборудв."
+
+#: .\templates\calibration_mng\calibration_mng_index.html:30
+msgid "Meas. Equipment List"
+msgstr "Списък Изм. Оборудв."
+
+#: .\templates\calibration_mng\delete_calibration.html:41
+msgid "Delete Measuring Equipment"
+msgstr "Изтрий Измерв. Оборудване"
+
+#: .\templates\calibration_mng\edit_calibration.html:41
+msgid "Edit Measuring Equipment"
+msgstr "Промени Измерв. Оборудване"
+
+#: .\templates\calibration_mng\show_calibration.html:41
+msgid "Show Measuring Equipment"
+msgstr "Покажи Измерв. Оборудване"
+
+#: .\templates\characteristics_mng\add_characteristic.html:42
+msgid "Add a Characteristic"
+msgstr "Добави Характеристика"
+
+#: .\templates\characteristics_mng\add_characteristic.html:51
+#: .\templates\characteristics_mng\edit_characteristic.html:50
+#: .\templates\customer_mng\add_customer.html:51
+#: .\templates\customer_mng\edit_customer.html:50
+#: .\templates\organization_mng\add_org.html:51
+#: .\templates\organization_mng\edit_org.html:51
+msgid "Save"
+msgstr "Запази"
+
+#: .\templates\characteristics_mng\characteristics_list.html:41
+msgid "Characteristics List"
+msgstr "Списък Характеристики"
+
+#: .\templates\characteristics_mng\characteristics_list.html:48
+msgid "Characteristic"
+msgstr "Характеристика"
+
+#: .\templates\characteristics_mng\characteristics_list.html:49
+#: .\templates\defect_cat_mng\show_defect_cat.html:63
+#: .\templates\hr_mng\show_training.html:47
+#: .\templates\hr_mng\training_list.html:48
+msgid "Code"
+msgstr "Код"
+
+#: .\templates\characteristics_mng\characteristics_list.html:51
+#: .\templates\defect_cat_mng\show_defect_cat.html:64
+msgid "Requirement"
+msgstr "Изискване"
+
+#: .\templates\characteristics_mng\characteristics_list.html:52
+msgid "Attachment"
+msgstr "Приложение"
+
+#: .\templates\characteristics_mng\characteristics_list.html:69
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:232
+msgid "File"
+msgstr "Файл"
+
+#: .\templates\characteristics_mng\characteristics_list.html:71
+#: .\templates\core\favorites.html:87 .\templates\core\my_tasks.html:84
+#: .\templates\dox_mng\document_list.html:97
+#: .\templates\dox_mng\show_document.html:78
+msgid "N/A"
+msgstr "Н/П"
+
+#: .\templates\characteristics_mng\characteristics_list.html:90
+msgid "No characteristics available!"
+msgstr "Няма налични храктеристики!"
+
+#: .\templates\characteristics_mng\characteristics_mng_index.html:21
+msgid "Add Characteristics"
+msgstr "Добави Характеристика"
+
+#: .\templates\characteristics_mng\characteristics_mng_index.html:26
+msgid "Characteristics list"
+msgstr "Списък Характертистики"
+
+#: .\templates\characteristics_mng\delete_characteristic.html:41
+msgid "Delete a Characteristic"
+msgstr "Изтрий Характеристика"
+
+#: .\templates\characteristics_mng\edit_characteristic.html:42
+msgid "Change a Characteristic"
+msgstr "Промени Характеристика"
+
+#: .\templates\characteristics_mng\show_characteristic.html:42
+msgid "Show characteristic"
+msgstr "Покажи Характеристика"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:20
+msgid "New Control Plan"
+msgstr "Нов Контролен План"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:25
+msgid "New Control Plan Step"
+msgstr "Нова Стъпка от К. План"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:32
+msgid "Control Plan Step List"
+msgstr "Списък КП Стъпки"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:48
+msgid "Control Plan Management"
+msgstr "Управление Контролни Планове"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:62
+msgid "1) CP Creation Form"
+msgstr "1) Създай Нов КП"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:67
+msgid "add this cp"
+msgstr "добави този кп"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:74
+msgid "2) CP Step Creation Form"
+msgstr "2) Създаване КП Стъпка"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:79
+msgid "add this cp step"
+msgstr "добави кп стъпка"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:92
+#: .\templates\control_plan_mng\show_control_plan.html:50
+msgid "Rev"
+msgstr "Рев"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:93
+#: .\templates\control_plan_mng\show_control_plan.html:49
+msgid "Rev Date"
+msgstr "Рев Дата"
+
+#: .\templates\control_plan_mng\control_plan_mng_index.html:94
+#: .\templates\control_plan_mng\show_control_plan.html:51
+msgid "Product"
+msgstr "Продукт"
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:41
+msgid "Control Plan Steps List:"
+msgstr "Списък КП Стъпки:"
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:50
+#: .\templates\control_plan_mng\show_control_plan.html:81
+#: .\templates\control_plan_mng\show_control_plan_step.html:49
+msgid "Machines"
+msgstr "Машина"
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:52
+#: .\templates\control_plan_mng\show_control_plan_step.html:51
+msgid "M. Eqip."
+msgstr "Изм. Об."
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:54
+#: .\templates\control_plan_mng\show_control_plan.html:85
+#: .\templates\control_plan_mng\show_control_plan_step.html:53
+msgid "Sample Size"
+msgstr "Извадка"
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:55
+#: .\templates\control_plan_mng\show_control_plan.html:86
+#: .\templates\control_plan_mng\show_control_plan_step.html:54
+msgid "Freq"
+msgstr "Честота"
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:57
+#: .\templates\control_plan_mng\show_control_plan.html:88
+#: .\templates\control_plan_mng\show_control_plan_step.html:56
+#: .\templates\interaction_mng\interaction_list.html:51
+#: .\templates\interaction_mng\show_interaction.html:51
+#: .\templates\process_mng\blank_flowchart.html:63
+#: .\templates\process_mng\process_mng_index.html:111
+#: .\templates\process_mng\show_process_step.html:57
+msgid "Documents"
+msgstr "Документи"
+
+#: .\templates\control_plan_mng\control_plan_step_list.html:59
+#: .\templates\control_plan_mng\show_control_plan.html:90
+#: .\templates\control_plan_mng\show_control_plan_step.html:58
+msgid "React. Plan"
+msgstr "План Реакция"
+
+#: .\templates\control_plan_mng\delete_control_plan.html:41
+msgid "Delete Control Plan"
+msgstr "Изтрий Контр. План"
+
+#: .\templates\control_plan_mng\delete_control_plan_step.html:41
+msgid "Delete Control Plan Step"
+msgstr "Изтрий КП Стъпка"
+
+#: .\templates\control_plan_mng\edit_control_plan.html:41
+msgid "Edit Control Plan"
+msgstr "Промени Контр. План"
+
+#: .\templates\control_plan_mng\edit_control_plan_step.html:41
+msgid "Edit Control Plan Step"
+msgstr "Промени КП Стъпка"
+
+#: .\templates\control_plan_mng\show_control_plan.html:41
+msgid "Show Control Plan"
+msgstr "Покажи Контр. План"
+
+#: .\templates\control_plan_mng\show_control_plan.html:53
+msgid "Team"
+msgstr "Екип"
+
+#: .\templates\control_plan_mng\show_control_plan.html:83
+msgid "Meas. Equipment"
+msgstr "Изм. Оборудване"
+
+#: .\templates\control_plan_mng\show_control_plan_step.html:41
+msgid "Show Control Plan Step"
+msgstr "Покажи КП Стъпка"
 
 #: .\templates\core\base.html:46
 msgid "Main Page"
@@ -534,7 +853,7 @@ msgstr "Подобрения"
 msgid "KPIs"
 msgstr "KPI"
 
-#: .\templates\core\base.html:201
+#: .\templates\core\base.html:201 .\templates\core\base.html:237
 msgid "Audit Cheklist"
 msgstr "Одит Чеклист"
 
@@ -542,19 +861,42 @@ msgstr "Одит Чеклист"
 msgid "Operational Processes"
 msgstr "Оперативни Процеси"
 
-#: .\templates\core\base.html:218
+#: .\templates\core\base.html:217
+#: .\templates\operations_mng\operations_mng_index.html:19
+msgid "Maintenance"
+msgstr "Поддръжка"
+
+#: .\templates\core\base.html:221
+#: .\templates\operations_mng\operations_mng_index.html:24
+msgid "Calibration"
+msgstr "Калибриране"
+
+#: .\templates\core\base.html:229
+msgid "Defect Catalogues"
+msgstr "Дефект Каталози"
+
+#: .\templates\core\base.html:233
+#: .\templates\operations_mng\operations_mng_index.html:34
+msgid "Control Plans"
+msgstr "Контролни Планове"
+
+#: .\templates\core\base.html:245
 msgid "Customers"
 msgstr "Клиенти"
 
-#: .\templates\core\base.html:223
+#: .\templates\core\base.html:250
 msgid "Requirements Matrix"
 msgstr "Матрица Изисквания"
 
-#: .\templates\core\base.html:228
+#: .\templates\core\base.html:255
+msgid "Statistics"
+msgstr "Статистика"
+
+#: .\templates\core\base.html:260
 msgid "Nonconformities"
 msgstr "Несъответствия"
 
-#: .\templates\core\base.html:238
+#: .\templates\core\base.html:270
 msgid "Action Plans"
 msgstr "Планове-Действие"
 
@@ -592,7 +934,13 @@ msgstr "Ревизия"
 #: .\templates\index.html:458 .\templates\index.html:474
 #: .\templates\index.html:483 .\templates\index.html:499
 #: .\templates\index.html:508 .\templates\index.html:524
-#: .\templates\index.html:533
+#: .\templates\index.html:533 .\templates\index.html:549
+#: .\templates\index.html:558 .\templates\index.html:574
+#: .\templates\index.html:583 .\templates\index.html:599
+#: .\templates\index.html:608 .\templates\index.html:624
+#: .\templates\index.html:633 .\templates\index.html:649
+#: .\templates\index.html:658 .\templates\index.html:674
+#: .\templates\index.html:683
 msgid "Show"
 msgstr "Покажи"
 
@@ -609,12 +957,6 @@ msgstr "Линк"
 #: .\templates\dox_mng\document_list.html:71
 msgid "Fav"
 msgstr "Фав"
-
-#: .\templates\core\favorites.html:87 .\templates\core\my_tasks.html:84
-#: .\templates\dox_mng\document_list.html:97
-#: .\templates\dox_mng\show_document.html:78
-msgid "N/A"
-msgstr "Н/П"
 
 #: .\templates\core\logs.html:48 .\templates\kpi_mng\kpi_matrix.html:48
 #: .\templates\opportunity_mng\opportunity_matrix.html:48
@@ -744,6 +1086,8 @@ msgstr "Име Клауза"
 
 #: .\templates\core\requirements_matrix.html:76
 #: .\templates\core\show_requirement.html:51
+#: .\templates\defect_cat_mng\defect_cat_list.html:50
+#: .\templates\defect_cat_mng\show_defect_cat.html:48
 #: .\templates\hr_mng\show_training.html:49
 #: .\templates\hr_mng\training_list.html:50
 #: .\templates\kpi_mng\kpi_list.html:54 .\templates\kpi_mng\show_kpi.html:54
@@ -905,17 +1249,20 @@ msgstr "D8. Систематични действия за предотврат�
 msgid "Systematic Actions"
 msgstr "Систематични Действия"
 
+#: .\templates\custom_forms\custom_stat_model1_form.html:8
+#: .\templates\custom_forms\custom_stat_model1_form_show.html:8
+msgid "General Information"
+msgstr "Обща информация"
+
+#: .\templates\custom_forms\custom_stat_model1_form.html:27
+#: .\templates\custom_forms\custom_stat_model1_form_show.html:37
+msgid "Enter data here"
+msgstr "Попълни данните тук"
+
 #: .\templates\customer_mng\add_customer.html:42
 #: .\templates\customer_mng\customer_mng_index.html:28
 msgid "Add a new customer"
 msgstr "Добави нов клиент"
-
-#: .\templates\customer_mng\add_customer.html:51
-#: .\templates\customer_mng\edit_customer.html:50
-#: .\templates\organization_mng\add_org.html:51
-#: .\templates\organization_mng\edit_org.html:51
-msgid "Save"
-msgstr "Запази"
 
 #: .\templates\customer_mng\customer_list.html:41
 msgid "Customers List"
@@ -958,6 +1305,35 @@ msgstr "Промени данни на клиент"
 #: .\templates\customer_mng\show_customer.html:42
 msgid "Show customer details"
 msgstr "Покажи данни на клиент"
+
+#: .\templates\defect_cat_mng\add_defect_cat.html:39
+#: .\templates\defect_cat_mng\defect_cat_mng_index.html:19
+msgid "Add Defect Catalogue"
+msgstr "Добави Дефект Каталог"
+
+#: .\templates\defect_cat_mng\add_defect_cat.html:46
+msgid "add this defect catalogue"
+msgstr "добави този дефект каталог"
+
+#: .\templates\defect_cat_mng\defect_cat_list.html:41
+msgid "Defect Catalogues:"
+msgstr "Дефект Каталози:"
+
+#: .\templates\defect_cat_mng\defect_cat_list.html:51
+msgid "Nr of Items"
+msgstr "Бр. Елементи"
+
+#: .\templates\defect_cat_mng\defect_cat_mng_index.html:28
+msgid "Defect Catalogues List"
+msgstr "Списък Дефект Каталози"
+
+#: .\templates\defect_cat_mng\edit_defect_cat.html:41
+msgid "Edit Defect Catalogue"
+msgstr "Промени Дефект Каталог"
+
+#: .\templates\defect_cat_mng\show_defect_cat.html:41
+msgid "Show Defect Catalogue"
+msgstr "Покажи Дефект Каталог"
 
 #: .\templates\dox_mng\add_document.html:42
 #: .\templates\dox_mng\dox_mng_index.html:25
@@ -1073,11 +1449,6 @@ msgstr "Покажи Служител"
 msgid "Show training"
 msgstr "Покажи обучение"
 
-#: .\templates\hr_mng\show_training.html:47
-#: .\templates\hr_mng\training_list.html:48
-msgid "Code"
-msgstr "Код"
-
 #: .\templates\hr_mng\training_index.html:25
 msgid "Add Training"
 msgstr "Добави Обучение"
@@ -1121,6 +1492,9 @@ msgstr "Име на Процес"
 #: .\templates\index.html:412 .\templates\index.html:437
 #: .\templates\index.html:462 .\templates\index.html:487
 #: .\templates\index.html:512 .\templates\index.html:537
+#: .\templates\index.html:562 .\templates\index.html:587
+#: .\templates\index.html:612 .\templates\index.html:637
+#: .\templates\index.html:662 .\templates\index.html:687
 msgid "Nothing found"
 msgstr "Нищо не е открито"
 
@@ -1203,6 +1577,30 @@ msgstr "Описание на Стъпката от Плана"
 msgid "Supplier Description"
 msgstr "Описание на Доставчика"
 
+#: .\templates\index.html:548
+msgid "Meas. Eqpmt Description"
+msgstr "Описание на Изм. Оборудв."
+
+#: .\templates\index.html:573
+msgid "Machine Description"
+msgstr "Описание на Машина"
+
+#: .\templates\index.html:598
+msgid "Characteristic Description"
+msgstr "Описание Характеристика"
+
+#: .\templates\index.html:623
+msgid "Control Plan Description"
+msgstr "Описание на Контролен План"
+
+#: .\templates\index.html:648
+msgid "Control Plan Step Description"
+msgstr "Описание на КП Стъпка"
+
+#: .\templates\index.html:673
+msgid "Defect Catalogue Description"
+msgstr "Описание на Действие"
+
 #: .\templates\interaction_mng\add_interaction.html:41
 #: .\templates\interaction_mng\interaction_mng_index.html:25
 msgid "Add Interaction"
@@ -1235,14 +1633,6 @@ msgstr "От Процесна Стъпка"
 #: .\templates\process_mng\blank_turtle.html:188
 msgid "To Process Step"
 msgstr "Към Проц. Стъпка"
-
-#: .\templates\interaction_mng\interaction_list.html:51
-#: .\templates\interaction_mng\show_interaction.html:51
-#: .\templates\process_mng\blank_flowchart.html:63
-#: .\templates\process_mng\process_mng_index.html:111
-#: .\templates\process_mng\show_process_step.html:57
-msgid "Documents"
-msgstr "Документи"
 
 #: .\templates\interaction_mng\interaction_mng_index.html:30
 msgid "Interaction List"
@@ -1362,6 +1752,50 @@ msgstr "Списък KPI"
 msgid "Show KPI"
 msgstr "Покажи KPI"
 
+#: .\templates\maintenance_mng\add_maintenance.html:41
+#: .\templates\maintenance_mng\maintenance_mng_index.html:25
+msgid "Add Machine"
+msgstr "Добави Машина"
+
+#: .\templates\maintenance_mng\add_maintenance.html:48
+msgid "add this machine"
+msgstr "добави тази машина"
+
+#: .\templates\maintenance_mng\delete_maintenance.html:41
+msgid "Delete Machine"
+msgstr "Изтрий Машина"
+
+#: .\templates\maintenance_mng\edit_maintenance.html:41
+msgid "Edit Machine"
+msgstr "Промени Машина"
+
+#: .\templates\maintenance_mng\maintenance_list.html:41
+msgid "Machines:"
+msgstr "Машини:"
+
+#: .\templates\maintenance_mng\maintenance_list.html:48
+#: .\templates\maintenance_mng\show_maintenance.html:47
+msgid "Machine Name"
+msgstr "Име Машина"
+
+#: .\templates\maintenance_mng\maintenance_list.html:52
+#: .\templates\maintenance_mng\show_maintenance.html:51
+msgid "Mnt. Interval in Days"
+msgstr "Интервал Поддр. в Дни"
+
+#: .\templates\maintenance_mng\maintenance_list.html:53
+#: .\templates\maintenance_mng\show_maintenance.html:52
+msgid "To Next Maintenance"
+msgstr "До Следв. Поддръжка"
+
+#: .\templates\maintenance_mng\maintenance_mng_index.html:30
+msgid "Machine List"
+msgstr "Списък Машини"
+
+#: .\templates\maintenance_mng\show_maintenance.html:41
+msgid "Show Machine"
+msgstr "Покажи Машина"
+
 #: .\templates\newactions_mng\newactions_matrix.html:41
 msgid "Actions Matrix:"
 msgstr "Матрица Действия:"
@@ -1446,7 +1880,7 @@ msgstr "Списък Несъответствия"
 msgid "Show Nonconformity"
 msgstr "Покажи Несъответствие"
 
-#: .\templates\operations_mng\operations_mng_index.html:40
+#: .\templates\operations_mng\operations_mng_index.html:49
 msgid "Operations management"
 msgstr "Оперативно управление"
 
@@ -1860,6 +2294,94 @@ msgstr "План за Непрекъсваемост"
 msgid "Show Risk"
 msgstr "Покажи Риск"
 
+#: .\templates\statistics_mng\stat_model1\add_stat_model1.html:47
+msgid "Form Name: Template 1"
+msgstr "Формуляр: Темплейт 1"
+
+#: .\templates\statistics_mng\stat_model1\add_stat_model1.html:53
+msgid "add this record"
+msgstr "добави този запис"
+
+#: .\templates\statistics_mng\stat_model1\delete_stat_model1.html:48
+msgid "Delete:"
+msgstr "Изтрий:"
+
+#: .\templates\statistics_mng\stat_model1\edit_stat_model1.html:48
+msgid "Edit the record:"
+msgstr "Промени запис:"
+
+#: .\templates\statistics_mng\stat_model1\scan_stat_model1.html:41
+msgid "Scan form from excel: Template 1"
+msgstr "Сканирай формуляр от excel: Темплейт 1"
+
+#: .\templates\statistics_mng\stat_model1\scan_stat_model1.html:45
+msgid "scan this record"
+msgstr "сканирай този запис"
+
+#: .\templates\statistics_mng\stat_model1\show_stat_model1.html:47
+msgid "Show:"
+msgstr "Покажи:"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_index.html:25
+msgid "Add a new record"
+msgstr "Добави нов клиент"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_index.html:30
+msgid "Scan a new record"
+msgstr "Сканирай нов запис"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_index.html:35
+msgid "Records List"
+msgstr "Списък Записи"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:41
+msgid "Records List:"
+msgstr "Списък Записи:"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:48
+msgid "Record Number"
+msgstr "Номер Запис"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:49
+msgid "Operator"
+msgstr "Оператор"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:50
+msgid "Grinding"
+msgstr "Пилене"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:51
+msgid "Welding"
+msgstr "Заваряване"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:52
+msgid "Blasting"
+msgstr "Бластиране"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:53
+msgid "Painting"
+msgstr "Боядисване"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:54
+msgid "Assembly"
+msgstr "Асемблиране"
+
+#: .\templates\statistics_mng\stat_model1\stat_model1_list.html:55
+msgid "Total"
+msgstr "Общо"
+
+#: .\templates\statistics_mng\statistics_mng_index.html:38
+msgid "Choose a template to fill-in:"
+msgstr "Избери темплейт за попълване:"
+
+#: .\templates\statistics_mng\statistics_mng_index.html:44
+msgid "Template name"
+msgstr "Име темплейт"
+
+#: .\templates\statistics_mng\statistics_mng_index.html:52
+msgid "Template 1"
+msgstr "Темплейт 1"
+
 #: .\templates\supplier_mng\add_supplier.html:41
 #: .\templates\supplier_mng\supplier_mng_index.html:25
 msgid "Add Supplier"
@@ -1915,9 +2437,13 @@ msgstr "Оценки Доставчици"
 msgid "Supplier Scores:"
 msgstr "Оценки Доставчици:"
 
+#: .\templates\tools\generate_process_checklist.html:41
+msgid "Generate a Manufacturing Process Audit Checklist:"
+msgstr "Генерирай Ческлист за Одит на Производствен Процес:"
+
 #: .\templates\tools\generate_system_checklist.html:41
 msgid "Generate a System Audit Checklist:"
-msgstr "Генерирай Ческлист за Одит"
+msgstr "Генерирай Ческлист за Системен Одит"
 
 #: .\templates\tools\tools_index.html:42
 msgid "AI Tools"
@@ -2661,10 +3187,6 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2657
 msgid "Universally unique identifier"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:232
-msgid "File"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\files.py:393
@@ -3476,9 +3998,6 @@ msgstr ""
 
 #~ msgid "My Tasks"
 #~ msgstr "Мои Задачи"
-
-#~ msgid "Manage Requirements"
-#~ msgstr "Управление Изисквания"
 
 #~ msgid "Personnel"
 #~ msgstr "Персонал"

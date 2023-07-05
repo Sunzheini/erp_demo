@@ -51,7 +51,8 @@ class StatModel1(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
+            name_to_str = str(self.name)
+            self.slug = slugify(f"{translate_to_maimunica(name_to_str[0:30])}")
         return super().save(*args, **kwargs)
 
     def __str__(self):

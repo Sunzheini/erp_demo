@@ -26,12 +26,17 @@
                 <span class="card-btn-desc">Add a new employee and define their properties</span>
             </button>
 
+            <button class="card-btn" onclick="location.href='{% url 'upload stat model1' %}';">
+                <span class="card-btn-title">{% trans "Scan a new record" %}</span>
+                <span class="card-btn-desc">Add a new employee and define their properties</span>
+            </button>
+
             <button class="card-btn" onclick="location.href='{% url 'stat model1 list' %}';">
                 <span class="card-btn-title">{% trans "Records List" %}</span>
                 <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
             </button>
 
-            <button class="card-btn card-btn-hidden"></button>
+{#            <button class="card-btn card-btn-hidden"></button>#}
         </div>
     </section>
 {% endblock %}

@@ -73,4 +73,9 @@ urlpatterns = [
     path('stat-model1/delete-stat-model1/<int:pk>/<slug:slug>/', StatModel1Views(
         template_list_stat_model1, redirect_url_stat_model1, form_list_stat_model1, StatModel1, files_are_used
     ).delete_view, name='delete stat model1'),
+
+
+    path('upload-stat-model1/', StatModel1Views(
+        template_list_stat_model1, redirect_url_stat_model1, form_list_stat_model1, StatModel1, files_are_used
+    ).upload_model1_view, name='upload stat model1'),
 ]

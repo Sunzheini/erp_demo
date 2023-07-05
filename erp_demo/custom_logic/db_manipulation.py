@@ -25,6 +25,7 @@ from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process, ProcessToKpis, ProcessToOpportunities, ProcessToRisks
 from erp_demo.resource_mng.models import Resource, ResourcesAssignedToEmployees, ResourcesAssignedToProcess
 from erp_demo.risk_mng.models import Risk
+from erp_demo.statistics_mng.models import StatModel1
 from erp_demo.supplier_mng.models import Supplier
 
 
@@ -60,6 +61,8 @@ class DatabaseManipulation:
         MeasuringEquipment.objects.all().delete()
         Machine.objects.all().delete()
         Characteristic.objects.all().delete()
+
+        StatModel1.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()
@@ -437,6 +440,19 @@ class DatabaseManipulation:
                     number=info_to_update[obj]['number'],
                     description=info_to_update[obj]['description'],
                     slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'StatModel1':
+                StatModel1.objects.bulk_create([StatModel1(
+                    name=info_to_update[obj]['name'],
+                    operator=info_to_update[obj]['operator'],
+                    grinding=info_to_update[obj]['grinding'],
+                    welding=info_to_update[obj]['welding'],
+                    blasting=info_to_update[obj]['blasting'],
+                    painting=info_to_update[obj]['painting'],
+                    assembly=info_to_update[obj]['assembly'],
+                    total_pieces=info_to_update[obj]['total_pieces'],
+                    slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
                 ) for obj in info_to_update.keys()])
 
             info_to_update = {}

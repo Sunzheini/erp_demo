@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
+from erp_demo.custom_logic.extract_from_excel import extract_from_excel
+from erp_demo.statistics_mng.forms import StatModel1UploadForm
 
 
 class StatisticsMngViews(PrototypeViews):
@@ -46,3 +48,43 @@ class StatModel1Views(PrototypeViews):
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
         return render(request, self.show_template, self.context)
+
+    # specific vies for uploading the different physical forms
+
+    @staticmethod
+    def upload_model1_view(request):
+
+    # make with inheritance and leave only this as unique when doing the next form
+        current_form = StatModel1UploadForm
+        model_name = 'StatModel1'
+        template = 'statistics_mng/stat_model1/scan_stat_model1.html'
+        rows_dict = {
+            'name': 'D5',
+            'operator': 'G5',
+            'grinding': 'D7',
+            'welding': 'D8',
+            'blasting': 'D9',
+            'painting': 'D10',
+            'assembly': 'D11',
+            'total_pieces': 'G7',
+        }
+    # -------------------------------------------------------------------------------
+
+        app_name = 'statistics_mng'
+        message = None
+
+        if 'scan_record' in request.POST:
+            form = current_form(request.POST, request.FILES)
+            if form.is_valid():
+                extract_from_excel(request.FILES, app_name, model_name, rows_dict)
+                message = 'File uploaded successfully'
+                form = current_form()
+        else:
+            form = current_form()
+
+        context = {
+            'form': form,
+            'message': message,
+        }
+
+        return render(request, template, context)
