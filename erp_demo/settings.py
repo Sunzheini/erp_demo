@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'erp_demo.control_plan_mng',
     'erp_demo.characteristics_mng',
     'erp_demo.defect_cat_mng',
+    'erp_demo.statistics_mng',
 
     'cloudinary',
 ]

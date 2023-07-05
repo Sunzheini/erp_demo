@@ -1,0 +1,89 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# Part 0 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "General Information" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-3">{{ form.name.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.name %}
+                    {{ current_object.name }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.operator.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.operator %}
+                    {{ current_object.operator }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3"></th>
+            <td class="when-3"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 1 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "Enter data here" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-3">{{ form.grinding.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.grinding %}
+                    {{ current_object.grinding }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.welding.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.welding %}
+                    {{ current_object.welding }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.blasting.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.blasting %}
+                    {{ current_object.blasting }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-3">{{ form.painting.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.painting %}
+                    {{ current_object.painting }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.assembly.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.assembly %}
+                    {{ current_object.assembly }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.total_pieces.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.total_pieces %}
+                    {{ current_object.total_pieces }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,49 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# Part 0 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "General Information" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-3">{{ form.name.label_tag }}</th>
+            <td class="when-3">{{ form.name }}</td>
+            <th class="when-3">{{ form.operator.label_tag }}</th>
+            <td class="when-3">{{ form.operator }}</td>
+            <th class="when-3"></th>
+            <td class="when-3"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 1 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "Enter data here" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-3">{{ form.grinding.label_tag }}</th>
+            <td class="when-3">{{ form.grinding }}</td>
+            <th class="when-3">{{ form.welding.label_tag }}</th>
+            <td class="when-3">{{ form.welding }}</td>
+            <th class="when-3">{{ form.blasting.label_tag }}</th>
+            <td class="when-3">{{ form.blasting }}</td>
+        </tr>
+        <tr>
+            <th class="when-3">{{ form.painting.label_tag }}</th>
+            <td class="when-3">{{ form.painting }}</td>
+            <th class="when-3">{{ form.assembly.label_tag }}</th>
+            <td class="when-3">{{ form.assembly }}</td>
+            <th class="when-3">{{ form.total_pieces.label_tag }}</th>
+            <td class="when-3">{{ form.total_pieces }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

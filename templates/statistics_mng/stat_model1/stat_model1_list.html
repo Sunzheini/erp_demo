@@ -1,0 +1,91 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Records List{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Records List</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Records List:" %}</h2>
+
+                {% if all_objects %}
+                    <div class="table-data-container">
+                        <table class="table-data">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Record Number" %}</th>
+                                <th>{% trans "Operator" %}</th>
+                                <th>{% trans "Grinding" %}</th>
+                                <th>{% trans "Welding" %}</th>
+                                <th>{% trans "Blasting" %}</th>
+                                <th>{% trans "Painting" %}</th>
+                                <th>{% trans "Assembly" %}</th>
+                                <th>{% trans "Total" %}</th>
+
+                                <th>{% trans "Actions" %}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for i in all_objects %}
+                                <tr>
+                                    <td>{{ i.name }}</td>
+                                    <td>{{ i.operator }}</td>
+                                    <td>{{ i.grinding }}</td>
+                                    <td>{{ i.welding }}</td>
+                                    <td>{{ i.blasting }}</td>
+                                    <td>{{ i.painting }}</td>
+                                    <td>{{ i.assembly }}</td>
+                                    <td>{{ i.total_pieces }}</td>
+
+                                    <td class="actions-td">
+                                        <a class="table-link" href="{% url 'show stat model1' pk=i.pk slug=i.slug %}">
+                                            <i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a class="table-link" href="{% url 'edit stat model1' pk=i.pk slug=i.slug %}">
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a class="table-link" href="{% url 'delete stat model1' pk=i.pk slug=i.slug %}">
+                                            <i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Show a Record{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{##---#}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom_form.css' %}">
+{% endblock %}
+{##---#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Show a Record</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+            <button class="card-btn card-btn-hidden"></button>
+
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+    <section class="display-content-section">
+        <div class="all-display-content-container">
+            <div class="card-display">
+                <h2 class="card-display-title">{% trans "Show:" %}</h2>
+                    {% include 'custom_forms/custom_stat_model1_form_show.html' %}
+
+                {# canvas for the graph #}
+                <div>
+                    <canvas id="statGraph"></canvas>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {# script for the graph #}
+    {% block extra_head %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% endblock %}
+
+    {# BAR CHART #}
+    <script>
+        var ctx = document.getElementById('statGraph').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {{ chart_data|safe }},
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false  // Hide the legend
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}
+{#-------------------------------------------------------------------------#}

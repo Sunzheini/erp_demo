@@ -18,6 +18,7 @@ class KpiMngViews(PrototypeViews):
         # Prepare chart data
         months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
         actual_values = [getattr(current_object, f"actual_{str(month).zfill(2)}_23") or 0 for month in range(1, 13)]
+        target_value = float(current_object.target)  # ensure that target is converted to float
         chart_data = {
             'labels': months,
             'datasets': [{
@@ -27,7 +28,14 @@ class KpiMngViews(PrototypeViews):
                 'borderColor': 'rgb(75, 192, 192)',
                 # 'borderColor': 'rgb(0, 0, 139)',
                 'tension': 0.1
-            }]
+            },
+            {
+                'data': [target_value]*12,  # repeat target value for each month
+                'fill': 'false',
+                'borderColor': 'rgb(255, 0, 0)',  # change the color to distinguish from actual values
+                'tension': 0.1
+            }
+            ]
         }
 
         self.context['chart_data'] = chart_data
