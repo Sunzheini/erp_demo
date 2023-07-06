@@ -31,6 +31,7 @@ urlpatterns = [
     path('m20/', include('erp_demo.characteristics_mng.urls')),
     path('m21/', include('erp_demo.defect_cat_mng.urls')),
     path('m22/', include('erp_demo.statistics_mng.urls')),
+    path('m23/', include('erp_demo.review_mng.urls')),
 
     path('users/', include('erp_demo.user_mng.urls')),
 

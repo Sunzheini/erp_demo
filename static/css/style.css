@@ -113,6 +113,9 @@ i {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+  /*box-shadow: inset 0px 10px 10px -10px rgba(255, 255, 255, 0.4), 0px 0px 10px 0px rgba(0, 0, 0, 0.4);*/
 }
 
 .header .navigation .nav-list {
@@ -289,7 +292,9 @@ i {
 
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.7);
 
-  height: 1rem;
+  /*height: 1rem;*/
+  height: 33px;
+
   border-width: 0;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
   transition: background-color 250ms linear, color 300ms linear;
@@ -299,6 +304,10 @@ i {
   align-items: center;
   gap: 0.5rem;
   padding: 1rem;
+}
+
+.menu-item:last-child {
+  margin: 0 auto 0 auto;
 }
 
 .menu-item:hover {
