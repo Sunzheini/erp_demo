@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-05 15:30+0300\n"
+"POT-Creation-Date: 2023-07-07 11:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,6 +95,15 @@ msgstr "Стъпка от Плана"
 #: .\templates\control_plan_mng\show_control_plan.html:79
 #: .\templates\control_plan_mng\show_control_plan_step.html:47
 #: .\templates\core\favorites.html:53 .\templates\core\my_tasks.html:52
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:155
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:178
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:436
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:482
+#: .\templates\custom_forms\custom_review_form_show.html:74
+#: .\templates\custom_forms\custom_review_form_show.html:160
+#: .\templates\custom_forms\custom_review_form_show.html:189
+#: .\templates\custom_forms\custom_review_form_show.html:226
+#: .\templates\custom_forms\custom_review_form_show.html:256
 #: .\templates\customer_mng\customer_list.html:48
 #: .\templates\defect_cat_mng\defect_cat_list.html:48
 #: .\templates\defect_cat_mng\show_defect_cat.html:46
@@ -118,6 +127,7 @@ msgstr "Стъпка от Плана"
 #: .\templates\process_mng\show_process_step.html:52
 #: .\templates\resource_mng\assign_resources.html:79
 #: .\templates\resource_mng\assign_resources.html:129
+#: .\templates\review_mng\review_list.html:48
 msgid "Name"
 msgstr "Име"
 
@@ -186,6 +196,7 @@ msgstr "Обхват"
 #: .\templates\resource_mng\assign_resources.html:85
 #: .\templates\resource_mng\assign_resources.html:135
 #: .\templates\resource_mng\resource_list.html:54
+#: .\templates\review_mng\review_list.html:51
 #: .\templates\risk_mng\risk_list.html:56
 #: .\templates\statistics_mng\stat_model1\stat_model1_list.html:57
 #: .\templates\supplier_mng\supplier_list.html:53
@@ -220,6 +231,7 @@ msgstr "Изтрий План-Действие"
 #: .\templates\process_mng\delete_process.html:48
 #: .\templates\process_mng\delete_process_step.html:48
 #: .\templates\resource_mng\delete_resource.html:49
+#: .\templates\review_mng\delete_review.html:55
 #: .\templates\risk_mng\delete_risk.html:49
 #: .\templates\statistics_mng\stat_model1\delete_stat_model1.html:55
 #: .\templates\supplier_mng\delete_supplier.html:49
@@ -253,6 +265,7 @@ msgstr "Промени План-Действие"
 #: .\templates\process_mng\edit_process.html:49
 #: .\templates\process_mng\edit_process_step.html:48
 #: .\templates\resource_mng\edit_resource.html:49
+#: .\templates\review_mng\edit_review.html:55
 #: .\templates\risk_mng\edit_risk.html:49
 #: .\templates\statistics_mng\stat_model1\edit_stat_model1.html:55
 #: .\templates\supplier_mng\edit_supplier.html:49
@@ -272,6 +285,10 @@ msgstr "Действие"
 #: .\templates\actionplan_mng\show_actionplan_step.html:59
 #: .\templates\actions_mng\actions_list.html:62
 #: .\templates\actions_mng\show_action.html:52
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:156
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:179
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:437
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:483
 #: .\templates\newactions_mng\newactions_list.html:50
 #: .\templates\newactions_mng\newactions_matrix.html:53
 #: .\templates\newactions_mng\show_newaction.html:49
@@ -294,6 +311,10 @@ msgstr "Целeва Дата"
 #: .\templates\actions_mng\actions_list.html:65
 #: .\templates\actions_mng\show_action.html:55
 #: .\templates\core\favorites.html:55
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:158
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:181
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:439
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:485
 #: .\templates\dox_mng\document_list.html:62
 #: .\templates\dox_mng\show_document.html:51
 #: .\templates\newactions_mng\newactions_list.html:53
@@ -826,6 +847,8 @@ msgid "Documented Information"
 msgstr "Документи"
 
 #: .\templates\core\base.html:166
+#: .\templates\custom_forms\custom_review_form.html:82
+#: .\templates\custom_forms\custom_review_form_show.html:149
 msgid "Suppliers"
 msgstr "Доставчици"
 
@@ -838,10 +861,14 @@ msgid "Interactions"
 msgstr "Взаимодействия"
 
 #: .\templates\core\base.html:185
+#: .\templates\custom_forms\custom_review_form.html:92
+#: .\templates\custom_forms\custom_review_form_show.html:180
 msgid "Resources"
 msgstr "Ресурси"
 
 #: .\templates\core\base.html:189
+#: .\templates\custom_forms\custom_review_form.html:106
+#: .\templates\custom_forms\custom_review_form_show.html:215
 msgid "Risks"
 msgstr "Рискове"
 
@@ -900,6 +927,10 @@ msgstr "Несъответствия"
 msgid "Action Plans"
 msgstr "Планове-Действие"
 
+#: .\templates\core\base.html:275
+msgid "Management Reviews"
+msgstr "Прегледи от Ръководството"
+
 #: .\templates\core\delete_requirement.html:41
 msgid "Delete Requirement"
 msgstr "Изтрий Изискване"
@@ -940,7 +971,8 @@ msgstr "Ревизия"
 #: .\templates\index.html:608 .\templates\index.html:624
 #: .\templates\index.html:633 .\templates\index.html:649
 #: .\templates\index.html:658 .\templates\index.html:674
-#: .\templates\index.html:683
+#: .\templates\index.html:683 .\templates\index.html:699
+#: .\templates\index.html:708
 msgid "Show"
 msgstr "Покажи"
 
@@ -1086,6 +1118,10 @@ msgstr "Име Клауза"
 
 #: .\templates\core\requirements_matrix.html:76
 #: .\templates\core\show_requirement.html:51
+#: .\templates\custom_forms\custom_review_form_show.html:161
+#: .\templates\custom_forms\custom_review_form_show.html:190
+#: .\templates\custom_forms\custom_review_form_show.html:227
+#: .\templates\custom_forms\custom_review_form_show.html:257
 #: .\templates\defect_cat_mng\defect_cat_list.html:50
 #: .\templates\defect_cat_mng\show_defect_cat.html:48
 #: .\templates\hr_mng\show_training.html:49
@@ -1248,6 +1284,116 @@ msgstr "D8. Систематични действия за предотврат�
 #: .\templates\custom_forms\custom_nonconformity_form_show.html:472
 msgid "Systematic Actions"
 msgstr "Систематични Действия"
+
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:157
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:180
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:438
+#: .\templates\custom_forms\custom_nonconformity_form_show.html:484
+#: .\templates\review_mng\review_list.html:49
+msgid "Date"
+msgstr "Дата"
+
+#: .\templates\custom_forms\custom_review_form.html:38
+#: .\templates\custom_forms\custom_review_form_show.html:63
+msgid "Kpis"
+msgstr "Показатели"
+
+#: .\templates\custom_forms\custom_review_form.html:39
+#: .\templates\custom_forms\custom_review_form_show.html:64
+msgid "Kpi Comments"
+msgstr "Коментари"
+
+#: .\templates\custom_forms\custom_review_form.html:48
+#: .\templates\custom_forms\custom_review_form_show.html:94
+msgid "Other kpis"
+msgstr "Други Показатели"
+
+#: .\templates\custom_forms\custom_review_form.html:60
+#: .\templates\custom_forms\custom_review_form_show.html:106
+msgid "Nonconformitites"
+msgstr "Несъответствия"
+
+#: .\templates\custom_forms\custom_review_form.html:61
+#: .\templates\custom_forms\custom_review_form_show.html:107
+msgid "Nonconformities Comments"
+msgstr "Коментари към несъответствията"
+
+#: .\templates\custom_forms\custom_review_form.html:70
+#: .\templates\custom_forms\custom_review_form_show.html:137
+msgid "Audit Results"
+msgstr "Резултати от Одити"
+
+#: .\templates\custom_forms\custom_review_form.html:83
+#: .\templates\custom_forms\custom_review_form_show.html:150
+msgid "Suppliers Comments"
+msgstr "Коментари към доставчиците"
+
+#: .\templates\custom_forms\custom_review_form.html:93
+#: .\templates\custom_forms\custom_review_form_show.html:181
+msgid "Resources Comments"
+msgstr "Коментари към ресурсите"
+
+#: .\templates\custom_forms\custom_review_form.html:107
+#: .\templates\custom_forms\custom_review_form_show.html:216
+msgid "Risks Comments"
+msgstr "Коментари към рисковете"
+
+#: .\templates\custom_forms\custom_review_form.html:116
+#: .\templates\custom_forms\custom_review_form_show.html:246
+msgid "Opportunities"
+msgstr "Възможности"
+
+#: .\templates\custom_forms\custom_review_form.html:117
+#: .\templates\custom_forms\custom_review_form_show.html:247
+msgid "Opportunities Comments"
+msgstr "Коментари към възможностите"
+
+#: .\templates\custom_forms\custom_review_form_show.html:75
+#: .\templates\kpi_mng\kpi_list.html:55 .\templates\kpi_mng\kpi_matrix.html:53
+#: .\templates\kpi_mng\show_kpi.html:55
+#: .\templates\process_mng\blank_turtle.html:162
+msgid "Target"
+msgstr "Цел"
+
+#: .\templates\custom_forms\custom_review_form_show.html:76
+msgid "Actual 31.12"
+msgstr "Към 31.12"
+
+#: .\templates\custom_forms\custom_review_form_show.html:117
+msgid "Definition"
+msgstr "Дефиниция"
+
+#: .\templates\custom_forms\custom_review_form_show.html:118
+msgid "Claim Date"
+msgstr "От дата"
+
+#: .\templates\custom_forms\custom_review_form_show.html:119
+#: .\templates\nonconformity_mng\nonconformity_list.html:48
+msgid "Customer"
+msgstr "Клиент"
+
+#: .\templates\custom_forms\custom_review_form_show.html:162
+#: .\templates\supplier_mng\show_supplier.html:50
+#: .\templates\supplier_mng\supplier_list.html:51
+#: .\templates\supplier_mng\supplier_scores.html:51
+msgid "Score"
+msgstr "Оценка"
+
+#: .\templates\custom_forms\custom_review_form_show.html:191
+#: .\templates\process_mng\blank_turtle.html:41
+#: .\templates\process_mng\blank_turtle.html:134
+#: .\templates\resource_mng\assign_resources.html:81
+#: .\templates\resource_mng\assign_resources.html:131
+#: .\templates\resource_mng\resource_list.html:50
+#: .\templates\resource_mng\show_resource.html:50
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\templates\custom_forms\custom_review_form_show.html:228
+#: .\templates\risk_mng\risk_list.html:51
+#: .\templates\risk_mng\show_risk.html:50
+msgid "Impact"
+msgstr "Сила"
 
 #: .\templates\custom_forms\custom_stat_model1_form.html:8
 #: .\templates\custom_forms\custom_stat_model1_form_show.html:8
@@ -1495,6 +1641,7 @@ msgstr "Име на Процес"
 #: .\templates\index.html:562 .\templates\index.html:587
 #: .\templates\index.html:612 .\templates\index.html:637
 #: .\templates\index.html:662 .\templates\index.html:687
+#: .\templates\index.html:712
 msgid "Nothing found"
 msgstr "Нищо не е открито"
 
@@ -1599,7 +1746,11 @@ msgstr "Описание на КП Стъпка"
 
 #: .\templates\index.html:673
 msgid "Defect Catalogue Description"
-msgstr "Описание на Действие"
+msgstr "Описание на Дефект Каталог"
+
+#: .\templates\index.html:698
+msgid "Management Review Description"
+msgstr "Описание на Преглед от Ръководството"
 
 #: .\templates\interaction_mng\add_interaction.html:41
 #: .\templates\interaction_mng\interaction_mng_index.html:25
@@ -1671,12 +1822,6 @@ msgstr "Общи"
 #: .\templates\kpi_mng\kpi_list.html:49 .\templates\kpi_mng\show_kpi.html:49
 msgid "Performance 2023"
 msgstr "Резултати 2023"
-
-#: .\templates\kpi_mng\kpi_list.html:55 .\templates\kpi_mng\kpi_matrix.html:53
-#: .\templates\kpi_mng\show_kpi.html:55
-#: .\templates\process_mng\blank_turtle.html:162
-msgid "Target"
-msgstr "Цел"
 
 #: .\templates\kpi_mng\kpi_list.html:59 .\templates\kpi_mng\kpi_matrix.html:55
 #: .\templates\kpi_mng\show_kpi.html:60
@@ -1827,10 +1972,6 @@ msgstr "Промени Несъответствие"
 #: .\templates\nonconformity_mng\nonconformity_list.html:41
 msgid "Nonconformities:"
 msgstr "Несъответствия:"
-
-#: .\templates\nonconformity_mng\nonconformity_list.html:48
-msgid "Customer"
-msgstr "Клиент"
 
 #: .\templates\nonconformity_mng\nonconformity_list.html:49
 msgid "Customer Nr"
@@ -2001,15 +2142,6 @@ msgstr "Описание на стъпката"
 #: .\templates\resource_mng\resource_list.html:41
 msgid "Resources:"
 msgstr "Ресурси:"
-
-#: .\templates\process_mng\blank_turtle.html:41
-#: .\templates\process_mng\blank_turtle.html:134
-#: .\templates\resource_mng\assign_resources.html:81
-#: .\templates\resource_mng\assign_resources.html:131
-#: .\templates\resource_mng\resource_list.html:50
-#: .\templates\resource_mng\show_resource.html:50
-msgid "Quantity"
-msgstr "Количество"
 
 #: .\templates\process_mng\blank_turtle.html:56
 msgid "Input elements:"
@@ -2205,6 +2337,38 @@ msgstr "Разпределяне Ресурси"
 msgid "Show Resource"
 msgstr "Покажи Ресурс"
 
+#: .\templates\review_mng\add_review.html:48
+msgid "New Management Review"
+msgstr "Нов Преглед от Ръководството"
+
+#: .\templates\review_mng\add_review.html:54
+msgid "add this review"
+msgstr "добави този риск"
+
+#: .\templates\review_mng\delete_review.html:48
+msgid "Delete Management Review"
+msgstr "Изтрий Преглед от Ръководството"
+
+#: .\templates\review_mng\edit_review.html:48
+msgid "Edit Management Review"
+msgstr "Промени Преглед от Ръководството"
+
+#: .\templates\review_mng\review_list.html:41
+msgid "Management Reviews:"
+msgstr "Прегледи от Ръководството:"
+
+#: .\templates\review_mng\review_mng_index.html:25
+msgid "Add Management Review"
+msgstr "Добави Преглед от Ръководството"
+
+#: .\templates\review_mng\review_mng_index.html:30
+msgid "Management Reviews List"
+msgstr "Списък Прегледи от Ръководството"
+
+#: .\templates\review_mng\show_review.html:48
+msgid "Show Management Review"
+msgstr "Покажи Преглед от Ръководството"
+
 #: .\templates\risk_mng\add_risk.html:41
 #: .\templates\risk_mng\risk_mng_index.html:25
 msgid "Add Risk"
@@ -2276,11 +2440,6 @@ msgstr "Промени Риск"
 #: .\templates\risk_mng\show_risk.html:49
 msgid "Probability"
 msgstr "Вероятност"
-
-#: .\templates\risk_mng\risk_list.html:51
-#: .\templates\risk_mng\show_risk.html:50
-msgid "Impact"
-msgstr "Сила"
 
 #: .\templates\risk_mng\risk_mng_index.html:30
 msgid "Risk List"
@@ -2414,12 +2573,6 @@ msgstr "Име Доставчик"
 #: .\templates\supplier_mng\supplier_scores.html:50
 msgid "Claims"
 msgstr "Рекламации"
-
-#: .\templates\supplier_mng\show_supplier.html:50
-#: .\templates\supplier_mng\supplier_list.html:51
-#: .\templates\supplier_mng\supplier_scores.html:51
-msgid "Score"
-msgstr "Оценка"
 
 #: .\templates\supplier_mng\supplier_list.html:41
 msgid "Supplier List:"

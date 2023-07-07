@@ -43,6 +43,10 @@ class ManagementReview(models.Model):
         through='ManagementReviewToKpi',
     )
 
+    kpis_comments = models.TextField(
+        blank=True, null=True,
+    )
+
     other_kpis = models.TextField(
         blank=True, null=True,
     )
@@ -52,6 +56,10 @@ class ManagementReview(models.Model):
         related_name='nonconformities',
         blank=True,
         through='ManagementReviewToNonconformity',
+    )
+
+    nonconformities_comments = models.TextField(
+        blank=True, null=True,
     )
 
     audit_results = models.TextField(
@@ -65,11 +73,19 @@ class ManagementReview(models.Model):
         through='ManagementReviewToSupplier',
     )
 
+    suppliers_comments = models.TextField(
+        blank=True, null=True,
+    )
+
     resources = models.ManyToManyField(
         Resource,
         related_name='resources',
         blank=True,
         through='ManagementReviewToResource',
+    )
+
+    resources_comments = models.TextField(
+        blank=True, null=True,
     )
 
     risks = models.ManyToManyField(
@@ -79,11 +95,19 @@ class ManagementReview(models.Model):
         through='ManagementReviewToRisk',
     )
 
+    risks_comments = models.TextField(
+        blank=True, null=True,
+    )
+
     opportunities = models.ManyToManyField(
         Opportunity,
         related_name='opportunities',
         blank=True,
         through='ManagementReviewToOpportunity',
+    )
+
+    opportunities_comments = models.TextField(
+        blank=True, null=True,
     )
 
     costs_of_poor_quality = models.TextField(
@@ -103,9 +127,33 @@ class ManagementReview(models.Model):
         editable=False,
     )
 
+    @property
+    def get_related_kpis(self):
+        return ManagementReviewToKpi.objects.filter(management_review_id=self.id)
+
+    @property
+    def get_related_nonconformities(self):
+        return ManagementReviewToNonconformity.objects.filter(management_review_id=self.id)
+
+    @property
+    def get_related_suppliers(self):
+        return ManagementReviewToSupplier.objects.filter(management_review_id=self.id)
+
+    @property
+    def get_related_resources(self):
+        return ManagementReviewToResource.objects.filter(management_review_id=self.id)
+
+    @property
+    def get_related_risks(self):
+        return ManagementReviewToRisk.objects.filter(management_review_id=self.id)
+
+    @property
+    def get_related_opportunities(self):
+        return ManagementReviewToOpportunity.objects.filter(management_review_id=self.id)
+
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f"{translate_to_maimunica(self.name[0:20])}")
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
         return super().save(*args, **kwargs)
 
     def __str__(self):

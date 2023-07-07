@@ -1,0 +1,143 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# 0 #}
+        <table class="table-form">
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.name.label_tag }}</th>
+            <td class="when-1">{{ form.name }}</td>
+            <th class="when-3">{{ form.date.label_tag }}</th>
+            <td class="when-3">{{ form.date }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 1 #}
+    <table class="table-form">
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.status_from_previous_reviews.label_tag }}</th>
+            <td class="when-1">{{ form.status_from_previous_reviews }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.external_and_internal_changes.label_tag }}</th>
+            <td class="when-1">{{ form.external_and_internal_changes }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.customer_feedback.label_tag }}</th>
+            <td class="when-1">{{ form.customer_feedback }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 2 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Kpis" %}</th>
+            <th>{% trans "Kpi Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select">{{ form.kpis }}</td>
+            <td>{{ form.kpis_comments }}</td>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align: center">{% trans "Other kpis" %}</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ form.other_kpis }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 3 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Nonconformitites" %}</th>
+            <th>{% trans "Nonconformities Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select">{{ form.nonconformities }}</td>
+            <td>{{ form.nonconformities_comments }}</td>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align: center">{% trans "Audit Results" %}</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ form.audit_results }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 4 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Suppliers" %}</th>
+            <th>{% trans "Suppliers Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select">{{ form.suppliers }}</td>
+            <td>{{ form.suppliers_comments }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: center">{% trans "Resources" %}</th>
+            <th style="text-align: center">{% trans "Resources Comments" %}</th>
+        </tr>
+        <tr>
+            <td class="multiple-select">{{ form.resources }}</td>
+            <td>{{ form.resources_comments }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 5 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Risks" %}</th>
+            <th>{% trans "Risks Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select">{{ form.risks }}</td>
+            <td>{{ form.risks_comments }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: center">{% trans "Opportunities" %}</th>
+            <th style="text-align: center">{% trans "Opportunities Comments" %}</th>
+        </tr>
+        <tr>
+            <td class="multiple-select">{{ form.opportunities }}</td>
+            <td>{{ form.opportunities_comments }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 6 #}
+    <table class="table-form">
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.costs_of_poor_quality.label_tag }}</th>
+            <td class="when-1">{{ form.costs_of_poor_quality }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.manufacturing_feasibility.label_tag }}</th>
+            <td class="when-1">{{ form.manufacturing_feasibility }}</td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.other_topics.label_tag }}</th>
+            <td class="when-1">{{ form.other_topics }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

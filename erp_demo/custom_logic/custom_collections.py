@@ -44,6 +44,7 @@ search_types_en = {
     ('ProcessControlPlan', 'Control Plan'),
     ('ProcessControlPlanStep', 'Control Plan Step'),
     ('DefectCatalogue', 'Defect Catalogue'),
+    ('ManagementReview', 'Management Review'),
 }
 
 search_types_bg = {
@@ -72,6 +73,7 @@ search_types_bg = {
     ('ProcessControlPlan', 'Контролен План'),
     ('ProcessControlPlanStep', 'Стъпка от Контролен План'),
     ('DefectCatalogue', 'Дефект каталог'),
+    ('ManagementReview', 'Преглед от ръководството'),
 }
 
 process_numbers = (
@@ -127,8 +129,8 @@ list_of_keys = {
     'ProcessControlPlan': [],
     'ProcessControlPlanStep': [],
     'DefectCatalogue': [],
-
     'StatModel1': [],
+    'ManagementReview': [],
 }
 
 coordinates = {
@@ -276,8 +278,13 @@ coordinates = {
         'start_column': None,
         'end_column': None,
     },
-
     'StatModel1': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'ManagementReview': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

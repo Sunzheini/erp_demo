@@ -1,9 +1,16 @@
 {% extends 'core/base.html' %}
+{% load static %}
 {% load i18n %}
 
 {#1. Page Title------------------------------------------------------------#}
     {% block page_title %}Edit Management Review{% endblock %}
 {#-------------------------------------------------------------------------#}
+
+{##---#}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom_form.css' %}">
+{% endblock %}
+{##---#}
 
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
@@ -41,9 +48,8 @@
                 <h2 class="card-display-title">{% trans "Edit Management Review" %}</h2>
 
                 <form action="{% url 'edit review' pk=current_object.pk slug=current_object.slug %}" method="post">
-                    <table class="table-form">
-                        {{ form }}
-                    </table>
+
+                    {% include 'custom_forms/custom_review_form.html' %}
 
                     {% csrf_token %}
                     <button class="form-button">{% trans "submit" %}</button>

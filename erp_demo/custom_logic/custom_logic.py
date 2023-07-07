@@ -25,6 +25,7 @@ from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStep, Process
 from erp_demo.resource_mng.models import Resource
+from erp_demo.review_mng.models import ManagementReview
 from erp_demo.risk_mng.models import Risk
 from erp_demo.supplier_mng.models import Supplier
 
@@ -353,6 +354,7 @@ class SupportFunctions:
             control_plans = ProcessControlPlan.objects.filter(name__icontains=search_pattern)
             control_plan_steps = ProcessControlPlanStep.objects.filter(name__icontains=search_pattern)
             defect_catalogues = DefectCatalogue.objects.filter(name__icontains=search_pattern)
+            management_reviews = ManagementReview.objects.filter(name__icontains=search_pattern)
 
             result['processes'] = processes
             result['process_steps'] = process_steps
@@ -378,6 +380,7 @@ class SupportFunctions:
             result['control_plans'] = control_plans
             result['control_plan_steps'] = control_plan_steps
             result['defect_catalogues'] = defect_catalogues
+            result['management_reviews'] = management_reviews
 
         elif choice == 'Process':
             processes = Process.objects.filter(name__icontains=search_pattern)
@@ -479,6 +482,10 @@ class SupportFunctions:
         elif choice == 'DefectCatalogue':
             defect_catalogues = DefectCatalogue.objects.filter(name__icontains=search_pattern)
             result['defect_catalogues'] = defect_catalogues
+
+        elif choice == 'ManagementReview':
+            management_reviews = ManagementReview.objects.filter(name__icontains=search_pattern)
+            result['management_reviews'] = management_reviews
 
         return result
 

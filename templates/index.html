@@ -691,6 +691,31 @@
                     </table>
                 </div>
 
+                <div class="table-data-container">
+                    <table class="table-data">
+                    <thead>
+                        <tr>
+                            <th>{% trans "Management Review Description" %}</th>
+                            <th>{% trans "Show" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if info_to_display.management_reviews %}
+                            {% for mr in info_to_display.management_reviews %}
+                        <tr>
+                            <td>{{ mr.name }}</td>
+                            <td><a class="table-link" href="{% url 'show review' pk=mr.pk slug=mr.slug %}">
+                                    <i class="fa-solid fa-magnifying-glass"></i>{% trans "Show" %}</a></td>
+                            {% endfor %}
+                            {% else %}
+                        <tr>
+                            <td colspan="2">{% trans "Nothing found" %}</td>
+                        </tr>
+                            {% endif %}
+                    </tbody>
+                    </table>
+                </div>
+
                 {% else %}
                 {% endif %}
             </div>

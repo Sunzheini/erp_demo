@@ -24,6 +24,7 @@ from erp_demo.organization_mng.models import Organization
 from erp_demo.process_mng.models import ProcessStepToDocuments, \
     ProcessStep, Process, ProcessToKpis, ProcessToOpportunities, ProcessToRisks
 from erp_demo.resource_mng.models import Resource, ResourcesAssignedToEmployees, ResourcesAssignedToProcess
+from erp_demo.review_mng.models import ManagementReview
 from erp_demo.risk_mng.models import Risk
 from erp_demo.statistics_mng.models import StatModel1
 from erp_demo.supplier_mng.models import Supplier
@@ -94,6 +95,8 @@ class DatabaseManipulation:
         ProcessControlPlan.objects.all().delete()
 
         DefectCatalogue.objects.all().delete()
+
+        ManagementReview.objects.all().delete()
 
         return 'Successfully deleted'
 
@@ -452,6 +455,13 @@ class DatabaseManipulation:
                     painting=info_to_update[obj]['painting'],
                     assembly=info_to_update[obj]['assembly'],
                     total_pieces=info_to_update[obj]['total_pieces'],
+                    slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
+                ) for obj in info_to_update.keys()])
+
+            elif table == 'ManagementReview':
+                ManagementReview.objects.bulk_create([ManagementReview(
+                    name=info_to_update[obj]['name'],
+                    date=info_to_update[obj]['date'],
                     slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
                 ) for obj in info_to_update.keys()])
 

@@ -6,6 +6,12 @@
 {% block page_title %}Show Management Review{% endblock %}
 {#-------------------------------------------------------------------------#}
 
+{##---#}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom_form.css' %}">
+{% endblock %}
+{##---#}
+
 {#3. Page Name-------------------------------------------------------------#}
 {% block page_name %}
     <h1 class="page-title">Show Management Review</h1>
@@ -41,31 +47,8 @@
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Show Management Review" %}</h2>
 
-                <div class="table-data-container">
-                    <table class="table-data">
-                        <thead>
-                        <tr>
-                            <th>{% trans "Name" %}</th>
-                            <th>{% trans "Date" %}</th>
+                {% include 'custom_forms/custom_review_form_show.html' %}
 
-                            <th>{% trans "Edit" %}</th>
-                            <th>{% trans "Delete" %}</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <tr>
-                            <td>{{ current_object.name }}</td>
-                            <td>{{ current_object.date }}</td>
-
-                            <td><a class="table-link" href="{% url 'edit review' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>{% trans "Edit" %}
-                            </a></td>
-                            <td><a class="table-link" href="{% url 'delete review' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-trash"></i>{% trans "Delete" %}
-                            </a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
         </div>
     </section>

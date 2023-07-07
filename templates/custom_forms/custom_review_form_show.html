@@ -1,0 +1,310 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# 0 #}
+    <table class="table-form">
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.name.label_tag }}</th>
+            <td class="when-1 showing">
+                {% if current_object.name %}
+                    {{ current_object.name }}
+                {% else %}
+                {% endif %}
+            </td>
+            <th class="when-3">{{ form.date.label_tag }}</th>
+            <td class="when-3 showing">
+                {% if current_object.date %}
+                    {{ current_object.date }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 1 #}
+    <table class="table-form">
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.status_from_previous_reviews.label_tag }}</th>
+            <td class="when-1 showing">
+                {% if current_object.status_from_previous_reviews %}
+                    {{ current_object.status_from_previous_reviews }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.external_and_internal_changes.label_tag }}</th>
+            <td class="when-1 showing">
+                {% if current_object.external_and_internal_changes %}
+                    {{ current_object.external_and_internal_changes }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.customer_feedback.label_tag }}</th>
+            <td class="when-1 showing">
+                {% if current_object.customer_feedback %}
+                    {{ current_object.customer_feedback }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 2 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Kpis" %}</th>
+            <th>{% trans "Kpi Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>{% trans "Name" %}</td>
+                        <td>{% trans "Target" %}</td>
+                        <td>{% trans "Actual 31.12" %}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for kpi in current_object.get_related_kpis %}
+                        <tr>
+                            <td>{{ kpi.kpi_id.name }}</td>
+                            <td class="td-centered">{{ kpi.kpi_id.target }}</td>
+                            <td class="td-centered">{{ kpi.kpi_id.actual_12_23 }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="showing">{{ current_object.kpis_comments }}</td>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align: center">{% trans "Other kpis" %}</th>
+        </tr>
+        <tr>
+            <td colspan="2" class="showing">{{ current_object.other_kpis }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 3 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Nonconformitites" %}</th>
+            <th>{% trans "Nonconformities Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>{% trans "Definition" %}</td>
+                        <td>{% trans "Claim Date" %}</td>
+                        <td>{% trans "Customer" %}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for nonc in current_object.get_related_nonconformities %}
+                        <tr>
+                            <td>{{ nonc.nonconformity_id.name }}</td>
+                            <td class="td-centered">{{ nonc.nonconformity_id.customer_claim_date }}</td>
+                            <td class="td-centered">{{ nonc.nonconformity_id.customer }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="showing">{{ current_object.nonconformities_comments }}</td>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align: center">{% trans "Audit Results" %}</th>
+        </tr>
+        <tr>
+            <td colspan="2" class="showing">{{ current_object.audit_results }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 4 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Suppliers" %}</th>
+            <th>{% trans "Suppliers Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>{% trans "Name" %}</td>
+                        <td>{% trans "Description" %}</td>
+                        <td>{% trans "Score" %}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for supplier in current_object.get_related_suppliers %}
+                        <tr>
+                            <td>{{ supplier.supplier_id.name }}</td>
+                            <td>{{ supplier.supplier_id.description }}</td>
+                            <td class="td-centered">{{ supplier.supplier_id.score }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="showing">{{ current_object.suppliers_comments }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: center">{% trans "Resources" %}</th>
+            <th style="text-align: center">{% trans "Resources Comments" %}</th>
+        </tr>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>{% trans "Name" %}</td>
+                        <td>{% trans "Description" %}</td>
+                        <td>{% trans "Quantity" %}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for resource in current_object.get_related_resources %}
+                        <tr>
+                            <td>{{ resource.resource_id.name }}</td>
+                            <td>{{ resource.resource_id.description }}</td>
+                            <td class="td-centered">{{ resource.resource_id.quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="showing">{{ current_object.resources_comments }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 5 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th>{% trans "Risks" %}</th>
+            <th>{% trans "Risks Comments" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+                    <tr>
+                        <td>{% trans "Name" %}</td>
+                        <td>{% trans "Description" %}</td>
+                        <td>{% trans "Impact" %}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for risk in current_object.get_related_risks %}
+                        <tr>
+                            <td>{{ risk.risk_id.name }}</td>
+                            <td>{{ risk.risk_id.description }}</td>
+                            <td class="td-centered">{{ risk.risk_id.impact }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="showing">{{ current_object.risks_comments }}</td>
+        </tr>
+        <tr>
+            <th style="text-align: center">{% trans "Opportunities" %}</th>
+            <th style="text-align: center">{% trans "Opportunities Comments" %}</th>
+        </tr>
+        <tr>
+            <td class="multiple-select showing">
+
+                <table class="inner-table">
+                    <thead>
+
+                    <tr>
+                        <td>{% trans "Name" %}</td>
+                        <td>{% trans "Description" %}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for opportunity in current_object.get_related_opportunities %}
+                        <tr>
+                            <td>{{ opportunity.opportunity_id.name }}</td>
+                            <td>{{ opportunity.opportunity_id.description }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="showing">{{ current_object.opportunities_comments }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# 6 #}
+    <table class="table-form">
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.costs_of_poor_quality.label_tag }}</th>
+            <td class="when-1 showing">
+                {{ current_object.costs_of_poor_quality }}
+                {% if current_object.costs_of_poor_quality %}
+                    {{ current_object.costs_of_poor_quality }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.manufacturing_feasibility.label_tag }}</th>
+            <td class="when-1 showing">
+                {{ current_object.manufacturing_feasibility }}
+                {% if current_object.manufacturing_feasibility %}
+                    {{ current_object.manufacturing_feasibility }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{{ form.other_topics.label_tag }}</th>
+            <td class="when-1 showing">
+                {% if current_object.other_topics %}
+                    {{ current_object.other_topics }}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
