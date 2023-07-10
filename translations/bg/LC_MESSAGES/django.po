@@ -929,7 +929,7 @@ msgstr "Планове-Действие"
 
 #: .\templates\core\base.html:275
 msgid "Management Reviews"
-msgstr "Прегледи от Ръководството"
+msgstr "Прегледи"
 
 #: .\templates\core\delete_requirement.html:41
 msgid "Delete Requirement"
