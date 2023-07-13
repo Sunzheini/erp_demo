@@ -905,7 +905,7 @@ msgstr "Дефект Каталози"
 #: .\templates\core\base.html:233
 #: .\templates\operations_mng\operations_mng_index.html:34
 msgid "Control Plans"
-msgstr "Контролни Планове"
+msgstr "Контр. Планове"
 
 #: .\templates\core\base.html:245
 msgid "Customers"
