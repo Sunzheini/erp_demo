@@ -7,11 +7,13 @@ from erp_demo.newactions_mng.models import NewAction
 
 
 class ActionPlan(models.Model):
+    MAX_NAME_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_NAME_LENGTH,
         blank=False, null=False,
         unique=True,
     )
@@ -22,6 +24,7 @@ class ActionPlan(models.Model):
 
     owner = models.ForeignKey(
         Employee,
+        blank=True, null=True,
         to_field='id',
         db_column="employee_id",
         on_delete=models.CASCADE,

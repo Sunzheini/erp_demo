@@ -8,6 +8,7 @@ erp_demo                            (django project)
         forms.py                    (.py file)
             class CreateForm:       (class)
 
+
 tests                               (tests project)
     actionplan_mng                  (package)
         views                       (package)
@@ -19,4 +20,8 @@ tests                               (tests project)
 
 
         or views.py                 (.py file)      if not much tests
+
+
+We test models if they have validators
+
 """
