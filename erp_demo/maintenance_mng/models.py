@@ -7,16 +7,18 @@ from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
 class Machine(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     inventory_number = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 

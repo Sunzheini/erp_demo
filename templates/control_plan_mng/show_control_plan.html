@@ -63,8 +63,13 @@
                             <td>{{ current_object.product }}</td>
 
                             {% if current_object.owner %}
-                            <td><a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
-                                {{ current_object.owner.get_full_name }}</a></td>
+                            <td>
+                                {% if current_object.owner %}
+                                    <a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                                    {{ current_object.owner.get_full_name }}</a>
+                                {% else %}
+                                {% endif %}
+                            </td>
                             {% else %}
                             <td></td>
                             {% endif %}

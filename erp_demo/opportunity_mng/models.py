@@ -6,11 +6,13 @@ from erp_demo.newactions_mng.models import NewAction
 
 
 class Opportunity(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 

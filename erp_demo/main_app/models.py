@@ -6,11 +6,13 @@ from erp_demo.process_mng.models import ProcessStep
 
 
 class MyTasks(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     number = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -20,11 +22,14 @@ class MyTasks(models.Model):
 
 
 class CaptainsLog(models.Model):
+    MAX_LENGTH_LONG = 297
+    MAX_LENGTH_SHORT = 30
+
     class Meta:
         ordering = ['id']
 
     operation = models.CharField(
-        max_length=297,
+        max_length=MAX_LENGTH_LONG,
         blank=False, null=False,
     )
 
@@ -34,32 +39,35 @@ class CaptainsLog(models.Model):
     )
 
     execution_time = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
 
 class Requirements(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 30
+
     class Meta:
         ordering = ['id']
 
     organization = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     external_document = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     clause = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     clause_name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -81,7 +89,7 @@ class Requirements(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(f"{self.organization}-"
                                 f"{self.clause}-"

@@ -62,8 +62,11 @@
                                 <td>{{ current_object.name }}</td>
 
                                 <td>
+                                    {% if current_object.responsible %}
                                     <a class="table-link" href="{% url 'show employee' pk=current_object.responsible.pk slug=current_object.responsible.slug %}">
                                         {{ current_object.responsible.get_full_name }}</a>
+                                    {% else %}
+                                    {% endif %}
                                 </td>
 
                                 <td>{{ current_object.target_date }}</td>

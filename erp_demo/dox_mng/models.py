@@ -25,11 +25,13 @@ STATUS_CHOICES_EN = (
 
 
 class Document(models.Model):
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     type = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         # choices=(
         #     ('Manual', 'Manual'),
         #     ('Procedure', 'Procedure'),
@@ -41,12 +43,12 @@ class Document(models.Model):
     )
 
     number = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     name = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
     )
@@ -68,7 +70,7 @@ class Document(models.Model):
     )
 
     status = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         # choices=(
         #     # ('Submitted', 'Submitted'),
         #     # ('Rejected', 'Rejected'),
@@ -94,8 +96,8 @@ class Document(models.Model):
         Employee,  # which is the related table
         to_field="identification",
         db_column="owner_ident",
-        on_delete=models.CASCADE,  # when process is deleted, delete related process steps
-        # on_delete=models.SET_NULL, null=True,   # set null when process is deleted
+        # on_delete=models.CASCADE,  # when employee is deleted, delete related documents
+        on_delete=models.SET_NULL, null=True,   # set null when process is deleted
         # on_delete=models.RESTRICT,  # can delete if there is a process step attached
     )
 
@@ -167,11 +169,13 @@ class DocumentLikesToUsers(models.Model):
 # -------------------------------------------------------------------
 
 class DocumentEditPurgatory(models.Model):
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     type = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         # choices=(
         #     ('Manual', 'Manual'),
         #     ('Procedure', 'Procedure'),
@@ -183,12 +187,12 @@ class DocumentEditPurgatory(models.Model):
     )
 
     number = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     name = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
@@ -197,12 +201,12 @@ class DocumentEditPurgatory(models.Model):
     )
 
     creation_date = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     revision_date = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
@@ -211,7 +215,7 @@ class DocumentEditPurgatory(models.Model):
     )
 
     status = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         # choices=(
         #     ('Latest rev', 'Latest rev'),
         #     ('Under rev', 'Under rev'),
@@ -225,8 +229,8 @@ class DocumentEditPurgatory(models.Model):
         Employee,  # which is the related table
         to_field="identification",
         db_column="owner_ident",
-        on_delete=models.CASCADE,  # when process is deleted, delete related process steps
-        # on_delete=models.SET_NULL, null=True,   # set null when process is deleted
+        # on_delete=models.CASCADE,  # when process is deleted, delete related process steps
+        on_delete=models.SET_NULL, null=True,   # set null when process is deleted
         # on_delete=models.RESTRICT,  # can delete if there is a process step attached
     )
 

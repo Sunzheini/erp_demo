@@ -66,9 +66,12 @@
                         {% for interaction in from_interactions %}
                             <tr>
                                 <td>
+                                    {% if interaction.from_process_step.parent_process %}
                                     <a class="table-link" href="{% url 'show process' pk=interaction.from_process_step.parent_process.pk slug=interaction.from_process_step.parent_process.slug %}">
                                         {{ interaction.from_process_step.parent_process.number }},
                                     </a>
+                                    {% else %}
+                                    {% endif %}
                                     <a class="table-link" href="{% url 'show process step' pk=interaction.from_process_step.pk slug=interaction.from_process_step.slug %}">
                                         {{ interaction.from_process_step.number }}.&nbsp{{ interaction.from_process_step.name }}
                                     </a>
@@ -121,7 +124,11 @@
         <div class="turtle-box turtle-box-5">
             <h2 class="turtle-box-title" id="process-title">{{ current_object.number }}.&nbsp{{ current_object.name }}</h2>
             <p class="turtle-box-text">
-                {% trans "Managed by:" %} {{ current_object.process_owner.name_and_position }}
+                {% trans "Managed by:" %}
+                {% if current_object.process_owner %}
+                {{ current_object.process_owner.name_and_position }}
+                {% else %}
+                {% endif %}
             </p>
         </div>
         <div class="turtle-box turtle-box-6">
@@ -193,9 +200,12 @@
                         {% for interaction in to_interactions %}
                             <tr>
                                 <td>
+                                    {% if interaction.to_process_step.parent_process %}
                                     <a class="table-link" href="{% url 'show process' pk=interaction.to_process_step.parent_process.pk slug=interaction.to_process_step.parent_process.slug %}">
                                         {{ interaction.to_process_step.parent_process.number }},
                                     </a>
+                                    {% else %}
+                                    {% endif %}
                                     <a class="table-link" href="{% url 'show process step' pk=interaction.to_process_step.pk slug=interaction.to_process_step.slug %}">
                                         {{ interaction.to_process_step.number }}.&nbsp{{ interaction.to_process_step.name }}
                                     </a>

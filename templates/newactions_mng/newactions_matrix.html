@@ -85,8 +85,11 @@
                                 <td>{{ action.name }}</td>
 
                                 <td>
+                                    {% if action.responsible %}
                                     <a class="table-link" href="{% url 'show employee' pk=action.responsible.pk slug=action.responsible.slug %}">
                                         {{ action.responsible.get_full_name }}</a>
+                                    {% else %}
+                                    {% endif %}
                                 </td>
 
                                 <td>{{ action.target_date }}</td>

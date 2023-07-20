@@ -7,11 +7,13 @@ from erp_demo.process_mng.models import Process
 
 
 class Resource(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 

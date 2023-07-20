@@ -8,6 +8,9 @@ from erp_demo.newactions_mng.models import NewAction
 
 
 class Nonconformity(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
@@ -19,12 +22,13 @@ class Nonconformity(models.Model):
         Customer,
         to_field='id',
         db_column="customer_id",
-        on_delete=models.CASCADE,
-        blank=True, null=True,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
+        blank=True,
     )
 
     customer_claim_number = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True, null=True,
     )
 
@@ -33,7 +37,7 @@ class Nonconformity(models.Model):
     )
 
     internal_claim_number = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True, null=True,
     )
 
@@ -42,17 +46,17 @@ class Nonconformity(models.Model):
     )
 
     part_number = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True, null=True,
     )
 
     part_revision = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True, null=True,
     )
 
     part_name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
@@ -60,7 +64,7 @@ class Nonconformity(models.Model):
 # -----------------------------------------------------------------------------
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -76,8 +80,9 @@ class Nonconformity(models.Model):
         Employee,
         to_field='id',
         db_column="employee_id",
-        on_delete=models.CASCADE,
-        blank=True, null=True,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
+        blank=True,
     )
 
     team_members = models.TextField(
@@ -105,152 +110,152 @@ class Nonconformity(models.Model):
 # -----------------------------------------------------------------------------
 
     possible_root_cause1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause1_ask_why1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause1_ask_why2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause1_ask_why3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause1_ask_why4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause1_ask_why5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     possible_root_cause2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause2_ask_why1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause2_ask_why2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause2_ask_why3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause2_ask_why4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause2_ask_why5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     possible_root_cause3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause3_ask_why1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause3_ask_why2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause3_ask_why3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause3_ask_why4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause3_ask_why5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     possible_root_cause4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause4_ask_why1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause4_ask_why2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause4_ask_why3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause4_ask_why4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause4_ask_why5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     possible_root_cause5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause5_ask_why1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause5_ask_why2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause5_ask_why3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause5_ask_why4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     cause5_ask_why5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
@@ -265,7 +270,7 @@ class Nonconformity(models.Model):
     )
 
     breakpoint_batch_number = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 

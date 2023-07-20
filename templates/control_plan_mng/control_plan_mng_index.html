@@ -109,8 +109,13 @@
                                 <td>{{ i.product }}</td>
 
                                 {% if i.owner %}
-                                <td><a class="table-link" href="{% url 'show employee' pk=i.owner.pk slug=i.owner.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>{{ i.owner.get_full_name }}</a></td>
+                                <td>
+                                    {% if i.owner %}
+                                        <a class="table-link" href="{% url 'show employee' pk=i.owner.pk slug=i.owner.slug %}">
+                                    	<i class="fa-solid fa-magnifying-glass"></i>{{ i.owner.get_full_name }}</a>
+                                    {% else %}
+                                    {% endif %}
+                                </td>
                                 {% else %}
                                 <td></td>
                                 {% endif %}

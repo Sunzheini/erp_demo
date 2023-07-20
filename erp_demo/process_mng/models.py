@@ -8,6 +8,7 @@ from erp_demo.kpi_mng.models import Kpi
 from erp_demo.opportunity_mng.models import Opportunity
 from erp_demo.risk_mng.models import Risk
 
+
 PROCESS_CHOICES_EN=(
     ('Managerial', 'Managerial'),
     ('Operational', 'Operational'),
@@ -22,12 +23,15 @@ PROCESS_STEP_CHOICES_EN=(
 
 
 class Process(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_TYPE = 30
+    MAX_LENGTH_NUMBER = 3
 
     class Meta:
         ordering = ['id']
 
     type = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_TYPE,
         # choices=(
         #     ('Managerial', 'Managerial'),
         #     ('Operational', 'Operational'),
@@ -38,13 +42,13 @@ class Process(models.Model):
     )
 
     number = models.CharField(
-        max_length=3,
+        max_length=MAX_LENGTH_NUMBER,
         blank=False, null=False,
         unique=True,
     )
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
     )
@@ -53,7 +57,8 @@ class Process(models.Model):
         Employee,
         to_field="identification",
         db_column="responsible_ident",
-        on_delete=models.CASCADE,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
     )
 
     # many-to-many
@@ -110,7 +115,7 @@ class Process(models.Model):
         return [x[0] for x in self._meta.get_field('type').choices]
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.number}-{self.type}")
             self.slug = slugify(f"{translate_to_maimunica(self.name)}")
@@ -121,12 +126,14 @@ class Process(models.Model):
 
 
 class ProcessStep(models.Model):
+    MAX_LENGTH_LONG = 199
+    MAX_LENGTH_SHORT = 30
 
     class Meta:
         ordering = ['id']
 
     type = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         # choices=(
         #     ('Terminator', 'Terminator'),
         #     ('Process', 'Process'),
@@ -141,7 +148,7 @@ class ProcessStep(models.Model):
     )
 
     name = models.CharField(
-        max_length=199,
+        max_length=MAX_LENGTH_LONG,
         blank=False, null=False,
         unique=True,
     )
@@ -151,8 +158,8 @@ class ProcessStep(models.Model):
         Process,                    # which is the related table
         to_field="number",
         db_column="parent_process_number",
-        on_delete=models.CASCADE,   # when process is deleted, delete related process steps
-        # on_delete=models.SET_NULL, null=True,   # set null when process is deleted
+        # on_delete=models.CASCADE,   # when process is deleted, delete related process steps
+        on_delete=models.SET_NULL, null=True,   # set null when process is deleted
         # on_delete=models.RESTRICT,  # can delete if there is a process step attached
     )
 
@@ -181,7 +188,7 @@ class ProcessStep(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.name[0:11]}")
             # self.slug = slugify(f"{self.parent_process.number}-{self.number}")
@@ -198,6 +205,7 @@ class ProcessStep(models.Model):
         # return f"{self.parent_process.number},  " \
         #        f"step: {self.number} {self.name[0:70]}"
         return f"{self.parent_process.number}, {self.number}. {self.name[0:70]}..."
+
 
 class ProcessStepToDocuments(models.Model):
     process_step_id = models.ForeignKey(

@@ -68,9 +68,14 @@
                             <td>{{ current_object.type }}</td>
                             <td>{{ current_object.name }}</td>
 
-                            <td><a class="table-link"
+                            <td>
+                                {% if current_object.responsible %}
+                                <a class="table-link"
                                    href="{% url 'show employee' pk=current_object.responsible.pk slug=current_object.responsible.slug %}">
-                                    <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.responsible.get_full_name }}</a></td>
+                                    <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.responsible.get_full_name }}</a>
+                                {% else %}
+                                {% endif %}
+                            </td>
 
                             <td>
                                {% for doc in current_object.get_related_documents %}

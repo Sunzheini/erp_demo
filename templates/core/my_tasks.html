@@ -69,8 +69,13 @@
                             <td>{{ document.revision }}</td>
                             <td>{{ document.revision_date }}</td>
                             <td>{{ document.revision_details }}</td>
-                            <td><a class="table-link" href="{% url 'show employee' pk=document.owner.pk slug=document.owner.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{{ document.owner.get_full_name }}</a></td>
+                            <td>
+                                {% if document.owner %}
+									<a class="table-link" href="{% url 'show employee' pk=document.owner.pk slug=document.owner.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ document.owner.get_full_name }}</a>
+                                {% else %}
+                                {% endif %}
+                            </td>
 
                             {#no cloudinary#}
                             {#            <td><a href="/media/{{ document.attachment }}">#}

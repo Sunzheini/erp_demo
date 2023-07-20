@@ -59,8 +59,13 @@
                             <td>{{ current_object.number }}</td>
                             <td>{{ current_object.name }}</td>
 
-                            <td><a class="table-link" href="{% url 'show employee' pk=current_object.process_owner.pk slug=current_object.process_owner.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.process_owner.get_full_name }}</a></td>
+                            <td>
+                                {% if current_object.process_owner %}
+                                <a class="table-link" href="{% url 'show employee' pk=current_object.process_owner.pk slug=current_object.process_owner.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.process_owner.get_full_name }}</a>
+                                {% else %}
+                                {% endif %}
+                            </td>
 
                             <td><a class="table-link" href="{% url 'edit proces' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     {% trans "Edit" %}</a></td>

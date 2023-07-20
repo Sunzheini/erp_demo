@@ -6,11 +6,13 @@ from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
 class Organization(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
     )
@@ -29,17 +31,17 @@ class Organization(models.Model):
     )
 
     mol = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     address = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     manager_name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 

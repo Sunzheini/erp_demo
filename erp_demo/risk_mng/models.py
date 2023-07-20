@@ -7,11 +7,13 @@ from erp_demo.newactions_mng.models import NewAction
 
 
 class Risk(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -32,7 +34,7 @@ class Risk(models.Model):
     )
 
     ia_test_period = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 

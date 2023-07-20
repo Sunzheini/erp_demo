@@ -15,11 +15,15 @@ CHOICES_EN=(
 
 
 class Customer(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+    MAX_LENGTH_PHONE = 20
+
     class Meta:
         ordering = ['id']
 
     type = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         choices=CHOICES_EN,
         blank=False, null=False,
     )
@@ -34,17 +38,17 @@ class Customer(models.Model):
     )
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     registration_address = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     registration_city = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
@@ -53,102 +57,102 @@ class Customer(models.Model):
     )
 
     mol1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     mol2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     mol3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     mol4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     mol5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     correspondence_address1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     correspondence_address2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     correspondence_address3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     correspondence_address4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     correspondence_address5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     contact_person1 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
     contact_person2 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     contact_person3 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     contact_person4 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     contact_person5 = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     phone1 = models.CharField(
-        max_length=20,
+        max_length=MAX_LENGTH_PHONE,
         blank=False, null=False,
     )
 
     phone2 = models.CharField(
-        max_length=20,
+        max_length=MAX_LENGTH_PHONE,
         blank=True, null=True,
     )
 
     phone3 = models.CharField(
-        max_length=20,
+        max_length=MAX_LENGTH_PHONE,
         blank=True, null=True,
     )
 
     phone4 = models.CharField(
-        max_length=20,
+        max_length=MAX_LENGTH_PHONE,
         blank=True, null=True,
     )
 
     phone5 = models.CharField(
-        max_length=20,
+        max_length=MAX_LENGTH_PHONE,
         blank=True, null=True,
     )
 
@@ -178,7 +182,6 @@ class Customer(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(f"{translate_to_maimunica(self.name[0:20])}")
         return super().save(*args, **kwargs)

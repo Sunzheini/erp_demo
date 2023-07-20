@@ -24,10 +24,11 @@ class ActionPlan(models.Model):
 
     owner = models.ForeignKey(
         Employee,
-        blank=True, null=True,
+        blank=True,
         to_field='id',
         db_column="employee_id",
-        on_delete=models.CASCADE,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
     )
 
     slug = models.SlugField(
@@ -53,6 +54,8 @@ class ActionPlan(models.Model):
 
 
 class ActionPlanStep(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['number']
 
@@ -61,13 +64,13 @@ class ActionPlanStep(models.Model):
     )
 
     scope = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=True, null=True,
     )
 
     # Open Issue
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
     )
@@ -77,7 +80,8 @@ class ActionPlanStep(models.Model):
         ActionPlan,
         to_field="id",
         db_column="parent_action_plan_id",
-        on_delete=models.CASCADE,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
     )
 
     actions = models.ManyToManyField(

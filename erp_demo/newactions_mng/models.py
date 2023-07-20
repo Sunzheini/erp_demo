@@ -13,17 +13,19 @@ STATUS_CHOICES_EN = (
 
 
 class NewAction(models.Model):
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     scope = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True, null=True,
     )
 
     # description of the action itself
     name = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
     )
@@ -33,7 +35,8 @@ class NewAction(models.Model):
         Employee,
         to_field="identification",
         db_column="owner_ident",
-        on_delete=models.CASCADE,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
         related_name="responsible",
     )
 
@@ -46,7 +49,7 @@ class NewAction(models.Model):
     )
 
     status = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         choices=STATUS_CHOICES_EN,
         blank=False, null=False,
     )

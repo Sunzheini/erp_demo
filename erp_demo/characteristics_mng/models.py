@@ -13,32 +13,36 @@ characteristic_type_choices = [
 
 
 class Characteristic(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+    MAX_LENGTH_LONG = 199
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False,
         null=False,
         unique=True,
     )
 
     code = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False,
         null=False,
         unique=True,
     )
 
     type = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         choices=characteristic_type_choices,
         blank=False,
         null=False,
     )
 
     requirement = models.CharField(
-        max_length=199,
+        max_length=MAX_LENGTH_LONG,
         blank=True,
         null=True,
     )

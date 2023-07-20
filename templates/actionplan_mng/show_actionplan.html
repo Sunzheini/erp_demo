@@ -51,9 +51,12 @@
                 <div class="block-above-table">
                     <p class="card-display-content">Description: {{ current_object.description }}</p>
                     <p class="card-display-content">Owner:
+                        {% if current_object.owner %}
                         <a class="table-link"
                             href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
                             {{ current_object.owner }}</a>
+                        {% else %}
+                        {% endif %}
                     </p>
                 </div>
 
@@ -98,9 +101,15 @@
                             href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
                             {{ action.action_id.name }}</a><br>
                         </td>
-                        <td ><a class="table-link"
-                             href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
-                             {{ action.action_id.responsible.get_full_name }}</a></td>
+                        <td>
+                            {% if action.action_id.responsible %}
+                                <a class="table-link"
+                                 href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
+                                 {{ action.action_id.responsible.get_full_name }}</a>
+							{% else %}
+							{% endif %}
+                        </td>
+
                         <td>{{ action.action_id.target_date }}</td>
 
                          {% if action.action_id.status == 'Ongoing' %}

@@ -5,18 +5,21 @@ from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
 class StatModel1(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     # unique subsequent number (1, 2, 3, ...)
     name = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
     )
 
     operator = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 

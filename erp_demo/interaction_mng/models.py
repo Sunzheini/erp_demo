@@ -7,11 +7,13 @@ from erp_demo.process_mng.models import ProcessStep
 
 
 class Interaction(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -19,16 +21,18 @@ class Interaction(models.Model):
     from_process_step = models.ForeignKey(
         ProcessStep,              # which is the related table
         related_name="from_process_step",
-        on_delete=models.CASCADE,   # when process is deleted, delete related process steps
-        blank=True, null=True,
+        # on_delete=models.CASCADE,   # when process is deleted, delete related process steps
+        on_delete=models.SET_NULL, null=True,
+        blank=True,
     )
 
     # many-to-one
     to_process_step = models.ForeignKey(
         ProcessStep,              # which is the related table
         related_name="to_process_step",
-        on_delete=models.CASCADE,   # when process is deleted, delete related process steps
-        blank=True, null=True,
+        # on_delete=models.CASCADE,   # when process is deleted, delete related process steps
+        on_delete=models.SET_NULL, null=True,
+        blank=True,
     )
 
     # many-to-many

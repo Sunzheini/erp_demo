@@ -70,9 +70,20 @@
                         {% if not current_object.get_related_actions %}
 
                             <tr>
-                                <td>{{ current_object.parent_action_plan.name }}</td>
-                                <td><a class="table-link" href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
-                                    {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
+                                <td>
+                                    {% if current_object.parent_action_plan %}
+										{{ current_object.parent_action_plan.name }}
+                                    {% else %}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if current_object.parent_action_plan.owner %}
+                                        <a class="table-link" href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
+                                        {{ current_object.parent_action_plan.owner.get_full_name }}</a>
+                                    {% else %}
+                                    {% endif %}
+                                </td>
 
                                 <td>{{ current_object.number }}</td>
                                 <td>{{ current_object.scope }}</td>
@@ -95,10 +106,20 @@
                             {% for action in current_object.get_related_actions %}
                                 <tr>
                                     {% if forloop.first %}
-                                        <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.parent_action_plan.name }}</td>
-                                        <td rowspan="{{ current_object.get_related_actions|length }}"><a class="table-link"
-                                                                                                         href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
-                                            {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
+                                        <td rowspan="{{ current_object.get_related_actions|length }}">
+                                            {% if current_object.parent_action_plan %}
+                                                {{ current_object.parent_action_plan.name }}
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
+
+                                        <td rowspan="{{ current_object.get_related_actions|length }}">
+                                        	{% if current_object.parent_action_plan.owner %}
+                                                <a class="table-link" href="{% url 'show employee' pk=current_object.parent_action_plan.owner.pk slug=current_object.parent_action_plan.owner.slug %}">
+                                            	{{ current_object.parent_action_plan.owner.get_full_name }}</a>
+                                            {% else %}
+                                            {% endif %}
+                                        </td>
 
                                         <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.number }}</td>
                                         <td rowspan="{{ current_object.get_related_actions|length }}">{{ current_object.scope }}</td>
@@ -110,9 +131,14 @@
                                            href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
                                             <i class="fa-solid fa-magnifying-glass"></i>{{ action.action_id.name }}</a>
                                     </td>
-                                    <td ><a class="table-link"
-                                            href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
-                                        {{ current_object.parent_action_plan.owner.get_full_name }}</a></td>
+                                    <td>
+                                        {% if current_object.parent_action_plan.owner %}
+                                        	<a class="table-link" href="{% url 'show employee' pk=action.action_id.responsible.pk slug=action.action_id.responsible.slug %}">
+                                        	{{ current_object.parent_action_plan.owner.get_full_name }}</a>
+                                        {% else %}
+                                        {% endif %}
+                                    </td>
+
                                     <td>{{ action.action_id.target_date }}</td>
                                     <td>{{ action.action_id.status }}</td>
 

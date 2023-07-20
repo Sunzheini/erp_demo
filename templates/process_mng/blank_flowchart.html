@@ -43,9 +43,12 @@
                 </h2>
                 <p class="flowchart-box-text">
                     {% trans "Managed by:" %}
+                    {% if current_object.process_owner %}
                     <a class="table-link"
                        href="{% url 'show employee' pk=current_object.process_owner.pk slug=current_object.process_owner.slug %}">
                                 {{ current_object.process_owner.name_and_position }}</a>
+                    {% else %}
+                    {% endif %}
                 </p>
             </div>
         </section>
@@ -137,8 +140,13 @@
                                 </div>
                             </td>
 
-                            <td class="t-resp"><a class="table-link" href="{% url 'show employee' pk=process_step.responsible.pk slug=process_step.responsible.slug %}">
-                                {{ process_step.responsible.get_full_name }}</a></td>
+                            <td class="t-resp">
+                                {% if process_step.responsible %}
+                                <a class="table-link" href="{% url 'show employee' pk=process_step.responsible.pk slug=process_step.responsible.slug %}">
+                                {{ process_step.responsible.get_full_name }}</a>
+                                {% else %}
+                                {% endif %}
+                            </td>
 
                             <td class="t-dox">
                                 {% for doc in i.get_related_documents %}

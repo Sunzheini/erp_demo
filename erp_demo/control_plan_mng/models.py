@@ -16,12 +16,15 @@ control_plan_type_choices = [
 
 
 class ProcessControlPlanStep(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     # Process Name / Operation Description
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False,
         null=False,
         unique=True,
@@ -49,13 +52,13 @@ class ProcessControlPlanStep(models.Model):
     )
 
     sample_size = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True,
         null=True,
     )
 
     frequency = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=True,
         null=True,
     )
@@ -116,32 +119,35 @@ class ProcessControlPlanStep(models.Model):
 
 # will be the same as Process in the process app
 class ProcessControlPlan(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     # get a default name
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False,
         null=False,
         unique=True,
     )
 
     type = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False,
         null=False,
         choices=control_plan_type_choices,
     )
 
     number = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False,
         null=False,
     )
 
     revision = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH_SHORT,
         blank=False,
         null=False,
     )
@@ -159,7 +165,7 @@ class ProcessControlPlan(models.Model):
     )
 
     product = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False,
         null=False,
     )
@@ -167,10 +173,10 @@ class ProcessControlPlan(models.Model):
     owner = models.ForeignKey(
         Employee,
         blank=True,
-        null=True,
         to_field='id',
         db_column="employee_id",
-        on_delete=models.CASCADE,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
     )
 
     team = models.TextField(

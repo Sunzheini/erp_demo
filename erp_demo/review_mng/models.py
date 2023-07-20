@@ -11,11 +11,13 @@ from erp_demo.supplier_mng.models import Supplier
 
 
 class ManagementReview(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
     )

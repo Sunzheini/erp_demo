@@ -106,9 +106,13 @@
                           ">{{ current_object.name }}</span>
                           </a></td>
 
-                          <td rowspan="{{ current_object.count_all_steps }}"><a class="table-link"
-                             href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
-                          {{ current_object.owner.get_full_name }}</a></td>
+                          <td rowspan="{{ current_object.count_all_steps }}">
+                              {% if current_object.owner %}
+                                  <a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                                  {{ current_object.owner.get_full_name }}</a>
+                              {% else %}
+                              {% endif %}
+                          </td>
                           {% endif %}
 
                               <td>{{ i.number }}</td>
@@ -144,7 +148,7 @@
                                      href="{% url 'delete action plan' pk=current_object.pk slug=current_object.slug %}">
                                       <i class="fa-solid fa-trash"></i></a>
                               </td>
-                            {% endif %}
+                          {% endif %}
 
                           </tr>
                         {% endfor %}

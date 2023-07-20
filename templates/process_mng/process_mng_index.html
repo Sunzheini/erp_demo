@@ -121,8 +121,18 @@
                                 {% for i in list_item %}
                                 <tr>
 
-                                <td>{{ i.parent_process.number }}</td>
-                                <td>{{ i.parent_process.name }}</td>
+                                <td>
+                                    {% if i.parent_process %}
+                                    	{{ i.parent_process.number }}
+                                    {% else %}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if i.parent_process %}
+                                    	{{ i.parent_process.name }}
+                                    {% else %}
+                                    {% endif %}
+                                </td>
 
                 {#                <td><a class="table-link" href="{% url 'create flowchart' pk=i.parent_process.pk %}">#}
                 {#                    <i class="fa-sharp fa-solid fa-florin-sign"></i>Flowchart</a></td>#}
@@ -133,8 +143,13 @@
                                 <td>{{ i.type }}</td>
                                 <td>{{ i.name }}</td>
 
-                                <td><a class="table-link" href="{% url 'show employee' pk=i.responsible.pk slug=i.responsible.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{{ i.responsible.get_full_name }}</a></td>
+                                <td>
+                                    {% if i.responsible %}
+                                    <a class="table-link" href="{% url 'show employee' pk=i.responsible.pk slug=i.responsible.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ i.responsible.get_full_name }}</a>
+                                    {% else %}
+                                    {% endif %}
+                                </td>
 
                                 <td>
                                    {% for doc in i.get_related_documents %}

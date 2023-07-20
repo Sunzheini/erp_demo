@@ -6,11 +6,13 @@ from erp_demo.characteristics_mng.models import Characteristic
 
 
 class DefectCatalogue(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
     name = models.CharField(
-        max_length=99,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
     )

@@ -63,8 +63,13 @@
                             <td>{{ current_object.name }}</td>
                             <td>{{ current_object.revision }}</td>
                             <td>{{ current_object.status }}</td>
-                            <td><a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
-                                        <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.owner.get_full_name }}</a></td>
+                            <td>
+                                {% if current_object.owner %}
+                                <a class="table-link" href="{% url 'show employee' pk=current_object.owner.pk slug=current_object.owner.slug %}">
+                                        <i class="fa-solid fa-magnifying-glass"></i>{{ current_object.owner.get_full_name }}</a>
+                                {% else %}
+                                {% endif %}
+                            </td>
 
                 {#no cloudinary#}
                 {#            <td><a href="/media/{{ document.attachment }}">#}

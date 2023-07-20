@@ -5,6 +5,8 @@ from erp_demo.custom_logic.translator import translate_to_maimunica
 
 
 class AccessLevels(models.Model):
+    MAX_LENGTH = 99
+
     class Meta:
         ordering = ['id']
 
@@ -14,39 +16,45 @@ class AccessLevels(models.Model):
     )
 
     description = models.CharField(
-        max_length=70,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
 
 class AccessRights(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     type = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
     )
 
     description = models.CharField(
-        max_length=70,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
 
 class Trainings(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
     code = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
     )
 
     name = models.CharField(
-        max_length=50,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -62,7 +70,7 @@ class Trainings(models.Model):
         return f"{self.name}"
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.code}")
             slug = slugify(f"{self.code}-"
@@ -86,17 +94,20 @@ class EmployeeToTrainings(models.Model):
 
 
 class Positions(models.Model):
+    MAX_LENGTH = 99
+    MAX_LENGTH_SHORT = 5
+
     class Meta:
         ordering = ['id']
 
     code = models.CharField(
-        max_length=5,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
     )
 
     name = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH,
         blank=False, null=False,
     )
 
@@ -105,8 +116,8 @@ class Positions(models.Model):
         AccessRights,                    # which is the related table
         to_field="type",
         db_column="access_right_type",
-        on_delete=models.CASCADE,   # when process is deleted, delete related process steps
-        # on_delete=models.SET_NULL, null=True,   # set null when process is deleted
+        # on_delete=models.CASCADE,   # when process is deleted, delete related process steps
+        on_delete=models.SET_NULL, null=True,   # set null when process is deleted
         # on_delete=models.RESTRICT,  # can delete if there is a process step attached
     )
 
@@ -138,6 +149,8 @@ class PositionsToAccessLevels(models.Model):
 
 
 class Employee(models.Model):
+    MAX_LENGTH_SHORT = 50
+
     class Meta:
         ordering = ['id']
 
@@ -146,13 +159,13 @@ class Employee(models.Model):
         Positions,                    # which is the related table
         to_field="code",
         db_column="position_code",
-        on_delete=models.CASCADE,   # when process is deleted, delete related process steps
-        # on_delete=models.SET_NULL, null=True,   # set null when process is deleted
+        # on_delete=models.CASCADE,   # when process is deleted, delete related process steps
+        on_delete=models.SET_NULL, null=True,   # set null when process is deleted
         # on_delete=models.RESTRICT,  # can delete if there is a process step attached
     )
 
     contract_number = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
@@ -169,22 +182,22 @@ class Employee(models.Model):
     )
 
     egn = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     first_name = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     middle_name = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
     last_name = models.CharField(
-        max_length=30,
+        max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
     )
 
@@ -208,7 +221,6 @@ class Employee(models.Model):
     @property
     def get_related_trainings(self):
         # return ', '.join([str(f) for f in EmployeeToTrainings.objects.filter(employee_id=self.pk)])
-
         # return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
         return EmployeeToTrainings.objects.filter(employee_id=self.pk)
 
@@ -229,7 +241,7 @@ class Employee(models.Model):
                f"{self.identification}"
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)
         if not self.slug:
             # self.slug = slugify(f"{self.get_full_name}")
             # self.slug = slugify(f"{self.identification}-{self.position}")
