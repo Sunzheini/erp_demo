@@ -42,12 +42,10 @@ class DatabaseManipulation:
         PositionsToAccessLevels.objects.all().delete()
         EmployeeToTrainings.objects.all().delete()
         DocumentLikesToUsers.objects.all().delete()
-
         ProcessToKpis.objects.all().delete()
         ProcessToOpportunities.objects.all().delete()
         ProcessToRisks.objects.all().delete()
         InteractionToDocuments.objects.all().delete()
-
         ResourcesAssignedToEmployees.objects.all().delete()
         ResourcesAssignedToProcess.objects.all().delete()
 
@@ -57,45 +55,32 @@ class DatabaseManipulation:
         Trainings.objects.all().delete()
         Interaction.objects.all().delete()
         Resource.objects.all().delete()
-
         NewAction.objects.all().delete()
         MeasuringEquipment.objects.all().delete()
         Machine.objects.all().delete()
         Characteristic.objects.all().delete()
-
         StatModel1.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()
         Employee.objects.all().delete()
-
         ProcessStep.objects.all().delete()
         Document.objects.all().delete()
         Kpi.objects.all().delete()
         Opportunity.objects.all().delete()
         Risk.objects.all().delete()
-
         Process.objects.all().delete()
-
         CaptainsLog.objects.all().delete()
-
         Requirements.objects.all().delete()
-
         Organization.objects.all().delete()
         Customer.objects.all().delete()
-
         Nonconformity.objects.all().delete()
-
         ActionPlanStep.objects.all().delete()
         ActionPlan.objects.all().delete()
-
         Supplier.objects.all().delete()
-
         ProcessControlPlanStep.objects.all().delete()
         ProcessControlPlan.objects.all().delete()
-
         DefectCatalogue.objects.all().delete()
-
         ManagementReview.objects.all().delete()
 
         return 'Successfully deleted'

@@ -20,6 +20,9 @@ class AccessLevels(models.Model):
         blank=False, null=False,
     )
 
+    def __str__(self):
+        return f"{self.code} - {self.description}"
+
 
 class AccessRights(models.Model):
     MAX_LENGTH = 99
@@ -38,6 +41,9 @@ class AccessRights(models.Model):
         max_length=MAX_LENGTH,
         blank=False, null=False,
     )
+
+    def __str__(self):
+        return f"{self.type} - {self.description}"
 
 
 class Trainings(models.Model):

@@ -42,6 +42,10 @@ class DeleteDatabaseForm(forms.Form):
     pass
 
 
+class ExportDatabaseForm(forms.Form):
+    pass
+
+
 class RequirementsMixin:
     def change_labels_to_bg(self):
         language_code = translation.get_language()

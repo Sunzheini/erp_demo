@@ -179,7 +179,8 @@ class ProcessStep(models.Model):
         Employee,
         to_field="identification",
         db_column="responsible_ident",
-        on_delete=models.CASCADE,
+        # on_delete=models.CASCADE,
+        on_delete=models.SET_NULL, null=True,
     )
 
     slug = models.SlugField(

@@ -42,19 +42,13 @@
                 <h2 class="card-display-title">{% trans "Delete / recreate whole database" %}</h2>
 
                 <p class="card-display-content">{% trans "Delete whole database" %}</p>
-
                 <form action="{% url 'manage db all' %}" method="post">
-{#                    <table class="table-form">#}
-{#                        {{ form }}#}
-{#                    </table>#}
                     {{ form }}
                     {% csrf_token %}
-
                     <button class="form-button" name="button_delete_db">
                         {% trans "Delete" %}
                     </button>
                 </form>
-
                 <p class="card-display-return-message">
                     {% if message %}
                         {{ message }}
@@ -65,12 +59,7 @@
                 <p class="card-display-content">
                     {% trans "Select an excel file to recreate database after deletion (requirements acc. to `DemoX.xlsx`):" %}
                 </p>
-
                 <form action="{% url 'manage db all' %}" method="post" enctype="multipart/form-data">
-{#                    <table class="table-form">#}
-{#                        {{ form2.as_div }}#}
-{#                    </table>#}
-{#                    {% csrf_token %}#}
                     {{ form2.as_div }}
                     {% csrf_token %}
 
@@ -78,14 +67,29 @@
                         {% trans "Add to database" %}
                     </button>
                 </form>
-
                 <p class="card-display-return-message">
                     {% if message2 %}
                         {{ message2 }}
                     {% endif %}
                 </p>
-
                 <hr>
+
+                <p class="card-display-content">{% trans "Export whole database to an excel" %}</p>
+                <form action="{% url 'manage db all' %}" method="post">
+                    {{ form3 }}
+                    {% csrf_token %}
+
+                    <button class="form-button" name="button_export_db">
+                        {% trans "Export" %}
+                    </button>
+                </form>
+                <p class="card-display-return-message">
+                    {% if message3 %}
+                        {{ message3 }}
+                    {% endif %}
+                </p>
+            	<hr>
+
             Users:
                 <div class="table-data-container">
                     <table class="table-data">

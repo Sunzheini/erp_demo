@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 
 from erp_demo.custom_logic.db_manipulation import DatabaseManipulation
+from erp_demo.custom_logic.export_database import export_database
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
 from erp_demo.main_app.forms import ManageDbAllForm, DeleteDatabaseForm, \
     RequirementsForm, RequirementsEditForm, RequirementsDeleteForm, \
-    SearchForm, RequirementsDocumentForm
+    SearchForm, RequirementsDocumentForm, ExportDatabaseForm
 
 from erp_demo.custom_logic.custom_logic import SupportFunctions
 from erp_demo.main_app.models import CaptainsLog, Requirements
@@ -52,6 +53,7 @@ class MainAppViews:
         template = 'core/manage_db_all.html'
         message = None
         message2 = None
+        message3 = None
 
         if 'button_delete_db' in request.POST:
             form = DeleteDatabaseForm(request.POST)
@@ -59,6 +61,7 @@ class MainAppViews:
                 message = DatabaseManipulation.delete_database()
                 form = DeleteDatabaseForm()
             form2 = ManageDbAllForm()
+            form3 = ExportDatabaseForm()
 
         elif 'button_manage_db_all' in request.POST:
             form2 = ManageDbAllForm(request.POST, request.FILES)
@@ -66,16 +69,28 @@ class MainAppViews:
                 message2 = DatabaseManipulation.recreate_database(request.FILES)
                 form2 = ManageDbAllForm()
             form = DeleteDatabaseForm()
+            form3 = ExportDatabaseForm()
+
+        elif 'button_export_db' in request.POST:
+            form3 = ExportDatabaseForm(request.POST)
+            if form3.is_valid():
+                message3 = export_database()
+                form3 = ExportDatabaseForm()
+            form = DeleteDatabaseForm()
+            form2 = ManageDbAllForm()
 
         else:
             form = DeleteDatabaseForm()
             form2 = ManageDbAllForm()
+            form3 = ExportDatabaseForm()
 
         context = {
             'form': form,
             'form2': form2,
+            'form3': form3,
             'message': message,
             'message2': message2,
+            'message3': message3,
             'users': AppUser.objects.all(),
         }
         return render(request, template, context)
