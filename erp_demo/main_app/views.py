@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from erp_demo.custom_logic.db_manipulation import DatabaseManipulation
 from erp_demo.custom_logic.export_database import export_database
 from erp_demo.dox_mng.models import Document, DocumentEditPurgatory
+from erp_demo.hr_mng.models import Employee
 from erp_demo.main_app.forms import ManageDbAllForm, DeleteDatabaseForm, \
     RequirementsForm, RequirementsEditForm, RequirementsDeleteForm, \
     SearchForm, RequirementsDocumentForm, ExportDatabaseForm
@@ -38,7 +39,9 @@ class MainAppViews:
     @staticmethod
     @SupportFunctions.allow_groups()
     def organigramm(request):
-        context = {}
+        context = {
+            'all_objects': Employee.objects.all(),
+        }
         return render(request, 'core/organigramm.html', context)
 
     @staticmethod
@@ -225,4 +228,3 @@ class MainAppViews:
             'requirement': current_requirement,
         }
         return render(request, template, context)
-

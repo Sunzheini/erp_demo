@@ -10,9 +10,8 @@ urlpatterns = [
         path('manage_db_all/', MainAppViews().manage_db_all, name='manage db all'),
     ])),
 
-    path('organigramm/', MainAppViews().organigramm, name='organigramm'),
+	path('favorites/', MainAppViews().favorites, name='favorites'),
     path('logs/', MainAppViews().logs, name='logs'),
-    path('favorites/', MainAppViews().favorites, name='favorites'),
     path('my-tasks/', MainAppViews().my_tasks, name='my tasks'),
 
     path('requirements-matrix/', MainAppViews().requirements_matrix, name='requirements matrix'),
@@ -22,4 +21,6 @@ urlpatterns = [
 
     path('approve-revision/<int:pk>/<slug:slug>/', MainAppViews().approve_revision, name='approve revision'),
     path('delete-revision/<int:pk>/<slug:slug>/', MainAppViews().delete_revision, name='delete revision'),
+
+	path('organigramm/', MainAppViews().organigramm, name='organigramm'),
 ]

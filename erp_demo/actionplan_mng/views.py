@@ -12,19 +12,36 @@ class ActionPlanMngViewsGeneral:
     def action_plan_mng_index(request):
         template = 'actionplan_mng/actionplan_mng_index.html'
 
+        # added
+        action_plan_form = ActionPlanForm()
+        action_plan_step_form = ActionPlanStepForm()
+
         if 'button1' in request.POST:
-            action_plan_form = ActionPlanForm(request.POST)
-            if action_plan_form.is_valid():
-                action_plan_form.save()
-                action_plan_form = ActionPlanForm()
-            action_plan_step_form = ActionPlanStepForm()
+            # current code in try and also added except
+            try:
+                action_plan_form = ActionPlanForm(request.POST)
+                if action_plan_form.is_valid():
+                    action_plan_form.save()
+                    action_plan_form = ActionPlanForm()
+                action_plan_step_form = ActionPlanStepForm()
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                action_plan_form.add_error(None, "An error occurred during form processing.")
+                action_plan_step_form = ActionPlanStepForm()
+
 
         elif 'button2' in request.POST:
-            action_plan_step_form = ActionPlanStepForm(request.POST)
-            if action_plan_step_form.is_valid():
-                action_plan_step_form.save()
-                action_plan_step_form = ActionPlanStepForm()
-            action_plan_form = ActionPlanForm()
+            # current code in try and also added except
+            try:
+                action_plan_step_form = ActionPlanStepForm(request.POST)
+                if action_plan_step_form.is_valid():
+                    action_plan_step_form.save()
+                    action_plan_step_form = ActionPlanStepForm()
+                action_plan_form = ActionPlanForm()
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                action_plan_step_form.add_error(None, "An error occurred during form processing.")
+                action_plan_form = ActionPlanForm()
 
         else:
             action_plan_form = ActionPlanForm()
@@ -41,7 +58,8 @@ class ActionPlanMngViewsGeneral:
 class ActionPlanMngViewsActionPlan(PrototypeViews):
     def show_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        # added request
+        current_object = self._main_object_single(pk, request)
 
         # updated for the graph
         # ---------------------------------------------------------------------------------------

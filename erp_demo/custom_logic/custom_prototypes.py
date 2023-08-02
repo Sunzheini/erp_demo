@@ -27,11 +27,25 @@ class PrototypeViews:
 # Internal methods
 # ---------------------------------------------------------------------------------------
 
-    def _main_object_queryset(self):
-        return self.main_object.objects.all()
+    def _main_object_queryset(self, request):
+        # current code in try and also added except
+        try:
+            return self.main_object.objects.all()
+        except self.main_object.DoesNotExist:
+            return render(request, 'error.html', {'error_message': f"{self.main_object.__name__} not found."})
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
-    def _main_object_single(self, pk):
-        return self.main_object.objects.filter(pk=pk).get()
+    def _main_object_single(self, pk, request):
+        # current code in try and also added except
+        try:
+            return self.main_object.objects.filter(pk=pk).get()
+        except self.main_object.DoesNotExist:
+            return render(request, 'error.html', {'error_message': f"{self.main_object.__name__} not found."})
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     def _empty_context(self):
         self.context = {}
@@ -46,7 +60,11 @@ class PrototypeViews:
     def _validate_and_log(self, form, action_done):
         if form.is_valid():
             output = form.save()
-            SupportFunctions.log_info(f"{action_done} {self.main_object.__name__} `{output.name}`")
+            # current code in try and also added except
+            try:
+                SupportFunctions.log_info(f"{action_done} {self.main_object.__name__} `{output.name}`")
+            except Exception as e:
+                print(f"Could not write to log: {e}")
 
     def _return_form_based_on_method(self, request, form_type, instance=None):
         if request.method == 'GET':
@@ -80,7 +98,13 @@ class PrototypeViews:
     @SupportFunctions.login_check
     def index_view(self, request):
         self._empty_context()
-        return render(request, self.index_template, self.context)
+
+        # current code in try and also added except
+        try:
+            return render(request, self.index_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def list_view(self, request):
@@ -88,10 +112,15 @@ class PrototypeViews:
 
         # updated in some views
         # ---------------------------------------------------------------------------------------
-        self.context['all_objects'] = self._main_object_queryset()
+        self.context['all_objects'] = self._main_object_queryset(request)
         # ---------------------------------------------------------------------------------------
 
-        return render(request, self.list_template, self.context)
+		# current code in try and also added except
+        try:
+            return render(request, self.list_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def create_view(self, request):
@@ -100,15 +129,26 @@ class PrototypeViews:
 
         if request.method == 'GET':
             self._add_form_to_context(form)
-            return render(request, self.create_template, self.context)
+            try:
+                return render(request, self.create_template[55], self.context)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
         elif request.method == 'POST':
             self._validate_and_log(form, 'Created')
-            return redirect(self.redirect_url)
+
+            # current code in try and also added except
+            try:
+                return redirect(self.redirect_url)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def show_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        current_object = self._main_object_single(pk, request)
 
         # updated in some views
         # ---------------------------------------------------------------------------------------
@@ -117,36 +157,69 @@ class PrototypeViews:
 
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
-        return render(request, self.show_template, self.context)
+
+        # current code in try and also added except
+        try:
+            return render(request, self.show_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
 
     @SupportFunctions.login_check
     def edit_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        current_object = self._main_object_single(pk, request)
         form = self._return_form_based_on_method(request, self.edit_form, instance=current_object)
 
         if request.method == 'GET':
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
-            return render(request, self.edit_template, self.context)
+
+            # current code in try and also added except
+            try:
+                return render(request, self.edit_template, self.context)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
         elif request.method == 'POST':
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
             self._validate_and_log(form, 'Edited')
-            return redirect(self.redirect_url)
+
+            # current code in try and also added except
+            try:
+                return redirect(self.redirect_url)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def delete_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        current_object = self._main_object_single(pk, request)
         form = self._return_form_based_on_method(request, self.delete_form, instance=current_object)
 
         if request.method == 'GET':
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
-            return render(request, self.delete_template, self.context)
+
+            # current code in try and also added except
+            try:
+                return render(request, self.delete_template, self.context)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
         elif request.method == 'POST':
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
             self._validate_and_log(form, 'Deleted')
-            return redirect(self.redirect_url)
+
+            # current code in try and also added except
+            try:
+                return redirect(self.redirect_url)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})

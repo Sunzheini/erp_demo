@@ -64,6 +64,21 @@ class ActionPlanForm(ActionPlanMixin, forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.change_labels_to_bg()
 
+    # added
+    def clean(self):
+        cleaned_data = super().clean()
+        name = cleaned_data.get('name')
+        description = cleaned_data.get('description')
+        owner = cleaned_data.get('owner')
+
+        if not name and not description and not owner:
+            raise forms.ValidationError('You have to write something!')
+
+        if len(name) < 3:
+            raise forms.ValidationError('Name must be longer than 3 characters!')
+
+        return cleaned_data
+
 
 class ActionPlanStepForm(ActionPlanStepMixin, forms.ModelForm):
     class Meta:
