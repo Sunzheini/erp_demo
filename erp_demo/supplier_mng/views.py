@@ -28,4 +28,8 @@ class SupplierMngViews(PrototypeViews):
             'chart_data': chart_data,
         }
 
-        return render(request, 'supplier_mng/supplier_scores.html', context)
+        try:
+            return render(request, 'supplier_mng/supplier_scores.html', context)
+        except Exception as e:
+            print(f"Exception: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})

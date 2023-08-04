@@ -91,7 +91,6 @@ class PrototypeViews:
     def _check_if_logged_in(request):
         return True if request.user.is_authenticated else False
 
-
 # Views
 # ---------------------------------------------------------------------------------------
 
@@ -130,12 +129,16 @@ class PrototypeViews:
         if request.method == 'GET':
             self._add_form_to_context(form)
             try:
-                return render(request, self.create_template[55], self.context)
+                return render(request, self.create_template, self.context)
             except Exception as e:
                 print(f"Unexpected error: {e}")
                 return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
         elif request.method == 'POST':
+            if not form.is_valid():
+                self._add_form_to_context(form)
+                return render(request, self.create_template, self.context)
+
             self._validate_and_log(form, 'Created')
 
             # current code in try and also added except
@@ -143,7 +146,8 @@ class PrototypeViews:
                 return redirect(self.redirect_url)
             except Exception as e:
                 print(f"Unexpected error: {e}")
-                return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+                return render(request, 'error.html',
+                              {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def show_view(self, request, pk, slug):
@@ -163,8 +167,8 @@ class PrototypeViews:
             return render(request, self.show_template, self.context)
         except Exception as e:
             print(f"Unexpected error: {e}")
-            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
-
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def edit_view(self, request, pk, slug):
@@ -184,6 +188,11 @@ class PrototypeViews:
                 return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
         elif request.method == 'POST':
+            if not form.is_valid():
+                self._add_form_to_context(form)
+                self._add_current_object_to_context(current_object)
+                return render(request, self.edit_template, self.context)
+
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
             self._validate_and_log(form, 'Edited')
@@ -213,6 +222,11 @@ class PrototypeViews:
                 return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
         elif request.method == 'POST':
+            if not form.is_valid():
+                self._add_form_to_context(form)
+                self._add_current_object_to_context(current_object)
+                return render(request, self.delete_template, self.context)
+
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
             self._validate_and_log(form, 'Deleted')

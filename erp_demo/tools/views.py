@@ -18,9 +18,18 @@ class ToolsMngViews:
             if process_number_form.is_valid():
 
                 choice = process_number_form.cleaned_data['process_number_dropdown']
-                my_object = Process.objects.filter(number=choice).get()
 
-                list_of_process_steps = my_object.processstep_set.all()
+                try:
+                    my_object = Process.objects.filter(number=choice).get()
+                except Process.DoesNotExist:
+                    return render(request, 'error.html', {'error_message': f"{Process} not found."})
+
+                try:
+                    list_of_process_steps = my_object.processstep_set.all()
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
                 additional_fields = ['number', 'name']
 
                 # Get username of the currently logged in OS user
@@ -39,8 +48,12 @@ class ToolsMngViews:
                 except Exception as e:
                     print(f"Exception: {e}")
 
-                return redirect('generate system checklist')
-
+                try:
+                    return redirect('generate system checklist')
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    return render(request, 'error.html',
+                                  {'error_message': f'An unexpected error occurred: {e}.'})
 
         else:
             process_number_form = AuditProcessNumberForm()
@@ -48,7 +61,12 @@ class ToolsMngViews:
         context = {
             'choice_form': process_number_form,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     @staticmethod
     def generate_process_checklist(request):
@@ -60,9 +78,18 @@ class ToolsMngViews:
 
                 choice = control_plan_form.cleaned_data['process_control_plan']
                 print(choice)
-                my_object = ProcessControlPlan.objects.filter(id=choice).get()
 
-                list_of_process_steps = my_object.steps.all()
+                try:
+                    my_object = ProcessControlPlan.objects.filter(id=choice).get()
+                except ProcessControlPlan.DoesNotExist:
+                    return render(request, 'error.html', {'error_message': f"{ProcessControlPlan} not found."})
+
+                try:
+                    list_of_process_steps = my_object.steps.all()
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
                 additional_fields = ['name']
 
                 # Get username of the currently logged in OS user
@@ -81,8 +108,12 @@ class ToolsMngViews:
                 except Exception as e:
                     print(f"Exception: {e}")
 
-                return redirect('generate system checklist')
-
+                try:
+                    return redirect('generate system checklist')
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    return render(request, 'error.html',
+                                  {'error_message': f'An unexpected error occurred: {e}.'})
 
         else:
             control_plan_form = AuditProcessControlPlanNameForm()
@@ -90,4 +121,9 @@ class ToolsMngViews:
         context = {
             'choice_form': control_plan_form,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})

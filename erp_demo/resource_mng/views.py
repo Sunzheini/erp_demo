@@ -81,4 +81,8 @@ class ResourceMngViews(PrototypeViews):
         self.context['all_objects'] = all_objects
         self.context['all_objects2'] = all_objects2
 
-        return render(request,'resource_mng/assign_resources.html',self.context)
+        try:
+            return render(request, 'resource_mng/assign_resources.html', self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})

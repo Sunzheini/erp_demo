@@ -1,5 +1,7 @@
-from django.db import models
+from django.core.exceptions import ValidationError
+from django.db import models, IntegrityError
 from django.utils.text import slugify
+from django.core.validators import MinLengthValidator, MinValueValidator
 
 from erp_demo.custom_logic.translator import translate_to_maimunica
 
@@ -49,6 +51,8 @@ class AccessRights(models.Model):
 class Trainings(models.Model):
     MAX_LENGTH = 99
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
 
     class Meta:
         ordering = ['id']
@@ -57,11 +61,17 @@ class Trainings(models.Model):
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     name = models.CharField(
         max_length=MAX_LENGTH,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     description = models.TextField(
@@ -72,16 +82,32 @@ class Trainings(models.Model):
         blank=True, null=True, editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
+        if len(self.code) < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Code must be longer than 1 character!')
+
     def __str__(self):
         return f"{self.name}"
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
         if not self.slug:
-            # self.slug = slugify(f"{self.code}")
-            slug = slugify(f"{self.code}-"
-                           f"{self.name}"),
-        return super().save(*args, **kwargs)
+            self.slug = slugify(f"{self.code}-"
+                           f"{self.name}")
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
 
 class EmployeeToTrainings(models.Model):
@@ -156,6 +182,9 @@ class PositionsToAccessLevels(models.Model):
 
 class Employee(models.Model):
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
+    MIN_SHORT_LENGTH_EGN = 10
 
     class Meta:
         ordering = ['id']
@@ -173,6 +202,9 @@ class Employee(models.Model):
     contract_number = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     starting_date = models.DateField(
@@ -190,26 +222,42 @@ class Employee(models.Model):
     egn = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        unique=True,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH_EGN),
+        ),
     )
 
     first_name = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     middle_name = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     last_name = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     identification = models.PositiveIntegerField(
         blank=False, null=False,
         unique=True,
+        validators=(
+            MinValueValidator(1),
+        )
     )
 
     # many-to-many
@@ -224,11 +272,34 @@ class Employee(models.Model):
         blank=True, null=True, editable=False,
     )
 
+    def clean(self):
+        if len(self.first_name) < self.MIN_LENGTH:
+            raise ValidationError('First Name must be longer than 3 characters!')
+
+        if len(self.middle_name) < self.MIN_LENGTH:
+            raise ValidationError('Middle Name must be longer than 3 characters!')
+
+        if len(self.last_name) < self.MIN_LENGTH:
+            raise ValidationError('Last Name must be longer than 3 characters!')
+
+        if len(self.egn) < self.MIN_SHORT_LENGTH_EGN:
+            raise ValidationError('EGN must be longer than 10 characters!')
+
+        if self.identification < 1:
+            raise ValidationError('Identification must be greater than 0!')
+
+        if len(self.contract_number) < self.MIN_LENGTH:
+            raise ValidationError('Contract Number must be longer than 1 character!')
+
     @property
     def get_related_trainings(self):
         # return ', '.join([str(f) for f in EmployeeToTrainings.objects.filter(employee_id=self.pk)])
         # return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
-        return EmployeeToTrainings.objects.filter(employee_id=self.pk)
+        try:
+            result = EmployeeToTrainings.objects.filter(employee_id=self.pk)
+        except EmployeeToTrainings.DoesNotExist:
+            result = None
+        return result
 
     @property
     def name(self):
@@ -247,13 +318,19 @@ class Employee(models.Model):
                f"{self.identification}"
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
         if not self.slug:
-            # self.slug = slugify(f"{self.get_full_name}")
-            # self.slug = slugify(f"{self.identification}-{self.position}")
-
             self.slug = slugify(f"{self.identification}-"
                                 f"{translate_to_maimunica(self.first_name)}-"
                                 f"{translate_to_maimunica(self.last_name)}")
 
-        return super().save(*args, **kwargs)
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise

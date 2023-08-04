@@ -1,5 +1,7 @@
-from django.db import models
+from django.core.exceptions import ValidationError
+from django.db import models, IntegrityError
 from django.utils.text import slugify
+from django.core.validators import MinLengthValidator, MinValueValidator
 
 from erp_demo.dox_mng.models import Document
 from erp_demo.hr_mng.models import Employee
@@ -26,6 +28,8 @@ class Process(models.Model):
     MAX_LENGTH = 99
     MAX_LENGTH_TYPE = 30
     MAX_LENGTH_NUMBER = 3
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
 
     class Meta:
         ordering = ['id']
@@ -45,12 +49,18 @@ class Process(models.Model):
         max_length=MAX_LENGTH_NUMBER,
         blank=False, null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     name = models.CharField(
         max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     process_owner = models.ForeignKey(
@@ -86,17 +96,36 @@ class Process(models.Model):
         editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
+        if len(self.number) < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Number must be longer than 1 character!')
+
     @property
     def get_related_kpis(self):
-        return ProcessToKpis.objects.filter(process_id=self.pk)
+        try:
+            result = ProcessToKpis.objects.filter(process_id=self.pk)
+        except ProcessToKpis.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_opportunities(self):
-        return ProcessToOpportunities.objects.filter(process_id=self.pk)
+        try:
+            result = ProcessToOpportunities.objects.filter(process_id=self.pk)
+        except ProcessToOpportunities.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_risks(self):
-        return ProcessToRisks.objects.filter(process_id=self.pk)
+        try:
+            result = ProcessToRisks.objects.filter(process_id=self.pk)
+        except ProcessToRisks.DoesNotExist:
+            result = None
+        return result
 
     @property
     def count_related_kpis(self):
@@ -115,11 +144,20 @@ class Process(models.Model):
         return [x[0] for x in self._meta.get_field('type').choices]
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
         if not self.slug:
-            # self.slug = slugify(f"{self.number}-{self.type}")
-            self.slug = slugify(f"{translate_to_maimunica(self.name)}")
-        return super().save(*args, **kwargs)
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:50])}")
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
     def __str__(self):
         return f"{self.number} {self.name}, Type: {self.type}, PK: {self.pk}"
@@ -128,6 +166,8 @@ class Process(models.Model):
 class ProcessStep(models.Model):
     MAX_LENGTH_LONG = 199
     MAX_LENGTH_SHORT = 30
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
 
     class Meta:
         ordering = ['id']
@@ -145,12 +185,18 @@ class ProcessStep(models.Model):
 
     number = models.PositiveIntegerField(
         blank=False, null=False,
+        validators=(
+            MinValueValidator(MIN_SHORT_LENGTH),
+        )
     )
 
     name = models.CharField(
         max_length=MAX_LENGTH_LONG,
         blank=False, null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     # many-to-one
@@ -188,18 +234,37 @@ class ProcessStep(models.Model):
         editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
+        if self.number < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Number must be longer than 1 character!')
+
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
         if not self.slug:
-            # self.slug = slugify(f"{self.name[0:11]}")
-            # self.slug = slugify(f"{self.parent_process.number}-{self.number}")
             self.slug = slugify(f"{translate_to_maimunica(self.name[0:50])}")
-        return super().save(*args, **kwargs)
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
     @property
     def get_related_documents(self):
         # return ', '.join([str(f) for f in ProcessStepToDocuments.objects.filter(process_step_id=self.pk)])
-        return ProcessStepToDocuments.objects.filter(process_step_id=self.pk)
+        try:
+            result = ProcessStepToDocuments.objects.filter(process_step_id=self.pk)
+        except ProcessStepToDocuments.DoesNotExist:
+            result = None
+        return result
 
     def __str__(self):
         # return f"step {self.number} {self.name}, Type: {self.type}, Dox: {self.get_related_documents}"

@@ -159,296 +159,400 @@ class DatabaseManipulation:
         # Update all table 1 by 1
 
             if table == 'AccessLevels':
-                AccessLevels.objects.bulk_create([AccessLevels(
-                    code=info_to_update[obj]['code'],
-                    description=info_to_update[obj]['description'],
-                ) for obj in info_to_update.keys()])
+                try:
+                    AccessLevels.objects.bulk_create([AccessLevels(
+                        code=info_to_update[obj]['code'],
+                        description=info_to_update[obj]['description'],
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'AccessRights':
-                AccessRights.objects.bulk_create([AccessRights(
-                    type=info_to_update[obj]['type'],
-                    description=info_to_update[obj]['description'],
-                ) for obj in info_to_update.keys()])
+                try:
+                    AccessRights.objects.bulk_create([AccessRights(
+                        type=info_to_update[obj]['type'],
+                        description=info_to_update[obj]['description'],
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Trainings':
-                Trainings.objects.bulk_create([Trainings(
-                    code=info_to_update[obj]['code'],
-                    name=info_to_update[obj]['name'],
-                    description=info_to_update[obj]['description'],
-                    # slug=slugify(f"{info_to_update[obj]['code']}"),
-                    slug=slugify(f"{info_to_update[obj]['code']}-"
-                                 f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Trainings.objects.bulk_create([Trainings(
+                        code=info_to_update[obj]['code'],
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        # slug=slugify(f"{info_to_update[obj]['code']}"),
+                        slug=slugify(f"{info_to_update[obj]['code']}-"
+                                     f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Positions':
-                Positions.objects.bulk_create([Positions(
-                    code=info_to_update[obj]['code'],
-                    name=info_to_update[obj]['name'],
-                    access_rights=AccessRights.objects.all()[0],  # ToDo: hardcoded for the excel upload
-                ) for obj in info_to_update.keys()])
+                try:
+                    Positions.objects.bulk_create([Positions(
+                        code=info_to_update[obj]['code'],
+                        name=info_to_update[obj]['name'],
+                        access_rights=AccessRights.objects.all()[0],  # ToDo: hardcoded for the excel upload
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Employee':
-                Employee.objects.bulk_create([Employee(
-                    first_name=info_to_update[row_number]['first_name'],
-                    middle_name=info_to_update[row_number]['middle_name'],
-                    last_name=info_to_update[row_number]['last_name'],
-                    identification=info_to_update[row_number]['identification'],
+                try:
+                    Employee.objects.bulk_create([Employee(
+                        first_name=info_to_update[row_number]['first_name'],
+                        middle_name=info_to_update[row_number]['middle_name'],
+                        last_name=info_to_update[row_number]['last_name'],
+                        identification=info_to_update[row_number]['identification'],
 
-                    position=Positions.objects.all()[0],  # ToDo: hardcoded for the excel upload
+                        position=Positions.objects.all()[0],  # ToDo: hardcoded for the excel upload
 
-                    contract_number=info_to_update[row_number]['contract_number'],
-                    starting_date=info_to_update[row_number]['starting_date'],
-                    date_last_hse_training=info_to_update[row_number]['date_last_hse_training'],
-                    date_next_hse_training=info_to_update[row_number]['date_next_hse_training'],
-                    egn=info_to_update[row_number]['egn'],
-                    # slug=slugify(f"{info_to_update[row_number]['first_name']}-{info_to_update[row_number]['last_name']}"),
-                    # slug=slugify(f"{info_to_update[row_number]['identification']}-"
-                    #              f"{info_to_update[row_number]['position']}"),
-                    slug=slugify(f"{info_to_update[row_number]['identification']}-"
-                                 f"{translate_to_maimunica(info_to_update[row_number]['first_name'])}-"
-                                 f"{translate_to_maimunica(info_to_update[row_number]['last_name'])}"),
-                )
-                    for row_number in info_to_update.keys()])
+                        contract_number=info_to_update[row_number]['contract_number'],
+                        starting_date=info_to_update[row_number]['starting_date'],
+                        date_last_hse_training=info_to_update[row_number]['date_last_hse_training'],
+                        date_next_hse_training=info_to_update[row_number]['date_next_hse_training'],
+                        egn=info_to_update[row_number]['egn'],
+                        # slug=slugify(f"{info_to_update[row_number]['first_name']}-{info_to_update[row_number]['last_name']}"),
+                        # slug=slugify(f"{info_to_update[row_number]['identification']}-"
+                        #              f"{info_to_update[row_number]['position']}"),
+                        slug=slugify(f"{info_to_update[row_number]['identification']}-"
+                                     f"{translate_to_maimunica(info_to_update[row_number]['first_name'])}-"
+                                     f"{translate_to_maimunica(info_to_update[row_number]['last_name'])}"),
+                    )
+                        for row_number in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Document':
-                Document.objects.bulk_create([Document(
-                    type=info_to_update[obj]['type'],
-                    number=info_to_update[obj]['number'],
-                    name=info_to_update[obj]['name'],
-                    revision=info_to_update[obj]['revision'],
-                    creation_date=info_to_update[obj]['creation_date'],
-                    revision_date=info_to_update[obj]['revision_date'],
-                    revision_details=info_to_update[obj]['revision_details'],
-                    status=info_to_update[obj]['status'],
-                    owner=Employee.objects.all()[0],  # ToDo: hardcoded for the excel upload
-                    # slug=slugify(f"{info_to_update[obj]['name']}"),
-                    # slug=slugify(f"{info_to_update[obj]['owner']}-"
-                    #              f"{info_to_update[obj]['type']}-"
-                    #              f"{info_to_update[obj]['revision']}"),
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Document.objects.bulk_create([Document(
+                        type=info_to_update[obj]['type'],
+                        number=info_to_update[obj]['number'],
+                        name=info_to_update[obj]['name'],
+                        revision=info_to_update[obj]['revision'],
+                        creation_date=info_to_update[obj]['creation_date'],
+                        revision_date=info_to_update[obj]['revision_date'],
+                        revision_details=info_to_update[obj]['revision_details'],
+                        status=info_to_update[obj]['status'],
+                        owner=Employee.objects.all()[0],  # ToDo: hardcoded for the excel upload
+                        # slug=slugify(f"{info_to_update[obj]['name']}"),
+                        # slug=slugify(f"{info_to_update[obj]['owner']}-"
+                        #              f"{info_to_update[obj]['type']}-"
+                        #              f"{info_to_update[obj]['revision']}"),
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Process':
-                Process.objects.bulk_create([Process(
-                    type=info_to_update[obj]['type'],
-                    number=info_to_update[obj]['number'],
-                    name=info_to_update[obj]['name'],
-                    process_owner=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
-                    # slug=slugify(f"{info_to_update[obj]['number']}-"
-                    #              f"{info_to_update[obj]['type']}"),
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Process.objects.bulk_create([Process(
+                        type=info_to_update[obj]['type'],
+                        number=info_to_update[obj]['number'],
+                        name=info_to_update[obj]['name'],
+                        process_owner=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
+                        # slug=slugify(f"{info_to_update[obj]['number']}-"
+                        #              f"{info_to_update[obj]['type']}"),
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'ProcessStep':
-                ProcessStep.objects.bulk_create([ProcessStep(
-                    type=info_to_update[obj]['type'],
-                    number=info_to_update[obj]['number'],
-                    name=info_to_update[obj]['name'],
-                    # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
+                try:
+                    ProcessStep.objects.bulk_create([ProcessStep(
+                        type=info_to_update[obj]['type'],
+                        number=info_to_update[obj]['number'],
+                        name=info_to_update[obj]['name'],
+                        # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
 
-                    # use the `PXX` from the excel
-                    # parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'][-1])-1],
-                    parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'])-1],
+                        # use the `PXX` from the excel
+                        # parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'][-1])-1],
+                        parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process']) - 1],
 
-                    description=info_to_update[obj]['description'],
-                    responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
-                    # slug=slugify(f"{info_to_update[obj]['name']}"),
-                    # slug=slugify(f"{info_to_update[obj]['parent_process']}-"
-                    #              f"{info_to_update[obj]['number']}"),
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
-                ) for obj in info_to_update.keys()])
+                        description=info_to_update[obj]['description'],
+                        responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
+                        # slug=slugify(f"{info_to_update[obj]['name']}"),
+                        # slug=slugify(f"{info_to_update[obj]['parent_process']}-"
+                        #              f"{info_to_update[obj]['number']}"),
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Requirements':
-                Requirements.objects.bulk_create([Requirements(
-                    organization=info_to_update[obj]['organization'],
-                    external_document=info_to_update[obj]['external_document'],
-                    clause=info_to_update[obj]['clause'],
-                    clause_name=info_to_update[obj]['clause_name'],
-                    description=info_to_update[obj]['description'],
-                    slug=slugify(f"{info_to_update[obj]['organization']}-"
-                                 f"{info_to_update[obj]['clause']}-"
-                                 f"{translate_to_maimunica(info_to_update[obj]['description'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Requirements.objects.bulk_create([Requirements(
+                        organization=info_to_update[obj]['organization'],
+                        external_document=info_to_update[obj]['external_document'],
+                        clause=info_to_update[obj]['clause'],
+                        clause_name=info_to_update[obj]['clause_name'],
+                        description=info_to_update[obj]['description'],
+                        slug=slugify(f"{info_to_update[obj]['organization']}-"
+                                     f"{info_to_update[obj]['clause']}-"
+                                     f"{translate_to_maimunica(info_to_update[obj]['description'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Organization':
-                Organization.objects.bulk_create([Organization(
-                    name=info_to_update[obj]['name'],
-                    eik=info_to_update[obj]['eik'],
-                    mol=info_to_update[obj]['mol'],
-                    address=info_to_update[obj]['address'],
-                    manager_name=info_to_update[obj]['manager_name'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Organization.objects.bulk_create([Organization(
+                        name=info_to_update[obj]['name'],
+                        eik=info_to_update[obj]['eik'],
+                        mol=info_to_update[obj]['mol'],
+                        address=info_to_update[obj]['address'],
+                        manager_name=info_to_update[obj]['manager_name'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Customer':
-                Customer.objects.bulk_create([Customer(
-                    type=info_to_update[obj]['type'],
-                    name=info_to_update[obj]['name'],
-                    registration_address=info_to_update[obj]['registration_address'],
-                    registration_city=info_to_update[obj]['registration_city'],
-                    eik=info_to_update[obj]['eik'],
-                    mol1=info_to_update[obj]['mol1'],
-                    mol2=info_to_update[obj]['mol2'],
-                    mol3=info_to_update[obj]['mol3'],
-                    mol4=info_to_update[obj]['mol4'],
-                    mol5=info_to_update[obj]['mol5'],
-                    correspondence_address1=info_to_update[obj]['correspondence_address1'],
-                    correspondence_address2=info_to_update[obj]['correspondence_address2'],
-                    correspondence_address3=info_to_update[obj]['correspondence_address3'],
-                    correspondence_address4=info_to_update[obj]['correspondence_address4'],
-                    correspondence_address5=info_to_update[obj]['correspondence_address5'],
-                    contact_person1=info_to_update[obj]['contact_person1'],
-                    contact_person2=info_to_update[obj]['contact_person2'],
-                    contact_person3=info_to_update[obj]['contact_person3'],
-                    contact_person4=info_to_update[obj]['contact_person4'],
-                    contact_person5=info_to_update[obj]['contact_person5'],
-                    phone1=info_to_update[obj]['phone1'],
-                    phone2=info_to_update[obj]['phone2'],
-                    phone3=info_to_update[obj]['phone3'],
-                    phone4=info_to_update[obj]['phone4'],
-                    phone5=info_to_update[obj]['phone5'],
-                    email1=info_to_update[obj]['email1'],
-                    email2=info_to_update[obj]['email2'],
-                    email3=info_to_update[obj]['email3'],
-                    email4=info_to_update[obj]['email4'],
-                    email5=info_to_update[obj]['email5'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Customer.objects.bulk_create([Customer(
+                        type=info_to_update[obj]['type'],
+                        name=info_to_update[obj]['name'],
+                        registration_address=info_to_update[obj]['registration_address'],
+                        registration_city=info_to_update[obj]['registration_city'],
+                        eik=info_to_update[obj]['eik'],
+                        mol1=info_to_update[obj]['mol1'],
+                        mol2=info_to_update[obj]['mol2'],
+                        mol3=info_to_update[obj]['mol3'],
+                        mol4=info_to_update[obj]['mol4'],
+                        mol5=info_to_update[obj]['mol5'],
+                        correspondence_address1=info_to_update[obj]['correspondence_address1'],
+                        correspondence_address2=info_to_update[obj]['correspondence_address2'],
+                        correspondence_address3=info_to_update[obj]['correspondence_address3'],
+                        correspondence_address4=info_to_update[obj]['correspondence_address4'],
+                        correspondence_address5=info_to_update[obj]['correspondence_address5'],
+                        contact_person1=info_to_update[obj]['contact_person1'],
+                        contact_person2=info_to_update[obj]['contact_person2'],
+                        contact_person3=info_to_update[obj]['contact_person3'],
+                        contact_person4=info_to_update[obj]['contact_person4'],
+                        contact_person5=info_to_update[obj]['contact_person5'],
+                        phone1=info_to_update[obj]['phone1'],
+                        phone2=info_to_update[obj]['phone2'],
+                        phone3=info_to_update[obj]['phone3'],
+                        phone4=info_to_update[obj]['phone4'],
+                        phone5=info_to_update[obj]['phone5'],
+                        email1=info_to_update[obj]['email1'],
+                        email2=info_to_update[obj]['email2'],
+                        email3=info_to_update[obj]['email3'],
+                        email4=info_to_update[obj]['email4'],
+                        email5=info_to_update[obj]['email5'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Kpi':
-                Kpi.objects.bulk_create([Kpi(
-                    name=info_to_update[obj]['name'],
-                    description=info_to_update[obj]['description'],
-                    target=info_to_update[obj]['target'],
-                    actual_01_23=info_to_update[obj]['actual_01_23'],
-                    actual_02_23=info_to_update[obj]['actual_02_23'],
-                    actual_03_23=info_to_update[obj]['actual_03_23'],
-                    actual_04_23=info_to_update[obj]['actual_04_23'],
-                    actual_05_23=info_to_update[obj]['actual_05_23'],
-                    actual_06_23=info_to_update[obj]['actual_06_23'],
-                    actual_07_23=info_to_update[obj]['actual_07_23'],
-                    actual_08_23=info_to_update[obj]['actual_08_23'],
-                    actual_09_23=info_to_update[obj]['actual_09_23'],
-                    actual_10_23=info_to_update[obj]['actual_10_23'],
-                    actual_11_23=info_to_update[obj]['actual_11_23'],
-                    actual_12_23=info_to_update[obj]['actual_12_23'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Kpi.objects.bulk_create([Kpi(
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        target=info_to_update[obj]['target'],
+                        actual_01_23=info_to_update[obj]['actual_01_23'],
+                        actual_02_23=info_to_update[obj]['actual_02_23'],
+                        actual_03_23=info_to_update[obj]['actual_03_23'],
+                        actual_04_23=info_to_update[obj]['actual_04_23'],
+                        actual_05_23=info_to_update[obj]['actual_05_23'],
+                        actual_06_23=info_to_update[obj]['actual_06_23'],
+                        actual_07_23=info_to_update[obj]['actual_07_23'],
+                        actual_08_23=info_to_update[obj]['actual_08_23'],
+                        actual_09_23=info_to_update[obj]['actual_09_23'],
+                        actual_10_23=info_to_update[obj]['actual_10_23'],
+                        actual_11_23=info_to_update[obj]['actual_11_23'],
+                        actual_12_23=info_to_update[obj]['actual_12_23'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Opportunity':
-                Opportunity.objects.bulk_create([Opportunity(
-                    name=info_to_update[obj]['name'],
-                    description=info_to_update[obj]['description'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Opportunity.objects.bulk_create([Opportunity(
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Risk':
-                Risk.objects.bulk_create([Risk(
-                    name=info_to_update[obj]['name'],
-                    description=info_to_update[obj]['description'],
-                    probability=info_to_update[obj]['probability'],
-                    impact=info_to_update[obj]['impact'],
-                    immediate_action=info_to_update[obj]['immediate_action'],
-                    ia_test_period=info_to_update[obj]['ia_test_period'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Risk.objects.bulk_create([Risk(
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        probability=info_to_update[obj]['probability'],
+                        impact=info_to_update[obj]['impact'],
+                        immediate_action=info_to_update[obj]['immediate_action'],
+                        ia_test_period=info_to_update[obj]['ia_test_period'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Interaction':
-                Interaction.objects.bulk_create([Interaction(
-                    name=info_to_update[obj]['name'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Interaction.objects.bulk_create([Interaction(
+                        name=info_to_update[obj]['name'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Resource':
-                Resource.objects.bulk_create([Resource(
-                    name=info_to_update[obj]['name'],
-                    description=info_to_update[obj]['description'],
-                    quantity=info_to_update[obj]['quantity'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Resource.objects.bulk_create([Resource(
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        quantity=info_to_update[obj]['quantity'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:20])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Nonconformity':
-                Nonconformity.objects.bulk_create([Nonconformity(
-                    name=info_to_update[obj]['name'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Nonconformity.objects.bulk_create([Nonconformity(
+                        name=info_to_update[obj]['name'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Supplier':
-                Supplier.objects.bulk_create([Supplier(
-                    name=info_to_update[obj]['name'],
-                    description=info_to_update[obj]['description'],
-                    score=info_to_update[obj]['score'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Supplier.objects.bulk_create([Supplier(
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        score=info_to_update[obj]['score'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'MeasuringEquipment':
-                MeasuringEquipment.objects.bulk_create([MeasuringEquipment(
-                    name=info_to_update[obj]['name'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    MeasuringEquipment.objects.bulk_create([MeasuringEquipment(
+                        name=info_to_update[obj]['name'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Machine':
-                Machine.objects.bulk_create([Machine(
-                    name=info_to_update[obj]['name'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Machine.objects.bulk_create([Machine(
+                        name=info_to_update[obj]['name'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'Characteristic':
-                Characteristic.objects.bulk_create([Characteristic(
-                    name=info_to_update[obj]['name'],
-                    code=info_to_update[obj]['code'],
-                    type=info_to_update[obj]['type'],
-                    requirement=info_to_update[obj]['requirement'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    Characteristic.objects.bulk_create([Characteristic(
+                        name=info_to_update[obj]['name'],
+                        code=info_to_update[obj]['code'],
+                        type=info_to_update[obj]['type'],
+                        requirement=info_to_update[obj]['requirement'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'ProcessControlPlan':
-                ProcessControlPlan.objects.bulk_create([ProcessControlPlan(
-                    name=info_to_update[obj]['name'],
-                    type=info_to_update[obj]['type'],
-                    number=info_to_update[obj]['number'],
-                    revision=info_to_update[obj]['revision'],
-                    product=info_to_update[obj]['product'],
-                    team=info_to_update[obj]['team'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    ProcessControlPlan.objects.bulk_create([ProcessControlPlan(
+                        name=info_to_update[obj]['name'],
+                        type=info_to_update[obj]['type'],
+                        number=info_to_update[obj]['number'],
+                        revision=info_to_update[obj]['revision'],
+                        product=info_to_update[obj]['product'],
+                        team=info_to_update[obj]['team'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'ProcessControlPlanStep':
-                ProcessControlPlanStep.objects.bulk_create([ProcessControlPlanStep(
-                    name=info_to_update[obj]['name'],
-                    sample_size=info_to_update[obj]['sample_size'],
-                    frequency=info_to_update[obj]['frequency'],
-                    reaction_plan=info_to_update[obj]['reaction_plan'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    ProcessControlPlanStep.objects.bulk_create([ProcessControlPlanStep(
+                        name=info_to_update[obj]['name'],
+                        sample_size=info_to_update[obj]['sample_size'],
+                        frequency=info_to_update[obj]['frequency'],
+                        reaction_plan=info_to_update[obj]['reaction_plan'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'DefectCatalogue':
-                DefectCatalogue.objects.bulk_create([DefectCatalogue(
-                    name=info_to_update[obj]['name'],
-                    number=info_to_update[obj]['number'],
-                    description=info_to_update[obj]['description'],
-                    slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    DefectCatalogue.objects.bulk_create([DefectCatalogue(
+                        name=info_to_update[obj]['name'],
+                        number=info_to_update[obj]['number'],
+                        description=info_to_update[obj]['description'],
+                        slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'StatModel1':
-                StatModel1.objects.bulk_create([StatModel1(
-                    name=info_to_update[obj]['name'],
-                    operator=info_to_update[obj]['operator'],
-                    grinding=info_to_update[obj]['grinding'],
-                    welding=info_to_update[obj]['welding'],
-                    blasting=info_to_update[obj]['blasting'],
-                    painting=info_to_update[obj]['painting'],
-                    assembly=info_to_update[obj]['assembly'],
-                    total_pieces=info_to_update[obj]['total_pieces'],
-                    slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    StatModel1.objects.bulk_create([StatModel1(
+                        name=info_to_update[obj]['name'],
+                        operator=info_to_update[obj]['operator'],
+                        grinding=info_to_update[obj]['grinding'],
+                        welding=info_to_update[obj]['welding'],
+                        blasting=info_to_update[obj]['blasting'],
+                        painting=info_to_update[obj]['painting'],
+                        assembly=info_to_update[obj]['assembly'],
+                        total_pieces=info_to_update[obj]['total_pieces'],
+                        slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             elif table == 'ManagementReview':
-                ManagementReview.objects.bulk_create([ManagementReview(
-                    name=info_to_update[obj]['name'],
-                    date=info_to_update[obj]['date'],
-                    slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
-                ) for obj in info_to_update.keys()])
+                try:
+                    ManagementReview.objects.bulk_create([ManagementReview(
+                        name=info_to_update[obj]['name'],
+                        date=info_to_update[obj]['date'],
+                        slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
 
             info_to_update = {}
 

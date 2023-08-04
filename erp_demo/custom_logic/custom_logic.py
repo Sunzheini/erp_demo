@@ -2,7 +2,7 @@ import time
 from functools import wraps
 
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.utils.text import slugify
 
 from erp_demo.actionplan_mng.models import ActionPlan, ActionPlanStep
@@ -44,7 +44,10 @@ class DataManipulation:
         #
         # return extracted_documents
 
-        all_documents = table.objects.all()
+        try:
+            all_documents = table.objects.all()
+        except table.DoesNotExist:
+            return render(request, 'error.html', {'error_message': f"{table.__name__} not found."})
 
         for ed in all_documents:
             ed.is_liked_by_user = False
@@ -57,13 +60,19 @@ class DataManipulation:
 
         data = {column_name: choice}
         extracted_documents = table.objects.filter(**data)
+
         return extracted_documents
 
 # currently used in sorting employees by position
     @staticmethod
     def data_after_choice_form(table, column_name, choice):
         if choice == 'All':
-            extracted_data = table.objects.all()
+
+            try:
+                extracted_data = table.objects.all()
+            except table.DoesNotExist:
+                return None
+
             return extracted_data
         data = {column_name: choice}
         extracted_data = table.objects.filter(**data)
@@ -105,12 +114,20 @@ class DataManipulation:
     @staticmethod
     def sort_process_steps(process_obj, process_step_obj, choice):
         p_list = []
-        all_processes = process_obj.objects.all()
+
+        try:
+            all_processes = process_obj.objects.all()
+        except process_obj.DoesNotExist:
+            return None
 
         if choice == 'All':
             for process in all_processes:
-                process_steps = process_step_obj.objects.filter(parent_process=process)
-                p_list.append(list(process_steps))
+                try:
+                    process_steps = process_step_obj.objects.filter(parent_process=process)
+                    p_list.append(list(process_steps))
+                except process_step_obj.DoesNotExist:
+                    return None
+
         elif choice is not None:
             chosen_process = process_obj.objects.get(number=choice)
             process_steps = process_step_obj.objects.filter(parent_process=chosen_process)
@@ -157,8 +174,11 @@ class DataManipulation:
         process_step_list = []
 
         for process_step in process_step_obj.objects.all():
-            if process_step.parent_process.id == process.id:
-                process_step_list.append(process_step)
+            try:
+                if process_step.parent_process.id == process.id:
+                    process_step_list.append(process_step)
+            except AttributeError:
+                print(f"AttributeError: {process_step} has no attribute 'parent_process'")
 
         return process_step_list
 
@@ -167,20 +187,36 @@ class DataManipulation:
 
     @staticmethod
     def get_owned_processes_list(employees, processes):
+        try:
+            all_employees = employees.objects.all()
+        except employees.DoesNotExist:
+            return None
+
         owned_processes_dict = {
-            employee: [] for employee in employees.objects.all()
+            employee: [] for employee in all_employees
         }
 
         for process in processes.objects.all():
-            if process.process_owner in owned_processes_dict.keys():
-                owned_processes_dict[process.process_owner].append(process)
+            try:
+                if process.process_owner in owned_processes_dict.keys():
+                    owned_processes_dict[process.process_owner].append(process)
+            except AttributeError:
+                print(f"AttributeError: {process} has no attribute 'process_owner'")
 
         return owned_processes_dict
 
     @staticmethod
     def get_owned_trainings_list(employees, trainings):
-        all_employees = employees.objects.all()
-        all_trainings = trainings.objects.all()
+
+        try:
+            all_employees = employees.objects.all()
+        except employees.DoesNotExist:
+            return None
+
+        try:
+            all_trainings = trainings.objects.all()
+        except trainings.DoesNotExist:
+            return None
 
         owned_trainings_dict = {
             employee: [] for employee in all_employees
@@ -188,8 +224,11 @@ class DataManipulation:
 
         for training in all_trainings:
             for employee in all_employees:
-                if training.id in employee.trainings.all().values_list('id', flat=True):
-                    owned_trainings_dict[employee].append(training)
+                try:
+                    if training.id in employee.trainings.all().values_list('id', flat=True):
+                        owned_trainings_dict[employee].append(training)
+                except AttributeError:
+                    print(f"AttributeError: {employee} has no attribute 'trainings'")
 
         return owned_trainings_dict
 
@@ -197,14 +236,30 @@ class DataManipulation:
     # -----------------------------------------------------------------------
     @staticmethod
     def get_from_interactions_list(current_process):
-        process_step_object_list = ProcessStep.objects.filter(parent_process=current_process)
-        from_interactions = Interaction.objects.filter(to_process_step__in=process_step_object_list)
+        try:
+            process_step_object_list = ProcessStep.objects.filter(parent_process=current_process)
+        except ProcessStep.DoesNotExist:
+            return None
+
+        try:
+            from_interactions = Interaction.objects.filter(to_process_step__in=process_step_object_list)
+        except Interaction.DoesNotExist:
+            return None
+
         return from_interactions
 
     @staticmethod
     def get_to_interactions_list(current_process):
-        process_step_object_list = ProcessStep.objects.filter(parent_process=current_process)
-        to_interactions = Interaction.objects.filter(from_process_step__in=process_step_object_list)
+        try:
+            process_step_object_list = ProcessStep.objects.filter(parent_process=current_process)
+        except ProcessStep.DoesNotExist:
+            return None
+
+        try:
+            to_interactions = Interaction.objects.filter(from_process_step__in=process_step_object_list)
+        except Interaction.DoesNotExist:
+            return None
+
         return to_interactions
 
 class SupportFunctions:
@@ -245,30 +300,38 @@ class SupportFunctions:
     # -----------------------------------------------------------------------
     @staticmethod
     def new_revision(the_form):
-        result = DocumentEditPurgatory.objects.create(
-            type=the_form.cleaned_data['type'],
-            number=the_form.cleaned_data['number'],
-            name=the_form.cleaned_data['name'],
-            revision=the_form.cleaned_data['revision'] + 1,
-            creation_date=the_form.cleaned_data['creation_date'],
-            revision_date=the_form.cleaned_data['revision_date'],
-            revision_details=the_form.cleaned_data['revision_details'],
-            # status=the_form.cleaned_data['status'],   # commented since i added to the form exclusion list
-            status='Latest rev',
-            owner=the_form.cleaned_data['owner'],
-            attachment=the_form.cleaned_data['attachment'],
-            # slug=slugify(f"{info_to_update[obj]['name']}"),
-            # slug=slugify(f"{the_form.cleaned_data['owner']}-"
-            #              f"{the_form.cleaned_data['type']}-"
-            #              f"{the_form.cleaned_data['revision']}"),
-            slug=slugify(f"{translate_to_maimunica(the_form.cleaned_data['name'])}"),
-        )
+        try:
+            result = DocumentEditPurgatory.objects.create(
+                type=the_form.cleaned_data['type'],
+                number=the_form.cleaned_data['number'],
+                name=the_form.cleaned_data['name'],
+                revision=the_form.cleaned_data['revision'] + 1,
+                creation_date=the_form.cleaned_data['creation_date'],
+                revision_date=the_form.cleaned_data['revision_date'],
+                revision_details=the_form.cleaned_data['revision_details'],
+                # status=the_form.cleaned_data['status'],   # commented since i added to the form exclusion list
+                status='Latest rev',
+                owner=the_form.cleaned_data['owner'],
+                attachment=the_form.cleaned_data['attachment'],
+                # slug=slugify(f"{info_to_update[obj]['name']}"),
+                # slug=slugify(f"{the_form.cleaned_data['owner']}-"
+                #              f"{the_form.cleaned_data['type']}-"
+                #              f"{the_form.cleaned_data['revision']}"),
+                slug=slugify(f"{translate_to_maimunica(the_form.cleaned_data['name'])}"),
+            )
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            result = None
 
         return result
 
     @staticmethod
     def approve_and_upload_revision(prototype: DocumentEditPurgatory):
-        document_to_delete = Document.objects.filter(name=prototype.name)
+        try:
+            document_to_delete = Document.objects.filter(name=prototype.name)
+        except Document.DoesNotExist:
+            document_to_delete = None
+            print(f"Document {prototype.name} does not exist.")
 
         if document_to_delete.exists():
             document_to_delete.update(
@@ -287,20 +350,23 @@ class SupportFunctions:
             prototype.delete()
 
         else:
-            Document.objects.create(
-                type=prototype.type,
-                number=prototype.number,
-                name=prototype.name,
-                revision=1,
-                creation_date=prototype.creation_date,
-                revision_date=prototype.revision_date,
-                revision_details=prototype.revision_details,
-                status=prototype.status,
-                owner=prototype.owner,
-                attachment=prototype.attachment,
-                slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
-            )
-            prototype.delete()
+            try:
+                Document.objects.create(
+                    type=prototype.type,
+                    number=prototype.number,
+                    name=prototype.name,
+                    revision=1,
+                    creation_date=prototype.creation_date,
+                    revision_date=prototype.revision_date,
+                    revision_details=prototype.revision_details,
+                    status=prototype.status,
+                    owner=prototype.owner,
+                    attachment=prototype.attachment,
+                    slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
+                )
+                prototype.delete()
+            except Exception as e:
+                print(f"Unexpected error: {e}")
 
         # document_to_delete.update(
         #     type=prototype.type,
@@ -324,37 +390,41 @@ class SupportFunctions:
         result = {}
 
         if choice == 'All':
-            processes = Process.objects.filter(name__icontains=search_pattern)
-            process_steps = ProcessStep.objects.filter(name__icontains=search_pattern)
-            documents = Document.objects.filter(name__icontains=search_pattern)
+            try:
+                processes = Process.objects.filter(name__icontains=search_pattern)
+                process_steps = ProcessStep.objects.filter(name__icontains=search_pattern)
+                documents = Document.objects.filter(name__icontains=search_pattern)
 
-            employees_by_first_names = list(Employee.objects.filter(first_name__icontains=search_pattern))
-            employees_by_middle_names = list(Employee.objects.filter(middle_name__icontains=search_pattern))
-            employees_by_last_names = list(Employee.objects.filter(last_name__icontains=search_pattern))
-            employees_temp_list = employees_by_first_names + employees_by_middle_names + employees_by_last_names
-            employee_set = set(employees_temp_list)
+                employees_by_first_names = list(Employee.objects.filter(first_name__icontains=search_pattern))
+                employees_by_middle_names = list(Employee.objects.filter(middle_name__icontains=search_pattern))
+                employees_by_last_names = list(Employee.objects.filter(last_name__icontains=search_pattern))
+                employees_temp_list = employees_by_first_names + employees_by_middle_names + employees_by_last_names
+                employee_set = set(employees_temp_list)
 
-            trainings = Trainings.objects.filter(name__icontains=search_pattern)
-            organizations = Organization.objects.filter(name__icontains=search_pattern)
-            customers = Customer.objects.filter(name__icontains=search_pattern)
-            interactions = Interaction.objects.filter(name__icontains=search_pattern)
-            risks = Risk.objects.filter(name__icontains=search_pattern)
-            opportunities = Opportunity.objects.filter(name__icontains=search_pattern)
-            kpis = Kpi.objects.filter(name__icontains=search_pattern)
-            resources = Resource.objects.filter(name__icontains=search_pattern)
-            requirements = Requirements.objects.filter(description__icontains=search_pattern)
-            nonconformities = Nonconformity.objects.filter(name__icontains=search_pattern)
-            actions = NewAction.objects.filter(name__icontains=search_pattern)
-            action_plans = ActionPlan.objects.filter(name__icontains=search_pattern)
-            action_plan_steps = ActionPlanStep.objects.filter(name__icontains=search_pattern)
-            suppliers = Supplier.objects.filter(name__icontains=search_pattern)
-            measuring_equipments = MeasuringEquipment.objects.filter(name__icontains=search_pattern)
-            machines = Machine.objects.filter(name__icontains=search_pattern)
-            characteristics = Characteristic.objects.filter(name__icontains=search_pattern)
-            control_plans = ProcessControlPlan.objects.filter(name__icontains=search_pattern)
-            control_plan_steps = ProcessControlPlanStep.objects.filter(name__icontains=search_pattern)
-            defect_catalogues = DefectCatalogue.objects.filter(name__icontains=search_pattern)
-            management_reviews = ManagementReview.objects.filter(name__icontains=search_pattern)
+                trainings = Trainings.objects.filter(name__icontains=search_pattern)
+                organizations = Organization.objects.filter(name__icontains=search_pattern)
+                customers = Customer.objects.filter(name__icontains=search_pattern)
+                interactions = Interaction.objects.filter(name__icontains=search_pattern)
+                risks = Risk.objects.filter(name__icontains=search_pattern)
+                opportunities = Opportunity.objects.filter(name__icontains=search_pattern)
+                kpis = Kpi.objects.filter(name__icontains=search_pattern)
+                resources = Resource.objects.filter(name__icontains=search_pattern)
+                requirements = Requirements.objects.filter(description__icontains=search_pattern)
+                nonconformities = Nonconformity.objects.filter(name__icontains=search_pattern)
+                actions = NewAction.objects.filter(name__icontains=search_pattern)
+                action_plans = ActionPlan.objects.filter(name__icontains=search_pattern)
+                action_plan_steps = ActionPlanStep.objects.filter(name__icontains=search_pattern)
+                suppliers = Supplier.objects.filter(name__icontains=search_pattern)
+                measuring_equipments = MeasuringEquipment.objects.filter(name__icontains=search_pattern)
+                machines = Machine.objects.filter(name__icontains=search_pattern)
+                characteristics = Characteristic.objects.filter(name__icontains=search_pattern)
+                control_plans = ProcessControlPlan.objects.filter(name__icontains=search_pattern)
+                control_plan_steps = ProcessControlPlanStep.objects.filter(name__icontains=search_pattern)
+                defect_catalogues = DefectCatalogue.objects.filter(name__icontains=search_pattern)
+                management_reviews = ManagementReview.objects.filter(name__icontains=search_pattern)
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return None
 
             result['processes'] = processes
             result['process_steps'] = process_steps

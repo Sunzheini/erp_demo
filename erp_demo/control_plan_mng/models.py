@@ -1,5 +1,7 @@
-from django.db import models
+from django.core.exceptions import ValidationError
+from django.db import models, IntegrityError
 from django.utils.text import slugify
+from django.core.validators import MinLengthValidator
 
 from erp_demo.characteristics_mng.models import Characteristic
 from erp_demo.custom_logic.translator import translate_to_maimunica
@@ -18,6 +20,7 @@ control_plan_type_choices = [
 class ProcessControlPlanStep(models.Model):
     MAX_LENGTH = 99
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 3
 
     class Meta:
         ordering = ['id']
@@ -28,6 +31,9 @@ class ProcessControlPlanStep(models.Model):
         blank=False,
         null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     machines = models.ManyToManyField(
@@ -80,38 +86,77 @@ class ProcessControlPlanStep(models.Model):
         editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
     @property
     def get_related_machines(self):
-        return ProcessControlPlanStepToMachine.objects.filter(process_control_plan_step_id=self.pk)
+        try:
+            result = ProcessControlPlanStepToMachine.objects.filter(process_control_plan_step_id=self.pk)
+        except ProcessControlPlanStepToMachine.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_characteristics(self):
-        return ProcessControlPlanStepToCharacteristic.objects.filter(process_control_plan_step_id=self.pk)
+        try:
+            result = ProcessControlPlanStepToCharacteristic.objects.filter(process_control_plan_step_id=self.pk)
+        except ProcessControlPlanStepToCharacteristic.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_product_characteristics(self):
-        return ProcessControlPlanStepToCharacteristic.objects.filter(
-            process_control_plan_step_id=self.pk, characteristic__type='Product'
-        )
+        try:
+            result = ProcessControlPlanStepToCharacteristic.objects.filter(
+                process_control_plan_step_id=self.pk, characteristic__type='Product'
+            )
+        except ProcessControlPlanStepToCharacteristic.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_process_characteristics(self):
-        return ProcessControlPlanStepToCharacteristic.objects.filter(
-            process_control_plan_step_id=self.pk, characteristic__type='Process'
-        )
+        try:
+            result = ProcessControlPlanStepToCharacteristic.objects.filter(
+                process_control_plan_step_id=self.pk, characteristic__type='Process'
+            )
+        except ProcessControlPlanStepToCharacteristic.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_measuring_equipment(self):
-        return ProcessControlPlanStepToMeasuringEquipment.objects.filter(process_control_plan_step_id=self.pk)
+        try:
+            result = ProcessControlPlanStepToMeasuringEquipment.objects.filter(process_control_plan_step_id=self.pk)
+        except ProcessControlPlanStepToMeasuringEquipment.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_documents(self):
-        return ProcessControlPlanStepToDocuments.objects.filter(process_control_plan_step_id=self.pk)
+        try:
+            result = ProcessControlPlanStepToDocuments.objects.filter(process_control_plan_step_id=self.pk)
+        except ProcessControlPlanStepToDocuments.DoesNotExist:
+            result = None
+        return result
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f"{translate_to_maimunica(self.name[:30])}")
-        return super().save(*args, **kwargs)
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
     def __str__(self):
         return f"{self.name}"
@@ -121,16 +166,20 @@ class ProcessControlPlanStep(models.Model):
 class ProcessControlPlan(models.Model):
     MAX_LENGTH = 99
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
 
     class Meta:
         ordering = ['id']
 
-    # get a default name
     name = models.CharField(
         max_length=MAX_LENGTH,
         blank=False,
         null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     type = models.CharField(
@@ -144,12 +193,18 @@ class ProcessControlPlan(models.Model):
         max_length=MAX_LENGTH_SHORT,
         blank=False,
         null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     revision = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False,
         null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     creation_date = models.DateField(
@@ -168,6 +223,9 @@ class ProcessControlPlan(models.Model):
         max_length=MAX_LENGTH,
         blank=False,
         null=False,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     owner = models.ForeignKey(
@@ -195,14 +253,38 @@ class ProcessControlPlan(models.Model):
         editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
+        if len(self.number) < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Number must be longer than 1 character!')
+
+        if len(self.revision) < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Revision must be longer than 1 character!')
+
+        if len(self.product) < self.MIN_LENGTH:
+            raise ValidationError('Product must be longer than 3 characters!')
+
     @property
     def list_of_characteristic_types(self):
         return [x[0] for x in self._meta.get_field('type').choices]
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f"{translate_to_maimunica(self.name[:30])}")
-        return super().save(*args, **kwargs)
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
     def __str__(self):
         return f"{self.name}"

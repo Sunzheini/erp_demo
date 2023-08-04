@@ -6,4 +6,8 @@ class OperationsAppViews:
         self.context = {}
 
     def index(self, request):
-        return render(request, 'operations_mng/operations_mng_index.html', self.context)
+        try:
+            return render(request, 'operations_mng/operations_mng_index.html', self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})

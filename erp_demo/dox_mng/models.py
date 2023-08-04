@@ -1,7 +1,10 @@
 from cloudinary import models as cloudinary_models
 from django.contrib.auth import get_user_model
-from django.db import models
+
+from django.core.exceptions import ValidationError
+from django.db import models, IntegrityError
 from django.utils.text import slugify
+from django.core.validators import MinLengthValidator, MinValueValidator
 
 from erp_demo.hr_mng.models import Employee
 from erp_demo.custom_logic.translator import translate_to_maimunica
@@ -26,6 +29,8 @@ STATUS_CHOICES_EN = (
 
 class Document(models.Model):
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
 
     class Meta:
         ordering = ['id']
@@ -45,16 +50,25 @@ class Document(models.Model):
     number = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     name = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
         unique=True,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     revision = models.PositiveIntegerField(
         blank=False, null=False,
+        validators=(
+            MinValueValidator(1),
+        )
     )
 
     creation_date = models.DateField(
@@ -132,6 +146,15 @@ class Document(models.Model):
         blank=True, null=True, editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
+        if len(self.number) < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Number must be longer than 1 character!')
+
+        if self.revision < 1:
+            raise ValidationError('Revision must be a positive number!')
 
     def full_document_info(self):
         return f"{self.name}, rev.: {self.revision}, " \
@@ -142,12 +165,20 @@ class Document(models.Model):
                f"owner is: {self.owner}"
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)
         if not self.slug:
-            # self.slug = slugify(f"{self.name}")
-            # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
-            self.slug = slugify(f"{translate_to_maimunica(self.name)}")
-        return super().save(*args, **kwargs)
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:50])}")
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
 
 class DocumentLikesToUsers(models.Model):
@@ -170,6 +201,8 @@ class DocumentLikesToUsers(models.Model):
 
 class DocumentEditPurgatory(models.Model):
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 3
+    MIN_SHORT_LENGTH = 1
 
     class Meta:
         ordering = ['id']
@@ -189,15 +222,24 @@ class DocumentEditPurgatory(models.Model):
     number = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_SHORT_LENGTH),
+        ),
     )
 
     name = models.CharField(
         max_length=MAX_LENGTH_SHORT,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     revision = models.PositiveIntegerField(
         blank=False, null=False,
+        validators=(
+            MinValueValidator(1),
+        )
     )
 
     creation_date = models.CharField(
@@ -252,6 +294,16 @@ class DocumentEditPurgatory(models.Model):
         blank=True, null=True, editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 3 characters!')
+
+        if len(self.number) < self.MIN_SHORT_LENGTH:
+            raise ValidationError('Number must be longer than 1 character!')
+
+        if self.revision < 1:
+            raise ValidationError('Revision must be a positive number!')
+
     def full_document_info(self):
         return f"{self.name}, rev.: {self.revision}, " \
                f"owner: {self.owner}"
@@ -261,9 +313,17 @@ class DocumentEditPurgatory(models.Model):
                f"owner is: {self.owner}"
 
     def save(self, *args, **kwargs):
-        # super().save(*args, **kwargs)     # this method saves twice so commented!!!
         if not self.slug:
-            # self.slug = slugify(f"{self.name}")
-            # self.slug = slugify(f"{self.owner}-{self.type}-{self.revision}")
-            self.slug = slugify(f"{translate_to_maimunica(self.name)}")
-        return super().save(*args, **kwargs)
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:50])}")
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise

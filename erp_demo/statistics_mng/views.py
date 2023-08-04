@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 from erp_demo.custom_logic.extract_from_excel import extract_from_excel
@@ -12,7 +12,7 @@ class StatisticsMngViews(PrototypeViews):
 class StatModel1Views(PrototypeViews):
     def show_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        current_object = self._main_object_single(pk, request)
 
         # updated
         # ---------------------------------------------------------------------------------------
@@ -47,10 +47,15 @@ class StatModel1Views(PrototypeViews):
 
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
-        return render(request, self.show_template, self.context)
 
-    # specific vies for uploading the different physical forms
+        try:
+            return render(request, self.show_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
+    # specific views for uploading the different physical forms
     @staticmethod
     def upload_model1_view(request):
 
@@ -72,13 +77,19 @@ class StatModel1Views(PrototypeViews):
 
         app_name = 'statistics_mng'
         message = None
+        form = current_form()
 
         if 'scan_record' in request.POST:
-            form = current_form(request.POST, request.FILES)
-            if form.is_valid():
-                extract_from_excel(request.FILES, app_name, model_name, rows_dict)
-                message = 'File uploaded successfully'
-                form = current_form()
+            try:
+                form = current_form(request.POST, request.FILES)
+                if form.is_valid():
+                    extract_from_excel(request.FILES, app_name, model_name, rows_dict)
+                    message = 'File uploaded successfully'
+                    form = current_form()
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                form.add_error(None, "An error occurred during form processing.")
+
         else:
             form = current_form()
 
@@ -87,4 +98,9 @@ class StatModel1Views(PrototypeViews):
             'message': message,
         }
 
-        return render(request, template, context)
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})

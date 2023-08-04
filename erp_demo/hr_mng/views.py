@@ -16,13 +16,18 @@ class HrMngViewsEmployees(PrototypeViews):
         table = Employee
         column_name = 'position'
         choice = None
+        form = EmployeePositionForm()
 
         if request.method == 'GET':
             form = EmployeePositionForm()
         else:
-            form = EmployeePositionForm(request.POST)
-            if form.is_valid():
-                choice = form.cleaned_data['employee_position_dropdown']
+            try:
+                form = EmployeePositionForm(request.POST)
+                if form.is_valid():
+                    choice = form.cleaned_data['employee_position_dropdown']
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                form.add_error(None, "An error occurred during form processing.")
 
         all_objects = DataManipulation.data_after_choice_form(table, column_name, choice)
 
@@ -30,7 +35,12 @@ class HrMngViewsEmployees(PrototypeViews):
         self.context['choice_form'] = form
         # ---------------------------------------------------------------------------------------
 
-        return render(request, self.list_template, self.context)
+        try:
+            return render(request, self.list_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
 
 class HrMngViewsTrainings(PrototypeViews):
@@ -45,4 +55,10 @@ class HrMngViewsTrainings(PrototypeViews):
             'employees_w_their_trainings': DataManipulation.get_owned_trainings_list(Employee, Trainings),
             'number_of_trainings': number_of_trainings,
         }
-        return render(request, 'hr_mng/training_matrix.html', context)
+
+        try:
+            return render(request, 'hr_mng/training_matrix.html', context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})

@@ -1,12 +1,9 @@
 from django.shortcuts import render
 
-from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
+from erp_demo.custom_logic.custom_logic import SupportFunctions
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
-from erp_demo.hr_mng.models import Employee
 
-from erp_demo.control_plan_mng.forms import ProcessControlPlanForm, ProcessControlPlanStepForm, \
-    ProcessControlPlanEditForm, ProcessControlPlanStepEditForm, ProcessControlPlanDeleteForm, \
-    ProcessControlPlanStepDeleteForm, ProcessControlPlanNameForm
+from erp_demo.control_plan_mng.forms import ProcessControlPlanForm, ProcessControlPlanStepForm, ProcessControlPlanNameForm
 from erp_demo.control_plan_mng.models import ProcessControlPlan, ProcessControlPlanStep, \
     ProcessControlPlanToProcessControlPlanStep
 
@@ -60,14 +57,20 @@ class ControlPlanMngViewsGeneral:
             'control_plan_form': control_plan_form,
             'control_plan_step_form': control_plan_step_form,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
 
 class ControlPlanMngViewsControlPlan(PrototypeViews):
     @SupportFunctions.login_check
     def show_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        current_object = self._main_object_single(pk, request)
 
         # updated
         # ---------------------------------------------------------------------------------------
@@ -81,7 +84,13 @@ class ControlPlanMngViewsControlPlan(PrototypeViews):
 
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
-        return render(request, self.show_template, self.context)
+
+        try:
+            return render(request, self.show_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
 
 class ControlPlanMngViewsControlPlanStep(PrototypeViews):

@@ -3,7 +3,6 @@ from django.shortcuts import render
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 from erp_demo.hr_mng.models import Employee
-from erp_demo.interaction_mng.models import Interaction
 from erp_demo.process_mng.forms import ProcessForm, ProcessStepForm, ProcessNumberForm
 from erp_demo.process_mng.models import Process, ProcessStep
 from erp_demo.resource_mng.models import ResourcesAssignedToProcess
@@ -17,29 +16,50 @@ class ProcessMngViewsGeneral:
 
         # choice = 'All'
         choice = None
+        process_number_form = ProcessNumberForm()
+        process_form = ProcessForm()
+        process_step_form = ProcessStepForm()
 
         if 'button0' in request.POST:
-            process_number_form = ProcessNumberForm(request.POST)
-            if process_number_form.is_valid():
-                choice = process_number_form.cleaned_data['process_number_dropdown']
-            process_step_form = ProcessStepForm()
-            process_form = ProcessForm()
+            try:
+                process_number_form = ProcessNumberForm(request.POST)
+                if process_number_form.is_valid():
+                    choice = process_number_form.cleaned_data['process_number_dropdown']
+                process_step_form = ProcessStepForm()
+                process_form = ProcessForm()
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                process_number_form.add_error(None, "An error occurred during form processing.")
+                process_step_form = ProcessStepForm()
+                process_form = ProcessForm()
 
         elif 'button1' in request.POST:
-            process_form = ProcessForm(request.POST)
-            if process_form.is_valid():
-                process_form.save()
-                process_form = ProcessForm()
-            process_number_form = ProcessNumberForm()
-            process_step_form = ProcessStepForm()
+            try:
+                process_form = ProcessForm(request.POST)
+                if process_form.is_valid():
+                    process_form.save()
+                    process_form = ProcessForm()
+                process_number_form = ProcessNumberForm()
+                process_step_form = ProcessStepForm()
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                process_form.add_error(None, "An error occurred during form processing.")
+                process_number_form = ProcessNumberForm()
+                process_step_form = ProcessStepForm()
 
         elif 'button2' in request.POST:
-            process_step_form = ProcessStepForm(request.POST)
-            if process_step_form.is_valid():
-                process_step_form.save()
-                process_step_form = ProcessStepForm()
-            process_number_form = ProcessNumberForm()
-            process_form = ProcessForm()
+            try:
+                process_step_form = ProcessStepForm(request.POST)
+                if process_step_form.is_valid():
+                    process_step_form.save()
+                    process_step_form = ProcessStepForm()
+                process_number_form = ProcessNumberForm()
+                process_form = ProcessForm()
+            except Exception as e:
+                print(f"Form processing error: {e}")
+                process_step_form.add_error(None, "An error occurred during form processing.")
+                process_number_form = ProcessNumberForm()
+                process_form = ProcessForm()
 
         else:
             process_number_form = ProcessNumberForm()
@@ -56,30 +76,55 @@ class ProcessMngViewsGeneral:
             'process_form': process_form,
             'process_step_form': process_step_form,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
     @staticmethod
     @SupportFunctions.allow_groups()
     def create_process_map(request):
         template = 'process_mng/process_map.html'
 
+        try:
+            all_objects = Process.objects.all()
+        except Process.DoesNotExist:
+            return render(request, 'error.html', {'error_message': f"{Process} not found."})
+
         context = {
-            'all_objects': Process.objects.all(),
+            'all_objects': all_objects,
             'list_of_process_types': Process.objects.first().list_of_process_types,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
     @staticmethod
     @SupportFunctions.allow_groups()
     def create_flowchart(request, pk):
         # template = 'process_mng/create_flowchart.html'
         template = 'process_mng/blank_flowchart.html'
-        current_object = Process.objects.filter(pk=pk).get()
+
+        try:
+            current_object = Process.objects.filter(pk=pk).get()
+        except Process.DoesNotExist:
+            return render(request, 'error.html', {'error_message': f"{Process} not found."})
+
         context = {
             'current_object': current_object,
             'process_steps': DataManipulation.get_process_step_list(current_object, ProcessStep)
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
     # @staticmethod
     # @SupportFunctions.allow_groups()
@@ -98,20 +143,35 @@ class ProcessMngViewsGeneral:
     def create_turtle(request, pk):
         # template = 'process_mng/create_turtle.html'
         template = 'process_mng/blank_turtle.html'
-        current_object = Process.objects.filter(pk=pk).get()
+
+        try:
+            current_object = Process.objects.filter(pk=pk).get()
+        except Process.DoesNotExist:
+            return render(request, 'error.html', {'error_message': f"{Process} not found."})
 
         process_steps = DataManipulation.get_process_step_list(current_object, ProcessStep)
         from_interactions = DataManipulation.get_from_interactions_list(current_object)
         to_interactions = DataManipulation.get_to_interactions_list(current_object)
+
+        try:
+            resources = ResourcesAssignedToProcess.objects.filter(process=current_object)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
         context = {
             'current_object': current_object,
             'process_steps': process_steps,
             'from_interactions': from_interactions,
             'to_interactions': to_interactions,
-            'resources': ResourcesAssignedToProcess.objects.filter(process=current_object),
+            'resources': resources,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
     @staticmethod
     @SupportFunctions.allow_groups()
@@ -121,7 +181,12 @@ class ProcessMngViewsGeneral:
         context = {
             'employees_w_owned_processes': DataManipulation.get_owned_processes_list(Employee, Process),
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
 
 class ProcessMngViewsProcess(PrototypeViews):

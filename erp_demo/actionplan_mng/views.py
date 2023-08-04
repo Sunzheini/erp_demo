@@ -52,12 +52,18 @@ class ActionPlanMngViewsGeneral:
             'action_plan_form': action_plan_form,
             'action_plan_step_form': action_plan_step_form,
         }
-        return render(request, template, context)
+
+        try:
+            return render(request, template, context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
 
 class ActionPlanMngViewsActionPlan(PrototypeViews):
     def show_view(self, request, pk, slug):
         self._empty_context()
+
         # added request
         current_object = self._main_object_single(pk, request)
 
@@ -86,7 +92,13 @@ class ActionPlanMngViewsActionPlan(PrototypeViews):
 
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
-        return render(request, self.show_template, self.context)
+
+        try:
+            return render(request, self.show_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
 
 class ActionPlanMngViewsActionPlanStep(PrototypeViews):

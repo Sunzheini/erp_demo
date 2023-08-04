@@ -14,7 +14,7 @@ class MaintenanceMngViews(PrototypeViews):
 
         # updated
         # ---------------------------------------------------------------------------------------
-        all_objects = self._main_object_queryset()
+        all_objects = self._main_object_queryset(request)
 
         green_limit = 30
         yellow_limit = -1
@@ -54,12 +54,17 @@ class MaintenanceMngViews(PrototypeViews):
 
         # ---------------------------------------------------------------------------------------
 
-        return render(request, self.list_template, self.context)
+        try:
+            return render(request, self.list_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})
 
     @SupportFunctions.login_check
     def show_view(self, request, pk, slug):
         self._empty_context()
-        current_object = self._main_object_single(pk)
+        current_object = self._main_object_single(pk, request)
 
         # updated
         # ---------------------------------------------------------------------------------------
@@ -73,4 +78,10 @@ class MaintenanceMngViews(PrototypeViews):
 
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
-        return render(request, self.show_template, self.context)
+
+        try:
+            return render(request, self.show_template, self.context)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html',
+                          {'error_message': f'An unexpected error occurred: {e}.'})

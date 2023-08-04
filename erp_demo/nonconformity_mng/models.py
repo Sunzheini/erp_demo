@@ -1,5 +1,7 @@
-from django.db import models
+from django.core.exceptions import ValidationError
+from django.db import models, IntegrityError
 from django.utils.text import slugify
+from django.core.validators import MinLengthValidator
 
 from erp_demo.custom_logic.translator import translate_to_maimunica
 from erp_demo.customer_mng.models import Customer
@@ -10,6 +12,7 @@ from erp_demo.newactions_mng.models import NewAction
 class Nonconformity(models.Model):
     MAX_LENGTH = 99
     MAX_LENGTH_SHORT = 50
+    MIN_LENGTH = 10
 
     class Meta:
         ordering = ['id']
@@ -66,6 +69,9 @@ class Nonconformity(models.Model):
     name = models.CharField(
         max_length=MAX_LENGTH,
         blank=False, null=False,
+        validators=(
+            MinLengthValidator(MIN_LENGTH),
+        ),
     )
 
     internal_definition = models.TextField(
@@ -295,26 +301,57 @@ class Nonconformity(models.Model):
         editable=False,
     )
 
+    def clean(self):
+        if len(self.name) < self.MIN_LENGTH:
+            raise ValidationError('Name must be longer than 10 characters!')
+
     @property
     def get_related_containment(self):
-        return ContainmentToActions.objects.filter(nonconformity_id=self)
+        try:
+            result = ContainmentToActions.objects.filter(nonconformity_id=self)
+        except ContainmentToActions.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_corrections(self):
-        return CorrectionToActions.objects.filter(nonconformity_id=self)
+        try:
+            result = CorrectionToActions.objects.filter(nonconformity_id=self)
+        except CorrectionToActions.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_permanent(self):
-        return PermanentToActions.objects.filter(nonconformity_id=self)
+        try:
+            result = PermanentToActions.objects.filter(nonconformity_id=self)
+        except PermanentToActions.DoesNotExist:
+            result = None
+        return result
 
     @property
     def get_related_systematic(self):
-        return SystematicToActions.objects.filter(nonconformity_id=self)
+        try:
+            result = SystematicToActions.objects.filter(nonconformity_id=self)
+        except SystematicToActions.DoesNotExist:
+            result = None
+        return result
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
-        return super().save(*args, **kwargs)
+
+        try:
+            return super().save(*args, **kwargs)
+        except ValidationError as v_error:
+            print(f"ValidationError: {v_error}")
+            raise
+        except IntegrityError as i_error:
+            print(f"IntegrityError: {i_error}")
+            raise
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            raise
 
     def __str__(self):
         return f"{self.name}"
