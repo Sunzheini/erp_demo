@@ -64,6 +64,11 @@ class CreateView(BaseView):
 
     def post(self, request, *args, **kwargs):
         form = self.form_list[0](request.POST, request.FILES if self.are_files_used else None)
+
+        if not form.is_valid():
+            self.context = {'form': form}
+            return render(request, self.template_list[2], self.context)
+
         self._validate_and_log(form, 'Created')
         return redirect(self.redirect_url)
 
@@ -86,6 +91,11 @@ class EditView(BaseView):
     def post(self, request, *args, **kwargs):
         current_object = self.get_object()
         form = self.form_list[2](request.POST, request.FILES if self.are_files_used else None, instance=current_object)
+
+        if not form.is_valid():
+            self.context = {'form': form}
+            return render(request, self.template_list[4], self.context)
+
         self._validate_and_log(form, 'Edited')
         return redirect(self.redirect_url)
 
@@ -103,4 +113,9 @@ class DeleteView(BaseView):
         if form.is_valid():
             current_object.delete()
             SupportFunctions.log_info(f"Deleted {self.main_object.__name__} `{current_object.name}`")
+
+        else:
+            self.context = {'form': form}
+            return render(request, self.template_list[5], self.context)
+
         return redirect(self.redirect_url)

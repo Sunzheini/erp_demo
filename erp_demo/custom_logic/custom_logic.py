@@ -1,6 +1,7 @@
 import time
 from functools import wraps
 
+from asgiref.sync import sync_to_async
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.text import slugify
