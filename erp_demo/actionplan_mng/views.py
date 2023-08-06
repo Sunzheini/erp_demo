@@ -3,12 +3,14 @@ from django.shortcuts import render
 from collections import Counter
 
 from erp_demo.actionplan_mng.models import ActionPlan
+from erp_demo.custom_logic.custom_logic import SupportFunctions
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 from erp_demo.actionplan_mng.forms import ActionPlanForm, ActionPlanStepForm
 
 
 class ActionPlanMngViewsGeneral:
     @staticmethod
+    @SupportFunctions.allow_groups()
     def action_plan_mng_index(request):
         template = 'actionplan_mng/actionplan_mng_index.html'
 

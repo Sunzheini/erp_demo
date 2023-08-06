@@ -10,9 +10,10 @@ urlpatterns = [
         path('manage_db_all/', MainAppViews().manage_db_all, name='manage db all'),
     ])),
 
-	path('favorites/', MainAppViews().favorites, name='favorites'),
     path('logs/', MainAppViews().logs, name='logs'),
     path('my-tasks/', MainAppViews().my_tasks, name='my tasks'),
+	path('favorites/', MainAppViews().favorites, name='favorites'),
+	path('about/', MainAppViews().about, name='about'),
 
     path('requirements-matrix/', MainAppViews().requirements_matrix, name='requirements matrix'),
     path('show-requirement/<int:pk>/<slug:slug>/', MainAppViews().show_requirement, name='show requirement'),

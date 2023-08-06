@@ -43,16 +43,18 @@
                 <li class="nav-item">
                     <i class="fas fa-home"></i>
 {#                    <a href="{% url 'index' %}">Main Menu</a>#}
-                    <a href="{% url 'index' %}">{% trans "Main Page" %}</a>
+                    <a href="{% url 'index' %}">{% trans "Main" %}</a>
 {#                    <a href="{% url 'org mng index' %}">Начало</a>#}
                 </li>
 {#                <li class="nav-item">#}
 {#                    <i class="fa-solid fa-ranking-star"></i>#}
 {#                    <a href="{% url 'organigramm' %}">{% trans "Org chart" %}</a>#}
 {#                </li>#}
+
+                {% if request.user.is_superuser%}
                 <li class="nav-item">
                     <i class="fa-solid fa-database"></i>
-                    <a href="{% url 'manage db' %}">{% trans "Manage DB" %}</a>
+                    <a href="{% url 'manage db' %}">{% trans "Database" %}</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa-sharp fa-solid fa-chart-simple"></i>
@@ -62,9 +64,25 @@
                     <i class="fa-solid fa-file-arrow-up"></i>
                     <a href="{% url 'my tasks' %}">{% trans "Approval" %}</a>
                 </li>
+
+                {% elif request.user.is_staff %}
+                <li class="nav-item">
+                    <i class="fa-sharp fa-solid fa-chart-simple"></i>
+                    <a href="{% url 'logs' %}">{% trans "Logs" %}</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-file-arrow-up"></i>
+                    <a href="{% url 'my tasks' %}">{% trans "Approval" %}</a>
+                </li>
+                {% endif %}
+
                 <li class="nav-item">
                     <i class="fa-solid fa-heart"></i>
                     <a href="{% url 'favorites' %}">{% trans "Favorites" %}</a>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-question"></i>
+                    <a href="{% url 'about' %}">{% trans "About" %}</a>
                 </li>
             </ul>
 

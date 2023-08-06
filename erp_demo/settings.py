@@ -237,3 +237,9 @@ LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 # this is needed for the custom user model
 AUTH_USER_MODEL = 'user_mng.AppUser'
+
+"""
+Create superuser:
+python manage.py createsuperuser
+
+"""

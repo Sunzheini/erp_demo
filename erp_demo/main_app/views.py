@@ -211,6 +211,14 @@ class MainAppViews:
             return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     @staticmethod
+    def about(request):
+        try:
+            return render(request, 'core/about.html')
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.', })
+
+    @staticmethod
     @SupportFunctions.allow_groups()
     def approve_revision(request, pk, slug):
         try:
