@@ -974,3 +974,186 @@ a.table-link:hover {
   display: none;
 }
 /*-------------------------------------------------------------------------*/
+
+@media (max-width: 1550px) {
+    /* CSS changes for screens with width up to 1550px */
+	.menu-item .menu-item-title {
+      font-size: 0.8rem;
+	}
+}
+
+@media (max-width: 1400px) {
+    /* CSS changes for screens with width up to 1400px */
+    .log-out {
+      font-size: 0.8rem;
+      color: gray;
+      font-weight: normal;
+      margin-right: 0;
+    }
+
+	.user-name {
+      font-size: 0.8rem;
+      color: white;
+      font-weight: normal;
+      margin-right: 7px;
+    }
+}
+
+@media (max-width: 1350px) {
+    /* CSS changes for screens with width up to 1350px */
+  	.menu-container {
+      width: 85px;
+    }
+
+    .menu-item .menu-item-title {
+      display: none;
+    }
+
+    #control-button, #control-button2 {
+      margin-left: 6px;
+    }
+}
+
+@media (max-width: 1250px) {
+    /* CSS changes for screens with width up to 1250px */
+    .header .navigation .nav-list .nav-item a {
+      font-size: 0.8rem;
+    }
+
+    .card-buttons-section .all-card-buttons-container .card-btn .card-btn-title {
+      font-size: 0.8rem;
+    }
+
+    .display-content-section .all-display-content-container .card-display > * {
+		transform: scale(0.8);
+      transform-origin: top left;
+    }
+
+    .display-content-section .all-display-content-container .card-display .card-display-title {
+		transform: scale(1.25);
+      transform-origin: top left;
+      margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 1150px) {
+    /* CSS changes for screens with width up to 1250px */
+    /* CSS changes for screens with width up to 1250px */
+	.lang-form {
+      display: none;
+    }
+
+    .lang-form select {
+      display: none;
+    }
+
+    .lang-button {
+      display: none;
+    }
+
+  .display-content-section .all-display-content-container .card-display .card-display-title {
+	font-size: 1rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .header .navigation .nav-list .nav-item a {
+      font-size: 0;
+    }
+}
+
+@media (max-width: 750px) {
+  	.user-name {
+      display: none;
+    }
+
+    .display-content-section .all-display-content-container .card-display > * {
+		transform: scale(0.7);
+      transform-origin: top left;
+    }
+
+    .display-content-section .all-display-content-container .card-display .card-display-title {
+		transform: scale(1.43);
+      transform-origin: top left;
+      margin-bottom: 1.4rem;
+    }
+}
+
+@media (max-width: 600px) {
+  	.log-out {
+      font-size: 0.7rem;
+      color: gray;
+      font-weight: normal;
+      margin-right: 0;
+    }
+
+    .vertical {
+      display: none;
+    }
+
+    .user-letter-container {
+      display: none;
+    }
+
+    .display-content-section .all-display-content-container .card-display .card-display-title {
+	font-size: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+}
+
+@media (max-width: 490px) {
+  i {
+    scale: 80%;
+  }
+
+  .log-out {
+     display: none;
+    }
+}
+
+@media (max-width: 490px) {
+  .header .navigation .nav-list .nav-item {
+    gap: 0.2rem;
+  }
+
+    i {
+    scale: 70%;
+    padding-right: 0.1em;
+    margin-right: 0.1em;
+  }
+}
+
+@media (max-width: 410px) {
+  .header .navigation {
+    width: 96vw;
+  }
+
+  .display-content-section .all-display-content-container .card-display > * {
+		transform: scale(0.6);
+      transform-origin: top left;
+  }
+
+  .display-content-section .all-display-content-container .card-display .card-display-title {
+		transform: scale(1.65);
+      transform-origin: top left;
+      margin-bottom: 1.4rem;
+  }
+
+  .card-buttons-section .all-card-buttons-container .card-btn .card-btn-title {
+      font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .header .navigation {
+    width: 98vw;
+    margin-left: 0.5em;
+  }
+}
+
+@media (max-width: 370px) {
+  .header .navigation {
+    width: 100vw;
+    margin-left: 0.5em;
+  }
+}

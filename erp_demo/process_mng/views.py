@@ -1,5 +1,8 @@
+import threading
+
 from django.shortcuts import render
 
+from erp_demo.custom_logic.parallels import CustomThread
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 from erp_demo.hr_mng.models import Employee
@@ -173,6 +176,41 @@ class ProcessMngViewsGeneral:
     #         return render(request, 'error.html',
     #                       {'error_message': f'An unexpected error occurred: {e}.'})
 
+    # @staticmethod
+    # @SupportFunctions.allow_groups()
+    # def create_turtle(request, pk):
+    #     # template = 'process_mng/create_turtle.html'
+    #     template = 'process_mng/blank_turtle.html'
+    #
+    #     try:
+    #         current_object = Process.objects.filter(pk=pk).get()
+    #     except Process.DoesNotExist:
+    #         return render(request, 'error.html', {'error_message': f"{Process} not found."})
+    #
+    #     process_steps = DataManipulation.get_process_step_list(current_object, ProcessStep)
+    #     from_interactions = DataManipulation.get_from_interactions_list(current_object)
+    #     to_interactions = DataManipulation.get_to_interactions_list(current_object)
+    #
+    #     try:
+    #         resources = ResourcesAssignedToProcess.objects.filter(process=current_object)
+    #     except Exception as e:
+    #         print(f"Unexpected error: {e}")
+    #         return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+    #
+    #     context = {
+    #         'current_object': current_object,
+    #         'process_steps': process_steps,
+    #         'from_interactions': from_interactions,
+    #         'to_interactions': to_interactions,
+    #         'resources': resources,
+    #     }
+    #
+    #     try:
+    #         return render(request, template, context)
+    #     except Exception as e:
+    #         return render(request, 'error.html',
+    #                       {'error_message': f'An unexpected error occurred: {e}.'})
+
     @staticmethod
     @SupportFunctions.allow_groups()
     def create_turtle(request, pk):
@@ -184,9 +222,26 @@ class ProcessMngViewsGeneral:
         except Process.DoesNotExist:
             return render(request, 'error.html', {'error_message': f"{Process} not found."})
 
-        process_steps = DataManipulation.get_process_step_list(current_object, ProcessStep)
-        from_interactions = DataManipulation.get_from_interactions_list(current_object)
-        to_interactions = DataManipulation.get_to_interactions_list(current_object)
+        def get_the_process_steps():
+            return DataManipulation.get_process_step_list(current_object, ProcessStep)
+
+        def get_the_from_interactions():
+            return DataManipulation.get_from_interactions_list(current_object)
+
+        def get_the_to_interactions():
+            return DataManipulation.get_to_interactions_list(current_object)
+
+        thread1 = CustomThread(target=get_the_process_steps)
+        thread2 = CustomThread(target=get_the_from_interactions)
+        thread3 = CustomThread(target=get_the_to_interactions)
+
+        thread1.start()
+        thread2.start()
+        thread3.start()
+
+        process_steps = thread1.join()
+        from_interactions = thread2.join()
+        to_interactions = thread3.join()
 
         try:
             resources = ResourcesAssignedToProcess.objects.filter(process=current_object)
