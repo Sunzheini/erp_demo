@@ -22,6 +22,7 @@ class ProcessMngViewsGeneral:
         process_number_form = ProcessNumberForm()
         process_form = ProcessForm()
         process_step_form = ProcessStepForm()
+        context = {}
 
         if 'button0' in request.POST:
             try:
@@ -42,6 +43,8 @@ class ProcessMngViewsGeneral:
                 if process_form.is_valid():
                     process_form.save()
                     process_form = ProcessForm()
+                else:
+                    context['has_form_errors'] = True
                 process_number_form = ProcessNumberForm()
                 process_step_form = ProcessStepForm()
             except Exception as e:
@@ -56,6 +59,8 @@ class ProcessMngViewsGeneral:
                 if process_step_form.is_valid():
                     process_step_form.save()
                     process_step_form = ProcessStepForm()
+                else:
+                    context['has_form_errors'] = True
                 process_number_form = ProcessNumberForm()
                 process_form = ProcessForm()
             except Exception as e:
@@ -69,16 +74,25 @@ class ProcessMngViewsGeneral:
             process_form = ProcessForm()
             process_step_form = ProcessStepForm()
 
-        context = {
-            'process_info': DataManipulation.sort_process_steps(
-                Process,
-                ProcessStep,
-                choice,
-            ),
-            'choice_form': process_number_form,
-            'process_form': process_form,
-            'process_step_form': process_step_form,
-        }
+        # context = {
+        #     'process_info': DataManipulation.sort_process_steps(
+        #         Process,
+        #         ProcessStep,
+        #         choice,
+        #     ),
+        #     'choice_form': process_number_form,
+        #     'process_form': process_form,
+        #     'process_step_form': process_step_form,
+        # }
+
+        context['process_info'] = DataManipulation.sort_process_steps(
+            Process,
+            ProcessStep,
+            choice,
+        )
+        context['choice_form'] = process_number_form
+        context['process_form'] = process_form
+        context['process_step_form'] = process_step_form
 
         try:
             return render(request, template, context)

@@ -13,6 +13,7 @@ class ControlPlanMngViewsGeneral:
     @SupportFunctions.allow_groups()
     def control_plan_mng_index(request):
         template = 'control_plan_mng/control_plan_mng_index.html'
+        context = {}
 
         all_objects = ProcessControlPlan.objects.all()
 
@@ -35,6 +36,8 @@ class ControlPlanMngViewsGeneral:
             if control_plan_form.is_valid():
                 control_plan_form.save()
                 control_plan_form = ProcessControlPlanForm()
+            else:
+                context['has_form_errors'] = True
             control_plan_name_form = ProcessControlPlanNameForm()
             control_plan_step_form = ProcessControlPlanStepForm()
 
@@ -43,6 +46,8 @@ class ControlPlanMngViewsGeneral:
             if control_plan_step_form.is_valid():
                 control_plan_step_form.save()
                 control_plan_step_form = ProcessControlPlanStepForm()
+            else:
+                context['has_form_errors'] = True
             control_plan_name_form = ProcessControlPlanNameForm()
             control_plan_form = ProcessControlPlanForm()
 
@@ -51,12 +56,17 @@ class ControlPlanMngViewsGeneral:
             control_plan_form = ProcessControlPlanForm()
             control_plan_step_form = ProcessControlPlanStepForm()
 
-        context = {
-            'all_objects': all_objects,
-            'choice_form': control_plan_name_form,
-            'control_plan_form': control_plan_form,
-            'control_plan_step_form': control_plan_step_form,
-        }
+        # context = {
+        #     'all_objects': all_objects,
+        #     'choice_form': control_plan_name_form,
+        #     'control_plan_form': control_plan_form,
+        #     'control_plan_step_form': control_plan_step_form,
+        # }
+
+        context['all_objects'] = all_objects
+        context['choice_form'] = control_plan_name_form
+        context['control_plan_form'] = control_plan_form
+        context['control_plan_step_form'] = control_plan_step_form
 
         try:
             return render(request, template, context)

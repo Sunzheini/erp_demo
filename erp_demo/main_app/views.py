@@ -258,6 +258,7 @@ class MainAppViews:
         choice_form = RequirementsDocumentForm()
         choice = None
         requirement_form = RequirementsForm()
+        context = {}
 
         if 'button1' in request.POST:
             try:
@@ -266,6 +267,8 @@ class MainAppViews:
                     requirement_form.save()
                     requirement_form = RequirementsForm()
                     choice_form = RequirementsDocumentForm()
+                else:
+                    context['has_form_errors'] = True
             except Exception as e:
                 print(f"Form processing error: {e}")
                 requirement_form.add_error(None, "An error occurred during form processing.")
@@ -297,11 +300,15 @@ class MainAppViews:
             except Requirements.DoesNotExist:
                 return render(request, 'error.html', {'error_message': f"{Requirements} not found."})
 
-        context = {
-            'requirement_form': requirement_form,
-            'choice_form': choice_form,
-            'requirements': requirements,
-        }
+        # context = {
+        #     'requirement_form': requirement_form,
+        #     'choice_form': choice_form,
+        #     'requirements': requirements,
+        # }
+
+        context['requirement_form'] = requirement_form
+        context['choice_form'] = choice_form
+        context['requirements'] = requirements
 
         try:
             return render(request, 'core/requirements_matrix.html', context)

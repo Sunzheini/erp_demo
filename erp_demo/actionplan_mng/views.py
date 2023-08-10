@@ -17,6 +17,7 @@ class ActionPlanMngViewsGeneral:
         # added
         action_plan_form = ActionPlanForm()
         action_plan_step_form = ActionPlanStepForm()
+        context = {}
 
         if 'button1' in request.POST:
             # current code in try and also added except
@@ -25,12 +26,13 @@ class ActionPlanMngViewsGeneral:
                 if action_plan_form.is_valid():
                     action_plan_form.save()
                     action_plan_form = ActionPlanForm()
+                else:
+                    context['has_form_errors'] = True
                 action_plan_step_form = ActionPlanStepForm()
             except Exception as e:
                 print(f"Form processing error: {e}")
                 action_plan_form.add_error(None, "An error occurred during form processing.")
                 action_plan_step_form = ActionPlanStepForm()
-
 
         elif 'button2' in request.POST:
             # current code in try and also added except
@@ -39,6 +41,8 @@ class ActionPlanMngViewsGeneral:
                 if action_plan_step_form.is_valid():
                     action_plan_step_form.save()
                     action_plan_step_form = ActionPlanStepForm()
+                else:
+                    context['has_form_errors'] = True
                 action_plan_form = ActionPlanForm()
             except Exception as e:
                 print(f"Form processing error: {e}")
@@ -49,11 +53,15 @@ class ActionPlanMngViewsGeneral:
             action_plan_form = ActionPlanForm()
             action_plan_step_form = ActionPlanStepForm()
 
-        context = {
-            'all_objects': ActionPlan.objects.all(),
-            'action_plan_form': action_plan_form,
-            'action_plan_step_form': action_plan_step_form,
-        }
+        # context = {
+        #     'all_objects': ActionPlan.objects.all(),
+        #     'action_plan_form': action_plan_form,
+        #     'action_plan_step_form': action_plan_step_form,
+        # }
+
+        context['all_objects'] = ActionPlan.objects.all()
+        context['action_plan_form'] = action_plan_form
+        context['action_plan_step_form'] = action_plan_step_form
 
         try:
             return render(request, template, context)

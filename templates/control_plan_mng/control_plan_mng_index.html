@@ -48,6 +48,10 @@
                     {% trans "Control Plan Management" %}
                 </h2>
 
+                {% if has_form_errors %}
+                    <p style="color: red; font-weight: bold">Error filling the form!</p>
+            	{% endif %}
+
                 <form action="{% url 'control plan mng index' %}" method="post">
                     <table class="table-form">
                         {{ choice_form }}
