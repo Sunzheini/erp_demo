@@ -38,9 +38,8 @@ class MaintenanceMngViews(PrototypeViews):
             'datasets': [{
                 # 'label': 'Number of Machines',
                 'data': [machines_count_1, machines_count_2, machines_count_3],
-                # 'backgroundColor': 'rgba(75, 192, 192, 0.2)',  # change color to fit your style
                 'backgroundColor': ['#2e8b57', '#f5e751', '#bd1515'],
-                'borderColor': 'rgba(75, 192, 192, 1)',  # change color to fit your style
+                'borderColor': 'rgba(75, 192, 192, 1)',
                 'borderWidth': 1
             }]
         }

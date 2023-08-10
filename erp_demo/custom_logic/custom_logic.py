@@ -1,7 +1,6 @@
 import time
 from functools import wraps
 
-from asgiref.sync import sync_to_async
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.text import slugify
@@ -37,14 +36,6 @@ class DataManipulation:
     # -----------------------------------------------------------------------
     @staticmethod
     def extract_entry_by_choice(request, table, column_name, choice):
-        # if choice == 'All':
-        #     extracted_documents = table.objects.all()
-        #     return extracted_documents
-        # data = {column_name: choice}
-        # extracted_documents = table.objects.filter(**data)
-        #
-        # return extracted_documents
-
         try:
             all_documents = table.objects.all()
         except table.DoesNotExist:
@@ -83,35 +74,6 @@ class DataManipulation:
 # Sort process steps
 # -----------------------------------------------------------------------
 
-# original
-    # @staticmethod
-    # def sort_process_steps(process_obj, process_step_obj, choice):
-    #     p_list = []
-    #     all_processes = process_obj.objects.all()
-    #     process_obj_length = len(all_processes)
-    #
-    #     if choice is None:
-    #         pass
-    #
-    #     elif choice == 'All':
-    #         for process in range(process_obj_length):
-    #             p_list.append([])
-    #
-    #             for process_step in process_step_obj.objects.all():
-    #                 if process_step.parent_process.id == all_processes[process].id:
-    #                     p_list[process].append(process_step)
-    #
-    #     elif choice != 'All':
-    #         chosen_process = process_obj.objects.filter(number=choice).get()
-    #         p_list.append([])
-    #
-    #         for process_step in process_step_obj.objects.all():
-    #             if process_step.parent_process.number == chosen_process.number:
-    #                 p_list[0].append(process_step)
-    #
-    #     return p_list
-
-# optimized
     @staticmethod
     def sort_process_steps(process_obj, process_step_obj, choice):
         p_list = []
@@ -135,37 +97,6 @@ class DataManipulation:
             p_list.append(list(process_steps))
 
         return p_list
-
-# optimized with caching
-#     @staticmethod
-    # def sort_process_steps(process_obj, process_step_obj, choice):
-    #     cache_key = f'sort_process_steps_{choice}'
-    #     cache_version = cache.get(f'{cache_key}_version', 0)
-    #
-    #     cached_data = cache.get(cache_key)
-    #
-    #     if cached_data is not None and cache.get(f'{cache_key}_version', 0) == cache_version:
-    #         # Use the cached data if it is up-to-date
-    #
-    #         return cached_data
-    #
-    #     p_list = []
-    #     all_processes = process_obj.objects.all()
-    #
-    #     if choice == 'All':
-    #         for process in all_processes:
-    #             process_steps = process_step_obj.objects.filter(parent_process=process)
-    #             p_list.append(list(process_steps))
-    #     elif choice is not None:
-    #         chosen_process = process_obj.objects.get(number=choice)
-    #         process_steps = process_step_obj.objects.filter(parent_process=chosen_process)
-    #         p_list.append(list(process_steps))
-    #
-    #     # Cache the processed data with the new version
-    #     cache.set(cache_key, p_list)
-    #     cache.set(f'{cache_key}_version', cache_version + 1)
-    #
-    #     return p_list
 
     # Get list of process steps for a process
 # -----------------------------------------------------------------------
@@ -281,10 +212,7 @@ class SupportFunctions:
 
                     if custom_collections.logging_info_stack:
                         CaptainsLog.objects.create(
-                            # operation=f"{custom_collections.logging_info_stack.pop()} "
-                            #           f"with `{some_function.__name__}`",
                             operation=f"{custom_collections.logging_info_stack.pop()}",
-                            # performed_at_time=end, # auto added in model
                             execution_time=f"{measurement:.5f} s",
                         )
                 else:
@@ -314,10 +242,6 @@ class SupportFunctions:
                 status='Latest rev',
                 owner=the_form.cleaned_data['owner'],
                 attachment=the_form.cleaned_data['attachment'],
-                # slug=slugify(f"{info_to_update[obj]['name']}"),
-                # slug=slugify(f"{the_form.cleaned_data['owner']}-"
-                #              f"{the_form.cleaned_data['type']}-"
-                #              f"{the_form.cleaned_data['revision']}"),
                 slug=slugify(f"{translate_to_maimunica(the_form.cleaned_data['name'])}"),
             )
         except Exception as e:
@@ -368,21 +292,6 @@ class SupportFunctions:
                 prototype.delete()
             except Exception as e:
                 print(f"Unexpected error: {e}")
-
-        # document_to_delete.update(
-        #     type=prototype.type,
-        #     number=prototype.number,
-        #     name=prototype.name,
-        #     revision=prototype.revision,
-        #     creation_date=prototype.creation_date,
-        #     revision_date=prototype.revision_date,
-        #     revision_details=prototype.revision_details,
-        #     status=prototype.status,
-        #     owner=prototype.owner,
-        #     attachment=prototype.attachment,
-        #     slug=slugify(f"{translate_to_maimunica(prototype.name)}"),
-        # )
-        # prototype.delete()
 
     # search results on the index page
     # -----------------------------------------------------------------------
@@ -570,7 +479,6 @@ class SupportFunctions:
         def decorator(view_func):
             def wrapper(request, *args, **kwargs):
                 if not request.user.is_authenticated:
-                    # return HttpResponse('Not authenticated!')
                     return redirect('login')
 
                 if request.user.is_superuser or not groups:
@@ -613,7 +521,6 @@ class SupportFunctions:
             result = func(*args, **kwargs)
             end = time.time()
             exec_time = end - start
-            # print(f"Function {func.__name__} took {exec_time:.3f} s to execute")
             print(f"------------------ {exec_time:.3f} s ------------------")
             return result
 

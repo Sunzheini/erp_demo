@@ -38,7 +38,6 @@ class CalibrationMngViews(PrototypeViews):
             'datasets': [{
                 # 'label': 'Number of Equipment',
                 'data': [equipment_count_1, equipment_count_2, equipment_count_3],
-                # 'backgroundColor': 'rgba(75, 192, 192, 0.2)',  # change color to fit your style
                 'backgroundColor': ['#2e8b57', '#f5e751', '#bd1515'],
                 'borderColor': 'rgba(75, 192, 192, 1)',  # change color to fit your style
                 'borderWidth': 1

@@ -28,7 +28,6 @@ ALLOWED_HOSTS = [
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -113,31 +112,28 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # heroku
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'd3k5sdaddaa0mp',
-#         'USER': 'hzwmgesjwefyle',
-#         'PASSWORD': '40706431cc914531a8c0099f96cd61f83c19dfd5afe9db08def7884c563a81b1',
-#         'HOST': 'ec2-63-34-69-123.eu-west-1.compute.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
-# without heroku
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'erp_demo_db',         # same name as the DB created
-        'USER': 'postgres-user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+        'NAME': 'd3k5sdaddaa0mp',
+        'USER': 'hzwmgesjwefyle',
+        'PASSWORD': '40706431cc914531a8c0099f96cd61f83c19dfd5afe9db08def7884c563a81b1',
+        'HOST': 'ec2-63-34-69-123.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
 
-# heroku
-# not connected
+# without heroku
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'erp_demo_db',         # same name as the DB created
+#         'USER': 'postgres-user',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
+#         'PORT': '5432',
+#     }
+# }
 
 # without heroku
 # CACHES = {
@@ -190,6 +186,7 @@ LANGUAGES = [
     ('bg', 'Bulgarian'),
 ]
 
+# info for translation
 """
 put {% load i18n %} in the template
 replace text with {% trans "text" %} in the template
@@ -241,5 +238,4 @@ AUTH_USER_MODEL = 'user_mng.AppUser'
 """
 Create superuser:
 python manage.py createsuperuser
-
 """

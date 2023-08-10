@@ -53,12 +53,6 @@ class ActionPlanMngViewsGeneral:
             action_plan_form = ActionPlanForm()
             action_plan_step_form = ActionPlanStepForm()
 
-        # context = {
-        #     'all_objects': ActionPlan.objects.all(),
-        #     'action_plan_form': action_plan_form,
-        #     'action_plan_step_form': action_plan_step_form,
-        # }
-
         context['all_objects'] = ActionPlan.objects.all()
         context['action_plan_form'] = action_plan_form
         context['action_plan_step_form'] = action_plan_step_form

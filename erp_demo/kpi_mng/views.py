@@ -26,7 +26,6 @@ class KpiMngViews(PrototypeViews):
                 'data': actual_values,
                 'fill': 'false',  # changed this
                 'borderColor': 'rgb(75, 192, 192)',
-                # 'borderColor': 'rgb(0, 0, 139)',
                 'tension': 0.1
             },
             {

@@ -181,7 +181,6 @@ class MainAppViews:
             f.is_liked_by_user = True
 
         context = {
-            # 'favorites': Document.objects.filter(is_liked_by_user=True),
             'favorites': favorites,
         }
 
@@ -299,12 +298,6 @@ class MainAppViews:
                 requirements = Requirements.objects.all().order_by('organization', 'clause')
             except Requirements.DoesNotExist:
                 return render(request, 'error.html', {'error_message': f"{Requirements} not found."})
-
-        # context = {
-        #     'requirement_form': requirement_form,
-        #     'choice_form': choice_form,
-        #     'requirements': requirements,
-        # }
 
         context['requirement_form'] = requirement_form
         context['choice_form'] = choice_form

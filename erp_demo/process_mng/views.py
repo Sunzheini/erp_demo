@@ -1,5 +1,3 @@
-import threading
-
 from django.shortcuts import render
 
 from erp_demo.custom_logic.parallels import CustomThread
@@ -74,17 +72,6 @@ class ProcessMngViewsGeneral:
             process_form = ProcessForm()
             process_step_form = ProcessStepForm()
 
-        # context = {
-        #     'process_info': DataManipulation.sort_process_steps(
-        #         Process,
-        #         ProcessStep,
-        #         choice,
-        #     ),
-        #     'choice_form': process_number_form,
-        #     'process_form': process_form,
-        #     'process_step_form': process_step_form,
-        # }
-
         context['process_info'] = DataManipulation.sort_process_steps(
             Process,
             ProcessStep,
@@ -142,88 +129,6 @@ class ProcessMngViewsGeneral:
         except Exception as e:
             return render(request, 'error.html',
                           {'error_message': f'An unexpected error occurred: {e}.'})
-
-    # @staticmethod
-    # @SupportFunctions.allow_groups()
-    # def create_turtle(request, pk):
-    #     # template = 'process_mng/create_turtle.html'
-    #     template = 'process_mng/blank_turtle.html'
-    #     current_object = Process.objects.filter(pk=pk).get()
-    #     context = {
-    #         'current_object': current_object,
-    #         'process_steps': DataManipulation.get_process_step_list(current_object, ProcessStep),
-    #     }
-    #     return render(request, template, context)
-
-    # @staticmethod
-    # @SupportFunctions.allow_groups()
-    # def create_turtle(request, pk):
-    #     # template = 'process_mng/create_turtle.html'
-    #     template = 'process_mng/blank_turtle.html'
-    #
-    #     try:
-    #         current_object = Process.objects.filter(pk=pk).get()
-    #     except Process.DoesNotExist:
-    #         return render(request, 'error.html', {'error_message': f"{Process} not found."})
-    #
-    #     process_steps = DataManipulation.get_process_step_list(current_object, ProcessStep)
-    #     from_interactions = DataManipulation.get_from_interactions_list(current_object)
-    #     to_interactions = DataManipulation.get_to_interactions_list(current_object)
-    #
-    #     try:
-    #         resources = ResourcesAssignedToProcess.objects.filter(process=current_object)
-    #     except Exception as e:
-    #         print(f"Unexpected error: {e}")
-    #         return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
-    #
-    #     context = {
-    #         'current_object': current_object,
-    #         'process_steps': process_steps,
-    #         'from_interactions': from_interactions,
-    #         'to_interactions': to_interactions,
-    #         'resources': resources,
-    #     }
-    #
-    #     try:
-    #         return render(request, template, context)
-    #     except Exception as e:
-    #         return render(request, 'error.html',
-    #                       {'error_message': f'An unexpected error occurred: {e}.'})
-
-    # @staticmethod
-    # @SupportFunctions.allow_groups()
-    # def create_turtle(request, pk):
-    #     # template = 'process_mng/create_turtle.html'
-    #     template = 'process_mng/blank_turtle.html'
-    #
-    #     try:
-    #         current_object = Process.objects.filter(pk=pk).get()
-    #     except Process.DoesNotExist:
-    #         return render(request, 'error.html', {'error_message': f"{Process} not found."})
-    #
-    #     process_steps = DataManipulation.get_process_step_list(current_object, ProcessStep)
-    #     from_interactions = DataManipulation.get_from_interactions_list(current_object)
-    #     to_interactions = DataManipulation.get_to_interactions_list(current_object)
-    #
-    #     try:
-    #         resources = ResourcesAssignedToProcess.objects.filter(process=current_object)
-    #     except Exception as e:
-    #         print(f"Unexpected error: {e}")
-    #         return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
-    #
-    #     context = {
-    #         'current_object': current_object,
-    #         'process_steps': process_steps,
-    #         'from_interactions': from_interactions,
-    #         'to_interactions': to_interactions,
-    #         'resources': resources,
-    #     }
-    #
-    #     try:
-    #         return render(request, template, context)
-    #     except Exception as e:
-    #         return render(request, 'error.html',
-    #                       {'error_message': f'An unexpected error occurred: {e}.'})
 
     @staticmethod
     @SupportFunctions.allow_groups()

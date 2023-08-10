@@ -28,7 +28,6 @@ class PrototypeViews:
 # ---------------------------------------------------------------------------------------
 
     def _main_object_queryset(self, request):
-        # current code in try and also added except
         try:
             return self.main_object.objects.all()
         except self.main_object.DoesNotExist:
@@ -38,7 +37,6 @@ class PrototypeViews:
             return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
 
     def _main_object_single(self, pk, request):
-        # current code in try and also added except
         try:
             return self.main_object.objects.filter(pk=pk).get()
         except self.main_object.DoesNotExist:
@@ -60,7 +58,6 @@ class PrototypeViews:
     def _validate_and_log(self, form, action_done):
         if form.is_valid():
             output = form.save()
-            # current code in try and also added except
             try:
                 SupportFunctions.log_info(f"{action_done} {self.main_object.__name__} `{output.name}`")
             except Exception as e:
@@ -98,7 +95,6 @@ class PrototypeViews:
     def index_view(self, request):
         self._empty_context()
 
-        # current code in try and also added except
         try:
             return render(request, self.index_template, self.context)
         except Exception as e:
@@ -114,7 +110,6 @@ class PrototypeViews:
         self.context['all_objects'] = self._main_object_queryset(request)
         # ---------------------------------------------------------------------------------------
 
-		# current code in try and also added except
         try:
             return render(request, self.list_template, self.context)
         except Exception as e:
@@ -141,7 +136,6 @@ class PrototypeViews:
 
             self._validate_and_log(form, 'Created')
 
-            # current code in try and also added except
             try:
                 return redirect(self.redirect_url)
             except Exception as e:
@@ -162,7 +156,6 @@ class PrototypeViews:
         self._add_form_to_context(form)
         self._add_current_object_to_context(current_object)
 
-        # current code in try and also added except
         try:
             return render(request, self.show_template, self.context)
         except Exception as e:
@@ -180,7 +173,6 @@ class PrototypeViews:
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
 
-            # current code in try and also added except
             try:
                 return render(request, self.edit_template, self.context)
             except Exception as e:
@@ -197,7 +189,6 @@ class PrototypeViews:
             self._add_current_object_to_context(current_object)
             self._validate_and_log(form, 'Edited')
 
-            # current code in try and also added except
             try:
                 return redirect(self.redirect_url)
             except Exception as e:
@@ -214,7 +205,6 @@ class PrototypeViews:
             self._add_form_to_context(form)
             self._add_current_object_to_context(current_object)
 
-            # current code in try and also added except
             try:
                 return render(request, self.delete_template, self.context)
             except Exception as e:
@@ -231,7 +221,6 @@ class PrototypeViews:
             self._add_current_object_to_context(current_object)
             self._validate_and_log(form, 'Deleted')
 
-            # current code in try and also added except
             try:
                 return redirect(self.redirect_url)
             except Exception as e:

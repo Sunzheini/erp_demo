@@ -56,13 +56,6 @@ class ControlPlanMngViewsGeneral:
             control_plan_form = ProcessControlPlanForm()
             control_plan_step_form = ProcessControlPlanStepForm()
 
-        # context = {
-        #     'all_objects': all_objects,
-        #     'choice_form': control_plan_name_form,
-        #     'control_plan_form': control_plan_form,
-        #     'control_plan_step_form': control_plan_step_form,
-        # }
-
         context['all_objects'] = all_objects
         context['choice_form'] = control_plan_name_form
         context['control_plan_form'] = control_plan_form

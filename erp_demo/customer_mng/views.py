@@ -1,10 +1,3 @@
-from erp_demo.custom_logic.custom_prototypes import PrototypeViews
-
-
-# class CustomerAppViews(PrototypeViews):
-#     pass
-
-
 from django.shortcuts import render, redirect
 from django.views import View
 from erp_demo.customer_mng.models import Customer

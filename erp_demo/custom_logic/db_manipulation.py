@@ -157,7 +157,6 @@ class DatabaseManipulation:
                     info_to_update[row][list_of_keys[table][col-1]] = worksheet[char + str(row)].value
 
         # Update all table 1 by 1
-
             if table == 'AccessLevels':
                 try:
                     AccessLevels.objects.bulk_create([AccessLevels(
@@ -218,9 +217,6 @@ class DatabaseManipulation:
                         date_last_hse_training=info_to_update[row_number]['date_last_hse_training'],
                         date_next_hse_training=info_to_update[row_number]['date_next_hse_training'],
                         egn=info_to_update[row_number]['egn'],
-                        # slug=slugify(f"{info_to_update[row_number]['first_name']}-{info_to_update[row_number]['last_name']}"),
-                        # slug=slugify(f"{info_to_update[row_number]['identification']}-"
-                        #              f"{info_to_update[row_number]['position']}"),
                         slug=slugify(f"{info_to_update[row_number]['identification']}-"
                                      f"{translate_to_maimunica(info_to_update[row_number]['first_name'])}-"
                                      f"{translate_to_maimunica(info_to_update[row_number]['last_name'])}"),
@@ -242,10 +238,6 @@ class DatabaseManipulation:
                         revision_details=info_to_update[obj]['revision_details'],
                         status=info_to_update[obj]['status'],
                         owner=Employee.objects.all()[0],  # ToDo: hardcoded for the excel upload
-                        # slug=slugify(f"{info_to_update[obj]['name']}"),
-                        # slug=slugify(f"{info_to_update[obj]['owner']}-"
-                        #              f"{info_to_update[obj]['type']}-"
-                        #              f"{info_to_update[obj]['revision']}"),
                         slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
                     ) for obj in info_to_update.keys()])
                 except Exception as e:
@@ -259,8 +251,6 @@ class DatabaseManipulation:
                         number=info_to_update[obj]['number'],
                         name=info_to_update[obj]['name'],
                         process_owner=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
-                        # slug=slugify(f"{info_to_update[obj]['number']}-"
-                        #              f"{info_to_update[obj]['type']}"),
                         slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
                     ) for obj in info_to_update.keys()])
                 except Exception as e:
@@ -274,16 +264,10 @@ class DatabaseManipulation:
                         number=info_to_update[obj]['number'],
                         name=info_to_update[obj]['name'],
                         # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
-
-                        # use the `PXX` from the excel
-                        # parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process'][-1])-1],
                         parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process']) - 1],
 
                         description=info_to_update[obj]['description'],
                         responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
-                        # slug=slugify(f"{info_to_update[obj]['name']}"),
-                        # slug=slugify(f"{info_to_update[obj]['parent_process']}-"
-                        #              f"{info_to_update[obj]['number']}"),
                         slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:50])}"),
                     ) for obj in info_to_update.keys()])
                 except Exception as e:

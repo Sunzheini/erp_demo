@@ -1,7 +1,5 @@
 import time
 
-from django.shortcuts import redirect
-
 
 # get_response gets the response from next middleware or view
 def measure_time_middleware(get_response):

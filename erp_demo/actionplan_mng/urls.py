@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 
 from erp_demo.actionplan_mng.forms import ActionPlanForm, ActionPlanStepForm, \
     ActionPlanEditForm, ActionPlanDeleteForm, ActionPlanStepEditForm, \
