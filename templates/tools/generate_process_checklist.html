@@ -39,6 +39,7 @@
 
             <div class="card-display">
                 <h2 class="card-display-title">{% trans "Generate a Manufacturing Process Audit Checklist:" %}</h2>
+                <p class="card-display-content">{% trans "* Works only if deployed locally!" %}</p>
 
                 <form action="{% url 'generate process checklist' %}" method="post">
                     <table class="table-form">

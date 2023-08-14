@@ -400,33 +400,3 @@ class MainAppViews:
         except Exception as e:
             print(f"Unexpected error: {e}")
             return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.', })
-
-    @staticmethod
-    def extract_database(request):
-        template = 'tools/extract_database.html'
-        form3 = ExportDatabaseForm()
-        message3 = None
-
-        if 'button_export_db' in request.POST:
-            try:
-                form3 = ExportDatabaseForm(request.POST)
-                if form3.is_valid():
-                    message3 = export_database()
-                    form3 = ExportDatabaseForm()
-            except Exception as e:
-                print(f"Form processing error: {e}")
-                form3.add_error(None, "An error occurred during form processing.")
-
-        else:
-            form3 = ExportDatabaseForm()
-
-        context = {
-            'form3': form3,
-            'message3': message3,
-        }
-
-        try:
-            return render(request, template, context)
-        except Exception as e:
-            print(f"Unexpected error: {e}")
-            return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})

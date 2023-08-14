@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-07 11:17+0300\n"
+"POT-Creation-Date: 2023-08-14 11:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,43 +56,43 @@ msgstr "Нова АП Стъпка"
 msgid "Action Plan Management"
 msgstr "Управление на Планове"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:50
+#: .\templates\actionplan_mng\actionplan_mng_index.html:54
 msgid "1) Action Plan Creation Form"
 msgstr "1) Форма за Създаване на План"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:55
+#: .\templates\actionplan_mng\actionplan_mng_index.html:59
 msgid "add this action plan"
 msgstr "добави този план"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:62
+#: .\templates\actionplan_mng\actionplan_mng_index.html:66
 msgid "2) Action Plan Step Creation Form"
 msgstr "2) Форма Създаване Стъпка от План"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:67
+#: .\templates\actionplan_mng\actionplan_mng_index.html:71
 msgid "add this action plan step"
 msgstr "добави тази стъпка"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:77
+#: .\templates\actionplan_mng\actionplan_mng_index.html:81
 #: .\templates\actionplan_mng\show_actionplan_step.html:47
 msgid "Action Plan"
 msgstr "План-Действие"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:78
+#: .\templates\actionplan_mng\actionplan_mng_index.html:82
 #: .\templates\actionplan_mng\show_actionplan_step.html:48
 msgid "Action Plan Step"
 msgstr "Стъпка от Плана"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:81
-#: .\templates\actionplan_mng\actionplan_mng_index.html:86
-#: .\templates\actionplan_mng\show_actionplan.html:68
+#: .\templates\actionplan_mng\actionplan_mng_index.html:85
+#: .\templates\actionplan_mng\actionplan_mng_index.html:90
+#: .\templates\actionplan_mng\show_actionplan.html:71
 #: .\templates\actionplan_mng\show_actionplan_step.html:51
 #: .\templates\actionplan_mng\show_actionplan_step.html:56
 #: .\templates\actions_mng\actions_list.html:61
 #: .\templates\actions_mng\show_action.html:51
-#: .\templates\control_plan_mng\control_plan_mng_index.html:89
+#: .\templates\control_plan_mng\control_plan_mng_index.html:93
 #: .\templates\control_plan_mng\control_plan_step_list.html:48
 #: .\templates\control_plan_mng\show_control_plan.html:46
-#: .\templates\control_plan_mng\show_control_plan.html:79
+#: .\templates\control_plan_mng\show_control_plan.html:84
 #: .\templates\control_plan_mng\show_control_plan_step.html:47
 #: .\templates\core\favorites.html:53 .\templates\core\my_tasks.html:52
 #: .\templates\custom_forms\custom_nonconformity_form_show.html:155
@@ -118,22 +118,22 @@ msgstr "Стъпка от Плана"
 #: .\templates\newactions_mng\show_newaction.html:48
 #: .\templates\organization_mng\org_list.html:48
 #: .\templates\process_mng\blank_turtle.html:40
-#: .\templates\process_mng\blank_turtle.html:93
-#: .\templates\process_mng\blank_turtle.html:161
-#: .\templates\process_mng\blank_turtle.html:220
-#: .\templates\process_mng\process_mng_index.html:104
+#: .\templates\process_mng\blank_turtle.html:96
+#: .\templates\process_mng\blank_turtle.html:168
+#: .\templates\process_mng\blank_turtle.html:230
+#: .\templates\process_mng\process_mng_index.html:108
 #: .\templates\process_mng\process_owners.html:47
 #: .\templates\process_mng\show_process.html:48
 #: .\templates\process_mng\show_process_step.html:52
 #: .\templates\resource_mng\assign_resources.html:79
-#: .\templates\resource_mng\assign_resources.html:129
+#: .\templates\resource_mng\assign_resources.html:132
 #: .\templates\review_mng\review_list.html:48
 msgid "Name"
 msgstr "Име"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:82
+#: .\templates\actionplan_mng\actionplan_mng_index.html:86
 #: .\templates\actionplan_mng\show_actionplan_step.html:52
-#: .\templates\control_plan_mng\control_plan_mng_index.html:95
+#: .\templates\control_plan_mng\control_plan_mng_index.html:99
 #: .\templates\control_plan_mng\show_control_plan.html:52
 #: .\templates\core\favorites.html:56 .\templates\core\my_tasks.html:56
 #: .\templates\dox_mng\document_list.html:63
@@ -144,24 +144,24 @@ msgstr "Име"
 msgid "Owner"
 msgstr "Собственик"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:84
-#: .\templates\actionplan_mng\show_actionplan.html:66
+#: .\templates\actionplan_mng\actionplan_mng_index.html:88
+#: .\templates\actionplan_mng\show_actionplan.html:69
 #: .\templates\actionplan_mng\show_actionplan_step.html:54
-#: .\templates\control_plan_mng\control_plan_mng_index.html:91
+#: .\templates\control_plan_mng\control_plan_mng_index.html:95
 #: .\templates\control_plan_mng\show_control_plan.html:48
 #: .\templates\core\favorites.html:52 .\templates\core\my_tasks.html:51
 #: .\templates\defect_cat_mng\defect_cat_list.html:49
 #: .\templates\defect_cat_mng\show_defect_cat.html:47
 #: .\templates\dox_mng\document_list.html:59
 #: .\templates\dox_mng\show_document.html:48
-#: .\templates\process_mng\process_mng_index.html:107
+#: .\templates\process_mng\process_mng_index.html:111
 #: .\templates\process_mng\show_process.html:47
 #: .\templates\process_mng\show_process_step.html:53
 msgid "Number"
 msgstr "Номер"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:85
-#: .\templates\actionplan_mng\show_actionplan.html:67
+#: .\templates\actionplan_mng\actionplan_mng_index.html:89
+#: .\templates\actionplan_mng\show_actionplan.html:70
 #: .\templates\actionplan_mng\show_actionplan_step.html:55
 #: .\templates\actions_mng\actions_list.html:58
 #: .\templates\actions_mng\show_action.html:48
@@ -171,13 +171,13 @@ msgstr "Номер"
 msgid "Scope"
 msgstr "Обхват"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:88
+#: .\templates\actionplan_mng\actionplan_mng_index.html:92
 #: .\templates\actions_mng\actions_list.html:67
 #: .\templates\calibration_mng\calibration_list.html:55
 #: .\templates\characteristics_mng\characteristics_list.html:54
-#: .\templates\control_plan_mng\control_plan_mng_index.html:97
+#: .\templates\control_plan_mng\control_plan_mng_index.html:101
 #: .\templates\control_plan_mng\control_plan_step_list.html:61
-#: .\templates\core\base.html:265 .\templates\core\requirements_matrix.html:82
+#: .\templates\core\base.html:287 .\templates\core\requirements_matrix.html:86
 #: .\templates\customer_mng\customer_list.html:53
 #: .\templates\defect_cat_mng\defect_cat_list.html:53
 #: .\templates\dox_mng\document_list.html:69
@@ -192,9 +192,9 @@ msgstr "Обхват"
 #: .\templates\nonconformity_mng\nonconformity_list.html:61
 #: .\templates\opportunity_mng\opportunity_list.html:52
 #: .\templates\organization_mng\org_list.html:56
-#: .\templates\process_mng\process_mng_index.html:115
+#: .\templates\process_mng\process_mng_index.html:119
 #: .\templates\resource_mng\assign_resources.html:85
-#: .\templates\resource_mng\assign_resources.html:135
+#: .\templates\resource_mng\assign_resources.html:138
 #: .\templates\resource_mng\resource_list.html:54
 #: .\templates\review_mng\review_list.html:51
 #: .\templates\risk_mng\risk_list.html:56
@@ -204,7 +204,7 @@ msgstr "Обхват"
 msgid "Actions"
 msgstr "Действия"
 
-#: .\templates\actionplan_mng\actionplan_mng_index.html:90
+#: .\templates\actionplan_mng\actionplan_mng_index.html:94
 msgid "Manage"
 msgstr "Управление"
 
@@ -276,12 +276,12 @@ msgstr "потвърди"
 msgid "Edit Action Plan Step"
 msgstr "Промени Стъпка от Плана"
 
-#: .\templates\actionplan_mng\show_actionplan.html:70
+#: .\templates\actionplan_mng\show_actionplan.html:73
 #: .\templates\actionplan_mng\show_actionplan_step.html:58
 msgid "Action"
 msgstr "Действие"
 
-#: .\templates\actionplan_mng\show_actionplan.html:71
+#: .\templates\actionplan_mng\show_actionplan.html:74
 #: .\templates\actionplan_mng\show_actionplan_step.html:59
 #: .\templates\actions_mng\actions_list.html:62
 #: .\templates\actions_mng\show_action.html:52
@@ -292,11 +292,11 @@ msgstr "Действие"
 #: .\templates\newactions_mng\newactions_list.html:50
 #: .\templates\newactions_mng\newactions_matrix.html:53
 #: .\templates\newactions_mng\show_newaction.html:49
-#: .\templates\process_mng\blank_flowchart.html:62
+#: .\templates\process_mng\blank_flowchart.html:65
 msgid "Responsible"
 msgstr "Отговорен"
 
-#: .\templates\actionplan_mng\show_actionplan.html:72
+#: .\templates\actionplan_mng\show_actionplan.html:75
 #: .\templates\actionplan_mng\show_actionplan_step.html:60
 #: .\templates\actions_mng\actions_list.html:63
 #: .\templates\actions_mng\show_action.html:53
@@ -306,7 +306,7 @@ msgstr "Отговорен"
 msgid "Target Date"
 msgstr "Целeва Дата"
 
-#: .\templates\actionplan_mng\show_actionplan.html:73
+#: .\templates\actionplan_mng\show_actionplan.html:76
 #: .\templates\actionplan_mng\show_actionplan_step.html:61
 #: .\templates\actions_mng\actions_list.html:65
 #: .\templates\actions_mng\show_action.html:55
@@ -328,8 +328,8 @@ msgid "Show Action Plan Step"
 msgstr "Покажи Стъпка от Плана"
 
 #: .\templates\actionplan_mng\show_actionplan_step.html:63
-#: .\templates\actionplan_mng\show_actionplan_step.html:87
-#: .\templates\actionplan_mng\show_actionplan_step.html:122
+#: .\templates\actionplan_mng\show_actionplan_step.html:98
+#: .\templates\actionplan_mng\show_actionplan_step.html:148
 #: .\templates\actions_mng\show_action.html:57
 #: .\templates\actions_mng\show_action.html:94
 #: .\templates\calibration_mng\show_calibration.html:54
@@ -340,7 +340,7 @@ msgstr "Покажи Стъпка от Плана"
 #: .\templates\core\my_tasks.html:58 .\templates\core\show_requirement.html:54
 #: .\templates\core\show_requirement.html:77
 #: .\templates\dox_mng\show_document.html:54
-#: .\templates\dox_mng\show_document.html:82
+#: .\templates\dox_mng\show_document.html:87
 #: .\templates\hr_mng\show_employee.html:54
 #: .\templates\hr_mng\show_employee.html:84
 #: .\templates\hr_mng\show_training.html:51
@@ -351,13 +351,13 @@ msgstr "Покажи Стъпка от Плана"
 #: .\templates\maintenance_mng\show_maintenance.html:54
 #: .\templates\maintenance_mng\show_maintenance.html:98
 #: .\templates\newactions_mng\show_newaction.html:54
-#: .\templates\newactions_mng\show_newaction.html:74
+#: .\templates\newactions_mng\show_newaction.html:77
 #: .\templates\opportunity_mng\show_opportunity.html:50
 #: .\templates\opportunity_mng\show_opportunity.html:61
 #: .\templates\process_mng\show_process.html:52
-#: .\templates\process_mng\show_process.html:66
+#: .\templates\process_mng\show_process.html:71
 #: .\templates\process_mng\show_process_step.html:58
-#: .\templates\process_mng\show_process_step.html:85
+#: .\templates\process_mng\show_process_step.html:90
 #: .\templates\resource_mng\show_resource.html:52
 #: .\templates\resource_mng\show_resource.html:63
 #: .\templates\risk_mng\show_risk.html:54
@@ -368,8 +368,8 @@ msgid "Edit"
 msgstr "Промени"
 
 #: .\templates\actionplan_mng\show_actionplan_step.html:64
-#: .\templates\actionplan_mng\show_actionplan_step.html:89
-#: .\templates\actionplan_mng\show_actionplan_step.html:125
+#: .\templates\actionplan_mng\show_actionplan_step.html:100
+#: .\templates\actionplan_mng\show_actionplan_step.html:151
 #: .\templates\actions_mng\show_action.html:58
 #: .\templates\actions_mng\show_action.html:96
 #: .\templates\calibration_mng\show_calibration.html:55
@@ -379,12 +379,12 @@ msgstr "Промени"
 #: .\templates\control_plan_mng\show_control_plan_step.html:112
 #: .\templates\core\delete_requirement.html:49
 #: .\templates\core\favorites.html:60 .\templates\core\favorites.html:93
-#: .\templates\core\manage_db_all.html:54 .\templates\core\my_tasks.html:59
+#: .\templates\core\manage_db_all.html:49 .\templates\core\my_tasks.html:59
 #: .\templates\core\show_requirement.html:55
 #: .\templates\core\show_requirement.html:79
 #: .\templates\customer_mng\delete_customer.html:49
 #: .\templates\dox_mng\show_document.html:55
-#: .\templates\dox_mng\show_document.html:84
+#: .\templates\dox_mng\show_document.html:89
 #: .\templates\hr_mng\show_employee.html:55
 #: .\templates\hr_mng\show_employee.html:86
 #: .\templates\hr_mng\show_training.html:52
@@ -395,14 +395,14 @@ msgstr "Промени"
 #: .\templates\maintenance_mng\show_maintenance.html:55
 #: .\templates\maintenance_mng\show_maintenance.html:100
 #: .\templates\newactions_mng\show_newaction.html:55
-#: .\templates\newactions_mng\show_newaction.html:76
+#: .\templates\newactions_mng\show_newaction.html:79
 #: .\templates\opportunity_mng\show_opportunity.html:51
 #: .\templates\opportunity_mng\show_opportunity.html:63
 #: .\templates\organization_mng\delete_org.html:50
 #: .\templates\process_mng\show_process.html:53
-#: .\templates\process_mng\show_process.html:68
+#: .\templates\process_mng\show_process.html:73
 #: .\templates\process_mng\show_process_step.html:59
-#: .\templates\process_mng\show_process_step.html:88
+#: .\templates\process_mng\show_process_step.html:93
 #: .\templates\resource_mng\show_resource.html:53
 #: .\templates\resource_mng\show_resource.html:65
 #: .\templates\risk_mng\show_risk.html:55
@@ -419,7 +419,7 @@ msgid "All Actions:"
 msgstr "Всички Действия:"
 
 #: .\templates\actions_mng\actions_list.html:48
-#: .\templates\core\requirements_matrix.html:51
+#: .\templates\core\requirements_matrix.html:55
 #: .\templates\dox_mng\document_list.html:48
 #: .\templates\hr_mng\employee_list.html:48
 msgid "filter"
@@ -428,12 +428,12 @@ msgstr "филтър"
 #: .\templates\actions_mng\actions_list.html:57
 #: .\templates\actions_mng\show_action.html:47
 #: .\templates\characteristics_mng\characteristics_list.html:50
-#: .\templates\control_plan_mng\control_plan_mng_index.html:90
+#: .\templates\control_plan_mng\control_plan_mng_index.html:94
 #: .\templates\control_plan_mng\show_control_plan.html:47
 #: .\templates\core\favorites.html:51 .\templates\core\my_tasks.html:50
 #: .\templates\dox_mng\document_list.html:58
 #: .\templates\dox_mng\show_document.html:47
-#: .\templates\process_mng\process_mng_index.html:108
+#: .\templates\process_mng\process_mng_index.html:112
 #: .\templates\process_mng\show_process.html:46
 #: .\templates\process_mng\show_process_step.html:54
 msgid "Type"
@@ -550,9 +550,9 @@ msgstr "Инв. Номер"
 #: .\templates\calibration_mng\calibration_list.html:50
 #: .\templates\calibration_mng\show_calibration.html:49
 #: .\templates\control_plan_mng\control_plan_step_list.html:51
-#: .\templates\control_plan_mng\show_control_plan.html:82
+#: .\templates\control_plan_mng\show_control_plan.html:87
 #: .\templates\control_plan_mng\show_control_plan_step.html:50
-#: .\templates\core\base.html:225
+#: .\templates\core\base.html:247
 #: .\templates\maintenance_mng\maintenance_list.html:50
 #: .\templates\maintenance_mng\show_maintenance.html:49
 #: .\templates\operations_mng\operations_mng_index.html:29
@@ -639,9 +639,9 @@ msgid "File"
 msgstr "Файл"
 
 #: .\templates\characteristics_mng\characteristics_list.html:71
-#: .\templates\core\favorites.html:87 .\templates\core\my_tasks.html:84
-#: .\templates\dox_mng\document_list.html:97
-#: .\templates\dox_mng\show_document.html:78
+#: .\templates\core\favorites.html:87 .\templates\core\my_tasks.html:89
+#: .\templates\dox_mng\document_list.html:102
+#: .\templates\dox_mng\show_document.html:83
 msgid "N/A"
 msgstr "Н/П"
 
@@ -685,33 +685,33 @@ msgstr "Списък КП Стъпки"
 msgid "Control Plan Management"
 msgstr "Управление Контролни Планове"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:62
+#: .\templates\control_plan_mng\control_plan_mng_index.html:66
 msgid "1) CP Creation Form"
 msgstr "1) Създай Нов КП"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:67
+#: .\templates\control_plan_mng\control_plan_mng_index.html:71
 msgid "add this cp"
 msgstr "добави този кп"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:74
+#: .\templates\control_plan_mng\control_plan_mng_index.html:78
 msgid "2) CP Step Creation Form"
 msgstr "2) Създаване КП Стъпка"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:79
+#: .\templates\control_plan_mng\control_plan_mng_index.html:83
 msgid "add this cp step"
 msgstr "добави кп стъпка"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:92
+#: .\templates\control_plan_mng\control_plan_mng_index.html:96
 #: .\templates\control_plan_mng\show_control_plan.html:50
 msgid "Rev"
 msgstr "Рев"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:93
+#: .\templates\control_plan_mng\control_plan_mng_index.html:97
 #: .\templates\control_plan_mng\show_control_plan.html:49
 msgid "Rev Date"
 msgstr "Рев Дата"
 
-#: .\templates\control_plan_mng\control_plan_mng_index.html:94
+#: .\templates\control_plan_mng\control_plan_mng_index.html:98
 #: .\templates\control_plan_mng\show_control_plan.html:51
 msgid "Product"
 msgstr "Продукт"
@@ -721,7 +721,7 @@ msgid "Control Plan Steps List:"
 msgstr "Списък КП Стъпки:"
 
 #: .\templates\control_plan_mng\control_plan_step_list.html:50
-#: .\templates\control_plan_mng\show_control_plan.html:81
+#: .\templates\control_plan_mng\show_control_plan.html:86
 #: .\templates\control_plan_mng\show_control_plan_step.html:49
 msgid "Machines"
 msgstr "Машина"
@@ -732,30 +732,30 @@ msgid "M. Eqip."
 msgstr "Изм. Об."
 
 #: .\templates\control_plan_mng\control_plan_step_list.html:54
-#: .\templates\control_plan_mng\show_control_plan.html:85
+#: .\templates\control_plan_mng\show_control_plan.html:90
 #: .\templates\control_plan_mng\show_control_plan_step.html:53
 msgid "Sample Size"
 msgstr "Извадка"
 
 #: .\templates\control_plan_mng\control_plan_step_list.html:55
-#: .\templates\control_plan_mng\show_control_plan.html:86
+#: .\templates\control_plan_mng\show_control_plan.html:91
 #: .\templates\control_plan_mng\show_control_plan_step.html:54
 msgid "Freq"
 msgstr "Честота"
 
 #: .\templates\control_plan_mng\control_plan_step_list.html:57
-#: .\templates\control_plan_mng\show_control_plan.html:88
+#: .\templates\control_plan_mng\show_control_plan.html:93
 #: .\templates\control_plan_mng\show_control_plan_step.html:56
 #: .\templates\interaction_mng\interaction_list.html:51
 #: .\templates\interaction_mng\show_interaction.html:51
-#: .\templates\process_mng\blank_flowchart.html:63
-#: .\templates\process_mng\process_mng_index.html:111
+#: .\templates\process_mng\blank_flowchart.html:66
+#: .\templates\process_mng\process_mng_index.html:115
 #: .\templates\process_mng\show_process_step.html:57
 msgid "Documents"
 msgstr "Документи"
 
 #: .\templates\control_plan_mng\control_plan_step_list.html:59
-#: .\templates\control_plan_mng\show_control_plan.html:90
+#: .\templates\control_plan_mng\show_control_plan.html:95
 #: .\templates\control_plan_mng\show_control_plan_step.html:58
 msgid "React. Plan"
 msgstr "План Реакция"
@@ -784,7 +784,7 @@ msgstr "Покажи Контр. План"
 msgid "Team"
 msgstr "Екип"
 
-#: .\templates\control_plan_mng\show_control_plan.html:83
+#: .\templates\control_plan_mng\show_control_plan.html:88
 msgid "Meas. Equipment"
 msgstr "Изм. Оборудване"
 
@@ -792,142 +792,178 @@ msgstr "Изм. Оборудване"
 msgid "Show Control Plan Step"
 msgstr "Покажи КП Стъпка"
 
+#: .\templates\core\about.html:41
+msgid "Info about this web application:"
+msgstr "Информация за това уеб приложение:"
+
+#: .\templates\core\about.html:45
+msgid ""
+"The purpose of this web app is to provide a solution to manage a company's "
+"quality management system in a more digitalized way. Allowing "
+"interconnection between the different types of data, ease of access and "
+"flexibility."
+msgstr ""
+"Целта на това уеб приложение е да предостави решение за управление на "
+"системата за управление на качеството на компанията по дигитален начин, "
+"като позволява взаимодействие между различните типове данни, лесен достъп и "
+"гъвкавост."
+
+#: .\templates\core\about.html:49
+msgid ""
+"All menu items can be customized and others can be created with "
+"functionalities similar or as a combination of the existing ones."
+msgstr ""
+"Всички елементи от менюто могат да бъдат персонализирани, а други могат да "
+"бъдат създадени с функционалности подобни или като комбинация на вече "
+"съществуващите."
+
+#: .\templates\core\about.html:53
+msgid "For all open questions please contact: "
+msgstr "По всички въпроси се свържете с:"
+
 #: .\templates\core\base.html:46
-msgid "Main Page"
+#| msgid "Main Page"
+msgid "Main"
 msgstr "Начало"
 
-#: .\templates\core\base.html:51
-msgid "Org chart"
-msgstr "Орг структура"
-
-#: .\templates\core\base.html:55
-msgid "Manage DB"
+#: .\templates\core\base.html:57
+#| msgid "Add to database"
+msgid "Database"
 msgstr "База Данни"
 
-#: .\templates\core\base.html:59 .\templates\core\logs.html:42
+#: .\templates\core\base.html:61 .\templates\core\base.html:75
+#: .\templates\core\logs.html:42
 msgid "Logs"
 msgstr "Логове"
 
-#: .\templates\core\base.html:63
+#: .\templates\core\base.html:65 .\templates\core\base.html:79
 msgid "Approval"
 msgstr "Одобрение"
 
-#: .\templates\core\base.html:67 .\templates\core\favorites.html:42
+#: .\templates\core\base.html:69
+msgid "API"
+msgstr "АПИ"
+
+#: .\templates\core\base.html:85 .\templates\core\favorites.html:42
 #: .\templates\hr_mng\training_matrix.html:47
 msgid "Favorites"
 msgstr "Любими"
 
-#: .\templates\core\base.html:97
+#: .\templates\core\base.html:89
+msgid "About"
+msgstr "Инфо"
+
+#: .\templates\core\base.html:119
 msgid "log out"
 msgstr "изход"
 
-#: .\templates\core\base.html:103
+#: .\templates\core\base.html:125
 msgid "Welcome"
 msgstr "Здравей"
 
-#: .\templates\core\base.html:116
+#: .\templates\core\base.html:138
 msgid "log in"
 msgstr "вход"
 
-#: .\templates\core\base.html:122
+#: .\templates\core\base.html:144
 msgid "guest"
 msgstr "гост"
 
-#: .\templates\core\base.html:154 .\templates\core\requirements_matrix.html:72
+#: .\templates\core\base.html:176 .\templates\core\requirements_matrix.html:76
 #: .\templates\core\show_requirement.html:47
 msgid "Organization"
 msgstr "Организация"
 
-#: .\templates\core\base.html:158
+#: .\templates\core\base.html:180
 msgid "Personnel and Trainings"
 msgstr "Персонал и Обучения"
 
-#: .\templates\core\base.html:162
+#: .\templates\core\base.html:184
 msgid "Documented Information"
 msgstr "Документи"
 
-#: .\templates\core\base.html:166
+#: .\templates\core\base.html:188
 #: .\templates\custom_forms\custom_review_form.html:82
 #: .\templates\custom_forms\custom_review_form_show.html:149
 msgid "Suppliers"
 msgstr "Доставчици"
 
-#: .\templates\core\base.html:173
+#: .\templates\core\base.html:195
 msgid "Business Processes"
 msgstr "Бизнес Процеси"
 
-#: .\templates\core\base.html:181
+#: .\templates\core\base.html:203
 msgid "Interactions"
 msgstr "Взаимодействия"
 
-#: .\templates\core\base.html:185
+#: .\templates\core\base.html:207
 #: .\templates\custom_forms\custom_review_form.html:92
 #: .\templates\custom_forms\custom_review_form_show.html:180
 msgid "Resources"
 msgstr "Ресурси"
 
-#: .\templates\core\base.html:189
+#: .\templates\core\base.html:211
 #: .\templates\custom_forms\custom_review_form.html:106
 #: .\templates\custom_forms\custom_review_form_show.html:215
 msgid "Risks"
 msgstr "Рискове"
 
-#: .\templates\core\base.html:193
+#: .\templates\core\base.html:215
 msgid "Improvements"
 msgstr "Подобрения"
 
-#: .\templates\core\base.html:197
+#: .\templates\core\base.html:219
 msgid "KPIs"
 msgstr "KPI"
 
-#: .\templates\core\base.html:201 .\templates\core\base.html:237
+#: .\templates\core\base.html:223 .\templates\core\base.html:259
 msgid "Audit Cheklist"
 msgstr "Одит Чеклист"
 
-#: .\templates\core\base.html:209
+#: .\templates\core\base.html:231
 msgid "Operational Processes"
 msgstr "Оперативни Процеси"
 
-#: .\templates\core\base.html:217
+#: .\templates\core\base.html:239
 #: .\templates\operations_mng\operations_mng_index.html:19
 msgid "Maintenance"
 msgstr "Поддръжка"
 
-#: .\templates\core\base.html:221
+#: .\templates\core\base.html:243
 #: .\templates\operations_mng\operations_mng_index.html:24
 msgid "Calibration"
 msgstr "Калибриране"
 
-#: .\templates\core\base.html:229
+#: .\templates\core\base.html:251
 msgid "Defect Catalogues"
 msgstr "Дефект Каталози"
 
-#: .\templates\core\base.html:233
+#: .\templates\core\base.html:255
 #: .\templates\operations_mng\operations_mng_index.html:34
 msgid "Control Plans"
 msgstr "Контр. Планове"
 
-#: .\templates\core\base.html:245
+#: .\templates\core\base.html:267
 msgid "Customers"
 msgstr "Клиенти"
 
-#: .\templates\core\base.html:250
+#: .\templates\core\base.html:272
 msgid "Requirements Matrix"
 msgstr "Матрица Изисквания"
 
-#: .\templates\core\base.html:255
+#: .\templates\core\base.html:277
 msgid "Statistics"
 msgstr "Статистика"
 
-#: .\templates\core\base.html:260
+#: .\templates\core\base.html:282
 msgid "Nonconformities"
 msgstr "Несъответствия"
 
-#: .\templates\core\base.html:270
+#: .\templates\core\base.html:292
 msgid "Action Plans"
 msgstr "Планове-Действие"
 
-#: .\templates\core\base.html:275
+#: .\templates\core\base.html:297
 msgid "Management Reviews"
 msgstr "Прегледи"
 
@@ -946,8 +982,8 @@ msgid "Revision"
 msgstr "Ревизия"
 
 #: .\templates\core\favorites.html:57 .\templates\core\favorites.html:76
-#: .\templates\core\manage_db_all.html:98
-#: .\templates\core\manage_db_all.html:111 .\templates\index.html:91
+#: .\templates\core\manage_db_all.html:102
+#: .\templates\core\manage_db_all.html:115 .\templates\index.html:91
 #: .\templates\index.html:101 .\templates\index.html:118
 #: .\templates\index.html:128 .\templates\index.html:145
 #: .\templates\index.html:154 .\templates\index.html:171
@@ -977,11 +1013,11 @@ msgid "Show"
 msgstr "Покажи"
 
 #: .\templates\core\favorites.html:58 .\templates\core\favorites.html:85
-#: .\templates\core\my_tasks.html:57 .\templates\core\my_tasks.html:82
+#: .\templates\core\my_tasks.html:57 .\templates\core\my_tasks.html:87
 #: .\templates\dox_mng\document_list.html:64
-#: .\templates\dox_mng\document_list.html:95
+#: .\templates\dox_mng\document_list.html:100
 #: .\templates\dox_mng\show_document.html:53
-#: .\templates\dox_mng\show_document.html:76
+#: .\templates\dox_mng\show_document.html:81
 msgid "Link"
 msgstr "Линк"
 
@@ -992,9 +1028,9 @@ msgstr "Фав"
 
 #: .\templates\core\logs.html:48 .\templates\kpi_mng\kpi_matrix.html:48
 #: .\templates\opportunity_mng\opportunity_matrix.html:48
-#: .\templates\process_mng\blank_flowchart.html:59
-#: .\templates\process_mng\blank_turtle.html:133
-#: .\templates\process_mng\process_mng_index.html:103
+#: .\templates\process_mng\blank_flowchart.html:62
+#: .\templates\process_mng\blank_turtle.html:140
+#: .\templates\process_mng\process_mng_index.html:107
 #: .\templates\process_mng\show_process_step.html:51
 #: .\templates\risk_mng\contingency_plan.html:57
 msgid "Nr"
@@ -1025,35 +1061,39 @@ msgstr "Изтрий / възстанови цялата база данни"
 msgid "Delete whole database"
 msgstr "Изтрий цялата база данни"
 
-#: .\templates\core\manage_db_all.html:66
-msgid ""
-"Select an excel file to recreate database after deletion (requirements acc. "
-"to `DemoX.xlsx`):"
-msgstr ""
-"Избери excel файл за възстановяване на базата данни (изисквания според "
-"`DemoX.xlsx`):"
+#: .\templates\core\manage_db_all.html:60
+msgid "Select an excel file to recreate database after deletion"
+msgstr "Избери excel файл за възстановяване на базата данни"
 
-#: .\templates\core\manage_db_all.html:78
+#: .\templates\core\manage_db_all.html:67
 msgid "Add to database"
 msgstr "Добави към базата данни"
 
-#: .\templates\core\manage_db_all.html:94
+#: .\templates\core\manage_db_all.html:77
+msgid "Export whole database to an excel (works only locally)"
+msgstr "Експортирай бд към excel (работи само локално)"
+
+#: .\templates\core\manage_db_all.html:83
+msgid "Export"
+msgstr "Експорт"
+
+#: .\templates\core\manage_db_all.html:98
 msgid "First Name"
 msgstr "Име"
 
-#: .\templates\core\manage_db_all.html:95
+#: .\templates\core\manage_db_all.html:99
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: .\templates\core\manage_db_all.html:96
+#: .\templates\core\manage_db_all.html:100
 msgid "Email"
 msgstr "Имейл"
 
-#: .\templates\core\manage_db_all.html:97
+#: .\templates\core\manage_db_all.html:101
 msgid "Superuser"
 msgstr "Суперпотребител"
 
-#: .\templates\core\manage_db_all.html:115
+#: .\templates\core\manage_db_all.html:119
 msgid "No users"
 msgstr "Няма потребители"
 
@@ -1069,15 +1109,15 @@ msgstr "Р. дата"
 msgid "R. details"
 msgstr "Р. детайли"
 
-#: .\templates\core\my_tasks.html:88
+#: .\templates\core\my_tasks.html:93
 msgid "Approve"
 msgstr "Одобри"
 
-#: .\templates\core\my_tasks.html:90
+#: .\templates\core\my_tasks.html:95
 msgid "Del Rev"
 msgstr "Изтрий Рев"
 
-#: .\templates\core\my_tasks.html:97
+#: .\templates\core\my_tasks.html:102
 msgid "Nothing currently"
 msgstr "Нищо към момента"
 
@@ -1093,30 +1133,30 @@ msgstr "Покажи / Скрий Формата"
 msgid "Requirements matrix"
 msgstr "Матрица на изискванията"
 
-#: .\templates\core\requirements_matrix.html:57
+#: .\templates\core\requirements_matrix.html:61
 msgid "Requirement Creation Form:"
 msgstr "Форма за създаване на изискване:"
 
-#: .\templates\core\requirements_matrix.html:62
+#: .\templates\core\requirements_matrix.html:66
 msgid "add this requirement"
 msgstr "добави това изискване"
 
-#: .\templates\core\requirements_matrix.html:73
+#: .\templates\core\requirements_matrix.html:77
 #: .\templates\core\show_requirement.html:48
 msgid "External Document"
 msgstr "Външен Документ"
 
-#: .\templates\core\requirements_matrix.html:74
+#: .\templates\core\requirements_matrix.html:78
 #: .\templates\core\show_requirement.html:49
 msgid "Clause"
 msgstr "Клауза"
 
-#: .\templates\core\requirements_matrix.html:75
+#: .\templates\core\requirements_matrix.html:79
 #: .\templates\core\show_requirement.html:50
 msgid "Clause Name"
 msgstr "Име Клауза"
 
-#: .\templates\core\requirements_matrix.html:76
+#: .\templates\core\requirements_matrix.html:80
 #: .\templates\core\show_requirement.html:51
 #: .\templates\custom_forms\custom_review_form_show.html:161
 #: .\templates\custom_forms\custom_review_form_show.html:190
@@ -1130,7 +1170,7 @@ msgstr "Име Клауза"
 #: .\templates\opportunity_mng\opportunity_list.html:49
 #: .\templates\opportunity_mng\show_opportunity.html:48
 #: .\templates\resource_mng\assign_resources.html:80
-#: .\templates\resource_mng\assign_resources.html:130
+#: .\templates\resource_mng\assign_resources.html:133
 #: .\templates\resource_mng\resource_list.html:49
 #: .\templates\resource_mng\show_resource.html:49
 #: .\templates\risk_mng\contingency_plan.html:61
@@ -1142,7 +1182,7 @@ msgstr "Име Клауза"
 msgid "Description"
 msgstr "Описание"
 
-#: .\templates\core\requirements_matrix.html:77
+#: .\templates\core\requirements_matrix.html:81
 #: .\templates\core\show_requirement.html:52
 msgid "Covered by"
 msgstr "Покрито от"
@@ -1351,7 +1391,7 @@ msgstr "Коментари към възможностите"
 #: .\templates\custom_forms\custom_review_form_show.html:75
 #: .\templates\kpi_mng\kpi_list.html:55 .\templates\kpi_mng\kpi_matrix.html:53
 #: .\templates\kpi_mng\show_kpi.html:55
-#: .\templates\process_mng\blank_turtle.html:162
+#: .\templates\process_mng\blank_turtle.html:169
 msgid "Target"
 msgstr "Цел"
 
@@ -1381,9 +1421,9 @@ msgstr "Оценка"
 
 #: .\templates\custom_forms\custom_review_form_show.html:191
 #: .\templates\process_mng\blank_turtle.html:41
-#: .\templates\process_mng\blank_turtle.html:134
+#: .\templates\process_mng\blank_turtle.html:141
 #: .\templates\resource_mng\assign_resources.html:81
-#: .\templates\resource_mng\assign_resources.html:131
+#: .\templates\resource_mng\assign_resources.html:134
 #: .\templates\resource_mng\resource_list.html:50
 #: .\templates\resource_mng\show_resource.html:50
 msgid "Quantity"
@@ -1673,7 +1713,7 @@ msgstr "Име на Клиент"
 #: .\templates\interaction_mng\interaction_list.html:48
 #: .\templates\interaction_mng\show_interaction.html:48
 #: .\templates\process_mng\blank_turtle.html:62
-#: .\templates\process_mng\blank_turtle.html:189
+#: .\templates\process_mng\blank_turtle.html:196
 msgid "Interaction Name"
 msgstr "Взаимодействие"
 
@@ -1781,7 +1821,7 @@ msgstr "От Процесна Стъпка"
 
 #: .\templates\interaction_mng\interaction_list.html:50
 #: .\templates\interaction_mng\show_interaction.html:50
-#: .\templates\process_mng\blank_turtle.html:188
+#: .\templates\process_mng\blank_turtle.html:195
 msgid "To Process Step"
 msgstr "Към Проц. Стъпка"
 
@@ -1811,7 +1851,7 @@ msgid "Edit KPI"
 msgstr "Промени KPI"
 
 #: .\templates\kpi_mng\kpi_list.html:41
-#: .\templates\process_mng\blank_turtle.html:156
+#: .\templates\process_mng\blank_turtle.html:163
 msgid "KPIs:"
 msgstr "Показатели:"
 
@@ -2042,7 +2082,7 @@ msgid "Edit Opportunity"
 msgstr "Промени Възможност"
 
 #: .\templates\opportunity_mng\opportunity_list.html:41
-#: .\templates\process_mng\blank_turtle.html:215
+#: .\templates\process_mng\blank_turtle.html:225
 msgid "Opportunities for improvement:"
 msgstr "Възможности за подобрение:"
 
@@ -2126,15 +2166,15 @@ msgid "Flowchart"
 msgstr "Флоучарт"
 
 #: .\templates\process_mng\blank_flowchart.html:45
-#: .\templates\process_mng\blank_turtle.html:124
+#: .\templates\process_mng\blank_turtle.html:127
 msgid "Managed by:"
 msgstr "Управляван от:"
 
-#: .\templates\process_mng\blank_flowchart.html:60
+#: .\templates\process_mng\blank_flowchart.html:63
 msgid "Step"
 msgstr "Стъпка"
 
-#: .\templates\process_mng\blank_flowchart.html:61
+#: .\templates\process_mng\blank_flowchart.html:64
 msgid "Step description"
 msgstr "Описание на стъпката"
 
@@ -2147,26 +2187,26 @@ msgstr "Ресурси:"
 msgid "Input elements:"
 msgstr "Входни елементи:"
 
-#: .\templates\process_mng\blank_turtle.html:88
+#: .\templates\process_mng\blank_turtle.html:91
 #: .\templates\risk_mng\risk_list.html:41
 msgid "Risks:"
 msgstr "Рискове:"
 
-#: .\templates\process_mng\blank_turtle.html:94
+#: .\templates\process_mng\blank_turtle.html:97
 #: .\templates\risk_mng\risk_list.html:52
 #: .\templates\risk_mng\show_risk.html:51
 msgid "Value"
 msgstr "Стойност"
 
-#: .\templates\process_mng\blank_turtle.html:119
+#: .\templates\process_mng\blank_turtle.html:122
 msgid "Turtle diagram"
 msgstr "Костенуркова диаграма"
 
-#: .\templates\process_mng\blank_turtle.html:128
+#: .\templates\process_mng\blank_turtle.html:135
 msgid "Steps:"
 msgstr "Стъпки:"
 
-#: .\templates\process_mng\blank_turtle.html:183
+#: .\templates\process_mng\blank_turtle.html:190
 msgid "Output elements:"
 msgstr "Изходни елементи:"
 
@@ -2214,38 +2254,38 @@ msgstr "Процесни Собственици"
 msgid "Process management"
 msgstr "Управление на процесите"
 
-#: .\templates\process_mng\process_mng_index.html:72
+#: .\templates\process_mng\process_mng_index.html:76
 msgid "1) Process Creation Form"
 msgstr "1) Създаване на Процес"
 
-#: .\templates\process_mng\process_mng_index.html:77
+#: .\templates\process_mng\process_mng_index.html:81
 msgid "add this process"
 msgstr "добави този процес"
 
-#: .\templates\process_mng\process_mng_index.html:84
+#: .\templates\process_mng\process_mng_index.html:88
 msgid "2) Process Step Creation Form"
 msgstr "2) Създаване Процесна Стъпка"
 
-#: .\templates\process_mng\process_mng_index.html:89
+#: .\templates\process_mng\process_mng_index.html:93
 msgid "add this process step"
 msgstr "добави процесната стъпка"
 
-#: .\templates\process_mng\process_mng_index.html:99
+#: .\templates\process_mng\process_mng_index.html:103
 #: .\templates\process_mng\show_process_step.html:47
 msgid "Process"
 msgstr "Процес"
 
-#: .\templates\process_mng\process_mng_index.html:100
+#: .\templates\process_mng\process_mng_index.html:104
 #: .\templates\process_mng\show_process_step.html:48
 msgid "Process Step"
 msgstr "Процесна Стъпка"
 
-#: .\templates\process_mng\process_mng_index.html:109
+#: .\templates\process_mng\process_mng_index.html:113
 #: .\templates\process_mng\show_process_step.html:55
 msgid "Step Name"
 msgstr "Име на Стъпка"
 
-#: .\templates\process_mng\process_mng_index.html:110
+#: .\templates\process_mng\process_mng_index.html:114
 #: .\templates\process_mng\show_process_step.html:56
 msgid "Resp"
 msgstr "Отг"
@@ -2297,7 +2337,7 @@ msgid "assign"
 msgstr "разпредели"
 
 #: .\templates\resource_mng\assign_resources.html:82
-#: .\templates\resource_mng\assign_resources.html:132
+#: .\templates\resource_mng\assign_resources.html:135
 msgid "Of Total"
 msgstr "От Общо"
 
@@ -2305,7 +2345,7 @@ msgstr "От Общо"
 msgid "Assigned To Person"
 msgstr "Към Служител"
 
-#: .\templates\resource_mng\assign_resources.html:133
+#: .\templates\resource_mng\assign_resources.html:136
 msgid "Assigned To Process"
 msgstr "Към Бизнес Процес"
 
@@ -2593,6 +2633,11 @@ msgstr "Оценки Доставчици:"
 #: .\templates\tools\generate_process_checklist.html:41
 msgid "Generate a Manufacturing Process Audit Checklist:"
 msgstr "Генерирай Ческлист за Одит на Производствен Процес:"
+
+#: .\templates\tools\generate_process_checklist.html:42
+#: .\templates\tools\generate_system_checklist.html:42
+msgid "* Works only if deployed locally!"
+msgstr ""
 
 #: .\templates\tools\generate_system_checklist.html:41
 msgid "Generate a System Audit Checklist:"
@@ -4149,14 +4194,17 @@ msgstr ""
 msgid "Unable to connect to qpid with SASL mechanism %s"
 msgstr ""
 
+#~ msgid "Org chart"
+#~ msgstr "Орг структура"
+
+#~ msgid "Manage DB"
+#~ msgstr "База Данни"
+
 #~ msgid "My Tasks"
 #~ msgstr "Мои Задачи"
 
 #~ msgid "Personnel"
 #~ msgstr "Персонал"
-
-#~ msgid "API"
-#~ msgstr "АПИ"
 
 #~ msgid "Back"
 #~ msgstr "Назад"

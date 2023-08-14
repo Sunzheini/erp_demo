@@ -51,11 +51,6 @@
 {#                    <a href="{% url 'organigramm' %}">{% trans "Org chart" %}</a>#}
 {#                </li>#}
 
-            	<li class="nav-item">
-                    <i class="fa-solid fa-database"></i>
-                    <a href="{% url 'extract database' %}">{% trans "Extract" %}</a>
-                </li>
-
                 {% if request.user.is_superuser%}
                 <li class="nav-item">
                     <i class="fa-solid fa-database"></i>

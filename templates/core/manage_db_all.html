@@ -57,7 +57,7 @@
                 <hr>
 
                 <p class="card-display-content">
-                    {% trans "Select an excel file to recreate database after deletion (requirements acc. to `DemoX.xlsx`):" %}
+                    {% trans "Select an excel file to recreate database after deletion" %}
                 </p>
                 <form action="{% url 'manage db all' %}" method="post" enctype="multipart/form-data">
                     {{ form2.as_div }}
@@ -74,7 +74,7 @@
                 </p>
                 <hr>
 
-                <p class="card-display-content">{% trans "Export whole database to an excel" %}</p>
+                <p class="card-display-content">{% trans "Export whole database to an excel (works only locally)" %}</p>
                 <form action="{% url 'manage db all' %}" method="post">
                     {{ form3 }}
                     {% csrf_token %}
