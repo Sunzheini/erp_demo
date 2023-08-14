@@ -156,6 +156,9 @@ class DatabaseManipulation:
                     # == chr(65 + col)
                     info_to_update[row][list_of_keys[table][col-1]] = worksheet[char + str(row)].value
 
+
+
+
         # Update all table 1 by 1
             if table == 'AccessLevels':
                 try:

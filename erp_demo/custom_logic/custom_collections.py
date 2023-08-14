@@ -18,7 +18,7 @@ document_types_bg = (
     ('Form', 'Формуляр'),
 )
 
-search_types_en = {
+search_types_en = (
     ('All', 'All'),
     ('Process', 'Processes'),
     ('ProcessStep', 'Process steps'),
@@ -45,9 +45,9 @@ search_types_en = {
     ('ProcessControlPlanStep', 'Control Plan Step'),
     ('DefectCatalogue', 'Defect Catalogue'),
     ('ManagementReview', 'Management Review'),
-}
+)
 
-search_types_bg = {
+search_types_bg = (
     ('All', 'Всички'),
     ('Process', 'Процеси'),
     ('ProcessStep', 'Процесни стъпки'),
@@ -74,7 +74,7 @@ search_types_bg = {
     ('ProcessControlPlanStep', 'Стъпка от Контролен План'),
     ('DefectCatalogue', 'Дефект каталог'),
     ('ManagementReview', 'Преглед от ръководството'),
-}
+)
 
 process_numbers = (
     ('All', 'All'),

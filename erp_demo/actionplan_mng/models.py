@@ -34,7 +34,6 @@ class ActionPlan(models.Model):
         blank=True,
         to_field='id',
         db_column="employee_id",
-        # on_delete=models.CASCADE,
         on_delete=models.SET_NULL, null=True,
     )
 
@@ -50,7 +49,6 @@ class ActionPlan(models.Model):
 
     @property
     def get_all_steps(self):
-        # current code in try and also added except
         try:
             result = ActionPlanStep.objects.filter(parent_action_plan_id=self.pk)
         except ActionPlanStep.DoesNotExist:
@@ -59,7 +57,6 @@ class ActionPlan(models.Model):
 
     @property
     def count_all_steps(self):
-        # current code in try and also added except
         try:
             result = ActionPlanStep.objects.filter(parent_action_plan_id=self.pk).count()
         except ActionPlanStep.DoesNotExist:
@@ -70,7 +67,6 @@ class ActionPlan(models.Model):
         if not self.slug:
             self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
 
-        # current code in try and also added except
         try:
             return super().save(*args, **kwargs)
         except ValidationError as v_error:
@@ -112,7 +108,6 @@ class ActionPlanStep(models.Model):
         max_length=MAX_LENGTH,
         blank=False, null=False,
         unique=True,
-        # added
         validators=(
             MinLengthValidator(MIN_LENGTH),
         )
@@ -123,7 +118,6 @@ class ActionPlanStep(models.Model):
         ActionPlan,
         to_field="id",
         db_column="parent_action_plan_id",
-        # on_delete=models.CASCADE,
         on_delete=models.SET_NULL, null=True,
     )
 

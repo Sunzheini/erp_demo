@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from erp_demo.main_app.views import MainAppViews
 
@@ -24,4 +25,8 @@ urlpatterns = [
     path('delete-revision/<int:pk>/<slug:slug>/', MainAppViews().delete_revision, name='delete revision'),
 
 	path('organigramm/', MainAppViews().organigramm, name='organigramm'),
+
+	path('extract-database/', MainAppViews().extract_database, name='extract database'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <p class="card-display-content">"Export whole database to an excel"</p>
+
+    <form action="{% url 'extract database' %}" method="post" enctype="multipart/form-data">
+        {{ form3.as_p }}
+        {% csrf_token %}
+
+        <button class="form-button" name="button_export_db">"Export"</button>
+    </form>
+
+    {% if message3 %}
+    <p>{{ message3 }}</p>
+    <a href="{% static 'excel/exported_data.xlsx' %}" download>Click here to download the file</a>
+    {% endif %}
+
+</body>
+</html>
