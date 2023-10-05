@@ -18,8 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7h3u-2kr%214m7&ar3r6zd9567tgpccxloqkaj!v_apc)q6rnz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -116,10 +116,10 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3k5sdaddaa0mp',
-        'USER': 'hzwmgesjwefyle',
-        'PASSWORD': '40706431cc914531a8c0099f96cd61f83c19dfd5afe9db08def7884c563a81b1',
-        'HOST': 'ec2-63-34-69-123.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd7pq673fnd7ri1',
+        'USER': 'myszbtogaztger',
+        'PASSWORD': '2caa7c74c30951a8b2edaa86911b27c24e0de806a6f36f36491ec443dd1d6a2a',
+        'HOST': 'ec2-63-33-143-66.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
