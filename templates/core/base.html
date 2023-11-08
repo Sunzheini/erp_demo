@@ -61,24 +61,17 @@
                     <a href="{% url 'logs' %}">{% trans "Logs" %}</a>
                 </li>
                 <li class="nav-item">
-                    <i class="fa-solid fa-file-arrow-up"></i>
-                    <a href="{% url 'my tasks' %}">{% trans "Approval" %}</a>
-                </li>
-                <li class="nav-item">
                     <i class="fa-brands fa-quinscape"></i>
                     <a href="{% url 'api list employees' %}">{% trans "API" %}</a>
                 </li>
+                {% endif %}
 
-                {% elif request.user.is_staff %}
-                <li class="nav-item">
-                    <i class="fa-sharp fa-solid fa-chart-simple"></i>
-                    <a href="{% url 'logs' %}">{% trans "Logs" %}</a>
-                </li>
+{#                {% elif request.user.is_staff %}#}
                 <li class="nav-item">
                     <i class="fa-solid fa-file-arrow-up"></i>
                     <a href="{% url 'my tasks' %}">{% trans "Approval" %}</a>
                 </li>
-                {% endif %}
+{#                {% endif %}#}
 
                 <li class="nav-item">
                     <i class="fa-solid fa-heart"></i>
