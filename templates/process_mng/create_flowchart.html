@@ -67,12 +67,17 @@
                     </div>
 
                     <div class="flowchart-box">
-                        {% for doc in process_step.get_related_documents %}
-                        <a class="table-link"
-                            href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
-                            <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}
-                        </a><br>
-                        {% endfor %}
+{#                        {% for doc in process_step.get_related_documents %}#}
+{#                        <a class="table-link"#}
+{#                            href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">#}
+{#                            <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}#}
+{#                        </a><br>#}
+{#                        {% endfor %}#}
+                        {% if process_step.get_ %}
+                            {{ process_step.get_related_documents }}
+                        {% else %}
+                            No documents
+                        {% endif %}
                     </div>
 
                 {% endfor %}

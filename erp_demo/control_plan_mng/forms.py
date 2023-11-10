@@ -77,8 +77,14 @@ class ProcessControlPlanMixin:
             self.fields['name'].label = PROCESS_CONTROL_PLAN_LABELS_BG['name']
             self.fields['number'].label = PROCESS_CONTROL_PLAN_LABELS_BG['number']
             self.fields['revision'].label = PROCESS_CONTROL_PLAN_LABELS_BG['revision']
-            self.fields['creation_date'].label = PROCESS_CONTROL_PLAN_LABELS_BG['creation_date']
-            self.fields['update_date'].label = PROCESS_CONTROL_PLAN_LABELS_BG['update_date']
+            try:
+                self.fields['creation_date'].label = PROCESS_CONTROL_PLAN_LABELS_BG['creation_date']
+            except KeyError:
+                pass
+            try:
+                self.fields['update_date'].label = PROCESS_CONTROL_PLAN_LABELS_BG['update_date']
+            except KeyError:
+                pass
             self.fields['product'].label = PROCESS_CONTROL_PLAN_LABELS_BG['product']
             self.fields['owner'].label = PROCESS_CONTROL_PLAN_LABELS_BG['owner']
             self.fields['team'].label = PROCESS_CONTROL_PLAN_LABELS_BG['team']
@@ -103,6 +109,7 @@ class ProcessControlPlanForm(ProcessControlPlanMixin, forms.ModelForm):
     class Meta:
         model = ProcessControlPlan
         exclude = ['creation_date', 'update_date']
+        # fields = '__all__'
 
         labels = PROCESS_CONTROL_PLAN_LABELS_EN
 

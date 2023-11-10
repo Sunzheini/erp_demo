@@ -78,7 +78,7 @@ class CharacteristicDeleteForm(forms.ModelForm, CharacteristicFormMixin):
 class CharacteristicViewForm(forms.ModelForm, CharacteristicFormMixin):
     class Meta:
         model = Characteristic
-        exclude = ['slug', 'attachment']
+        exclude = ['slug']
 
         labels = LABELS_EN
 

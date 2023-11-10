@@ -159,6 +159,7 @@
                                    {% for doc in i.get_related_documents %}
                                        <a class="table-link" href="{% url 'show document' pk=doc.document_id.pk slug=doc.document_id.slug %}">
                                            <i class="fa-solid fa-magnifying-glass"></i>{{ doc.document_id.name }}</a>
+                                       <br>
                                     {% endfor %}
                                 </td>
 
