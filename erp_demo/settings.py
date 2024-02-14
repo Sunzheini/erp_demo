@@ -5,12 +5,33 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.urls import reverse_lazy
+from decouple import config, Csv
+
+
+"""
+Using Heroku CLI for the env vars:
+
+write the vars inside Settings -> Reveal Config Vars
+write them in settings.py with os.environ.get('VAR_NAME') 
+install file from heroku site
+heroku login, it will open the browser
+`D:\Study\Projects\PycharmProjects\erp_demo>heroku config -a erp-demo` to see the config vars
+`D:\Study\Projects\PycharmProjects\erp_demo>heroku logs --tail -a erp-demo` to see the logs in the console
+"""
+
+"""
+Switch this to True if you use local vars and to False if you use heroku vars
+"""
+LOCAL_VARS = False
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+if LOCAL_VARS:
+    SECRET_KEY = config('SECRET_KEY')
+else:
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -102,29 +123,32 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'erp_demo.wsgi.application'
 
-# heroku
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
-    }
-}
 
-# without heroku
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'erp_demo_db',         # same name as the DB created
-#         'USER': 'postgres-user',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',    # Not host.docker.internal - only for pgadmin
-#         'PORT': '5432',
-#     }
-# }
+if LOCAL_VARS:
+    # local
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'erp_demo_db',  # same name as the DB created
+            'USER': 'postgres-user',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',  # Not host.docker.internal - only for pgadmin
+            'PORT': '5432',
+        }
+    }
+else:
+    # heroku
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT'),
+        }
+    }
+
 
 # without heroku
 # CACHES = {
@@ -197,12 +221,19 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
 # needed for cloudinary
-cloudinary.config(
-    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.environ.get('CLOUDINARY_API_KEY'),
-    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
-    secure=True,
-)
+if LOCAL_VARS:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': config('CLOUD_NAME'),
+        'API_KEY': config('API_KEY'),
+        'API_SECRET': config('API_SECRET'),
+    }
+else:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+        'API_KEY': os.environ.get('API_KEY'),
+        'API_SECRET': os.environ.get('API_SECRET'),
+    }
+
 # also correction in models and the links for the file in templates
 
 
