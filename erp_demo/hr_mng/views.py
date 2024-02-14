@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from erp_demo.custom_logic.custom_logic import SupportFunctions, DataManipulation
 from erp_demo.hr_mng.forms import EmployeePositionForm
-from erp_demo.hr_mng.models import Employee, Trainings
+from erp_demo.hr_mng.models import Employee, Trainings, Positions
 from erp_demo.custom_logic.custom_prototypes import PrototypeViews
 
 
@@ -62,3 +62,7 @@ class HrMngViewsTrainings(PrototypeViews):
             print(f"Unexpected error: {e}")
             return render(request, 'error.html',
                           {'error_message': f'An unexpected error occurred: {e}.'})
+
+
+class HrMngViewsPositions(PrototypeViews):
+    pass

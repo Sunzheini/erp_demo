@@ -44,6 +44,21 @@ TRAINING_LABELS_BG = {
     'description': 'Описание',
 }
 
+POSITION_LABELS_EN = {
+    'code': 'Code',
+    'name': 'Name',
+    'access_rights': 'Access rights',
+    'access_levels': 'Access levels',
+}
+
+POSITION_LABELS_BG = {
+    'code': 'Код',
+    'name': 'Име',
+    'access_rights': 'Права за достъп',
+    'access_levels': 'Нива на достъп',
+}
+
+
 class EmployeeModelAndExcludeMixin:
     class Meta:
         model = Employee
@@ -97,6 +112,21 @@ class TrainingsModelAndExcludeMixin:
             self.fields['code'].label = TRAINING_LABELS_BG['code']
             self.fields['name'].label = TRAINING_LABELS_BG['name']
             self.fields['description'].label = TRAINING_LABELS_BG['description']
+
+
+class PositionsModelAndExcludeMixin:
+    class Meta:
+        model = Positions
+        exclude = ['slug']
+
+    def change_labels_to_bg(self):
+        language_code = translation.get_language()
+        if language_code == 'bg':
+            self.fields['code'].label = POSITION_LABELS_BG['code']
+            self.fields['name'].label = POSITION_LABELS_BG['name']
+            self.fields['access_rights'].label = POSITION_LABELS_BG['access_rights']
+            self.fields['access_levels'].label = POSITION_LABELS_BG['access_levels']
+
 
 # ----------------------------------------------------------------------
 
@@ -187,3 +217,38 @@ class TrainingsDeleteForm(forms.ModelForm, TrainingsModelAndExcludeMixin):
     def save(self, commit=True):
         self.instance.delete()
         return self.instance
+
+
+# Positions
+# ----------------------------------------------------------------------
+class PositionsForm(forms.ModelForm, PositionsModelAndExcludeMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.change_labels_to_bg()
+
+
+class PositionsEditForm(forms.ModelForm, PositionsModelAndExcludeMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.change_labels_to_bg()
+
+
+class PositionsDeleteForm(forms.ModelForm, PositionsModelAndExcludeMixin):
+    class Meta:
+        model = Positions
+        exclude = ['slug']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.change_labels_to_bg()
+        self.__disable_fields()
+
+    def __disable_fields(self):
+        for name, field in self.fields.items():
+            field.widget.attrs['readonly'] = 'readonly'
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance
+
+# ----------------------------------------------------------------------

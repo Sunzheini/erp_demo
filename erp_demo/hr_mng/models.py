@@ -161,6 +161,15 @@ class Positions(models.Model):
         # doesn't auto create a table but uses the one specified
     )
 
+    slug = models.SlugField(
+        blank=True, null=True, editable=False,
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"{self.code}-{self.name}")
+        return super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.name}"
 

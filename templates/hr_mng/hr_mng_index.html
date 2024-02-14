@@ -20,7 +20,7 @@
 {#                <span class="card-btn-title">Back</span>#}
 {#                <span class="card-btn-desc">Go back to the document list</span>#}
 {#            </button>#}
-
+            
             <button class="card-btn" onclick="location.href='{% url 'add employee' %}';">
                 <span class="card-btn-title">{% trans "Add Employee" %}</span>
                 <span class="card-btn-desc">Add a new employee and define their properties</span>
@@ -35,8 +35,11 @@
                 <span class="card-btn-title">{% trans "Trainings" %}</span>
                 <span class="card-btn-desc">Manage all training activities. Add, edit, delete</span>
             </button>
-
-            <button class="card-btn card-btn-hidden"></button>
+            
+            <button class="card-btn" onclick="location.href='{% url 'position index' %}';">
+                <span class="card-btn-title">{% trans "Positions" %}</span>
+                <span class="card-btn-desc">Manage all positions. Add, edit, delete</span>
+            </button>
 
         </div>
     </section>

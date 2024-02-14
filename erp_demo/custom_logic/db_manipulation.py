@@ -200,6 +200,7 @@ class DatabaseManipulation:
                         code=info_to_update[obj]['code'],
                         name=info_to_update[obj]['name'],
                         access_rights=AccessRights.objects.all()[0],  # ToDo: hardcoded for the excel upload
+                        slug=slugify(f"{info_to_update[obj]['code']}-{info_to_update[obj]['name']}"),
                     ) for obj in info_to_update.keys()])
                 except Exception as e:
                     print(f"Unexpected error: {e}")
