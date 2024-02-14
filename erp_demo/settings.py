@@ -5,7 +5,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.urls import reverse_lazy
-from decouple import config, Csv
+# from decouple import config, Csv
 
 
 """
@@ -28,10 +28,14 @@ LOCAL_VARS = False
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-if LOCAL_VARS:
-    SECRET_KEY = config('SECRET_KEY')
-else:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+# if LOCAL_VARS:
+#     SECRET_KEY = config('SECRET_KEY')
+# else:
+#     SECRET_KEY = os.environ.get('SECRET_KEY')
+
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -124,30 +128,41 @@ TEMPLATES = [
 WSGI_APPLICATION = 'erp_demo.wsgi.application'
 
 
-if LOCAL_VARS:
-    # local
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'erp_demo_db',  # same name as the DB created
-            'USER': 'postgres-user',
-            'PASSWORD': 'password',
-            'HOST': 'localhost',  # Not host.docker.internal - only for pgadmin
-            'PORT': '5432',
-        }
+# if LOCAL_VARS:
+#     # local
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'erp_demo_db',  # same name as the DB created
+#             'USER': 'postgres-user',
+#             'PASSWORD': 'password',
+#             'HOST': 'localhost',  # Not host.docker.internal - only for pgadmin
+#             'PORT': '5432',
+#         }
+#     }
+# else:
+#     # heroku
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': os.environ.get('DB_ENGINE'),
+#             'NAME': os.environ.get('DB_NAME'),
+#             'USER': os.environ.get('DB_USER'),
+#             'PASSWORD': os.environ.get('DB_PASSWORD'),
+#             'HOST': os.environ.get('DB_HOST'),
+#             'PORT': os.environ.get('DB_PORT'),
+#         }
+#     }
+
+DATABASES = {
+    'default': {
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
-else:
-    # heroku
-    DATABASES = {
-        'default': {
-            'ENGINE': os.environ.get('DB_ENGINE'),
-            'NAME': os.environ.get('DB_NAME'),
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': os.environ.get('DB_HOST'),
-            'PORT': os.environ.get('DB_PORT'),
-        }
-    }
+}
 
 
 # without heroku
@@ -221,18 +236,24 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
 # needed for cloudinary
-if LOCAL_VARS:
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': config('CLOUD_NAME'),
-        'API_KEY': config('API_KEY'),
-        'API_SECRET': config('API_SECRET'),
-    }
-else:
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-        'API_KEY': os.environ.get('API_KEY'),
-        'API_SECRET': os.environ.get('API_SECRET'),
-    }
+# if LOCAL_VARS:
+#     CLOUDINARY_STORAGE = {
+#         'CLOUD_NAME': config('CLOUD_NAME'),
+#         'API_KEY': config('API_KEY'),
+#         'API_SECRET': config('API_SECRET'),
+#     }
+# else:
+#     CLOUDINARY_STORAGE = {
+#         'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+#         'API_KEY': os.environ.get('API_KEY'),
+#         'API_SECRET': os.environ.get('API_SECRET'),
+#     }
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
+}
 
 # also correction in models and the links for the file in templates
 
