@@ -1,24 +1,18 @@
 import os.path
 from os.path import join
 from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.urls import reverse_lazy
 
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7h3u-2kr%214m7&ar3r6zd9567tgpccxloqkaj!v_apc)q6rnz'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = False
 
 ALLOWED_HOSTS = [
@@ -108,24 +102,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'erp_demo.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 # heroku
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': os.environ.get('DB_ENGINE'),
-        # 'NAME': 'd7pq673fnd7ri1',
         'NAME': os.environ.get('DB_NAME'),
-        # 'USER': 'myszbtogaztger',
         'USER': os.environ.get('DB_USER'),
-        # 'PASSWORD': '2caa7c74c30951a8b2edaa86911b27c24e0de806a6f36f36491ec443dd1d6a2a',
         'PASSWORD': os.environ.get('DB_PASSWORD'),
-        # 'HOST': 'ec2-63-33-143-66.eu-west-1.compute.amazonaws.com',
         'HOST': os.environ.get('DB_HOST'),
-        # 'PORT': '5432',
         'PORT': os.environ.get('DB_PORT'),
     }
 }
@@ -152,8 +136,6 @@ DATABASES = {
 #     }
 # }
 
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -170,9 +152,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 # LANGUAGE_CODE = 'bg'
@@ -206,10 +185,6 @@ translate forms, upload button language, choices
     (like customers/models.py and customers/forms.py)
 """
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -223,9 +198,9 @@ MEDIA_ROOT = BASE_DIR / 'media_files'
 
 # needed for cloudinary
 cloudinary.config(
-    cloud_name="hpnglbxlz",
-    api_key="713429118316855",
-    api_secret="veB_dwVAE954b9yeyx3rCUNnV2o",
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
     secure=True,
 )
 # also correction in models and the links for the file in templates
