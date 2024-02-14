@@ -115,18 +115,18 @@ WSGI_APPLICATION = 'erp_demo.wsgi.application'
 # heroku
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': os.environ.get('DB_ENGINE'),
-        # 'NAME': 'd7pq673fnd7ri1',
-        'NAME': os.environ.get('DB_NAME'),
-        # 'USER': 'myszbtogaztger',
-        'USER': os.environ.get('DB_USER'),
-        # 'PASSWORD': '2caa7c74c30951a8b2edaa86911b27c24e0de806a6f36f36491ec443dd1d6a2a',
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        # 'HOST': 'ec2-63-33-143-66.eu-west-1.compute.amazonaws.com',
-        'HOST': os.environ.get('DB_HOST'),
-        # 'PORT': '5432',
-        'PORT': os.environ.get('DB_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        # 'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': 'd7pq673fnd7ri1',
+        # 'NAME': os.environ.get('DB_NAME'),
+        'USER': 'myszbtogaztger',
+        # 'USER': os.environ.get('DB_USER'),
+        'PASSWORD': '2caa7c74c30951a8b2edaa86911b27c24e0de806a6f36f36491ec443dd1d6a2a',
+        # 'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': 'ec2-63-33-143-66.eu-west-1.compute.amazonaws.com',
+        # 'HOST': os.environ.get('DB_HOST'),
+        'PORT': '5432',
+        # 'PORT': os.environ.get('DB_PORT'),
     }
 }
 
