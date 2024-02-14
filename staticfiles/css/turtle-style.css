@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F3F3F3;
+  }
+
+.turtle-container {
+  margin: 20px auto 0 auto;
+  width: 1800px;
+  height: 900px;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: #CCCCCCFF;
+
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.fa-diagram-project {
+  margin-top: 10px;
+}
+
+.table-link {
+  color: #1c1a1a;
+  text-decoration: none;
+}
+
+.table-link:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+#main-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#process-title {
+  margin-top: 5px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.vertical-1, .vertical-2 {
+  border: 1px solid #676565;
+  position: absolute;
+  width: 2px;
+  height: 645px;
+
+  top: 127px;
+  left: 653px;
+}
+
+.vertical-2 {
+    left: 1142px;
+}
+
+.horizontal-1, .horizontal-2, .horizontal-3, .horizontal-4, .horizontal-5, .horizontal-6 {
+  border: 1px solid #676565;
+  position: absolute;
+  width: 55px;
+  height: 2px;
+}
+
+.horizontal-1 {
+  width: 27px;
+  top: 127px;
+  left: 627px;
+}
+
+.horizontal-2 {
+  top: 450px;
+  left: 627px;
+}
+
+.horizontal-3 {
+  width: 27px;
+  top: 770px;
+  left: 627px;
+}
+
+.horizontal-4 {
+  width: 27px;
+  top: 127px;
+  left: 1142px;
+}
+
+.horizontal-5 {
+  top: 450px;
+  left: 1115px;
+}
+
+.horizontal-6 {
+  width: 27px;
+  top: 770px;
+  left: 1142px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.turtle-section {
+  /*border: 1px solid white;*/
+  height: 91%;
+  padding: 5px;
+  /*background-color: #ece4d6;*/
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.turtle-section-left, .turtle-section-right {
+  width: 33%;
+}
+
+.turtle-section-middle {
+  width: 25%;
+
+  justify-content: flex-start;
+  align-items: center;
+  gap: 38px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.turtle-box {
+  width: 100%;
+  background-color: #FFFFFFFF;
+  border-radius: 0.3rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.turtle-box:hover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.turtle-box-title {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.turtle-box-text {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.turtle-box-1, .turtle-box-3, .turtle-box-7, .turtle-box-9 {
+  height: 20%;
+}
+
+.turtle-box-2, .turtle-box-8 {
+  height: 50%;
+}
+
+.turtle-box-4 {
+  height: 7%;
+
+  box-shadow: none;
+  background-color: #CCCCCCFF;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.turtle-box-5 {
+  height: 8.3%;
+  margin-bottom: 2px;
+
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+
+  box-shadow: none;
+  background-color: #CCCCCCFF;
+}
+
+.turtle-box-6 {
+  height: 50%;
+  overflow: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  overflow-y: auto; /* Show the vertical scrollbar */
+}
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the handle */
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the handle on hover */
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.table-data-container {
+  position: absolute;
+  top: 45px;
+
+  width: 95%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: solid 1px #E89238FF;
+  padding: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.table-data  {
+  border-collapse: collapse;
+  /*table-layout: fixed;*/
+  width: 100%;
+}
+
+.table-data th {
+  background-color: #E89238FF;
+  text-align: left;
+  border: solid 1px #CCCCCCFF;
+  font-size: 15px;
+  color: #333333FF;
+  padding: 0 0.6rem 0 0.5rem;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.table-data td {
+  border: solid 1px #CCCCCCFF;
+  font-size: 15px;
+  color: #333333FF;
+  padding: 0 0.6rem 0 0.5rem;
+  max-width: 250px;
+  overflow: hidden;
+}
+
+.table-data #t-number {
+  width: 45px;
+}
+
+.table-data tbody tr:nth-child(even) {
+  background-color: #F3F3F3;
+}
+
+
+
+
+
+
+
+

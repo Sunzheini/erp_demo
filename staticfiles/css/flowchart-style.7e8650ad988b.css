@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #F3F3F3;
+  }
+
+.flowchart-container {
+  margin: 20px auto 0 auto;
+  width: 1800px;
+  height: 900px;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: #CCCCCCFF;
+
+  display: flex;
+  /*gap: 40px;*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
+}
+
+.fa-diagram-project {
+  margin-left: 120px;
+}
+
+.fa-arrow-down {
+  position: absolute;
+  top: 90%;
+  font-size: 0.6rem;
+}
+
+.table-link {
+  color: #1c1a1a;
+  text-decoration: none;
+}
+
+.table-link:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+#main-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#process-title {
+  margin-top: 5px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.flowchart-section {
+}
+
+.flowchart-section-top {
+  height: 7%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 94%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 0.3rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.flowchart-section-bottom {
+  height: 84%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 95%;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.flowchart-box {
+  width: 100%;
+  min-height: 93px;
+  background-color: #FFFFFFFF;
+  border-radius: 0.3rem;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  margin-bottom: 50px;
+
+  overflow: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  overflow-y: auto; /* Show the vertical scrollbar */
+}
+
+.flowchart-box:last-child {
+  margin-bottom: 0;
+}
+
+.flowchart-box:hover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.flowchart-box-title {
+  font-size: 1rem;
+}
+
+.flowchart-box-text {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.flowchart-box-type-0 {
+  min-height: 0;
+  width: 300px;
+
+  box-shadow: none;
+  background-color: #CCCCCCFF;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 0;
+}
+
+.flowchart-box-type-0:hover {
+  box-shadow: none;
+}
+
+.flowchart-box-type-1 {
+  min-height: 0;
+  width: 500px;
+
+  margin-bottom: 0;
+
+  box-shadow: none;
+  background-color: #CCCCCCFF;
+}
+
+.flowchart-box-type-1:hover {
+  box-shadow: none;
+}
+
+.flowchart-box-type-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: 100%;
+
+  overflow: scroll;
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  overflow-y: auto; /* Show the vertical scrollbar */
+}
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the handle */
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the handle on hover */
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.table-data-container {
+  position: absolute;
+  top: 15px;
+
+  width: 98%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: solid 1px #E89238FF;
+  padding: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.table-data  {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-data th {
+  background-color: #E89238FF;
+  text-align: center;
+  border: solid 1px #CCCCCCFF;
+  font-size: 15px;
+  color: #333333FF;
+  padding: 0 0.6rem 0 0.5rem;
+  /*max-width: 250px;*/
+  overflow: hidden;
+}
+
+.table-data td {
+  border: solid 1px #CCCCCCFF;
+  font-size: 15px;
+  color: #333333FF;
+  padding: 0 0.6rem 0 0.5rem;
+  /*max-width: 250px;*/
+  overflow: hidden;
+}
+
+.table-data .t-number {
+  width: 2%;
+}
+
+.table-data .t-shape {
+  width: 20%;
+}
+
+.table-data .t-step {
+  width: 60%;
+}
+
+.t-step-holder {
+  margin-top: 2px;
+  margin-bottom: 5px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+
+  cursor: pointer;
+}
+
+.t-step-holder.expanded {
+  -webkit-line-clamp: unset;
+  white-space: normal;
+}
+
+.table-data .t-resp {
+  width: 8%;
+}
+
+.table-data .t-dox {
+  width: 10%;
+  word-wrap: break-word;
+}
+
+.table-data tbody tr:nth-child(even) {
+  background-color: #F3F3F3;
+}
+
+/* ------------------------------------------------------------------------ */
+
+.shape-box {
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.shape-box-text {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.shape-box-text-decision {
+  width: 100px;
+}

@@ -1,0 +1,141 @@
+/* specific for this --------------------------------------------------------- */
+.div-custom-form {
+    margin-bottom: 0.5rem;
+    border: solid 1px var(--clr-nav-bg);
+    padding: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.display-content-section .all-display-content-container .card-display .table-form .th-new {
+  text-align: center;
+  font-size: 14px;
+  font-weight: normal;
+  color: #666666;
+  height: 24px;
+}
+
+.required {
+  color: red;
+}
+
+/* --------------------------------------------------------------------------- */
+
+.display-content-section .all-display-content-container .card-display .table-form  {
+  margin-bottom: 0.5rem;
+  padding: 3px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+
+  /* --- */
+  border: solid 1px var(--clr-table-border);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form:hover {
+  box-shadow: 0px 0px 10px 0px rgba(164, 148, 148, 0.5);
+}
+
+.display-content-section .all-display-content-container .card-display .table-form thead th {
+  text-align: center;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form tbody th {
+  background-color: var(--clr-card-bg);
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 5px;
+
+  /* --- */
+  width: 144px;
+  height: 32px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form tbody th.when-1 {
+  width: 16.5%;
+  height: 28px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form tbody th.when-3 {
+  width: 100px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form tbody td {
+  background-color: var(--clr-card-bg);
+  padding-left: 5px;
+  padding-right: 10px;
+  font-size: 14px;
+
+  /* --- */
+  width: 300px;
+  height: 32px;
+  vertical-align: top;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form tbody td.when-1 {
+  height: 28px;
+  vertical-align: middle;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form tbody td.when-3 {
+  width: 100px;
+  vertical-align: middle;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form td > select {
+  width: 100%;
+  height: 24px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form td.multiple-select > select {
+  width: 100%;
+  height: 55px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form td > textarea {
+  width: 100%;
+  height: 48px;
+}
+
+.display-content-section .all-display-content-container .card-display .table-form td > input {
+  width: 100%;
+  height: 24px;
+}
+
+/* when not a form but only to show */
+/* -------------------------------------------------------------------------------------------- */
+.showing {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding-top: 2px;
+}
+
+/* Styles for the inner-table class */
+.inner-table {
+    width: 100%;   /* set the width to occupy the full space of its container */
+    border-collapse: collapse; /* collapse cell borders into single line */
+}
+
+.inner-table thead {
+    background-color: #f2f2f2; /* set a grey background for the header */
+}
+
+.inner-table thead td {
+    font-weight: bold;  /* make the header text bold */
+    padding: 5px;  /* add padding around the text */
+    text-align: center; /* align the text to the center */
+}
+
+.inner-table tbody tr {
+    border-top: 1px solid #ddd; /* add a light border at the top of each row */
+}
+
+.inner-table tbody tr td {
+    padding: 5px;  /* add padding around the text */
+}
+
+.td-centered {
+    text-align: center;
+}
+
+

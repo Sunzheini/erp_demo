@@ -1,0 +1,51 @@
+block page_title
+
+
+
+block nav
+.header (header)
+	.navigation (nav)
+		.nav-list (ul)
+			.nav-item (li)
+				a
+				i
+
+	block page_name
+	.page-title (h1)
+
+
+
+block card_buttons
+.card-buttons-section (section)
+	.all-card-buttons-container (div)
+		.card-btn (button)
+			.card-btn-title (span)
+			.card-btn-desc (span)
+
+
+
+block display_content
+.display-content-section (section)
+	.all-display-content-container (div)
+		.card-display (div)
+			.card-display-title (h2)
+			.card-display-content (p)
+			.card-display-content-bold (p)
+
+			.table-form (table)
+				.form_button (button)
+			.card-display-return message (p)
+
+			.organigramm-grid (div)
+				.organigramm-box (div)
+					.table-link (a)
+
+			.table-data-container (div)
+				.table-data (table)
+
+.footer (footer)
+	.footer-title (h2)
+
+
+
+
