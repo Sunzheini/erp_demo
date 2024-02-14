@@ -156,10 +156,7 @@ class DatabaseManipulation:
                     # == chr(65 + col)
                     info_to_update[row][list_of_keys[table][col-1]] = worksheet[char + str(row)].value
 
-
-
-
-        # Update all table 1 by 1
+        # Update all tables 1 by 1
             if table == 'AccessLevels':
                 try:
                     AccessLevels.objects.bulk_create([AccessLevels(
@@ -267,8 +264,8 @@ class DatabaseManipulation:
                         type=info_to_update[obj]['type'],
                         number=info_to_update[obj]['number'],
                         name=info_to_update[obj]['name'],
-                        # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
-                        parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process']) - 1],
+                        parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
+                        # parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process']) - 1],
 
                         description=info_to_update[obj]['description'],
                         responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
@@ -455,8 +452,11 @@ class DatabaseManipulation:
                 try:
                     Machine.objects.bulk_create([Machine(
                         name=info_to_update[obj]['name'],
+                        inventory_number=info_to_update[obj]['inventory_number'],
+                        characteristics=info_to_update[obj]['characteristics'],
                         slug=slugify(f"{translate_to_maimunica(info_to_update[obj]['name'][0:30])}"),
                     ) for obj in info_to_update.keys()])
+
                 except Exception as e:
                     print(f"Unexpected error: {e}")
                     pass

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-14 11:18+0300\n"
+"POT-Creation-Date: 2024-02-14 16:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,6 +110,8 @@ msgstr "Стъпка от Плана"
 #: .\templates\defect_cat_mng\show_defect_cat.html:62
 #: .\templates\dox_mng\document_list.html:60
 #: .\templates\dox_mng\show_document.html:49
+#: .\templates\hr_mng\position_list.html:49
+#: .\templates\hr_mng\show_position.html:48
 #: .\templates\hr_mng\show_training.html:48
 #: .\templates\hr_mng\training_list.html:49
 #: .\templates\hr_mng\training_matrix.html:51
@@ -177,11 +179,12 @@ msgstr "Обхват"
 #: .\templates\characteristics_mng\characteristics_list.html:54
 #: .\templates\control_plan_mng\control_plan_mng_index.html:101
 #: .\templates\control_plan_mng\control_plan_step_list.html:61
-#: .\templates\core\base.html:287 .\templates\core\requirements_matrix.html:86
+#: .\templates\core\base.html:280 .\templates\core\requirements_matrix.html:86
 #: .\templates\customer_mng\customer_list.html:53
 #: .\templates\defect_cat_mng\defect_cat_list.html:53
 #: .\templates\dox_mng\document_list.html:69
 #: .\templates\hr_mng\employee_list.html:66
+#: .\templates\hr_mng\position_list.html:52
 #: .\templates\hr_mng\show_employee.html:52
 #: .\templates\hr_mng\training_list.html:55
 #: .\templates\interaction_mng\interaction_list.html:53
@@ -221,6 +224,7 @@ msgstr "Изтрий План-Действие"
 #: .\templates\defect_cat_mng\delete_defect_cat.html:49
 #: .\templates\dox_mng\delete_document.html:49
 #: .\templates\hr_mng\delete_employee.html:49
+#: .\templates\hr_mng\delete_position.html:47
 #: .\templates\hr_mng\delete_training.html:47
 #: .\templates\interaction_mng\delete_interaction.html:49
 #: .\templates\kpi_mng\delete_kpi.html:49
@@ -255,6 +259,7 @@ msgstr "Промени План-Действие"
 #: .\templates\core\edit_requirement.html:49
 #: .\templates\defect_cat_mng\edit_defect_cat.html:49
 #: .\templates\hr_mng\edit_employee.html:49
+#: .\templates\hr_mng\edit_position.html:48
 #: .\templates\hr_mng\edit_training.html:48
 #: .\templates\interaction_mng\edit_interaction.html:49
 #: .\templates\kpi_mng\edit_kpi.html:49
@@ -343,6 +348,8 @@ msgstr "Покажи Стъпка от Плана"
 #: .\templates\dox_mng\show_document.html:87
 #: .\templates\hr_mng\show_employee.html:54
 #: .\templates\hr_mng\show_employee.html:84
+#: .\templates\hr_mng\show_position.html:51
+#: .\templates\hr_mng\show_position.html:62
 #: .\templates\hr_mng\show_training.html:51
 #: .\templates\hr_mng\show_training.html:62
 #: .\templates\interaction_mng\show_interaction.html:53
@@ -387,6 +394,8 @@ msgstr "Промени"
 #: .\templates\dox_mng\show_document.html:89
 #: .\templates\hr_mng\show_employee.html:55
 #: .\templates\hr_mng\show_employee.html:86
+#: .\templates\hr_mng\show_position.html:52
+#: .\templates\hr_mng\show_position.html:64
 #: .\templates\hr_mng\show_training.html:52
 #: .\templates\hr_mng\show_training.html:64
 #: .\templates\interaction_mng\show_interaction.html:54
@@ -552,7 +561,7 @@ msgstr "Инв. Номер"
 #: .\templates\control_plan_mng\control_plan_step_list.html:51
 #: .\templates\control_plan_mng\show_control_plan.html:87
 #: .\templates\control_plan_mng\show_control_plan_step.html:50
-#: .\templates\core\base.html:247
+#: .\templates\core\base.html:240
 #: .\templates\maintenance_mng\maintenance_list.html:50
 #: .\templates\maintenance_mng\show_maintenance.html:49
 #: .\templates\operations_mng\operations_mng_index.html:29
@@ -619,6 +628,8 @@ msgstr "Характеристика"
 
 #: .\templates\characteristics_mng\characteristics_list.html:49
 #: .\templates\defect_cat_mng\show_defect_cat.html:63
+#: .\templates\hr_mng\position_list.html:48
+#: .\templates\hr_mng\show_position.html:47
 #: .\templates\hr_mng\show_training.html:47
 #: .\templates\hr_mng\training_list.html:48
 msgid "Code"
@@ -804,8 +815,8 @@ msgid ""
 "flexibility."
 msgstr ""
 "Целта на това уеб приложение е да предостави решение за управление на "
-"системата за управление на качеството на компанията по дигитален начин, "
-"като позволява взаимодействие между различните типове данни, лесен достъп и "
+"системата за управление на качеството на компанията по дигитален начин, като "
+"позволява взаимодействие между различните типове данни, лесен достъп и "
 "гъвкавост."
 
 #: .\templates\core\about.html:49
@@ -822,148 +833,145 @@ msgid "For all open questions please contact: "
 msgstr "По всички въпроси се свържете с:"
 
 #: .\templates\core\base.html:46
-#| msgid "Main Page"
 msgid "Main"
 msgstr "Начало"
 
 #: .\templates\core\base.html:57
-#| msgid "Add to database"
 msgid "Database"
 msgstr "База Данни"
 
-#: .\templates\core\base.html:61 .\templates\core\base.html:75
-#: .\templates\core\logs.html:42
+#: .\templates\core\base.html:61 .\templates\core\logs.html:42
 msgid "Logs"
 msgstr "Логове"
 
-#: .\templates\core\base.html:65 .\templates\core\base.html:79
-msgid "Approval"
-msgstr "Одобрение"
-
-#: .\templates\core\base.html:69
+#: .\templates\core\base.html:65
 msgid "API"
 msgstr "АПИ"
 
-#: .\templates\core\base.html:85 .\templates\core\favorites.html:42
+#: .\templates\core\base.html:72
+msgid "Approval"
+msgstr "Одобрение"
+
+#: .\templates\core\base.html:78 .\templates\core\favorites.html:42
 #: .\templates\hr_mng\training_matrix.html:47
 msgid "Favorites"
 msgstr "Любими"
 
-#: .\templates\core\base.html:89
+#: .\templates\core\base.html:82
 msgid "About"
 msgstr "Инфо"
 
-#: .\templates\core\base.html:119
+#: .\templates\core\base.html:112
 msgid "log out"
 msgstr "изход"
 
-#: .\templates\core\base.html:125
+#: .\templates\core\base.html:118
 msgid "Welcome"
 msgstr "Здравей"
 
-#: .\templates\core\base.html:138
+#: .\templates\core\base.html:131
 msgid "log in"
 msgstr "вход"
 
-#: .\templates\core\base.html:144
+#: .\templates\core\base.html:137
 msgid "guest"
 msgstr "гост"
 
-#: .\templates\core\base.html:176 .\templates\core\requirements_matrix.html:76
+#: .\templates\core\base.html:169 .\templates\core\requirements_matrix.html:76
 #: .\templates\core\show_requirement.html:47
 msgid "Organization"
 msgstr "Организация"
 
-#: .\templates\core\base.html:180
+#: .\templates\core\base.html:173
 msgid "Personnel and Trainings"
 msgstr "Персонал и Обучения"
 
-#: .\templates\core\base.html:184
+#: .\templates\core\base.html:177
 msgid "Documented Information"
 msgstr "Документи"
 
-#: .\templates\core\base.html:188
+#: .\templates\core\base.html:181
 #: .\templates\custom_forms\custom_review_form.html:82
 #: .\templates\custom_forms\custom_review_form_show.html:149
 msgid "Suppliers"
 msgstr "Доставчици"
 
-#: .\templates\core\base.html:195
+#: .\templates\core\base.html:188
 msgid "Business Processes"
 msgstr "Бизнес Процеси"
 
-#: .\templates\core\base.html:203
+#: .\templates\core\base.html:196
 msgid "Interactions"
 msgstr "Взаимодействия"
 
-#: .\templates\core\base.html:207
+#: .\templates\core\base.html:200
 #: .\templates\custom_forms\custom_review_form.html:92
 #: .\templates\custom_forms\custom_review_form_show.html:180
 msgid "Resources"
 msgstr "Ресурси"
 
-#: .\templates\core\base.html:211
+#: .\templates\core\base.html:204
 #: .\templates\custom_forms\custom_review_form.html:106
 #: .\templates\custom_forms\custom_review_form_show.html:215
 msgid "Risks"
 msgstr "Рискове"
 
-#: .\templates\core\base.html:215
+#: .\templates\core\base.html:208
 msgid "Improvements"
 msgstr "Подобрения"
 
-#: .\templates\core\base.html:219
+#: .\templates\core\base.html:212
 msgid "KPIs"
 msgstr "KPI"
 
-#: .\templates\core\base.html:223 .\templates\core\base.html:259
+#: .\templates\core\base.html:216 .\templates\core\base.html:252
 msgid "Audit Cheklist"
 msgstr "Одит Чеклист"
 
-#: .\templates\core\base.html:231
+#: .\templates\core\base.html:224
 msgid "Operational Processes"
 msgstr "Оперативни Процеси"
 
-#: .\templates\core\base.html:239
+#: .\templates\core\base.html:232
 #: .\templates\operations_mng\operations_mng_index.html:19
 msgid "Maintenance"
 msgstr "Поддръжка"
 
-#: .\templates\core\base.html:243
+#: .\templates\core\base.html:236
 #: .\templates\operations_mng\operations_mng_index.html:24
 msgid "Calibration"
 msgstr "Калибриране"
 
-#: .\templates\core\base.html:251
+#: .\templates\core\base.html:244
 msgid "Defect Catalogues"
 msgstr "Дефект Каталози"
 
-#: .\templates\core\base.html:255
+#: .\templates\core\base.html:248
 #: .\templates\operations_mng\operations_mng_index.html:34
 msgid "Control Plans"
 msgstr "Контр. Планове"
 
-#: .\templates\core\base.html:267
+#: .\templates\core\base.html:260
 msgid "Customers"
 msgstr "Клиенти"
 
-#: .\templates\core\base.html:272
+#: .\templates\core\base.html:265
 msgid "Requirements Matrix"
 msgstr "Матрица Изисквания"
 
-#: .\templates\core\base.html:277
+#: .\templates\core\base.html:270
 msgid "Statistics"
 msgstr "Статистика"
 
-#: .\templates\core\base.html:282
+#: .\templates\core\base.html:275
 msgid "Nonconformities"
 msgstr "Несъответствия"
 
-#: .\templates\core\base.html:292
+#: .\templates\core\base.html:285
 msgid "Action Plans"
 msgstr "Планове-Действие"
 
-#: .\templates\core\base.html:297
+#: .\templates\core\base.html:290
 msgid "Management Reviews"
 msgstr "Прегледи"
 
@@ -1562,6 +1570,14 @@ msgstr "Добави служител"
 msgid "add this employee"
 msgstr "добави този служител"
 
+#: .\templates\hr_mng\add_position.html:41
+msgid "Add position"
+msgstr "Добави длъжност"
+
+#: .\templates\hr_mng\add_position.html:49
+msgid "add this position"
+msgstr "добави тази длъжност"
+
 #: .\templates\hr_mng\add_training.html:41
 msgid "Add training"
 msgstr "Добави обучение"
@@ -1574,6 +1590,10 @@ msgstr "добави това обучение"
 msgid "Delete employee"
 msgstr "Изтрий служител"
 
+#: .\templates\hr_mng\delete_position.html:41
+msgid "Delete position"
+msgstr "Изтрий длъжност"
+
 #: .\templates\hr_mng\delete_training.html:41
 msgid "Delete training"
 msgstr "Изтрий обучение"
@@ -1581,6 +1601,10 @@ msgstr "Изтрий обучение"
 #: .\templates\hr_mng\edit_employee.html:41
 msgid "Edit employee"
 msgstr "Промени служител"
+
+#: .\templates\hr_mng\edit_position.html:41
+msgid "Edit position"
+msgstr "Промени длъжност"
 
 #: .\templates\hr_mng\edit_training.html:41
 msgid "Edit training"
@@ -1600,7 +1624,7 @@ msgstr "Име и Фамилия"
 #: .\templates\hr_mng\training_matrix.html:52
 #: .\templates\process_mng\process_owners.html:48
 msgid "Position"
-msgstr "Позиция"
+msgstr "Длъжност"
 
 #: .\templates\hr_mng\employee_list.html:59
 #: .\templates\hr_mng\show_employee.html:49
@@ -1627,9 +1651,34 @@ msgstr "Добави Служител"
 msgid "Employee List"
 msgstr "Списък Служители"
 
+#: .\templates\hr_mng\hr_mng_index.html:40
+msgid "Positions"
+msgstr "Длъжности"
+
+#: .\templates\hr_mng\position_index.html:25
+msgid "Add Position"
+msgstr "Добави Длъжност"
+
+#: .\templates\hr_mng\position_index.html:30
+msgid "Positions List"
+msgstr "Списък Длъжности"
+
+#: .\templates\hr_mng\position_list.html:41
+msgid "Positions:"
+msgstr "Длъжности"
+
+#: .\templates\hr_mng\position_list.html:50
+#: .\templates\hr_mng\show_position.html:49
+msgid "Access Rights"
+msgstr "Права на достъп"
+
 #: .\templates\hr_mng\show_employee.html:41
 msgid "Show employee"
 msgstr "Покажи Служител"
+
+#: .\templates\hr_mng\show_position.html:41
+msgid "Show position"
+msgstr "Покажи длъжност"
 
 #: .\templates\hr_mng\show_training.html:41
 msgid "Show training"
