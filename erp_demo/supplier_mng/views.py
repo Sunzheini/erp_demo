@@ -33,3 +33,7 @@ class SupplierMngViews(PrototypeViews):
         except Exception as e:
             print(f"Exception: {e}")
             return render(request, 'error.html', {'error_message': f'An unexpected error occurred: {e}.'})
+
+
+class MaterialMngViews(PrototypeViews):
+    pass

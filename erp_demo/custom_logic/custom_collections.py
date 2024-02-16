@@ -131,6 +131,7 @@ list_of_keys = {
     'DefectCatalogue': [],
     'StatModel1': [],
     'ManagementReview': [],
+    'Material': [],
 }
 
 coordinates = {
@@ -285,6 +286,12 @@ coordinates = {
         'end_column': None,
     },
     'ManagementReview': {
+        'start_row': None,
+        'end_row': None,
+        'start_column': None,
+        'end_column': None,
+    },
+    'Material': {
         'start_row': None,
         'end_row': None,
         'start_column': None,

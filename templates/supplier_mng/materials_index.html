@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+{% load i18n %}
+
+{#1. Page Title------------------------------------------------------------#}
+    {% block page_title %}Materials Management{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#3. Page Name-------------------------------------------------------------#}
+    {% block page_name %}
+        <h1 class="page-title">Materials Management</h1>
+    {% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#4. Section1--------------------------------------------------------------#}
+{% block card_buttons %}
+    <section class="card-buttons-section">
+        <div class="all-card-buttons-container">
+
+            <button class="card-btn" onClick="javascript:history.go(-1);">
+                <span class="card-btn-title"><i class="fa-solid fa-angles-left"></i></span>
+                <span class="card-btn-desc">Go back to the document list</span>
+            </button>
+
+            <button class="card-btn" onclick="location.href='{% url 'add material' %}';">
+                <span class="card-btn-title">{% trans "Add Material" %}</span>
+                <span class="card-btn-desc">Add a new employee and define their properties</span>
+            </button>
+
+            <button class="card-btn" onclick="location.href='{% url 'materials list' %}';">
+                <span class="card-btn-title">{% trans "Materials List" %}</span>
+                <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
+            </button>
+            
+            <button class="card-btn card-btn-hidden"></button>
+        </div>
+    </section>
+{% endblock %}
+{#-------------------------------------------------------------------------#}
+
+{#5. Section2--------------------------------------------------------------#}
+{% block display_content %}
+{% endblock %}
+{#-------------------------------------------------------------------------#}

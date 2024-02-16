@@ -27,7 +27,7 @@ from erp_demo.resource_mng.models import Resource, ResourcesAssignedToEmployees,
 from erp_demo.review_mng.models import ManagementReview
 from erp_demo.risk_mng.models import Risk
 from erp_demo.statistics_mng.models import StatModel1
-from erp_demo.supplier_mng.models import Supplier
+from erp_demo.supplier_mng.models import Supplier, Material
 
 
 class DatabaseManipulation:
@@ -60,6 +60,7 @@ class DatabaseManipulation:
         Machine.objects.all().delete()
         Characteristic.objects.all().delete()
         StatModel1.objects.all().delete()
+        Material.objects.all().delete()
 
         # tables with dependencies from other tables
         Positions.objects.all().delete()
@@ -536,6 +537,20 @@ class DatabaseManipulation:
                     ManagementReview.objects.bulk_create([ManagementReview(
                         name=info_to_update[obj]['name'],
                         date=info_to_update[obj]['date'],
+                        slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
+                    ) for obj in info_to_update.keys()])
+                except Exception as e:
+                    print(f"Unexpected error: {e}")
+                    pass
+
+            elif table == 'Material':
+                try:
+                    Material.objects.bulk_create([Material(
+                        name=info_to_update[obj]['name'],
+                        description=info_to_update[obj]['description'],
+                        quantity=info_to_update[obj]['quantity'],
+                        measurement_unit=info_to_update[obj]['measurement_unit'],
+                        price_per_unit=info_to_update[obj]['price_per_unit'],
                         slug=slugify(f"{translate_to_maimunica(str(info_to_update[obj]['name'])[0:30])}"),
                     ) for obj in info_to_update.keys()])
                 except Exception as e:

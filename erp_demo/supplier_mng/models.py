@@ -88,3 +88,43 @@ class SuppliersToClaims(models.Model):
 
     def __str__(self):
         return f"{self.claim_id}"
+
+
+class Material(models.Model):
+    name = models.CharField(
+        max_length=199,
+        blank=False, null=False,
+        unique=True,
+    )
+
+    description = models.TextField(
+        blank=True, null=True,
+    )
+
+    quantity = models.IntegerField(
+        blank=True, null=True,
+    )
+
+    measurement_unit = models.CharField(
+        max_length=99,
+        blank=True, null=True,
+    )
+
+    price_per_unit = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        blank=True, null=True,
+    )
+
+    slug = models.SlugField(
+        blank=True, null=True,
+        editable=False,
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"{translate_to_maimunica(self.name[0:30])}")
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.name}"

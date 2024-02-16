@@ -1,8 +1,7 @@
-import os
 from django import forms
 from django.utils import translation
-
 from erp_demo.hr_mng.models import Employee, Trainings, Positions
+
 
 EMPLOYEE_LABELS_EN = {
     'position': 'Position',

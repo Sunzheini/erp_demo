@@ -31,12 +31,17 @@
                 <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
             </button>
 
-            <button class="card-btn card-btn-hidden"></button>
-
             <button class="card-btn" onclick="location.href='{% url 'supplier scores' %}';">
                 <span class="card-btn-title">{% trans "Supplier Scores" %}</span>
                 <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
             </button>
+            
+            <button class="card-btn" onclick="location.href='{% url 'material mng index' %}';">
+                <span class="card-btn-title">{% trans "Materials Management" %}</span>
+                <span class="card-btn-desc">Display a list of all employees. Edit or delete</span>
+            </button>
+            
+{#            <button class="card-btn card-btn-hidden"></button>#}
         </div>
     </section>
 {% endblock %}
