@@ -6,6 +6,12 @@
     {% block page_title %}Edit Analysis{% endblock %}
 {#-------------------------------------------------------------------------#}
 
+{##---#}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom_form.css' %}">
+{% endblock %}
+{##---#}
+
 {#3. Page Name-------------------------------------------------------------#}
     {% block page_name %}
         <h1 class="page-title">Edit Analysis</h1>
@@ -42,9 +48,7 @@
                 <h2 class="card-display-title">{% trans "Change an Analysis" %}</h2>
                 <form action="{% url 'edit analysis' pk=current_object.pk slug=current_object.slug %}" method="post">
 
-                    <table class="table-form">
-                        {{ form }}
-                    </table>
+                    {% include 'custom_forms/custom_analysis_form.html' %}
 
                     {% csrf_token %}
                     <button class="form-button">{% trans "Save" %}</button>
@@ -53,5 +57,7 @@
 
         </div>
     </section>
+
+    <script type="text/javascript" src="{% static 'css/calculations_on_loose_focus.js' %}"></script>
 {% endblock %}
 {#-------------------------------------------------------------------------#}

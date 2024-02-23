@@ -1,0 +1,478 @@
+{% load i18n %}
+<div class="div-custom-form">
+
+    {# Part 0 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "General Information" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{{ form.name.label_tag }}</th>
+            <td class="when-1">{{ form.name }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 1 #}
+    <table class="table-form">
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-2">{{ form.code.label_tag }}</th>
+            <td class="when-2">{{ form.code }}</td>
+            <th class="when-2">{{ form.measurement_unit.label_tag }}</th>
+            <td class="when-2">{{ form.measurement_unit }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 2 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "Materials" %}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Measurement Unit" %}</th>
+            <th>{% trans "Cost Rate" %}</th>
+            <th>{% trans "Price" %}</th>
+            <th>{% trans "Total" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Material 1" %}</th>
+            <td class="when-1">{{ form.material1 }}</td>
+            <td class="when-1">{{ form.material1_measurement_unit }}</td>
+            <td class="when-1">{{ form.material1_cost_rate }}</td>
+            <td class="when-1">{{ form.material1_price }}</td>
+            <td class="when-1 td-centered" id="material1_total">
+                {% if form.material1_total %}
+                    {{ form.material1_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Material 2" %}</th>
+            <td class="when-1">{{ form.material2 }}</td>
+            <td class="when-1">{{ form.material2_measurement_unit }}</td>
+            <td class="when-1">{{ form.material2_cost_rate }}</td>
+            <td class="when-1">{{ form.material2_price }}</td>
+            <td class="when-1 td-centered" id="material2_total">
+                {% if form.material2_total %}
+                    {{ form.material2_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Material 3" %}</th>
+            <td class="when-1">{{ form.material3 }}</td>
+            <td class="when-1">{{ form.material3_measurement_unit }}</td>
+            <td class="when-1">{{ form.material3_cost_rate }}</td>
+            <td class="when-1">{{ form.material3_price }}</td>
+            <td class="when-1 td-centered" id="material3_total">
+                {% if form.material3_total %}
+                    {{ form.material3_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Material 4" %}</th>
+            <td class="when-1">{{ form.material4 }}</td>
+            <td class="when-1">{{ form.material4_measurement_unit }}</td>
+            <td class="when-1">{{ form.material4_cost_rate }}</td>
+            <td class="when-1">{{ form.material4_price }}</td>
+            <td class="when-1 td-centered" id="material4_total">
+                {% if form.material4_total %}
+                    {{ form.material4_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Material 5" %}</th>
+            <td class="when-1">{{ form.material5 }}</td>
+            <td class="when-1">{{ form.material5_measurement_unit }}</td>
+            <td class="when-1">{{ form.material5_cost_rate }}</td>
+            <td class="when-1">{{ form.material5_price }}</td>
+            <td class="when-1 td-centered" id="material5_total">
+                {% if form.material5_total %}
+                    {{ form.material5_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-3">{% trans "Materials Total" %}</th>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3 td-centered" id="total_materials_cost">
+                {% if form.total_materials_cost %}
+                    {{ form.total_materials_cost }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 3 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "Mechanization" %}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Measurement Unit" %}</th>
+            <th>{% trans "Cost Rate" %}</th>
+            <th>{% trans "Price" %}</th>
+            <th>{% trans "Total" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Machine 1" %}</th>
+            <td class="when-1">{{ form.machine1 }}</td>
+            <td class="when-1">{{ form.machine1_measurement_unit }}</td>
+            <td class="when-1">{{ form.machine1_cost_rate }}</td>
+            <td class="when-1">{{ form.machine1_price }}</td>
+            <td class="when-1 td-centered" id="machine1_total">
+                {% if form.machine1_total %}
+                    {{ form.machine1_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Machine 2" %}</th>
+            <td class="when-1">{{ form.machine2 }}</td>
+            <td class="when-1">{{ form.machine2_measurement_unit }}</td>
+            <td class="when-1">{{ form.machine2_cost_rate }}</td>
+            <td class="when-1">{{ form.machine2_price }}</td>
+            <td class="when-1 td-centered" id="machine2_total">
+                {% if form.machine2_total %}
+                    {{ form.machine2_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Machine 3" %}</th>
+            <td class="when-1">{{ form.machine3 }}</td>
+            <td class="when-1">{{ form.machine3_measurement_unit }}</td>
+            <td class="when-1">{{ form.machine3_cost_rate }}</td>
+            <td class="when-1">{{ form.machine3_price }}</td>
+            <td class="when-1 td-centered" id="machine3_total">
+                {% if form.machine3_total %}
+                    {{ form.machine3_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Machine 4" %}</th>
+            <td class="when-1">{{ form.machine4 }}</td>
+            <td class="when-1">{{ form.machine4_measurement_unit }}</td>
+            <td class="when-1">{{ form.machine4_cost_rate }}</td>
+            <td class="when-1">{{ form.machine4_price }}</td>
+            <td class="when-1 td-centered" id="machine4_total">
+                {% if form.machine4_total %}
+                    {{ form.machine4_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Machine 5" %}</th>
+            <td class="when-1">{{ form.machine5 }}</td>
+            <td class="when-1">{{ form.machine5_measurement_unit }}</td>
+            <td class="when-1">{{ form.machine5_cost_rate }}</td>
+            <td class="when-1">{{ form.machine5_price }}</td>
+            <td class="when-1 td-centered" id="machine5_total">
+                {% if form.machine5_total %}
+                    {{ form.machine5_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-3">{% trans "Mechanization Total" %}</th>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3 td-centered" id="total_machines_cost">
+                {% if form.total_machines_cost %}
+                    {{ form.total_machines_cost }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 4 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "Labor" %}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Measurement Unit" %}</th>
+            <th>{% trans "Cost Rate" %}</th>
+            <th>{% trans "Price" %}</th>
+            <th>{% trans "Total" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Position 1" %}</th>
+            <td class="when-1">{{ form.position1 }}</td>
+            <td class="when-1">{{ form.position1_measurement_unit }}</td>
+            <td class="when-1">{{ form.position1_cost_rate }}</td>
+            <td class="when-1">{{ form.position1_price }}</td>
+            <td class="when-1 td-centered" id="position1_total">
+                {% if form.position1_total %}
+                    {{ form.position1_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Position 2" %}</th>
+            <td class="when-1">{{ form.position2 }}</td>
+            <td class="when-1">{{ form.position2_measurement_unit }}</td>
+            <td class="when-1">{{ form.position2_cost_rate }}</td>
+            <td class="when-1">{{ form.position2_price }}</td>
+            <td class="when-1 td-centered" id="position2_total">
+                {% if form.position2_total %}
+                    {{ form.position2_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Position 3" %}</th>
+            <td class="when-1">{{ form.position3 }}</td>
+            <td class="when-1">{{ form.position3_measurement_unit }}</td>
+            <td class="when-1">{{ form.position3_cost_rate }}</td>
+            <td class="when-1">{{ form.position3_price }}</td>
+            <td class="when-1 td-centered" id="position3_total">
+                {% if form.position3_total %}
+                    {{ form.position3_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Position 4" %}</th>
+            <td class="when-1">{{ form.position4 }}</td>
+            <td class="when-1">{{ form.position4_measurement_unit }}</td>
+            <td class="when-1">{{ form.position4_cost_rate }}</td>
+            <td class="when-1">{{ form.position4_price }}</td>
+            <td class="when-1 td-centered" id="position4_total">
+                {% if form.position4_total %}
+                    {{ form.position4_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Position 5" %}</th>
+            <td class="when-1">{{ form.position5 }}</td>
+            <td class="when-1">{{ form.position5_measurement_unit }}</td>
+            <td class="when-1">{{ form.position5_cost_rate }}</td>
+            <td class="when-1">{{ form.position5_price }}</td>
+            <td class="when-1 td-centered" id="position5_total">
+                {% if form.position5_total %}
+                    {{ form.position5_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-3">{% trans "Labor Total" %}</th>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3"></td>
+            <td class="when-3 td-centered" id="total_positions_cost">
+                {% if form.total_positions_cost %}
+                    {{ form.total_positions_cost }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 5 #}
+    <table class="table-form">
+        <thead>
+        <tr>
+            <th class="th-new" colspan="6">{% trans "Additional Expenses" %}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>{% trans "Cost Rate" %}</th>
+            <th></th>
+            <th>{% trans "Total" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Additional materials, %" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1">{{ form.additional_expense_materials_cost_rate }}</td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="additional_expense_materials_total">
+                {% if form.additional_expense_materials_total %}
+                    {{ form.additional_expense_materials_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Additional mechanization, %" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1">{{ form.additional_expense_machines_cost_rate }}</td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="additional_expense_machines_total">
+                {% if form.additional_expense_machines_total %}
+                    {{ form.additional_expense_machines_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th class="when-1">{% trans "Additional labor, %" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1">{{ form.additional_expense_positions_cost_rate }}</td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="additional_expense_positions_total">
+                {% if form.additional_expense_positions_total %}
+                    {{ form.additional_expense_positions_total }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Part 6 #}
+    <table class="table-form">
+        <thead>
+        </thead>
+        <tbody>
+        <tr>
+            <th class="when-1">{% trans "Total Direct Costs" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="total_direct_costs">
+                {% if form.total_direct_costs %}
+                    {{ form.total_direct_costs }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr>
+            <th class="when-1">{% trans "Total Additional Costs" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="total_additional_costs">
+                {% if form.total_additional_costs %}
+                    {{ form.total_additional_costs }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr>
+            <th class="when-1">{% trans "Total Costs" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="total_costs">
+                {% if form.total_costs %}
+                    {{ form.total_costs }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr>
+            <th class="when-1">{% trans "Profit, %" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered">{{ form.profit }}</td>
+        </tr>
+        
+        <tr>
+            <th class="when-1">{% trans "Final Price" %}</th>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1"></td>
+            <td class="when-1 td-centered" id="final_price">
+                {% if form.final_price %}
+                    {{ form.final_price }}
+                {% else %}
+                    0
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
