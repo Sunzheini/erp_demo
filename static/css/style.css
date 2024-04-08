@@ -5,7 +5,8 @@
 
   /*--clr-nav-bg: #190f05;*/
   /*--clr-nav-bg: #e89238;*/
-  --clr-nav-bg: #e89238;
+  /*--clr-nav-bg: #e89238;*/
+  --clr-nav-bg: #7E969C;
 
   /*--clr-nav-a: #B5D1DB;*/
   --clr-nav-a: black;
@@ -164,7 +165,7 @@ i {
 .lang-form select {
   font-size: 0.9rem;
   /*background-color: #F3F3F3;*/
-  background-color: #e89238;
+  background-color: var(--clr-nav-bg);
 
   border: 1px solid white;
   border-radius: 3px;
@@ -173,7 +174,7 @@ i {
 .lang-button {
   font-size: 0.9rem;
   border: none;
-  background-color: #e89238;
+  background-color: var(--clr-nav-bg);
 }
 
 .lang-button:hover {

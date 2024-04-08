@@ -5,33 +5,13 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.urls import reverse_lazy
-# from decouple import config, Csv
 
 
-"""
-Using Heroku CLI for the env vars:
-
-write the vars inside Settings -> Reveal Config Vars
-write them in settings.py with os.environ.get('VAR_NAME') 
-install file from heroku site
-heroku login, it will open the browser
-`D:\Study\Projects\PycharmProjects\erp_demo>heroku config -a erp-demo` to see the config vars
-`D:\Study\Projects\PycharmProjects\erp_demo>heroku logs --tail -a erp-demo` to see the logs in the console
-"""
-
-"""
-Switch this to True if you use local vars and to False if you use heroku vars
-"""
 LOCAL_VARS = False
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# if LOCAL_VARS:
-#     SECRET_KEY = config('SECRET_KEY')
-# else:
-#     SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -129,31 +109,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'erp_demo.wsgi.application'
 
 
-# if LOCAL_VARS:
-#     # local
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': 'erp_demo_db',  # same name as the DB created
-#             'USER': 'postgres-user',
-#             'PASSWORD': 'password',
-#             'HOST': 'localhost',  # Not host.docker.internal - only for pgadmin
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-#     # heroku
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': os.environ.get('DB_ENGINE'),
-#             'NAME': os.environ.get('DB_NAME'),
-#             'USER': os.environ.get('DB_USER'),
-#             'PASSWORD': os.environ.get('DB_PASSWORD'),
-#             'HOST': os.environ.get('DB_HOST'),
-#             'PORT': os.environ.get('DB_PORT'),
-#         }
-#     }
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -165,16 +120,6 @@ DATABASES = {
     }
 }
 
-
-# without heroku
-# CACHES = {
-#     'default': {
-#         'BACKEND':
-#             'django.core.cache.backends.redis.RedisCache',
-#         'LOCATION':
-#             'redis://127.0.0.1:6379',
-#     }
-# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -212,18 +157,6 @@ LANGUAGES = [
     ('bg', 'Bulgarian'),
 ]
 
-# info for translation
-"""
-put {% load i18n %} in the template
-replace text with {% trans "text" %} in the template
-
-python manage.py makemessages -l bg     # get the messages with {%trans  %} in the .po file
-translate the messages in the .po file, remove the #fuzzy
-python manage.py compilemessages        # apply translations
-
-translate forms, upload button language, choices 
-    (like customers/models.py and customers/forms.py)
-"""
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -236,19 +169,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
-# needed for cloudinary
-# if LOCAL_VARS:
-#     CLOUDINARY_STORAGE = {
-#         'CLOUD_NAME': config('CLOUD_NAME'),
-#         'API_KEY': config('API_KEY'),
-#         'API_SECRET': config('API_SECRET'),
-#     }
-# else:
-#     CLOUDINARY_STORAGE = {
-#         'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-#         'API_KEY': os.environ.get('API_KEY'),
-#         'API_SECRET': os.environ.get('API_SECRET'),
-#     }
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
@@ -256,11 +176,6 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('API_SECRET'),
 }
 
-# also correction in models and the links for the file in templates
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -270,7 +185,3 @@ LOGOUT_REDIRECT_URL = reverse_lazy('index')
 # this is needed for the custom user model
 AUTH_USER_MODEL = 'user_mng.AppUser'
 
-"""
-Create superuser:
-python manage.py createsuperuser
-"""
