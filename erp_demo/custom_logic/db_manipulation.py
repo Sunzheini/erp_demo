@@ -265,8 +265,8 @@ class DatabaseManipulation:
                         type=info_to_update[obj]['type'],
                         number=info_to_update[obj]['number'],
                         name=info_to_update[obj]['name'],
-                        parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
-                        # parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process']) - 1],
+                        # parent_process=Process.objects.all()[0],    # ToDo: hardcoded for the excel upload
+                        parent_process=Process.objects.all()[int(info_to_update[obj]['parent_process']) - 1],
 
                         description=info_to_update[obj]['description'],
                         responsible=Employee.objects.all()[1],  # ToDo: hardcoded for the excel upload 2
