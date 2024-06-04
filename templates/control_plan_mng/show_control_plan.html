@@ -99,7 +99,12 @@
                             <tbody>
                             {% for step in steps %}
                                 <tr>
-                                    <td>{{ step.name }}</td>
+                                    <td>
+                                        <a class="table-link"
+                                            href="{% url 'show control plan step' pk=step.pk slug=step.slug %}">
+                                              {{ step.name }}
+                                        </a>
+                                    </td>
 
                                     <td>
                                         {% for i in step.get_related_machines %}
