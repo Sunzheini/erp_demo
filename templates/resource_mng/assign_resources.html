@@ -103,7 +103,9 @@
                             </td>
                             <td>
                                 {% if current_object.employee %}
-                                {{ current_object.employee.get_full_name }}
+{#                                {{ current_object.employee.get_full_name }}#}
+                                    <a class="table-link" href="{% url 'show employee' pk=current_object.employee.pk slug=current_object.employee.slug %}">
+                                    {{ current_object.employee.get_full_name }}</a>
                                 {% else %}
                                 {% endif %}
                             </td>
@@ -155,7 +157,9 @@
                                 {{ current_object.resource.quantity }}
                             </td>
                             <td>
-                                {{ current_object.process.name }}
+{#                                {{ current_object.process.name }}#}
+                                <a class="table-link" href="{% url 'show process' pk=current_object.process.pk slug=current_object.process.slug %}">
+                                {{ current_object.process.name }}</a>
                             </td>
                             <td>
                                 <form action="{% url 'assign resources' %}" method="post">
