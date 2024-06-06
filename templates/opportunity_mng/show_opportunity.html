@@ -46,6 +46,7 @@
                         <tr>
                             <th>{% trans "Opportunity Name" %}</th>
                             <th>{% trans "Description" %}</th>
+                            <th>{% trans "Actions" %}</th>
 
                             <th>{% trans "Edit" %}</th>
                             <th>{% trans "Delete" %}</th>
@@ -56,6 +57,14 @@
                             <tr>
                                 <td>{{ current_object.name }}</td>
                                 <td>{{ current_object.description }}</td>
+                                <td>{% if current_object.get_related_actions %}
+                                    {% for action in current_object.get_related_actions %}
+                                        <a class="table-link"
+                                           href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                            {{ action.action_id.name }}</a><br>
+                                    {% endfor %}
+                                {% endif %}
+                                </td>
 
                                 <td><a class="table-link" href="{% url 'edit opportunity' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     {% trans "Edit" %}</a></td>

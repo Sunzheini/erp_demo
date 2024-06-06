@@ -50,6 +50,7 @@
                             <th>{% trans "Impact" %}</th>
                             <th>{% trans "Value" %}</th>
                             <th>{% trans "Immediate Action" %}</th>
+                            <th>{% trans "Long Term Action" %}</th>
 
                             <th>{% trans "Edit" %}</th>
                             <th>{% trans "Delete" %}</th>
@@ -64,6 +65,12 @@
                                 <td>{{ current_object.impact }}</td>
                                 <td>{{ current_object.value }}</td>
                                 <td>{{ current_object.immediate_action }}</td>
+                                <td>{% if current_object.get_related_actions %}
+                                        {% for action in current_object.get_related_actions %}
+                                            <a class="table-link" href="{% url 'show newaction' pk=action.action_id.pk slug=action.action_id.slug %}">
+                                            {{ action.action_id.name }}</a><br>
+                                        {% endfor %}
+                                        {% endif %}</td>
 
                                 <td><a class="table-link" href="{% url 'edit risk' pk=current_object.pk slug=current_object.slug %}"><i class="fa-solid fa-pen-to-square"></i>
                                     {% trans "Edit" %}</a></td>
