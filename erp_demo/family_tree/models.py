@@ -38,3 +38,21 @@ class Person(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def get_full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
+    def get_children(self):
+        return self.children.all()
+
+    def get_siblings(self):
+        return self.siblings.all()
+
+    def get_parents(self):
+        return [self.father, self.mother]
+    
+    def get_grandparents(self):
+        return [parent for parent in self.get_parents() if parent]
+
+    def get_grandchildren(self):
+        return [child for child in self.get_children() if child]
