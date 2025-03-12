@@ -39,5 +39,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),  # enable the browsable API
     path('api/', include('erp_demo.api.urls')),
 
-    path('family-tree/', include('erp_demo.family_tree.urls')),
+    # path('family-tree/', include('erp_demo.family_tree.urls')),
 ]
