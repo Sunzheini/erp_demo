@@ -7,18 +7,24 @@ import cloudinary.api
 from django.urls import reverse_lazy
 
 
-LOCAL_VARS = False
+"""
+Using Heroku CLI for the env vars:
 
+write the vars inside Settings -> Reveal Config Vars
+write them in settings.py with os.environ.get('VAR_NAME') 
+install file from heroku site
+heroku login, it will open the browser
+`D:\Study\Projects\PycharmProjects\erp_demo>heroku config -a erp-demo` to see the config vars
+`D:\Study\Projects\PycharmProjects\erp_demo>heroku logs --tail -a erp-demo` to see the logs in the console
+"""
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
+SECRET_KEY = 'django-insecure-7h3u-2kr%214m7&ar3r6zd9567tgpccxloqkaj!v_apc)q6rnz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -67,6 +73,8 @@ INSTALLED_APPS = [
     'erp_demo.review_mng',
     'erp_demo.analytics',
 
+    'erp_demo.family_tree',
+
     'cloudinary',
 ]
 
@@ -108,18 +116,40 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'erp_demo.wsgi.application'
 
+# local, need to run docker postgres
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'erp_demo_db',  # same name as the DB created
+#         'USER': 'postgres-user',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',  # Not host.docker.internal - only for pgadmin
+#         'PORT': '5432',
+#     }
+# }
 
+# heroku
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DB_ENGINE'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd8vdptta8sjdhl',
+        'USER': 'uf84jf33qqocg0',
+        'PASSWORD': 'p2ff8f72da7938e45edce01cfe689b3411cf8ddd0c5334c7da5024266bc30cf98',
+        'HOST': 'cfs632mn9c82a7.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
+
+# without heroku
+# CACHES = {
+#     'default': {
+#         'BACKEND':
+#             'django.core.cache.backends.redis.RedisCache',
+#         'LOCATION':
+#             'redis://127.0.0.1:6379',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -157,6 +187,18 @@ LANGUAGES = [
     ('bg', 'Bulgarian'),
 ]
 
+# info for translation
+"""
+put {% load i18n %} in the template
+replace text with {% trans "text" %} in the template
+
+python manage.py makemessages -l bg     # get the messages with {%trans  %} in the .po file
+translate the messages in the .po file, remove the #fuzzy
+python manage.py compilemessages        # apply translations
+
+translate forms, upload button language, choices 
+    (like customers/models.py and customers/forms.py)
+"""
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
@@ -169,13 +211,31 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files'
 
+# needed for cloudinary
+# if LOCAL_VARS:
+#     CLOUDINARY_STORAGE = {
+#         'CLOUD_NAME': config('CLOUD_NAME'),
+#         'API_KEY': config('API_KEY'),
+#         'API_SECRET': config('API_SECRET'),
+#     }
+# else:
+#     CLOUDINARY_STORAGE = {
+#         'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+#         'API_KEY': os.environ.get('API_KEY'),
+#         'API_SECRET': os.environ.get('API_SECRET'),
+#     }
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY': os.environ.get('API_KEY'),
-    'API_SECRET': os.environ.get('API_SECRET'),
+    'CLOUD_NAME': 'hpnglbxlz',
+    'API_KEY': '713429118316855',
+    'API_SECRET': 'veB_dwVAE954b9yeyx3rCUNnV2o',
 }
 
+# also correction in models and the links for the file in templates
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -185,3 +245,12 @@ LOGOUT_REDIRECT_URL = reverse_lazy('index')
 # this is needed for the custom user model
 AUTH_USER_MODEL = 'user_mng.AppUser'
 
+"""
+Create superuser:
+python manage.py createsuperuser
+
+superusers:
+Sunzheini, Maimun06, sunzheini@gmail.com
+
+Customer, pass1234, daniel_zoroff@abv.bg
+"""
